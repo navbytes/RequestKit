@@ -1,0 +1,136 @@
+{
+  "name": "RequestKit",
+  "description": "A sophisticated Chrome extension for injecting custom headers on network requests using wildcard patterns. Developer-focused tool for testing, debugging, and modifying HTTP requests in real-time.",
+  "version": "1.0.0",
+  "type": "chrome-extension",
+  "technologies": {
+    "frontend": {
+      "framework": "Preact 10.19.3",
+      "language": "TypeScript 5.3.3",
+      "styling": "TailwindCSS 3.4.0",
+      "state_management": "@preact/signals 1.2.2"
+    },
+    "build_system": {
+      "bundler": "Vite 5.0.10",
+      "extension_plugin": "vite-plugin-web-extension 4.1.1",
+      "css_processor": "PostCSS",
+      "minifier": "ESBuild"
+    },
+    "chrome_extension": {
+      "manifest_version": "3",
+      "apis": [
+        "declarativeNetRequest",
+        "storage.sync",
+        "contextMenus",
+        "activeTab",
+        "notifications"
+      ]
+    },
+    "development": {
+      "testing": {
+        "framework": "Vitest 1.2.1",
+        "environment": "jsdom 24.1.3",
+        "component_testing": "@testing-library/preact 3.2.3",
+        "user_interactions": "@testing-library/user-event 14.5.2",
+        "assertions": "@testing-library/jest-dom 6.4.2",
+        "coverage": "@vitest/coverage-v8 1.2.1",
+        "ui": "@vitest/ui 1.2.1"
+      },
+      "linting": "ESLint",
+      "formatting": "Prettier",
+      "validation": "Zod 3.22.4",
+      "logging": "debug library"
+    }
+  },
+  "architecture": {
+    "pattern": "Modular Service Worker",
+    "components": {
+      "background": {
+        "service_worker": "src/background/service-worker.ts",
+        "handlers": [
+          "ProfileHandler",
+          "RuleHandler",
+          "VariableHandler",
+          "DevToolsHandler"
+        ]
+      },
+      "ui_components": {
+        "popup": "src/popup/",
+        "options": "src/options/",
+        "devtools": "src/devtools/"
+      },
+      "content_scripts": "src/content/",
+      "core_libraries": "src/lib/core/"
+    }
+  },
+  "file_structure": {
+    "src/background/": "Service worker and background logic",
+    "src/content/": "Content scripts for page interaction",
+    "src/popup/": "Extension popup interface",
+    "src/options/": "Options page for configuration",
+    "src/devtools/": "DevTools panel integration",
+    "src/lib/core/": "Core business logic (variable resolver, pattern matcher)",
+    "src/shared/": "Shared components, types, and utilities",
+    "src/assets/": "Icons and static resources",
+    "src/__tests__/": "Test files and testing infrastructure",
+    "src/__tests__/components/": "Component tests for UI components",
+    "src/__tests__/utils/": "Testing utilities and helpers",
+    "src/__tests__/fixtures/": "Mock data and test fixtures",
+    "src/__tests__/__mocks__/": "Mock implementations for Chrome APIs"
+  },
+  "build_commands": {
+    "dev": "npm run dev",
+    "build": "npm run build",
+    "type_check": "npm run type-check",
+    "lint": "npm run lint",
+    "format": "npm run format",
+    "test": "npm run test",
+    "test_coverage": "npm run test:coverage",
+    "test_ui": "npm run test:ui",
+    "test_watch": "npm run test:watch"
+  },
+  "core_features": {
+    "header_injection": "Inject custom headers based on URL patterns",
+    "profile_management": "Multiple environments (dev, staging, prod)",
+    "variable_system": "Dynamic template resolution with built-in functions",
+    "pattern_matching": "Wildcard URL patterns with scoring system",
+    "devtools_integration": "Real-time request monitoring and analysis",
+    "rule_engine": "Conditional rules with advanced criteria"
+  },
+  "code_patterns": {
+    "typescript_config": "Strict TypeScript with path mapping",
+    "component_structure": "Preact functional components with hooks",
+    "styling_approach": "TailwindCSS utility classes",
+    "state_management": "@preact/signals for reactive state",
+    "api_integration": "Chrome extension APIs with proper error handling",
+    "testing_patterns": {
+      "component_testing": "Preact components with @testing-library/preact",
+      "chrome_api_mocking": "Comprehensive Chrome extension API mocks",
+      "test_structure": "Arrange-Act-Assert pattern with describe/it blocks",
+      "user_interactions": "User event simulation with @testing-library/user-event",
+      "accessibility_testing": "ARIA attributes and keyboard navigation tests",
+      "mock_data": "Centralized test fixtures and mock data generators"
+    }
+  },
+  "ai_assistant_notes": {
+    "key_concepts": [
+      "Chrome Manifest V3 extension",
+      "declarativeNetRequest for request interception",
+      "Modular service worker architecture",
+      "Variable resolution with template syntax",
+      "Pattern matching with wildcard support"
+    ],
+    "common_tasks": [
+      "Adding new header injection rules",
+      "Creating profile configurations",
+      "Implementing variable functions",
+      "Building UI components with Preact",
+      "Testing Chrome extension functionality",
+      "Writing component tests with @testing-library/preact",
+      "Creating mock data for testing scenarios",
+      "Testing user interactions and accessibility",
+      "Mocking Chrome extension APIs for tests"
+    ],
+    "build_process": "Vite handles bundling with extension-specific optimizations"
+  }
+}

@@ -54,7 +54,7 @@ export function PopupContent({
   onCancelQuickCreator,
   onCloseTemplateBrowser,
   onProfileChange,
-}: PopupContentProps) {
+}: Readonly<PopupContentProps>) {
   // Filter rules based on active profile
   const filteredRules = state.rules.filter(rule => {
     if (state.activeProfile === 'unassigned') {

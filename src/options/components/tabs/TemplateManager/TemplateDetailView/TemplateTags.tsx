@@ -4,7 +4,7 @@ interface TemplateTagsProps {
   tags: string[];
 }
 
-export function TemplateTags({ tags }: TemplateTagsProps) {
+export function TemplateTags({ tags }: Readonly<TemplateTagsProps>) {
   return (
     <div>
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">

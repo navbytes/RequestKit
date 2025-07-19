@@ -35,7 +35,7 @@ export function TemplateHeaders({
   addHeader,
   removeHeader,
   updateHeader,
-}: TemplateHeadersProps) {
+}: Readonly<TemplateHeadersProps>) {
   return (
     <div>
       <label

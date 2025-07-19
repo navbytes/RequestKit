@@ -1,11 +1,13 @@
 import { useState } from 'preact/hooks';
 
+import { useI18n } from '@/shared/hooks/useI18n';
+
 import type { ResolutionStep } from '../types/resolution';
 
 interface ResolutionStepCardProps {
-  step: ResolutionStep;
-  isExpanded?: boolean;
-  onToggle?: () => void;
+  readonly step: ResolutionStep;
+  readonly isExpanded?: boolean;
+  readonly onToggle?: () => void;
 }
 
 export function ResolutionStepCard({
@@ -13,6 +15,7 @@ export function ResolutionStepCard({
   isExpanded = false,
   onToggle,
 }: ResolutionStepCardProps) {
+  const { t } = useI18n();
   const [showDetails, setShowDetails] = useState(isExpanded);
 
   const getStepTypeColor = (type: string) => {
@@ -101,7 +104,9 @@ export function ResolutionStepCard({
                     : 'bg-yellow-100 text-yellow-700 dark:bg-yellow-800 dark:text-yellow-300'
                 }`}
               >
-                {step.cacheHit ? 'Cache Hit' : 'Cache Miss'}
+                {step.cacheHit
+                  ? t('devtools_cache_hit')
+                  : t('devtools_cache_miss')}
               </span>
             )}
           </div>
@@ -155,7 +160,7 @@ export function ResolutionStepCard({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <div className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-                Input
+                {t('devtools_input_label')}
               </div>
               <div className="bg-gray-100 dark:bg-gray-800 rounded p-2 font-mono text-sm break-all">
                 <span className="text-blue-600 dark:text-blue-400">
@@ -165,7 +170,7 @@ export function ResolutionStepCard({
             </div>
             <div>
               <div className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-                Output
+                {t('devtools_output_label')}
               </div>
               <div className="bg-gray-100 dark:bg-gray-800 rounded p-2 font-mono text-sm break-all">
                 <span
@@ -185,13 +190,13 @@ export function ResolutionStepCard({
           {step.metadata && (
             <div>
               <div className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-2">
-                Metadata
+                {t('devtools_metadata_label')}
               </div>
               <div className="bg-gray-50 dark:bg-gray-800 rounded p-3 space-y-2">
                 {step.metadata.depth !== undefined && (
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600 dark:text-gray-400">
-                      Depth:
+                      {t('devtools_depth_label')}
                     </span>
                     <span className="font-mono">{step.metadata.depth}</span>
                   </div>
@@ -199,7 +204,7 @@ export function ResolutionStepCard({
                 {step.metadata.recursive && (
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600 dark:text-gray-400">
-                      Recursive:
+                      {t('devtools_recursive_label')}
                     </span>
                     <span className="text-orange-600 dark:text-orange-400">
                       Yes
@@ -210,7 +215,7 @@ export function ResolutionStepCard({
                   step.metadata.functionArgs.length > 0 && (
                     <div>
                       <span className="text-sm text-gray-600 dark:text-gray-400">
-                        Function Arguments:
+                        {t('devtools_function_args_label')}
                       </span>
                       <div className="mt-1 flex flex-wrap gap-1">
                         {step.metadata.functionArgs.map((arg, index) => (

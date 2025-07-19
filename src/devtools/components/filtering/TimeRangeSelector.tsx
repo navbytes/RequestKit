@@ -32,7 +32,7 @@ export function TimeRangeSelector({
   value,
   onChange,
   className = '',
-}: TimeRangeSelectorProps) {
+}: Readonly<TimeRangeSelectorProps>) {
   const [isCustomMode, setIsCustomMode] = useState(false);
 
   const formatDateTime = (date: Date): string => {

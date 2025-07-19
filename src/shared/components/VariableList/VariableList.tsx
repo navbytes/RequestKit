@@ -2,6 +2,7 @@ import { useState } from 'preact/hooks';
 
 import { Icon } from '@/shared/components/Icon';
 import { Card } from '@/shared/components/ui/Card';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { Profile } from '@/shared/types/profiles';
 import type { HeaderRule } from '@/shared/types/rules';
 import type { Variable } from '@/shared/types/variables';
@@ -37,7 +38,8 @@ export function VariableList({
   onEdit,
   onDelete,
   onDuplicate,
-}: VariableListProps) {
+}: Readonly<VariableListProps>) {
+  const { t } = useI18n();
   const [sortConfig, setSortConfig] = useState<SortConfig>({
     key: 'name',
     direction: 'asc',
@@ -78,12 +80,14 @@ export function VariableList({
 
   const getProfileName = (profileId: string): string => {
     const profile = profiles.find(p => p.id === profileId);
-    return profile ? profile.name : `Profile ${profileId}`;
+    return profile
+      ? profile.name
+      : t('variables_profile_fallback', [profileId]);
   };
 
   const getRuleName = (ruleId: string): string => {
     const rule = rules.find(r => r.id === ruleId);
-    return rule ? rule.name : `Rule ${ruleId}`;
+    return rule ? rule.name : t('variables_rule_fallback', [ruleId]);
   };
 
   const getAssociationDisplay = (variable: Variable): string => {
@@ -199,21 +203,21 @@ export function VariableList({
       <button
         onClick={() => onEdit(variable)}
         className="p-1 text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-        title="Edit variable"
+        title={t('variables_tooltip_edit')}
       >
         <Icon name="edit" size={16} />
       </button>
       <button
         onClick={() => onDuplicate(variable)}
         className="p-1 text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-        title="Copy variable"
+        title={t('variables_tooltip_copy')}
       >
         <Icon name="copy" size={16} />
       </button>
       <button
         onClick={() => onDelete(variable)}
         className="p-1 text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
-        title="Delete variable"
+        title={t('variables_tooltip_delete')}
       >
         <Icon name="trash" size={16} />
       </button>

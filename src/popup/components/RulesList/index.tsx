@@ -1,5 +1,6 @@
 import { RuleItem } from '@/shared/components/rules';
 import { EmptyState } from '@/shared/components/ui';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { HeaderRule } from '@/shared/types/rules';
 
 import { useRulesList } from './hooks/useRulesList';
@@ -21,7 +22,8 @@ export function RulesList({
   onEditRule,
   onDeleteRule,
   compact = false,
-}: RulesListProps) {
+}: Readonly<RulesListProps>) {
+  const { t } = useI18n();
   const { matchingRules, activeRules, otherRules } = useRulesList(
     rules,
     currentUrl
@@ -31,8 +33,8 @@ export function RulesList({
     return (
       <EmptyState
         icon="file-text"
-        title="No rules created yet"
-        description="Create your first header rule to get started"
+        title={t('rules_empty_title')}
+        description={t('rules_empty_description')}
         className="py-6"
       />
     );

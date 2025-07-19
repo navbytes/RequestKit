@@ -25,7 +25,7 @@ export function ProfilesList({
   onEditProfile,
   onDeleteProfile,
   onSwitchProfile,
-}: ProfilesListProps) {
+}: Readonly<ProfilesListProps>) {
   return (
     <div className="space-y-4">
       <ProfilesHeader
@@ -50,8 +50,8 @@ export function ProfilesList({
 }
 
 interface ProfilesHeaderProps {
-  profileCount: number;
-  onCreateNew: () => void;
+  readonly profileCount: number;
+  readonly onCreateNew: () => void;
 }
 
 function ProfilesHeader({ profileCount, onCreateNew }: ProfilesHeaderProps) {
@@ -68,7 +68,7 @@ function ProfilesHeader({ profileCount, onCreateNew }: ProfilesHeaderProps) {
 }
 
 interface EmptyProfilesStateProps {
-  onCreateNew: () => void;
+  readonly onCreateNew: () => void;
 }
 
 function EmptyProfilesState({ onCreateNew }: EmptyProfilesStateProps) {
@@ -89,12 +89,12 @@ function EmptyProfilesState({ onCreateNew }: EmptyProfilesStateProps) {
 }
 
 interface ProfileCardsProps {
-  profiles: Profile[];
-  activeProfileId: string;
-  rules: HeaderRule[];
-  onEditProfile: (profile: Profile) => void;
-  onDeleteProfile: (profileId: string) => void;
-  onSwitchProfile: (profileId: string) => void;
+  readonly profiles: Profile[];
+  readonly activeProfileId: string;
+  readonly rules: HeaderRule[];
+  readonly onEditProfile: (profile: Profile) => void;
+  readonly onDeleteProfile: (profileId: string) => void;
+  readonly onSwitchProfile: (profileId: string) => void;
 }
 
 function ProfileCards({
@@ -123,12 +123,12 @@ function ProfileCards({
 }
 
 interface ProfileCardProps {
-  profile: Profile;
-  isActive: boolean;
-  profileRules: HeaderRule[];
-  onEditProfile: (profile: Profile) => void;
-  onDeleteProfile: (profileId: string) => void;
-  onSwitchProfile: (profileId: string) => void;
+  readonly profile: Profile;
+  readonly isActive: boolean;
+  readonly profileRules: HeaderRule[];
+  readonly onEditProfile: (profile: Profile) => void;
+  readonly onDeleteProfile: (profileId: string) => void;
+  readonly onSwitchProfile: (profileId: string) => void;
 }
 
 function ProfileCard({
@@ -166,12 +166,12 @@ function ProfileCard({
 }
 
 interface ProfileCardHeaderProps {
-  profile: Profile;
-  isActive: boolean;
-  profileRules: HeaderRule[];
-  onEditProfile: (profile: Profile) => void;
-  onDeleteProfile: (profileId: string) => void;
-  onSwitchProfile: (profileId: string) => void;
+  readonly profile: Profile;
+  readonly isActive: boolean;
+  readonly profileRules: HeaderRule[];
+  readonly onEditProfile: (profile: Profile) => void;
+  readonly onDeleteProfile: (profileId: string) => void;
+  readonly onSwitchProfile: (profileId: string) => void;
 }
 
 function ProfileCardHeader({
@@ -217,11 +217,11 @@ function ProfileCardHeader({
 }
 
 interface ProfileActionsProps {
-  profile: Profile;
-  isActive: boolean;
-  onEditProfile: (profile: Profile) => void;
-  onDeleteProfile: (profileId: string) => void;
-  onSwitchProfile: (profileId: string) => void;
+  readonly profile: Profile;
+  readonly isActive: boolean;
+  readonly onEditProfile: (profile: Profile) => void;
+  readonly onDeleteProfile: (profileId: string) => void;
+  readonly onSwitchProfile: (profileId: string) => void;
 }
 
 function ProfileActions({
@@ -260,7 +260,7 @@ function ProfileActions({
 }
 
 interface ProfileDescriptionProps {
-  description: string;
+  readonly description: string;
 }
 
 function ProfileDescription({ description }: ProfileDescriptionProps) {
@@ -272,7 +272,7 @@ function ProfileDescription({ description }: ProfileDescriptionProps) {
 }
 
 interface AssignedRulesProps {
-  rules: HeaderRule[];
+  readonly rules: HeaderRule[];
 }
 
 function AssignedRules({ rules }: AssignedRulesProps) {
@@ -291,7 +291,7 @@ function AssignedRules({ rules }: AssignedRulesProps) {
 }
 
 interface RuleItemProps {
-  rule: HeaderRule;
+  readonly rule: HeaderRule;
 }
 
 function RuleItem({ rule }: RuleItemProps) {

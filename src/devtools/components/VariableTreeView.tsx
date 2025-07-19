@@ -7,8 +7,8 @@ import type {
 } from '../types/resolution';
 
 interface VariableTreeViewProps {
-  dependencyTree: VariableDependencyTree;
-  onVariableSelect?: (variable: VariableDependency) => void;
+  readonly dependencyTree: VariableDependencyTree;
+  readonly onVariableSelect?: (variable: VariableDependency) => void;
 }
 
 interface TreeNodeProps {
@@ -28,7 +28,7 @@ function TreeNode({
   onToggle,
   onSelect,
   childVariables,
-}: TreeNodeProps) {
+}: Readonly<TreeNodeProps>) {
   const getScopeColor = (scope: string) => {
     switch (scope) {
       case 'system':
@@ -183,11 +183,11 @@ function TreeNode({
 }
 
 interface TreeNodeContainerProps {
-  variable: VariableDependency;
-  level: number;
-  onSelect: (variable: VariableDependency) => void;
-  dependencyTree: VariableDependencyTree | null;
-  childVariables?: VariableDependency[];
+  readonly variable: VariableDependency;
+  readonly level: number;
+  readonly onSelect: (variable: VariableDependency) => void;
+  readonly dependencyTree: VariableDependencyTree | null;
+  readonly childVariables?: VariableDependency[];
 }
 
 function TreeNodeContainer({

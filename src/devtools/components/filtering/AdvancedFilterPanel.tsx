@@ -35,7 +35,7 @@ export function AdvancedFilterPanel({
   isCollapsed = false,
   onToggleCollapsed,
   className = '',
-}: AdvancedFilterPanelProps) {
+}: Readonly<AdvancedFilterPanelProps>) {
   const [activeTab, setActiveTab] = useState<'basic' | 'advanced' | 'presets'>(
     'basic'
   );

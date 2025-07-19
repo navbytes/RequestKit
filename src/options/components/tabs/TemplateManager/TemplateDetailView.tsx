@@ -21,7 +21,7 @@ export function TemplateDetailView({
   onClose,
   onCloneAndEdit,
   onExport,
-}: TemplateDetailViewProps) {
+}: Readonly<TemplateDetailViewProps>) {
   const getTemplateTypeIcon = (templateType: string) => {
     switch (templateType) {
       case 'headers':

@@ -43,7 +43,7 @@ export function FilterCriteriaSelector({
   onChange,
   mode = 'basic',
   className = '',
-}: FilterCriteriaSelectorProps) {
+}: Readonly<FilterCriteriaSelectorProps>) {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
     new Set(['methods'])
   );

@@ -1,4 +1,5 @@
 import { Badge } from '@/shared/components/ui';
+import { useI18n } from '@/shared/hooks/useI18n';
 
 interface RulesListHeaderProps {
   rulesCount: number;
@@ -10,15 +11,17 @@ export function RulesListHeader({
   rulesCount,
   activeRulesCount,
   currentUrl,
-}: RulesListHeaderProps) {
+}: Readonly<RulesListHeaderProps>) {
+  const { t } = useI18n();
+
   return (
     <div className="flex items-center justify-between">
       <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-        Rules ({rulesCount})
+        {t('rules_header_title')} ({rulesCount})
       </h3>
       {currentUrl && activeRulesCount > 0 && (
         <Badge variant="primary" size="sm">
-          {activeRulesCount} active
+          {activeRulesCount} {t('rules_badge_active')}
         </Badge>
       )}
     </div>

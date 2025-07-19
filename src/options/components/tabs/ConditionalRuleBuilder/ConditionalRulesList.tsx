@@ -17,7 +17,7 @@ export function ConditionalRulesList({
   onDeleteRule,
   onCreateNew,
   formatCondition,
-}: ConditionalRulesListProps) {
+}: Readonly<ConditionalRulesListProps>) {
   return (
     <div className="space-y-4">
       {conditionalRules.length > 0 && (
@@ -51,7 +51,7 @@ export function ConditionalRulesList({
 }
 
 interface EmptyStateProps {
-  onCreateNew: () => void;
+  readonly onCreateNew: () => void;
 }
 
 function EmptyState({ onCreateNew }: EmptyStateProps) {
@@ -72,11 +72,11 @@ function EmptyState({ onCreateNew }: EmptyStateProps) {
 }
 
 interface ConditionalRuleCardProps {
-  rule: ConditionalRule;
-  onToggleRule: (ruleId: string) => void;
-  onEditRule: (rule: ConditionalRule) => void;
-  onDeleteRule: (ruleId: string) => void;
-  formatCondition: (condition: RuleCondition) => string;
+  readonly rule: ConditionalRule;
+  readonly onToggleRule: (ruleId: string) => void;
+  readonly onEditRule: (rule: ConditionalRule) => void;
+  readonly onDeleteRule: (ruleId: string) => void;
+  readonly formatCondition: (condition: RuleCondition) => string;
 }
 
 function ConditionalRuleCard({
@@ -128,9 +128,9 @@ function ConditionalRuleCard({
         <div className="mb-2">
           <strong>Conditions ({rule.conditionLogic}):</strong>
           <div className="mt-1 space-y-1">
-            {rule.conditions?.map((condition, index) => (
+            {rule.conditions?.map(condition => (
               <div
-                key={index}
+                key={condition.value}
                 className="font-mono text-xs bg-blue-50 dark:bg-blue-900 text-blue-800 dark:text-blue-200 p-2 rounded"
               >
                 {formatCondition(condition)}
@@ -142,9 +142,9 @@ function ConditionalRuleCard({
           <strong>Headers:</strong> {rule.headers.length} configured
           {rule.headers.length > 0 && (
             <div className="mt-1 space-y-1">
-              {rule.headers.map((header, index) => (
+              {rule.headers.map(header => (
                 <div
-                  key={index}
+                  key={header.name}
                   className="font-mono text-xs bg-gray-100 dark:bg-gray-600 p-1 rounded"
                 >
                   {header.name}: {header.value} ({header.operation})

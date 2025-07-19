@@ -13,7 +13,7 @@ export function ExecutionTimeChart({
   data,
   height = 200,
   className = '',
-}: ExecutionTimeChartProps) {
+}: Readonly<ExecutionTimeChartProps>) {
   // Process data for chart
   const chartData = useMemo(() => {
     if (!data || data.length === 0) {

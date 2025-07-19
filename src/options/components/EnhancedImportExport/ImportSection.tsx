@@ -1,7 +1,7 @@
 import { Icon } from '@/shared/components/Icon';
 
 interface ImportSectionProps {
-  onImport: (event: Event) => void;
+  readonly onImport: (event: Event) => void;
 }
 
 export function ImportSection({ onImport }: ImportSectionProps) {

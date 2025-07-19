@@ -3,7 +3,7 @@ import type { HeaderRule } from '@/shared/types/rules';
 import { getUnassignedRules } from './utils';
 
 interface UnassignedRulesProps {
-  rules: HeaderRule[];
+  readonly rules: HeaderRule[];
 }
 
 export function UnassignedRules({ rules }: UnassignedRulesProps) {
@@ -26,7 +26,9 @@ interface UnassignedRulesHeaderProps {
   count: number;
 }
 
-function UnassignedRulesHeader({ count }: UnassignedRulesHeaderProps) {
+function UnassignedRulesHeader({
+  count,
+}: Readonly<UnassignedRulesHeaderProps>) {
   return (
     <h4 className="font-medium text-orange-800 dark:text-orange-200 mb-2">
       Unassigned Rules ({count})
@@ -44,7 +46,7 @@ function UnassignedRulesDescription() {
 }
 
 interface UnassignedRulesListProps {
-  rules: HeaderRule[];
+  readonly rules: HeaderRule[];
 }
 
 function UnassignedRulesList({ rules }: UnassignedRulesListProps) {
@@ -58,7 +60,7 @@ function UnassignedRulesList({ rules }: UnassignedRulesListProps) {
 }
 
 interface UnassignedRuleItemProps {
-  rule: HeaderRule;
+  readonly rule: HeaderRule;
 }
 
 function UnassignedRuleItem({ rule }: UnassignedRuleItemProps) {

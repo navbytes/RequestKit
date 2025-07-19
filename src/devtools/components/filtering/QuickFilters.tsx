@@ -18,7 +18,7 @@ export function QuickFilters({
   onApplyFilter,
   activeCriteria,
   className = '',
-}: QuickFiltersProps) {
+}: Readonly<QuickFiltersProps>) {
   const quickFilters = filterService.getQuickFilters();
 
   const isFilterActive = (filter: QuickFilter): boolean => {

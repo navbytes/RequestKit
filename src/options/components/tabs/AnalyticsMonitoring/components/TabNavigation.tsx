@@ -15,7 +15,10 @@ interface TabNavigationProps {
   onTabChange: (tab: TabId) => void;
 }
 
-export function TabNavigation({ activeTab, onTabChange }: TabNavigationProps) {
+export function TabNavigation({
+  activeTab,
+  onTabChange,
+}: Readonly<TabNavigationProps>) {
   return (
     <div className="border-b border-gray-200 dark:border-gray-700">
       <nav className="-mb-px flex space-x-8">

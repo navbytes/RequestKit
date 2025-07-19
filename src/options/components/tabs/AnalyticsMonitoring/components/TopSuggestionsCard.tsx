@@ -6,7 +6,9 @@ interface TopSuggestionsCardProps {
   suggestions: OptimizationSuggestion[];
 }
 
-export function TopSuggestionsCard({ suggestions }: TopSuggestionsCardProps) {
+export function TopSuggestionsCard({
+  suggestions,
+}: Readonly<TopSuggestionsCardProps>) {
   return (
     <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">

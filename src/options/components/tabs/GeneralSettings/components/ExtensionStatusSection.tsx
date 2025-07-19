@@ -9,7 +9,7 @@ interface ExtensionStatusSectionProps {
 export function ExtensionStatusSection({
   enabled,
   onToggle,
-}: ExtensionStatusSectionProps) {
+}: Readonly<ExtensionStatusSectionProps>) {
   return (
     <SettingsSection title="Extension Status">
       <ToggleSetting

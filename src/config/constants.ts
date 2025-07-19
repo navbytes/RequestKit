@@ -403,223 +403,31 @@ export type ResourceType = (typeof RESOURCE_TYPES)[number];
 /**
  * Supported locale codes
  */
-export type SupportedLocale =
-  | 'bn'
-  | 'en'
-  | 'fr'
-  | 'ja'
-  | 'pt'
-  | 'ru'
-  | 'de'
-  | 'es'
-  | 'hi'
-  | 'ko'
-  | 'ro'
-  | 'zh';
-
-export const SUPPORTED_LOCALES: readonly SupportedLocale[] = [
-  'bn',
-  'en',
-  'fr',
-  'ja',
-  'pt',
-  'ru',
-  'de',
-  'es',
-  'hi',
-  'ko',
-  'ro',
-  'zh',
-];
-
-export const SUPPORTED_LOCALES_DISPLAY_NAMES: Record<
-  SupportedLocale,
-  Record<SupportedLocale, string>
-> = {
-  bn: {
-    bn: 'বাংলা',
-    en: 'ইংরেজি',
-    fr: 'ফরাসি',
-    ja: 'জাপানি',
-    pt: 'পর্তুগিজ',
-    ru: 'রুশ',
-    de: 'জার্মান',
-    es: 'স্প্যানিশ',
-    hi: 'হিন্দি',
-    ko: 'কোরিয়ান',
-    ro: 'রোমানিয়ান',
-    zh: 'চীনা',
-  },
+const LOCALE_DISPLAY_DATA = {
   en: {
-    bn: 'Bengali',
     en: 'English',
-    fr: 'French',
-    ja: 'Japanese',
-    pt: 'Portuguese',
-    ru: 'Russian',
-    de: 'German',
-    es: 'Spanish',
     hi: 'Hindi',
-    ko: 'Korean',
-    ro: 'Romanian',
-    zh: 'Chinese',
-  },
-  fr: {
-    bn: 'Bengali',
-    en: 'Anglais',
-    fr: 'Français',
-    ja: 'Japonais',
-    pt: 'Portugais',
-    ru: 'Russe',
-    de: 'Allemand',
-    es: 'Espagnol',
-    hi: 'Hindi',
-    ko: 'Coréen',
-    ro: 'Roumain',
-    zh: 'Chinois',
-  },
-  ja: {
-    bn: 'ベンガル語',
-    en: '英語',
-    fr: 'フランス語',
-    ja: '日本語',
-    pt: 'ポルトガル語',
-    ru: 'ロシア語',
-    de: 'ドイツ語',
-    es: 'スペイン語',
-    hi: 'ヒンディー語',
-    ko: '韓国語',
-    ro: 'ルーマニア語',
-    zh: '中国語',
-  },
-  pt: {
-    bn: 'Bengali',
-    en: 'Inglês',
-    fr: 'Francês',
-    ja: 'Japonês',
-    pt: 'Português',
-    ru: 'Russo',
-    de: 'Alemão',
-    es: 'Espanhol',
-    hi: 'Hindi',
-    ko: 'Coreano',
-    ro: 'Romeno',
-    zh: 'Chinês',
-  },
-  ru: {
-    bn: 'Бенгальский',
-    en: 'Английский',
-    fr: 'Французский',
-    ja: 'Японский',
-    pt: 'Португальский',
-    ru: 'Русский',
-    de: 'Немецкий',
-    es: 'Испанский',
-    hi: 'Хинди',
-    ko: 'Корейский',
-    ro: 'Румынский',
-    zh: 'Китайский',
-  },
-  de: {
-    bn: 'Bengalisch',
-    en: 'Englisch',
-    fr: 'Französisch',
-    ja: 'Japanisch',
-    pt: 'Portugiesisch',
-    ru: 'Russisch',
-    de: 'Deutsch',
-    es: 'Spanisch',
-    hi: 'Hindi',
-    ko: 'Koreanisch',
-    ro: 'Rumänisch',
-    zh: 'Chinesisch',
-  },
-  es: {
-    bn: 'Bengalí',
-    en: 'Inglés',
-    fr: 'Francés',
-    ja: 'Japonés',
-    pt: 'Portugués',
-    ru: 'Ruso',
-    de: 'Alemán',
-    es: 'Español',
-    hi: 'Hindi',
-    ko: 'Coreano',
-    ro: 'Rumano',
-    zh: 'Chino',
   },
   hi: {
-    bn: 'बंगाली',
     en: 'अंग्रेजी',
-    fr: 'फ्रेंच',
-    ja: 'जापानी',
-    pt: 'पुर्तगाली',
-    ru: 'रूसी',
-    de: 'जर्मन',
-    es: 'स्पेनिश',
     hi: 'हिंदी',
-    ko: 'कोरियाई',
-    ro: 'रोमानियाई',
-    zh: 'चीनी',
   },
-  ko: {
-    bn: '벵골어',
-    en: '영어',
-    fr: '프랑스어',
-    ja: '일본어',
-    pt: '포르투갈어',
-    ru: '러시아어',
-    de: '독일어',
-    es: '스페인어',
-    hi: '힌디어',
-    ko: '한국어',
-    ro: '루마니아어',
-    zh: '중국어',
-  },
-  ro: {
-    bn: 'Bengaleză',
-    en: 'Engleză',
-    fr: 'Franceză',
-    ja: 'Japoneză',
-    pt: 'Portugheză',
-    ru: 'Rusă',
-    de: 'Germană',
-    es: 'Spaniolă',
-    hi: 'Hindi',
-    ko: 'Coreeană',
-    ro: 'Română',
-    zh: 'Chineză',
-  },
-  zh: {
-    bn: '孟加拉语',
-    en: '英语',
-    fr: '法语',
-    ja: '日语',
-    pt: '葡萄牙语',
-    ru: '俄语',
-    de: '德语',
-    es: '西班牙语',
-    hi: '印地语',
-    ko: '韩语',
-    ro: '罗马尼亚语',
-    zh: '中文',
-  },
-};
+} as const;
+
+// Generate everything from the single source
+export type SupportedLocale = keyof typeof LOCALE_DISPLAY_DATA;
+
+export const SUPPORTED_LOCALES: readonly SupportedLocale[] = Object.keys(
+  LOCALE_DISPLAY_DATA
+) as SupportedLocale[];
+
+export const SUPPORTED_LOCALES_DISPLAY_NAMES: typeof LOCALE_DISPLAY_DATA =
+  LOCALE_DISPLAY_DATA;
 
 export const SUPPORTED_LOCALES_NATIVE_DISPLAY_NAMES: Record<
   SupportedLocale,
   string
 > = {
-  bn: 'বাংলা',
-  en: 'English',
-  fr: 'Français',
-  ja: '日本語',
-  pt: 'Português',
-  ru: 'Русский',
-  de: 'Deutsch',
-  es: 'Español',
-  hi: 'हिंदी',
-  ko: '한국어',
-  ro: 'Română',
-  zh: '中文',
+  en: LOCALE_DISPLAY_DATA.en.en,
+  hi: LOCALE_DISPLAY_DATA.hi.hi,
 };

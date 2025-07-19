@@ -1,3 +1,5 @@
+import { useI18n } from '@/shared/hooks/useI18n';
+
 import type { FilterableRequest } from '../types/filtering';
 import type { VariableResolutionTrace } from '../types/resolution';
 
@@ -11,11 +13,11 @@ interface NetworkRequest extends FilterableRequest {
 }
 
 interface RequestDetailsProps {
-  selectedRequest: NetworkRequest | null;
-  selectedTab: 'request' | 'response';
-  selectedDetailTab: 'headers' | 'variables';
-  onTabChange: (tab: 'request' | 'response') => void;
-  onDetailTabChange: (tab: 'headers' | 'variables') => void;
+  readonly selectedRequest: NetworkRequest | null;
+  readonly selectedTab: 'request' | 'response';
+  readonly selectedDetailTab: 'headers' | 'variables';
+  readonly onTabChange: (tab: 'request' | 'response') => void;
+  readonly onDetailTabChange: (tab: 'headers' | 'variables') => void;
 }
 
 export function RequestDetails({
@@ -25,17 +27,19 @@ export function RequestDetails({
   onTabChange,
   onDetailTabChange,
 }: RequestDetailsProps) {
+  const { t } = useI18n();
+
   if (!selectedRequest) {
     return (
       <div className="w-1/2 flex flex-col">
         <div className="p-4 border-b border-gray-200 dark:border-gray-700">
           <h2 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Request Details
+            {t('devtools_request_details')}
           </h2>
         </div>
         <div className="flex-1 overflow-y-auto p-4">
           <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-            Select a request to view details
+            {t('devtools_select_request')}
           </div>
         </div>
       </div>
@@ -46,7 +50,7 @@ export function RequestDetails({
     <div className="w-1/2 flex flex-col">
       <div className="p-4 border-b border-gray-200 dark:border-gray-700">
         <h2 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-          Request Details
+          {t('devtools_request_details')}
         </h2>
       </div>
       <div className="flex-1 overflow-y-auto p-4">
@@ -54,7 +58,7 @@ export function RequestDetails({
           {/* URL */}
           <div>
             <div className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-              URL
+              {t('devtools_url_label')}
             </div>
             <div className="code text-sm break-all">{selectedRequest.url}</div>
           </div>
@@ -63,13 +67,13 @@ export function RequestDetails({
           <div className="grid grid-cols-2 gap-4">
             <div>
               <div className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-                Method
+                {t('devtools_method_label')}
               </div>
               <div className="code text-sm">{selectedRequest.method}</div>
             </div>
             <div>
               <div className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-                Status
+                {t('devtools_status_label')}
               </div>
               <div className="code text-sm">{selectedRequest.status}</div>
             </div>
@@ -86,7 +90,7 @@ export function RequestDetails({
                     : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400'
                 }`}
               >
-                Headers
+                {t('devtools_headers_tab')}
               </button>
               {selectedRequest.variableResolutionTrace && (
                 <button
@@ -97,7 +101,7 @@ export function RequestDetails({
                       : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400'
                   }`}
                 >
-                  Variable Resolution
+                  {t('devtools_variable_resolution')}
                   <span className="ml-1 px-1 py-0.5 bg-blue-500 text-white text-xs rounded">
                     {selectedRequest.variableResolutionTrace.steps.length}
                   </span>
@@ -126,7 +130,7 @@ export function RequestDetails({
             {selectedRequest.profileId && (
               <div className="mt-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
                 <div className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2">
-                  Profile & Rules
+                  {t('devtools_profile_rules_info')}
                 </div>
                 <div className="space-y-1">
                   <div className="text-xs">
@@ -175,7 +179,7 @@ export function RequestDetails({
           {/* Timestamp */}
           <div>
             <div className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-              Timestamp
+              {t('devtools_timestamp_label')}
             </div>
             <div className="code text-sm">
               {new Date(selectedRequest.timestamp).toLocaleString()}

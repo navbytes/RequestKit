@@ -16,7 +16,7 @@ export function RuleItem({
   onDelete,
   onToggle,
   onDuplicate,
-}: RuleItemProps) {
+}: Readonly<RuleItemProps>) {
   return (
     <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-4">
       <div className="flex items-center justify-between mb-3">

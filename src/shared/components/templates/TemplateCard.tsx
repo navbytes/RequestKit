@@ -1,5 +1,6 @@
 import { Icon } from '@/shared/components/Icon';
 import { Card, Badge, Button } from '@/shared/components/ui';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { RuleTemplate } from '@/shared/types/templates';
 import { TEMPLATE_CATEGORIES } from '@/shared/types/templates';
 
@@ -25,18 +26,29 @@ export function TemplateCard({
   onDelete,
   isApplying = false,
   compact = false,
-}: TemplateCardProps) {
+}: Readonly<TemplateCardProps>) {
+  const { t } = useI18n();
   const getTemplateFeaturesSummary = (template: RuleTemplate) => {
     const features = [];
     if (template.headers?.length)
-      features.push(`${template.headers.length} headers`);
+      features.push(
+        t('templates_features_headers', [template.headers.length.toString()])
+      );
     if (template.fileInterceptions?.length)
-      features.push(`${template.fileInterceptions.length} file rules`);
+      features.push(
+        t('templates_features_file_rules', [
+          template.fileInterceptions.length.toString(),
+        ])
+      );
     if (template.conditions?.length)
-      features.push(`${template.conditions.length} conditions`);
-    if (template.schedule) features.push('scheduled');
-    if (template.limits) features.push('rate limited');
-    return features.join(', ') || 'No features configured';
+      features.push(
+        t('templates_features_conditions', [
+          template.conditions.length.toString(),
+        ])
+      );
+    if (template.schedule) features.push(t('templates_features_scheduled'));
+    if (template.limits) features.push(t('templates_features_rate_limited'));
+    return features.join(', ') || t('templates_features_none');
   };
 
   const getTemplateTypeIcon = (templateType: string) => {
@@ -77,11 +89,11 @@ export function TemplateCard({
           <div className="flex items-center space-x-2 mb-2">
             {template.isBuiltIn ? (
               <Badge variant="primary" size="xs">
-                Official Template
+                {t('templates_official_template')}
               </Badge>
             ) : (
               <Badge variant="secondary" size="xs">
-                Custom Template
+                {t('templates_custom_template')}
               </Badge>
             )}
           </div>
@@ -94,9 +106,10 @@ export function TemplateCard({
       {/* Template Type Badge */}
       <div className="mb-3">
         <Badge variant="outline" size="sm">
-          {template.templateType.charAt(0).toUpperCase() +
-            template.templateType.slice(1)}{' '}
-          Template
+          {t('templates_type_label', [
+            template.templateType.charAt(0).toUpperCase() +
+              template.templateType.slice(1),
+          ])}
         </Badge>
       </div>
 
@@ -104,7 +117,7 @@ export function TemplateCard({
       {!compact && (
         <div className="mb-4">
           <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-            Features
+            {t('templates_features_label')}
           </div>
           <div className="text-xs text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 p-2 rounded">
             {getTemplateFeaturesSummary(template)}
@@ -116,9 +129,9 @@ export function TemplateCard({
       {!compact && (
         <div className="mb-4">
           <div className="space-y-1 max-h-24 overflow-y-auto">
-            {template.headers?.slice(0, 2).map((header, index) => (
+            {template.headers?.slice(0, 2).map(header => (
               <div
-                key={index}
+                key={header.name}
                 className="text-xs font-mono bg-blue-50 dark:bg-blue-900/20 p-1 rounded"
               >
                 <span
@@ -132,9 +145,9 @@ export function TemplateCard({
                 </span>
               </div>
             ))}
-            {template.conditions?.slice(0, 1).map((condition, index) => (
+            {template.conditions?.slice(0, 1).map(condition => (
               <div
-                key={index}
+                key={condition.value}
                 className="text-xs font-mono bg-orange-50 dark:bg-orange-900/20 p-1 rounded"
               >
                 <span className="font-medium text-orange-600 dark:text-orange-400 flex items-center space-x-1">
@@ -177,7 +190,7 @@ export function TemplateCard({
               onClick={onView}
               className="flex-1"
             >
-              View
+              {t('ui_button_view')}
             </Button>
           )}
 
@@ -190,7 +203,7 @@ export function TemplateCard({
                   onClick={onClone}
                   className="flex-1"
                 >
-                  Clone
+                  {t('ui_button_clone')}
                 </Button>
               )
             : onEdit && (
@@ -201,7 +214,7 @@ export function TemplateCard({
                   onClick={onEdit}
                   className="flex-1"
                 >
-                  Edit
+                  {t('ui_button_edit')}
                 </Button>
               )}
         </div>
@@ -216,7 +229,7 @@ export function TemplateCard({
               onClick={onExport}
               className="flex-1"
             >
-              Export
+              {t('ui_button_export')}
             </Button>
           )}
 
@@ -229,14 +242,14 @@ export function TemplateCard({
               loading={isApplying}
               className="flex-1"
             >
-              Apply
+              {t('ui_button_apply')}
             </Button>
           )}
         </div>
         <div className="flex space-x-2">
           {!template.isBuiltIn && onDelete && (
             <Button variant="error" size="xs" icon="trash" onClick={onDelete}>
-              Delete
+              {t('ui_button_delete')}
             </Button>
           )}
         </div>

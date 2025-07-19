@@ -22,7 +22,7 @@ export function Badge({
   size = 'sm',
   icon,
   className = '',
-}: BadgeProps) {
+}: Readonly<BadgeProps>) {
   const baseClasses = 'inline-flex items-center font-medium rounded-full';
 
   const variantClasses = {

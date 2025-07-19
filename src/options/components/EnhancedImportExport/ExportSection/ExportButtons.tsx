@@ -19,7 +19,7 @@ export function ExportButtons({
   exportOptions,
   onExport,
   onQuickExport,
-}: ExportButtonsProps) {
+}: Readonly<ExportButtonsProps>) {
   return (
     <div className="flex flex-wrap gap-3">
       <Button

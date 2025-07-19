@@ -17,7 +17,7 @@ export function TemplateFilters({
   onSearchChange,
   onCategoryChange,
   onTemplateTypeChange,
-}: TemplateFiltersProps) {
+}: Readonly<TemplateFiltersProps>) {
   const categories = [
     {
       id: 'all',

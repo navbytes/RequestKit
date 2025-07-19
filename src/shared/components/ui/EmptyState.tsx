@@ -22,7 +22,7 @@ export function EmptyState({
   onAction,
   children,
   className = '',
-}: EmptyStateProps) {
+}: Readonly<EmptyStateProps>) {
   return (
     <div className={`text-center py-12 ${className}`}>
       <div className="flex justify-center mb-4">

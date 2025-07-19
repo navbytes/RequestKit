@@ -1,4 +1,5 @@
 import { Icon } from '@/shared/components/Icon';
+import { useI18n } from '@/shared/hooks/useI18n';
 
 import type { FilterableRequest } from '../types/filtering';
 
@@ -9,9 +10,9 @@ interface NetworkRequest extends FilterableRequest {
 }
 
 interface NetworkRequestItemProps {
-  request: NetworkRequest;
-  isSelected: boolean;
-  onSelect: () => void;
+  readonly request: NetworkRequest;
+  readonly isSelected: boolean;
+  readonly onSelect: () => void;
 }
 
 export function NetworkRequestItem({
@@ -19,6 +20,7 @@ export function NetworkRequestItem({
   isSelected,
   onSelect,
 }: NetworkRequestItemProps) {
+  const { t } = useI18n();
   const hasModifications =
     request.modifiedHeaders.request.length > 0 ||
     request.modifiedHeaders.response.length > 0;
@@ -83,13 +85,13 @@ export function NetworkRequestItem({
           {hasModifications && (
             <span className="badge badge-sm badge-info">
               <Icon name="wrench" className="w-3 h-3 mr-1" />
-              Modified
+              {t('devtools_headers_modified')}
             </span>
           )}
           {hasRuleMatches && !hasModifications && (
             <span className="badge badge-sm badge-warning">
               <Icon name="target" className="w-3 h-3 mr-1" />
-              Matched
+              {t('devtools_rules_matched')}
             </span>
           )}
         </div>
@@ -105,13 +107,13 @@ export function NetworkRequestItem({
           {hasModifications && (
             <span>
               {request.modifiedHeaders.request.length} req,{' '}
-              {request.modifiedHeaders.response.length} res headers
+              {request.modifiedHeaders.response.length} res{' '}
+              {t('devtools_headers_tab')}
             </span>
           )}
           {hasRuleMatches && (
             <span className="ml-2">
-              {request.matchedRules.length} rule
-              {request.matchedRules.length !== 1 ? 's' : ''} matched
+              {request.matchedRules.length} {t('devtools_matched_rules_label')}
             </span>
           )}
         </div>

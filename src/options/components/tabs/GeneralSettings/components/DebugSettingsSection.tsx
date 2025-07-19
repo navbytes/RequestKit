@@ -42,7 +42,7 @@ export function DebugSettingsSection({
   logLevel,
   onDebugModeChange,
   onLogLevelChange,
-}: DebugSettingsSectionProps) {
+}: Readonly<DebugSettingsSectionProps>) {
   return (
     <SettingsSection title="Debug & Logging">
       <div className="space-y-4">

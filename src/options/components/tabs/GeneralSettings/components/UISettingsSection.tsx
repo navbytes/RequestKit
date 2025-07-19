@@ -23,7 +23,7 @@ export function UISettingsSection({
   ui,
   onThemeChange,
   onUISettingChange,
-}: UISettingsSectionProps) {
+}: Readonly<UISettingsSectionProps>) {
   return (
     <SettingsSection title="User Interface">
       <div className="space-y-4">

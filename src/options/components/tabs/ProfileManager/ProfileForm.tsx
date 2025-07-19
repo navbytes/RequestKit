@@ -35,7 +35,7 @@ export function ProfileForm({
   onUpdateProfile,
   onCancel,
   onToggleRuleSelection,
-}: ProfileFormProps) {
+}: Readonly<ProfileFormProps>) {
   return (
     <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-6">
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
@@ -64,8 +64,8 @@ export function ProfileForm({
 }
 
 interface BasicProfileInfoProps {
-  newProfile: NewProfileForm;
-  setNewProfile: (
+  readonly newProfile: NewProfileForm;
+  readonly setNewProfile: (
     profile: NewProfileForm | ((prev: NewProfileForm) => NewProfileForm)
   ) => void;
 }
@@ -182,10 +182,10 @@ function BasicProfileInfo({
 }
 
 interface RuleAssignmentProps {
-  rules: HeaderRule[];
-  selectedRules: string[];
-  editingProfile: Profile | null;
-  onToggleRuleSelection: (ruleId: string) => void;
+  readonly rules: HeaderRule[];
+  readonly selectedRules: string[];
+  readonly editingProfile: Profile | null;
+  readonly onToggleRuleSelection: (ruleId: string) => void;
 }
 
 function RuleAssignment({
@@ -227,10 +227,10 @@ function EmptyRulesState() {
 }
 
 interface RulesListProps {
-  rules: HeaderRule[];
-  selectedRules: string[];
-  editingProfile: Profile | null;
-  onToggleRuleSelection: (ruleId: string) => void;
+  readonly rules: HeaderRule[];
+  readonly selectedRules: string[];
+  readonly editingProfile: Profile | null;
+  readonly onToggleRuleSelection: (ruleId: string) => void;
 }
 
 function RulesList({
@@ -264,12 +264,12 @@ function RulesList({
 }
 
 interface FormActionsProps {
-  editingProfile: Profile | null;
-  newProfile: NewProfileForm;
-  loading: boolean;
-  onCreateProfile: () => void;
-  onUpdateProfile: () => void;
-  onCancel: () => void;
+  readonly editingProfile: Profile | null;
+  readonly newProfile: NewProfileForm;
+  readonly loading: boolean;
+  readonly onCreateProfile: () => void;
+  readonly onUpdateProfile: () => void;
+  readonly onCancel: () => void;
 }
 
 function FormActions({

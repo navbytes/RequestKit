@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'preact/hooks';
 
 import { Icon, type IconName } from '@/shared/components/Icon';
+import { useI18n } from '@/shared/hooks/useI18n';
 
 type TabType =
   | 'rules'
@@ -35,122 +36,124 @@ interface TabGroup {
   tabs: Tab[];
 }
 
-const tabs: Tab[] = [
-  // Core Functions
-  {
-    id: 'rules',
-    label: 'Rule Management',
-    icon: 'target',
-    description: 'Create and manage header injection rules',
-    group: 'core',
-  },
-  {
-    id: 'profiles',
-    label: 'Profile Management',
-    icon: 'users',
-    description: 'Create and manage environment profiles',
-    group: 'core',
-  },
-  {
-    id: 'templates',
-    label: 'Rule Templates',
-    icon: 'file-text',
-    description: 'Browse and manage rule templates',
-    group: 'core',
-  },
-  {
-    id: 'variables',
-    label: 'Variable Manager',
-    icon: 'sparkles',
-    description: 'Create and manage variables for dynamic values',
-    group: 'core',
-  },
-  // Advanced Features
-  {
-    id: 'conditional-rules',
-    label: 'Conditional Rules',
-    icon: 'git-branch',
-    description: 'Create rules with advanced conditions',
-    group: 'advanced',
-  },
-  {
-    id: 'rule-testing',
-    label: 'Rule Testing',
-    icon: 'test-tube',
-    description: 'Test and validate your rules',
-    group: 'advanced',
-  },
-  {
-    id: 'performance',
-    label: 'Performance',
-    icon: 'zap',
-    description: 'Monitor and optimize performance',
-    group: 'advanced',
-  },
-  // System & Analytics
-  {
-    id: 'analytics',
-    label: 'Analytics & Monitoring',
-    icon: 'bar-chart',
-    description: 'View usage analytics and performance insights',
-    group: 'system',
-  },
-  {
-    id: 'settings',
-    label: 'General Settings',
-    icon: 'settings',
-    description: 'Extension configuration and preferences',
-    group: 'system',
-  },
-  // Support & Tools
-  {
-    id: 'import-export',
-    label: 'Import/Export',
-    icon: 'package',
-    description: 'Backup and restore your rules',
-    group: 'support',
-  },
-  {
-    id: 'help',
-    label: 'Help & About',
-    icon: 'help-circle',
-    description: 'Documentation and support',
-    group: 'support',
-  },
-];
-
-const tabGroups: TabGroup[] = [
-  {
-    id: 'core',
-    label: 'Core Functions',
-    tabs: tabs.filter(tab => tab.group === 'core'),
-  },
-  {
-    id: 'advanced',
-    label: 'Advanced Features',
-    tabs: tabs.filter(tab => tab.group === 'advanced'),
-  },
-  {
-    id: 'system',
-    label: 'System & Analytics',
-    tabs: tabs.filter(tab => tab.group === 'system'),
-  },
-  {
-    id: 'support',
-    label: 'Support & Tools',
-    tabs: tabs.filter(tab => tab.group === 'support'),
-  },
-];
-
 export function TabNavigation({
   activeTab,
   onTabChange,
   mobileOnly = false,
-}: TabNavigationProps) {
+}: Readonly<TabNavigationProps>) {
+  const { t } = useI18n();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredTab, setHoveredTab] = useState<TabType | null>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
+
+  // Create localized tabs
+  const localizedTabs: Tab[] = [
+    // Core Functions
+    {
+      id: 'rules',
+      label: t('options_tab_rules'),
+      icon: 'target',
+      description: t('options_tab_rules_desc'),
+      group: 'core',
+    },
+    {
+      id: 'profiles',
+      label: t('options_tab_profiles'),
+      icon: 'users',
+      description: t('options_tab_profiles_desc'),
+      group: 'core',
+    },
+    {
+      id: 'templates',
+      label: t('options_tab_templates'),
+      icon: 'file-text',
+      description: t('options_tab_templates_desc'),
+      group: 'core',
+    },
+    {
+      id: 'variables',
+      label: t('options_tab_variables'),
+      icon: 'sparkles',
+      description: t('options_tab_variables_desc'),
+      group: 'core',
+    },
+    // Advanced Features
+    {
+      id: 'conditional-rules',
+      label: t('options_tab_conditional_rules'),
+      icon: 'git-branch',
+      description: t('options_tab_conditional_rules_desc'),
+      group: 'advanced',
+    },
+    {
+      id: 'rule-testing',
+      label: t('options_tab_rule_testing'),
+      icon: 'test-tube',
+      description: t('options_tab_rule_testing_desc'),
+      group: 'advanced',
+    },
+    {
+      id: 'performance',
+      label: t('options_tab_performance'),
+      icon: 'zap',
+      description: t('options_tab_performance_desc'),
+      group: 'advanced',
+    },
+    // System & Analytics
+    {
+      id: 'analytics',
+      label: t('options_tab_analytics'),
+      icon: 'bar-chart',
+      description: t('options_tab_analytics_desc'),
+      group: 'system',
+    },
+    {
+      id: 'settings',
+      label: t('options_tab_settings'),
+      icon: 'settings',
+      description: t('options_tab_settings_desc'),
+      group: 'system',
+    },
+    // Support & Tools
+    {
+      id: 'import-export',
+      label: t('options_tab_import_export'),
+      icon: 'package',
+      description: t('options_tab_import_export_desc'),
+      group: 'support',
+    },
+    {
+      id: 'help',
+      label: t('options_tab_help'),
+      icon: 'help-circle',
+      description: t('options_tab_help_desc'),
+      group: 'support',
+    },
+  ];
+
+  const localizedTabGroups: TabGroup[] = [
+    {
+      id: 'core',
+      label: t('options_group_core'),
+      tabs: localizedTabs.filter(tab => tab.group === 'core'),
+    },
+    {
+      id: 'advanced',
+      label: t('options_group_advanced'),
+      tabs: localizedTabs.filter(tab => tab.group === 'advanced'),
+    },
+    {
+      id: 'system',
+      label: t('options_group_system'),
+      tabs: localizedTabs.filter(tab => tab.group === 'system'),
+    },
+    {
+      id: 'support',
+      label: t('options_group_support'),
+      tabs: localizedTabs.filter(tab => tab.group === 'support'),
+    },
+  ];
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -298,7 +301,7 @@ export function TabNavigation({
             </h2>
           </div>
           <div className="p-4 space-y-6 overflow-y-auto h-full pb-20">
-            {tabGroups.map(group => renderTabGroup(group, true))}
+            {localizedTabGroups.map(group => renderTabGroup(group, true))}
           </div>
         </nav>
       </>
@@ -313,7 +316,7 @@ export function TabNavigation({
         className="hidden md:block lg:hidden w-16 space-y-1"
         aria-label="Main navigation"
       >
-        {tabs.map(tab => (
+        {localizedTabs.map(tab => (
           <div key={tab.id} className="relative group">
             <button
               onClick={() => handleTabClick(tab.id)}
@@ -348,7 +351,7 @@ export function TabNavigation({
         className="hidden lg:block w-64 min-w-64 max-w-64 space-y-6"
         aria-label="Main navigation"
       >
-        {tabGroups.map(group => renderTabGroup(group, true))}
+        {localizedTabGroups.map(group => renderTabGroup(group, true))}
       </nav>
     </>
   );

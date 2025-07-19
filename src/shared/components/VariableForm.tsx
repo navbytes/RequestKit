@@ -24,7 +24,7 @@ export function VariableForm({
   variable,
   onSave,
   onCancel,
-}: VariableFormProps) {
+}: Readonly<VariableFormProps>) {
   const [formData, setFormData] = useState<Partial<Variable>>({
     name: '',
     value: '',
@@ -84,7 +84,7 @@ export function VariableForm({
           setProfiles(profilesResponse.profiles);
         }
         if (rulesResponse?.rules) {
-          setRules(Object.values(rulesResponse.rules) as HeaderRule[]);
+          setRules(Object.values(rulesResponse.rules));
         }
       } catch (error) {
         logger.error('Failed to load profiles and rules:', error);

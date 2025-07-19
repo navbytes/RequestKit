@@ -18,7 +18,10 @@
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui",
-    "test:watch": "vitest --watch"
+    "test:watch": "vitest --watch",
+    "test:i18n": "vitest run src/__tests__/i18n/",
+    "validate-messages": "node scripts/validate-messages.js",
+    "check-missing-keys": "node scripts/check-missing-keys.js"
   },
   "dependencies": {
     "@preact/signals": "^1.2.2",

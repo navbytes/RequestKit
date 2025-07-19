@@ -2,13 +2,15 @@
  * Language detection utilities for Chrome extension
  */
 
+import {
+  SUPPORTED_LOCALES,
+  SUPPORTED_LOCALES_DISPLAY_NAMES,
+  SUPPORTED_LOCALES_NATIVE_DISPLAY_NAMES,
+} from '@/config';
+import { type SupportedLocale } from '@/config';
 import { loggers } from '@/shared/utils/debug';
 
-import type {
-  SupportedLocale,
-  LanguageDetectionResult,
-  LocalizationConfig,
-} from './types';
+import type { LanguageDetectionResult, LocalizationConfig } from './types';
 
 const logger = loggers.shared;
 
@@ -141,9 +143,9 @@ export class LanguageDetector {
   static async getStoredLanguage(): Promise<SupportedLocale | null> {
     try {
       const result = await chrome.storage.sync.get(this.STORAGE_KEY);
-      const stored = result[this.STORAGE_KEY];
+      const stored = result[this.STORAGE_KEY] satisfies SupportedLocale;
 
-      if (typeof stored === 'string' && this.isSupportedLocale(stored)) {
+      if (stored && this.isSupportedLocale(stored)) {
         return stored;
       }
       return null;
@@ -198,8 +200,8 @@ export class LanguageDetector {
   /**
    * Check if locale is supported
    */
-  static isSupportedLocale(locale: string): locale is SupportedLocale {
-    return ['en', 'es', 'fr', 'de', 'ja'].includes(locale);
+  static isSupportedLocale(locale: SupportedLocale): locale is SupportedLocale {
+    return SUPPORTED_LOCALES.includes(locale);
   }
 
   /**
@@ -219,64 +221,15 @@ export class LanguageDetector {
     locale: SupportedLocale,
     inLocale?: SupportedLocale
   ): string {
-    const displayNames: Record<
-      SupportedLocale,
-      Record<SupportedLocale, string>
-    > = {
-      en: {
-        en: 'English',
-        es: 'Spanish',
-        fr: 'French',
-        de: 'German',
-        ja: 'Japanese',
-      },
-      es: {
-        en: 'Inglés',
-        es: 'Español',
-        fr: 'Francés',
-        de: 'Alemán',
-        ja: 'Japonés',
-      },
-      fr: {
-        en: 'Anglais',
-        es: 'Espagnol',
-        fr: 'Français',
-        de: 'Allemand',
-        ja: 'Japonais',
-      },
-      de: {
-        en: 'Englisch',
-        es: 'Spanisch',
-        fr: 'Französisch',
-        de: 'Deutsch',
-        ja: 'Japanisch',
-      },
-      ja: {
-        en: '英語',
-        es: 'スペイン語',
-        fr: 'フランス語',
-        de: 'ドイツ語',
-        ja: '日本語',
-      },
-    };
-
     const targetLocale = inLocale || locale;
-    return displayNames[targetLocale]?.[locale] || locale;
+    return SUPPORTED_LOCALES_DISPLAY_NAMES[targetLocale]?.[locale] || locale;
   }
 
   /**
    * Get native language name
    */
   static getNativeLanguageName(locale: SupportedLocale): string {
-    const nativeNames: Record<SupportedLocale, string> = {
-      en: 'English',
-      es: 'Español',
-      fr: 'Français',
-      de: 'Deutsch',
-      ja: '日本語',
-    };
-
-    return nativeNames[locale] || locale;
+    return SUPPORTED_LOCALES_NATIVE_DISPLAY_NAMES[locale] || locale;
   }
 
   /**

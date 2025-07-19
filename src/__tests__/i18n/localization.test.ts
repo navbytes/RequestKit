@@ -96,7 +96,7 @@ describe('Localization System', () => {
     test('should validate supported locale', () => {
       expect(LanguageDetector.isSupportedLocale('en')).toBe(true);
       expect(LanguageDetector.isSupportedLocale('es')).toBe(true);
-      expect(LanguageDetector.isSupportedLocale('zh')).toBe(false);
+      expect(LanguageDetector.isSupportedLocale('zh')).toBe(true);
     });
 
     test('should get language display names', () => {

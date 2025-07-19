@@ -1,0 +1,438 @@
+{
+  "extensionName": {
+    "message": "RequestKit",
+    "description": "Le nom de l'extension"
+  },
+  "extensionDescription": {
+    "message": "Extension Chrome avancée pour injecter des en-têtes personnalisés avec un puissant système de variables, correspondance de motifs et outils de test",
+    "description": "Description de l'extension"
+  },
+  "extensionShortName": {
+    "message": "RequestKit",
+    "description": "Nom court de l'extension"
+  },
+  "app_name": {
+    "message": "RequestKit",
+    "description": "Nom de l'application"
+  },
+  "app_version": {
+    "message": "1.0.0",
+    "description": "Version de l'application"
+  },
+  "ui_button_save": {
+    "message": "Enregistrer",
+    "description": "Libellé du bouton enregistrer"
+  },
+  "ui_button_cancel": {
+    "message": "Annuler",
+    "description": "Libellé du bouton annuler"
+  },
+  "ui_button_delete": {
+    "message": "Supprimer",
+    "description": "Libellé du bouton supprimer"
+  },
+  "ui_button_edit": {
+    "message": "Modifier",
+    "description": "Libellé du bouton modifier"
+  },
+  "ui_button_add": {
+    "message": "Ajouter",
+    "description": "Libellé du bouton ajouter"
+  },
+  "ui_button_create": {
+    "message": "Créer",
+    "description": "Libellé du bouton créer"
+  },
+  "ui_button_update": {
+    "message": "Mettre à jour",
+    "description": "Libellé du bouton mettre à jour"
+  },
+  "ui_button_remove": {
+    "message": "Retirer",
+    "description": "Libellé du bouton retirer"
+  },
+  "ui_button_close": {
+    "message": "Fermer",
+    "description": "Libellé du bouton fermer"
+  },
+  "ui_button_back": {
+    "message": "Retour",
+    "description": "Libellé du bouton retour"
+  },
+  "ui_button_next": {
+    "message": "Suivant",
+    "description": "Libellé du bouton suivant"
+  },
+  "ui_button_finish": {
+    "message": "Terminer",
+    "description": "Libellé du bouton terminer"
+  },
+  "ui_button_apply": {
+    "message": "Appliquer",
+    "description": "Libellé du bouton appliquer"
+  },
+  "ui_button_reset": {
+    "message": "Réinitialiser",
+    "description": "Libellé du bouton réinitialiser"
+  },
+  "ui_button_clear": {
+    "message": "Effacer",
+    "description": "Libellé du bouton effacer"
+  },
+  "ui_button_refresh": {
+    "message": "Actualiser",
+    "description": "Libellé du bouton actualiser"
+  },
+  "ui_button_export": {
+    "message": "Exporter",
+    "description": "Libellé du bouton exporter"
+  },
+  "ui_button_import": {
+    "message": "Importer",
+    "description": "Libellé du bouton importer"
+  },
+  "ui_button_copy": {
+    "message": "Copier",
+    "description": "Libellé du bouton copier"
+  },
+  "ui_button_paste": {
+    "message": "Coller",
+    "description": "Libellé du bouton coller"
+  },
+  "ui_label_name": {
+    "message": "Nom",
+    "description": "Libellé du champ nom"
+  },
+  "ui_label_description": {
+    "message": "Description",
+    "description": "Libellé du champ description"
+  },
+  "ui_label_url": {
+    "message": "URL",
+    "description": "Libellé du champ URL"
+  },
+  "ui_label_method": {
+    "message": "Méthode",
+    "description": "Libellé du champ méthode HTTP"
+  },
+  "ui_label_headers": {
+    "message": "En-têtes",
+    "description": "Libellé du champ en-têtes"
+  },
+  "ui_label_value": {
+    "message": "Valeur",
+    "description": "Libellé du champ valeur"
+  },
+  "ui_label_enabled": {
+    "message": "Activé",
+    "description": "Libellé du champ activé"
+  },
+  "ui_label_disabled": {
+    "message": "Désactivé",
+    "description": "Libellé du champ désactivé"
+  },
+  "ui_label_priority": {
+    "message": "Priorité",
+    "description": "Libellé du champ priorité"
+  },
+  "ui_label_pattern": {
+    "message": "Motif",
+    "description": "Libellé du champ motif"
+  },
+  "ui_label_operation": {
+    "message": "Opération",
+    "description": "Libellé du champ opération"
+  },
+  "ui_label_status": {
+    "message": "Statut",
+    "description": "Libellé du champ statut"
+  },
+  "ui_label_type": {
+    "message": "Type",
+    "description": "Libellé du champ type"
+  },
+  "ui_label_category": {
+    "message": "Catégorie",
+    "description": "Libellé du champ catégorie"
+  },
+  "ui_label_tags": {
+    "message": "Étiquettes",
+    "description": "Libellé du champ étiquettes"
+  },
+  "ui_tooltip_save": {
+    "message": "Enregistrer les modifications actuelles",
+    "description": "Info-bulle du bouton enregistrer"
+  },
+  "ui_tooltip_delete": {
+    "message": "Supprimer cet élément",
+    "description": "Info-bulle du bouton supprimer"
+  },
+  "ui_tooltip_edit": {
+    "message": "Modifier cet élément",
+    "description": "Info-bulle du bouton modifier"
+  },
+  "ui_tooltip_enable": {
+    "message": "Activer cette règle",
+    "description": "Info-bulle du bouton activer"
+  },
+  "ui_tooltip_disable": {
+    "message": "Désactiver cette règle",
+    "description": "Info-bulle du bouton désactiver"
+  },
+  "errors_validation_domain_invalid": {
+    "message": "Motif de domaine invalide",
+    "description": "Message d'erreur pour domaine invalide"
+  },
+  "errors_validation_path_invalid": {
+    "message": "Le chemin doit commencer par /",
+    "description": "Message d'erreur pour chemin invalide"
+  },
+  "errors_validation_header_name_invalid": {
+    "message": "Le nom de l'en-tête contient des caractères invalides",
+    "description": "Message d'erreur pour nom d'en-tête invalide"
+  },
+  "errors_validation_port_invalid": {
+    "message": "Le port doit être un nombre entre 1-65535 ou *",
+    "description": "Message d'erreur pour port invalide"
+  },
+  "errors_rule_not_found": {
+    "message": "Règle non trouvée",
+    "description": "Message d'erreur quand la règle n'est pas trouvée"
+  },
+  "errors_template_not_found": {
+    "message": "Modèle non trouvé",
+    "description": "Message d'erreur quand le modèle n'est pas trouvé"
+  },
+  "errors_storage_error": {
+    "message": "Échec de l'enregistrement des données",
+    "description": "Message d'erreur pour les échecs de stockage"
+  },
+  "errors_import_error": {
+    "message": "Échec de l'importation des données",
+    "description": "Message d'erreur pour les échecs d'importation"
+  },
+  "errors_export_error": {
+    "message": "Échec de l'exportation des données",
+    "description": "Message d'erreur pour les échecs d'exportation"
+  },
+  "errors_network_error": {
+    "message": "Erreur réseau survenue",
+    "description": "Message d'erreur pour les échecs réseau"
+  },
+  "errors_permission_denied": {
+    "message": "Permission refusée",
+    "description": "Message d'erreur pour les problèmes de permission"
+  },
+  "errors_invalid_format": {
+    "message": "Format invalide",
+    "description": "Message d'erreur pour la validation de format"
+  },
+  "notifications_rule_created": {
+    "message": "Règle '$1' créée avec succès",
+    "description": "Notification quand une règle est créée",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "Ma Règle API"
+      }
+    }
+  },
+  "notifications_rule_updated": {
+    "message": "Règle '$1' mise à jour avec succès",
+    "description": "Notification quand une règle est mise à jour",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "Ma Règle API"
+      }
+    }
+  },
+  "notifications_rule_deleted": {
+    "message": "Règle '$1' supprimée avec succès",
+    "description": "Notification quand une règle est supprimée",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "Ma Règle API"
+      }
+    }
+  },
+  "notifications_profile_switched": {
+    "message": "Basculé vers le profil '$1'",
+    "description": "Notification quand le profil est changé",
+    "placeholders": {
+      "profileName": {
+        "content": "$1",
+        "example": "Développement"
+      }
+    }
+  },
+  "notifications_extension_enabled": {
+    "message": "RequestKit activé",
+    "description": "Notification quand l'extension est activée"
+  },
+  "notifications_extension_disabled": {
+    "message": "RequestKit désactivé",
+    "description": "Notification quand l'extension est désactivée"
+  },
+  "notifications_backup_created": {
+    "message": "Sauvegarde créée avec succès",
+    "description": "Notification quand la sauvegarde est créée"
+  },
+  "notifications_data_imported": {
+    "message": "Données importées avec succès",
+    "description": "Notification quand les données sont importées"
+  },
+  "templates_cors_name": {
+    "message": "En-têtes CORS",
+    "description": "Nom du modèle CORS"
+  },
+  "templates_cors_description": {
+    "message": "Activer le partage de ressources cross-origin",
+    "description": "Description du modèle CORS"
+  },
+  "templates_auth_bearer_name": {
+    "message": "Token Bearer",
+    "description": "Nom du modèle de token Bearer"
+  },
+  "templates_auth_bearer_description": {
+    "message": "Ajouter un en-tête Authorization avec token Bearer",
+    "description": "Description du modèle de token Bearer"
+  },
+  "templates_debug_name": {
+    "message": "En-têtes de Débogage",
+    "description": "Nom du modèle de débogage"
+  },
+  "templates_debug_description": {
+    "message": "Ajouter des en-têtes d'information de débogage",
+    "description": "Description du modèle de débogage"
+  },
+  "templates_security_name": {
+    "message": "En-têtes de Sécurité",
+    "description": "Nom du modèle de sécurité"
+  },
+  "templates_security_description": {
+    "message": "Ajouter des en-têtes de sécurité communs",
+    "description": "Description du modèle de sécurité"
+  },
+  "profiles_default_dev_name": {
+    "message": "Développement",
+    "description": "Nom du profil de développement par défaut"
+  },
+  "profiles_default_dev_description": {
+    "message": "Profil pour l'environnement de développement avec fonctionnalités de débogage activées",
+    "description": "Description du profil de développement par défaut"
+  },
+  "profiles_default_prod_name": {
+    "message": "Production",
+    "description": "Nom du profil de production par défaut"
+  },
+  "profiles_default_prod_description": {
+    "message": "Profil pour l'environnement de production avec journalisation minimale",
+    "description": "Description du profil de production par défaut"
+  },
+  "rules_header_operations_set": {
+    "message": "Définir",
+    "description": "Opération de définition d'en-tête"
+  },
+  "rules_header_operations_append": {
+    "message": "Ajouter",
+    "description": "Opération d'ajout d'en-tête"
+  },
+  "rules_header_operations_remove": {
+    "message": "Supprimer",
+    "description": "Opération de suppression d'en-tête"
+  },
+  "rules_priority_very_low": {
+    "message": "Très Basse",
+    "description": "Libellé de priorité très basse"
+  },
+  "rules_priority_low": {
+    "message": "Basse",
+    "description": "Libellé de priorité basse"
+  },
+  "rules_priority_normal": {
+    "message": "Normale",
+    "description": "Libellé de priorité normale"
+  },
+  "rules_priority_high": {
+    "message": "Haute",
+    "description": "Libellé de priorité haute"
+  },
+  "rules_priority_very_high": {
+    "message": "Très Haute",
+    "description": "Libellé de priorité très haute"
+  },
+  "settings_general": {
+    "message": "Général",
+    "description": "Onglet des paramètres généraux"
+  },
+  "settings_notifications": {
+    "message": "Notifications",
+    "description": "Onglet des paramètres de notifications"
+  },
+  "settings_performance": {
+    "message": "Performance",
+    "description": "Onglet des paramètres de performance"
+  },
+  "settings_security": {
+    "message": "Sécurité",
+    "description": "Onglet des paramètres de sécurité"
+  },
+  "settings_backup": {
+    "message": "Sauvegarde",
+    "description": "Onglet des paramètres de sauvegarde"
+  },
+  "settings_theme_light": {
+    "message": "Clair",
+    "description": "Option de thème clair"
+  },
+  "settings_theme_dark": {
+    "message": "Sombre",
+    "description": "Option de thème sombre"
+  },
+  "settings_theme_auto": {
+    "message": "Auto",
+    "description": "Option de thème automatique"
+  },
+  "contextmenu_create_rule": {
+    "message": "Créer une règle pour cette URL",
+    "description": "Élément de menu contextuel pour créer une règle"
+  },
+  "contextmenu_open_options": {
+    "message": "Ouvrir les Options RequestKit",
+    "description": "Élément de menu contextuel pour ouvrir les options"
+  },
+  "contextmenu_toggle_extension": {
+    "message": "Basculer RequestKit",
+    "description": "Élément de menu contextuel pour basculer l'extension"
+  },
+  "devtools_panel_title": {
+    "message": "RequestKit",
+    "description": "Titre du panneau DevTools"
+  },
+  "devtools_requests_tab": {
+    "message": "Requêtes",
+    "description": "Onglet des requêtes dans DevTools"
+  },
+  "devtools_rules_tab": {
+    "message": "Règles",
+    "description": "Onglet des règles dans DevTools"
+  },
+  "devtools_performance_tab": {
+    "message": "Performance",
+    "description": "Onglet de performance dans DevTools"
+  },
+  "devtools_no_requests": {
+    "message": "Aucune requête capturée pour le moment",
+    "description": "Message quand aucune requête n'est capturée"
+  },
+  "devtools_request_details": {
+    "message": "Détails de la Requête",
+    "description": "Titre de la section des détails de requête"
+  },
+  "devtools_matched_rules": {
+    "message": "Règles Correspondantes",
+    "description": "Titre de la section des règles correspondantes"
+  }
+}

@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "RequestKit",
   "description": "A sophisticated Chrome extension for injecting custom headers on network requests using wildcard patterns",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "permissions": [
     "declarativeNetRequest",
     "storage",

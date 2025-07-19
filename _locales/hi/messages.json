@@ -1,0 +1,438 @@
+{
+  "extensionName": {
+    "message": "RequestKit",
+    "description": "एक्सटेंशन का नाम"
+  },
+  "extensionDescription": {
+    "message": "शक्तिशाली वेरिएबल सिस्टम, पैटर्न मैचिंग और टेस्टिंग टूल्स के साथ कस्टम हेडर इंजेक्ट करने के लिए उन्नत Chrome एक्सटेंशन",
+    "description": "एक्सटेंशन का विवरण"
+  },
+  "extensionShortName": {
+    "message": "RequestKit",
+    "description": "एक्सटेंशन का छोटा नाम"
+  },
+  "app_name": {
+    "message": "RequestKit",
+    "description": "एप्लिकेशन का नाम"
+  },
+  "app_version": {
+    "message": "1.0.0",
+    "description": "एप्लिकेशन संस्करण"
+  },
+  "ui_button_save": {
+    "message": "सेव करें",
+    "description": "सेव बटन लेबल"
+  },
+  "ui_button_cancel": {
+    "message": "रद्द करें",
+    "description": "रद्द बटन लेबल"
+  },
+  "ui_button_delete": {
+    "message": "डिलीट करें",
+    "description": "डिलीट बटन लेबल"
+  },
+  "ui_button_edit": {
+    "message": "संपादित करें",
+    "description": "संपादित बटन लेबल"
+  },
+  "ui_button_add": {
+    "message": "जोड़ें",
+    "description": "जोड़ें बटन लेबल"
+  },
+  "ui_button_create": {
+    "message": "बनाएं",
+    "description": "बनाएं बटन लेबल"
+  },
+  "ui_button_update": {
+    "message": "अपडेट करें",
+    "description": "अपडेट बटन लेबल"
+  },
+  "ui_button_remove": {
+    "message": "हटाएं",
+    "description": "हटाएं बटन लेबल"
+  },
+  "ui_button_close": {
+    "message": "बंद करें",
+    "description": "बंद बटन लेबल"
+  },
+  "ui_button_back": {
+    "message": "वापस",
+    "description": "वापस बटन लेबल"
+  },
+  "ui_button_next": {
+    "message": "अगला",
+    "description": "अगला बटन लेबल"
+  },
+  "ui_button_finish": {
+    "message": "समाप्त",
+    "description": "समाप्त बटन लेबल"
+  },
+  "ui_button_apply": {
+    "message": "लागू करें",
+    "description": "लागू करें बटन लेबल"
+  },
+  "ui_button_reset": {
+    "message": "रीसेट करें",
+    "description": "रीसेट बटन लेबल"
+  },
+  "ui_button_clear": {
+    "message": "साफ़ करें",
+    "description": "साफ़ करें बटन लेबल"
+  },
+  "ui_button_refresh": {
+    "message": "रिफ्रेश करें",
+    "description": "रिफ्रेश बटन लेबल"
+  },
+  "ui_button_export": {
+    "message": "एक्सपोर्ट करें",
+    "description": "एक्सपोर्ट बटन लेबल"
+  },
+  "ui_button_import": {
+    "message": "इंपोर्ट करें",
+    "description": "इंपोर्ट बटन लेबल"
+  },
+  "ui_button_copy": {
+    "message": "कॉपी करें",
+    "description": "कॉपी बटन लेबल"
+  },
+  "ui_button_paste": {
+    "message": "पेस्ट करें",
+    "description": "पेस्ट बटन लेबल"
+  },
+  "ui_label_name": {
+    "message": "नाम",
+    "description": "नाम फील्ड लेबल"
+  },
+  "ui_label_description": {
+    "message": "विवरण",
+    "description": "विवरण फील्ड लेबल"
+  },
+  "ui_label_url": {
+    "message": "URL",
+    "description": "URL फील्ड लेबल"
+  },
+  "ui_label_method": {
+    "message": "मेथड",
+    "description": "HTTP मेथड फील्ड लेबल"
+  },
+  "ui_label_headers": {
+    "message": "हेडर",
+    "description": "हेडर फील्ड लेबल"
+  },
+  "ui_label_value": {
+    "message": "वैल्यू",
+    "description": "वैल्यू फील्ड लेबल"
+  },
+  "ui_label_enabled": {
+    "message": "सक्षम",
+    "description": "सक्षम फील्ड लेबल"
+  },
+  "ui_label_disabled": {
+    "message": "अक्षम",
+    "description": "अक्षम फील्ड लेबल"
+  },
+  "ui_label_priority": {
+    "message": "प्राथमिकता",
+    "description": "प्राथमिकता फील्ड लेबल"
+  },
+  "ui_label_pattern": {
+    "message": "पैटर्न",
+    "description": "पैटर्न फील्ड लेबल"
+  },
+  "ui_label_operation": {
+    "message": "ऑपरेशन",
+    "description": "ऑपरेशन फील्ड लेबल"
+  },
+  "ui_label_status": {
+    "message": "स्थिति",
+    "description": "स्थिति फील्ड लेबल"
+  },
+  "ui_label_type": {
+    "message": "प्रकार",
+    "description": "प्रकार फील्ड लेबल"
+  },
+  "ui_label_category": {
+    "message": "श्रेणी",
+    "description": "श्रेणी फील्ड लेबल"
+  },
+  "ui_label_tags": {
+    "message": "टैग",
+    "description": "टैग फील्ड लेबल"
+  },
+  "ui_tooltip_save": {
+    "message": "वर्तमान परिवर्तन सेव करें",
+    "description": "सेव बटन टूलटिप"
+  },
+  "ui_tooltip_delete": {
+    "message": "इस आइटम को डिलीट करें",
+    "description": "डिलीट बटन टूलटिप"
+  },
+  "ui_tooltip_edit": {
+    "message": "इस आइटम को संपादित करें",
+    "description": "संपादित बटन टूलटिप"
+  },
+  "ui_tooltip_enable": {
+    "message": "इस नियम को सक्षम करें",
+    "description": "सक्षम बटन टूलटिप"
+  },
+  "ui_tooltip_disable": {
+    "message": "इस नियम को अक्षम करें",
+    "description": "अक्षम बटन टूलटिप"
+  },
+  "errors_validation_domain_invalid": {
+    "message": "अमान्य डोमेन पैटर्न",
+    "description": "अमान्य डोमेन के लिए एरर मैसेज"
+  },
+  "errors_validation_path_invalid": {
+    "message": "पाथ / से शुरू होना चाहिए",
+    "description": "अमान्य पाथ के लिए एरर मैसेज"
+  },
+  "errors_validation_header_name_invalid": {
+    "message": "हेडर नाम में अमान्य कैरेक्टर हैं",
+    "description": "अमान्य हेडर नाम के लिए एरर मैसेज"
+  },
+  "errors_validation_port_invalid": {
+    "message": "पोर्ट 1-65535 के बीच एक संख्या या * होना चाहिए",
+    "description": "अमान्य पोर्ट के लिए एरर मैसेज"
+  },
+  "errors_rule_not_found": {
+    "message": "नियम नहीं मिला",
+    "description": "नियम न मिलने पर एरर मैसेज"
+  },
+  "errors_template_not_found": {
+    "message": "टेम्प्लेट नहीं मिला",
+    "description": "टेम्प्लेट न मिलने पर एरर मैसेज"
+  },
+  "errors_storage_error": {
+    "message": "डेटा सेव करने में असफल",
+    "description": "स्टोरेज असफलता के लिए एरर मैसेज"
+  },
+  "errors_import_error": {
+    "message": "डेटा इंपोर्ट करने में असफल",
+    "description": "इंपोर्ट असफलता के लिए एरर मैसेज"
+  },
+  "errors_export_error": {
+    "message": "डेटा एक्सपोर्ट करने में असफल",
+    "description": "एक्सपोर्ट असफलता के लिए एरर मैसेज"
+  },
+  "errors_network_error": {
+    "message": "नेटवर्क एरर हुआ",
+    "description": "नेटवर्क असफलता के लिए एरर मैसेज"
+  },
+  "errors_permission_denied": {
+    "message": "अनुमति अस्वीकृत",
+    "description": "अनुमति समस्याओं के लिए एरर मैसेज"
+  },
+  "errors_invalid_format": {
+    "message": "अमान्य फॉर्मेट",
+    "description": "फॉर्मेट वैलिडेशन के लिए एरर मैसेज"
+  },
+  "notifications_rule_created": {
+    "message": "नियम '$1' सफलतापूर्वक बनाया गया",
+    "description": "नियम बनने पर सूचना",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "मेरा API नियम"
+      }
+    }
+  },
+  "notifications_rule_updated": {
+    "message": "नियम '$1' सफलतापूर्वक अपडेट किया गया",
+    "description": "नियम अपडेट होने पर सूचना",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "मेरा API नियम"
+      }
+    }
+  },
+  "notifications_rule_deleted": {
+    "message": "नियम '$1' सफलतापूर्वक डिलीट किया गया",
+    "description": "नियम डिलीट होने पर सूचना",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "मेरा API नियम"
+      }
+    }
+  },
+  "notifications_profile_switched": {
+    "message": "प्रोफाइल '$1' पर स्विच किया गया",
+    "description": "प्रोफाइल स्विच होने पर सूचना",
+    "placeholders": {
+      "profileName": {
+        "content": "$1",
+        "example": "डेवलपमेंट"
+      }
+    }
+  },
+  "notifications_extension_enabled": {
+    "message": "RequestKit सक्षम किया गया",
+    "description": "एक्सटेंशन सक्षम होने पर सूचना"
+  },
+  "notifications_extension_disabled": {
+    "message": "RequestKit अक्षम किया गया",
+    "description": "एक्सटेंशन अक्षम होने पर सूचना"
+  },
+  "notifications_backup_created": {
+    "message": "बैकअप सफलतापूर्वक बनाया गया",
+    "description": "बैकअप बनने पर सूचना"
+  },
+  "notifications_data_imported": {
+    "message": "डेटा सफलतापूर्वक इंपोर्ट किया गया",
+    "description": "डेटा इंपोर्ट होने पर सूचना"
+  },
+  "templates_cors_name": {
+    "message": "CORS हेडर",
+    "description": "CORS टेम्प्लेट का नाम"
+  },
+  "templates_cors_description": {
+    "message": "Cross-Origin Resource Sharing सक्षम करें",
+    "description": "CORS टेम्प्लेट का विवरण"
+  },
+  "templates_auth_bearer_name": {
+    "message": "Bearer टोकन",
+    "description": "Bearer टोकन टेम्प्लेट का नाम"
+  },
+  "templates_auth_bearer_description": {
+    "message": "Bearer टोकन के साथ Authorization हेडर जोड़ें",
+    "description": "Bearer टोकन टेम्प्लेट का विवरण"
+  },
+  "templates_debug_name": {
+    "message": "डिबग हेडर",
+    "description": "डिबग टेम्प्लेट का नाम"
+  },
+  "templates_debug_description": {
+    "message": "डिबगिंग जानकारी हेडर जोड़ें",
+    "description": "डिबग टेम्प्लेट का विवरण"
+  },
+  "templates_security_name": {
+    "message": "सिक्यूरिटी हेडर",
+    "description": "सिक्यूरिटी टेम्प्लेट का नाम"
+  },
+  "templates_security_description": {
+    "message": "सामान्य सिक्यूरिटी हेडर जोड़ें",
+    "description": "सिक्यूरिटी टेम्प्लेट का विवरण"
+  },
+  "profiles_default_dev_name": {
+    "message": "डेवलपमेंट",
+    "description": "डिफ़ॉल्ट डेवलपमेंट प्रोफाइल का नाम"
+  },
+  "profiles_default_dev_description": {
+    "message": "डिबग फीचर्स सक्षम के साथ डेवलपमेंट एनवायरनमेंट के लिए प्रोफाइल",
+    "description": "डिफ़ॉल्ट डेवलपमेंट प्रोफाइल का विवरण"
+  },
+  "profiles_default_prod_name": {
+    "message": "प्रोडक्शन",
+    "description": "डिफ़ॉल्ट प्रोडक्शन प्रोफाइल का नाम"
+  },
+  "profiles_default_prod_description": {
+    "message": "न्यूनतम लॉगिंग के साथ प्रोडक्शन एनवायरनमेंट के लिए प्रोफाइल",
+    "description": "डिफ़ॉल्ट प्रोडक्शन प्रोफाइल का विवरण"
+  },
+  "rules_header_operations_set": {
+    "message": "सेट करें",
+    "description": "हेडर सेट ऑपरेशन"
+  },
+  "rules_header_operations_append": {
+    "message": "जोड़ें",
+    "description": "हेडर जोड़ने का ऑपरेशन"
+  },
+  "rules_header_operations_remove": {
+    "message": "हटाएं",
+    "description": "हेडर हटाने का ऑपरेशन"
+  },
+  "rules_priority_very_low": {
+    "message": "बहुत कम",
+    "description": "बहुत कम प्राथमिकता लेबल"
+  },
+  "rules_priority_low": {
+    "message": "कम",
+    "description": "कम प्राथमिकता लेबल"
+  },
+  "rules_priority_normal": {
+    "message": "सामान्य",
+    "description": "सामान्य प्राथमिकता लेबल"
+  },
+  "rules_priority_high": {
+    "message": "उच्च",
+    "description": "उच्च प्राथमिकता लेबल"
+  },
+  "rules_priority_very_high": {
+    "message": "बहुत उच्च",
+    "description": "बहुत उच्च प्राथमिकता लेबल"
+  },
+  "settings_general": {
+    "message": "सामान्य",
+    "description": "सामान्य सेटिंग्स टैब"
+  },
+  "settings_notifications": {
+    "message": "सूचनाएं",
+    "description": "सूचना सेटिंग्स टैब"
+  },
+  "settings_performance": {
+    "message": "प्रदर्शन",
+    "description": "प्रदर्शन सेटिंग्स टैब"
+  },
+  "settings_security": {
+    "message": "सिक्यूरिटी",
+    "description": "सिक्यूरिटी सेटिंग्स टैब"
+  },
+  "settings_backup": {
+    "message": "बैकअप",
+    "description": "बैकअप सेटिंग्स टैब"
+  },
+  "settings_theme_light": {
+    "message": "लाइट",
+    "description": "लाइट थीम विकल्प"
+  },
+  "settings_theme_dark": {
+    "message": "डार्क",
+    "description": "डार्क थीम विकल्प"
+  },
+  "settings_theme_auto": {
+    "message": "ऑटो",
+    "description": "ऑटो थीम विकल्प"
+  },
+  "contextmenu_create_rule": {
+    "message": "इस URL के लिए नियम बनाएं",
+    "description": "नियम बनाने के लिए कॉन्टेक्स्ट मेनू आइटम"
+  },
+  "contextmenu_open_options": {
+    "message": "RequestKit विकल्प खोलें",
+    "description": "विकल्प खोलने के लिए कॉन्टेक्स्ट मेनू आइटम"
+  },
+  "contextmenu_toggle_extension": {
+    "message": "RequestKit टॉगल करें",
+    "description": "एक्सटेंशन टॉगल करने के लिए कॉन्टेक्स्ट मेनू आइटम"
+  },
+  "devtools_panel_title": {
+    "message": "RequestKit",
+    "description": "DevTools पैनल शीर्षक"
+  },
+  "devtools_requests_tab": {
+    "message": "रिक्वेस्ट",
+    "description": "DevTools में रिक्वेस्ट टैब"
+  },
+  "devtools_rules_tab": {
+    "message": "नियम",
+    "description": "DevTools में नियम टैब"
+  },
+  "devtools_performance_tab": {
+    "message": "प्रदर्शन",
+    "description": "DevTools में प्रदर्शन टैब"
+  },
+  "devtools_no_requests": {
+    "message": "अभी तक कोई रिक्वेस्ट कैप्चर नहीं की गई",
+    "description": "कोई रिक्वेस्ट कैप्चर न होने पर मैसेज"
+  },
+  "devtools_request_details": {
+    "message": "रिक्वेस्ट विवरण",
+    "description": "रिक्वेस्ट विवरण सेक्शन शीर्षक"
+  },
+  "devtools_matched_rules": {
+    "message": "मैच किए गए नियम",
+    "description": "मैच किए गए नियम सेक्शन शीर्षक"
+  }
+}

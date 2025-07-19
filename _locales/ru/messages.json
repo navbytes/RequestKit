@@ -1,0 +1,438 @@
+{
+  "extensionName": {
+    "message": "RequestKit",
+    "description": "Название расширения"
+  },
+  "extensionDescription": {
+    "message": "Продвинутое расширение Chrome для внедрения пользовательских заголовков с мощной системой переменных, сопоставлением шаблонов и инструментами тестирования",
+    "description": "Описание расширения"
+  },
+  "extensionShortName": {
+    "message": "RequestKit",
+    "description": "Краткое название расширения"
+  },
+  "app_name": {
+    "message": "RequestKit",
+    "description": "Название приложения"
+  },
+  "app_version": {
+    "message": "1.0.0",
+    "description": "Версия приложения"
+  },
+  "ui_button_save": {
+    "message": "Сохранить",
+    "description": "Метка кнопки сохранить"
+  },
+  "ui_button_cancel": {
+    "message": "Отмена",
+    "description": "Метка кнопки отмена"
+  },
+  "ui_button_delete": {
+    "message": "Удалить",
+    "description": "Метка кнопки удалить"
+  },
+  "ui_button_edit": {
+    "message": "Изменить",
+    "description": "Метка кнопки изменить"
+  },
+  "ui_button_add": {
+    "message": "Добавить",
+    "description": "Метка кнопки добавить"
+  },
+  "ui_button_create": {
+    "message": "Создать",
+    "description": "Метка кнопки создать"
+  },
+  "ui_button_update": {
+    "message": "Обновить",
+    "description": "Метка кнопки обновить"
+  },
+  "ui_button_remove": {
+    "message": "Убрать",
+    "description": "Метка кнопки убрать"
+  },
+  "ui_button_close": {
+    "message": "Закрыть",
+    "description": "Метка кнопки закрыть"
+  },
+  "ui_button_back": {
+    "message": "Назад",
+    "description": "Метка кнопки назад"
+  },
+  "ui_button_next": {
+    "message": "Далее",
+    "description": "Метка кнопки далее"
+  },
+  "ui_button_finish": {
+    "message": "Завершить",
+    "description": "Метка кнопки завершить"
+  },
+  "ui_button_apply": {
+    "message": "Применить",
+    "description": "Метка кнопки применить"
+  },
+  "ui_button_reset": {
+    "message": "Сбросить",
+    "description": "Метка кнопки сбросить"
+  },
+  "ui_button_clear": {
+    "message": "Очистить",
+    "description": "Метка кнопки очистить"
+  },
+  "ui_button_refresh": {
+    "message": "Обновить",
+    "description": "Метка кнопки обновить"
+  },
+  "ui_button_export": {
+    "message": "Экспорт",
+    "description": "Метка кнопки экспорт"
+  },
+  "ui_button_import": {
+    "message": "Импорт",
+    "description": "Метка кнопки импорт"
+  },
+  "ui_button_copy": {
+    "message": "Копировать",
+    "description": "Метка кнопки копировать"
+  },
+  "ui_button_paste": {
+    "message": "Вставить",
+    "description": "Метка кнопки вставить"
+  },
+  "ui_label_name": {
+    "message": "Имя",
+    "description": "Метка поля имя"
+  },
+  "ui_label_description": {
+    "message": "Описание",
+    "description": "Метка поля описание"
+  },
+  "ui_label_url": {
+    "message": "URL",
+    "description": "Метка поля URL"
+  },
+  "ui_label_method": {
+    "message": "Метод",
+    "description": "Метка поля HTTP метод"
+  },
+  "ui_label_headers": {
+    "message": "Заголовки",
+    "description": "Метка поля заголовки"
+  },
+  "ui_label_value": {
+    "message": "Значение",
+    "description": "Метка поля значение"
+  },
+  "ui_label_enabled": {
+    "message": "Включено",
+    "description": "Метка поля включено"
+  },
+  "ui_label_disabled": {
+    "message": "Отключено",
+    "description": "Метка поля отключено"
+  },
+  "ui_label_priority": {
+    "message": "Приоритет",
+    "description": "Метка поля приоритет"
+  },
+  "ui_label_pattern": {
+    "message": "Шаблон",
+    "description": "Метка поля шаблон"
+  },
+  "ui_label_operation": {
+    "message": "Операция",
+    "description": "Метка поля операция"
+  },
+  "ui_label_status": {
+    "message": "Статус",
+    "description": "Метка поля статус"
+  },
+  "ui_label_type": {
+    "message": "Тип",
+    "description": "Метка поля тип"
+  },
+  "ui_label_category": {
+    "message": "Категория",
+    "description": "Метка поля категория"
+  },
+  "ui_label_tags": {
+    "message": "Теги",
+    "description": "Метка поля теги"
+  },
+  "ui_tooltip_save": {
+    "message": "Сохранить текущие изменения",
+    "description": "Подсказка кнопки сохранить"
+  },
+  "ui_tooltip_delete": {
+    "message": "Удалить этот элемент",
+    "description": "Подсказка кнопки удалить"
+  },
+  "ui_tooltip_edit": {
+    "message": "Изменить этот элемент",
+    "description": "Подсказка кнопки изменить"
+  },
+  "ui_tooltip_enable": {
+    "message": "Включить это правило",
+    "description": "Подсказка кнопки включить"
+  },
+  "ui_tooltip_disable": {
+    "message": "Отключить это правило",
+    "description": "Подсказка кнопки отключить"
+  },
+  "errors_validation_domain_invalid": {
+    "message": "Неверный шаблон домена",
+    "description": "Сообщение об ошибке для неверного домена"
+  },
+  "errors_validation_path_invalid": {
+    "message": "Путь должен начинаться с /",
+    "description": "Сообщение об ошибке для неверного пути"
+  },
+  "errors_validation_header_name_invalid": {
+    "message": "Имя заголовка содержит недопустимые символы",
+    "description": "Сообщение об ошибке для неверного имени заголовка"
+  },
+  "errors_validation_port_invalid": {
+    "message": "Порт должен быть числом от 1 до 65535 или *",
+    "description": "Сообщение об ошибке для неверного порта"
+  },
+  "errors_rule_not_found": {
+    "message": "Правило не найдено",
+    "description": "Сообщение об ошибке когда правило не найдено"
+  },
+  "errors_template_not_found": {
+    "message": "Шаблон не найден",
+    "description": "Сообщение об ошибке когда шаблон не найден"
+  },
+  "errors_storage_error": {
+    "message": "Не удалось сохранить данные",
+    "description": "Сообщение об ошибке для сбоев хранения"
+  },
+  "errors_import_error": {
+    "message": "Не удалось импортировать данные",
+    "description": "Сообщение об ошибке для сбоев импорта"
+  },
+  "errors_export_error": {
+    "message": "Не удалось экспортировать данные",
+    "description": "Сообщение об ошибке для сбоев экспорта"
+  },
+  "errors_network_error": {
+    "message": "Произошла сетевая ошибка",
+    "description": "Сообщение об ошибке для сетевых сбоев"
+  },
+  "errors_permission_denied": {
+    "message": "Доступ запрещен",
+    "description": "Сообщение об ошибке для проблем с разрешениями"
+  },
+  "errors_invalid_format": {
+    "message": "Неверный формат",
+    "description": "Сообщение об ошибке для проверки формата"
+  },
+  "notifications_rule_created": {
+    "message": "Правило '$1' успешно создано",
+    "description": "Уведомление при создании правила",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "Мое API Правило"
+      }
+    }
+  },
+  "notifications_rule_updated": {
+    "message": "Правило '$1' успешно обновлено",
+    "description": "Уведомление при обновлении правила",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "Мое API Правило"
+      }
+    }
+  },
+  "notifications_rule_deleted": {
+    "message": "Правило '$1' успешно удалено",
+    "description": "Уведомление при удалении правила",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "Мое API Правило"
+      }
+    }
+  },
+  "notifications_profile_switched": {
+    "message": "Переключено на профиль '$1'",
+    "description": "Уведомление при переключении профиля",
+    "placeholders": {
+      "profileName": {
+        "content": "$1",
+        "example": "Разработка"
+      }
+    }
+  },
+  "notifications_extension_enabled": {
+    "message": "RequestKit включен",
+    "description": "Уведомление при включении расширения"
+  },
+  "notifications_extension_disabled": {
+    "message": "RequestKit отключен",
+    "description": "Уведомление при отключении расширения"
+  },
+  "notifications_backup_created": {
+    "message": "Резервная копия успешно создана",
+    "description": "Уведомление при создании резервной копии"
+  },
+  "notifications_data_imported": {
+    "message": "Данные успешно импортированы",
+    "description": "Уведомление при импорте данных"
+  },
+  "templates_cors_name": {
+    "message": "CORS Заголовки",
+    "description": "Название шаблона CORS"
+  },
+  "templates_cors_description": {
+    "message": "Включить совместное использование ресурсов между источниками",
+    "description": "Описание шаблона CORS"
+  },
+  "templates_auth_bearer_name": {
+    "message": "Bearer Токен",
+    "description": "Название шаблона Bearer токена"
+  },
+  "templates_auth_bearer_description": {
+    "message": "Добавить заголовок Authorization с Bearer токеном",
+    "description": "Описание шаблона Bearer токена"
+  },
+  "templates_debug_name": {
+    "message": "Отладочные Заголовки",
+    "description": "Название шаблона отладки"
+  },
+  "templates_debug_description": {
+    "message": "Добавить заголовки отладочной информации",
+    "description": "Описание шаблона отладки"
+  },
+  "templates_security_name": {
+    "message": "Заголовки Безопасности",
+    "description": "Название шаблона безопасности"
+  },
+  "templates_security_description": {
+    "message": "Добавить общие заголовки безопасности",
+    "description": "Описание шаблона безопасности"
+  },
+  "profiles_default_dev_name": {
+    "message": "Разработка",
+    "description": "Название профиля разработки по умолчанию"
+  },
+  "profiles_default_dev_description": {
+    "message": "Профиль для среды разработки с включенными функциями отладки",
+    "description": "Описание профиля разработки по умолчанию"
+  },
+  "profiles_default_prod_name": {
+    "message": "Продакшн",
+    "description": "Название профиля продакшн по умолчанию"
+  },
+  "profiles_default_prod_description": {
+    "message": "Профиль для продакшн среды с минимальным логированием",
+    "description": "Описание профиля продакшн по умолчанию"
+  },
+  "rules_header_operations_set": {
+    "message": "Установить",
+    "description": "Операция установки заголовка"
+  },
+  "rules_header_operations_append": {
+    "message": "Добавить",
+    "description": "Операция добавления заголовка"
+  },
+  "rules_header_operations_remove": {
+    "message": "Удалить",
+    "description": "Операция удаления заголовка"
+  },
+  "rules_priority_very_low": {
+    "message": "Очень Низкий",
+    "description": "Метка очень низкого приоритета"
+  },
+  "rules_priority_low": {
+    "message": "Низкий",
+    "description": "Метка низкого приоритета"
+  },
+  "rules_priority_normal": {
+    "message": "Обычный",
+    "description": "Метка обычного приоритета"
+  },
+  "rules_priority_high": {
+    "message": "Высокий",
+    "description": "Метка высокого приоритета"
+  },
+  "rules_priority_very_high": {
+    "message": "Очень Высокий",
+    "description": "Метка очень высокого приоритета"
+  },
+  "settings_general": {
+    "message": "Общие",
+    "description": "Вкладка общих настроек"
+  },
+  "settings_notifications": {
+    "message": "Уведомления",
+    "description": "Вкладка настроек уведомлений"
+  },
+  "settings_performance": {
+    "message": "Производительность",
+    "description": "Вкладка настроек производительности"
+  },
+  "settings_security": {
+    "message": "Безопасность",
+    "description": "Вкладка настроек безопасности"
+  },
+  "settings_backup": {
+    "message": "Резервная копия",
+    "description": "Вкладка настроек резервной копии"
+  },
+  "settings_theme_light": {
+    "message": "Светлая",
+    "description": "Опция светлой темы"
+  },
+  "settings_theme_dark": {
+    "message": "Темная",
+    "description": "Опция темной темы"
+  },
+  "settings_theme_auto": {
+    "message": "Авто",
+    "description": "Опция автоматической темы"
+  },
+  "contextmenu_create_rule": {
+    "message": "Создать правило для этого URL",
+    "description": "Пункт контекстного меню для создания правила"
+  },
+  "contextmenu_open_options": {
+    "message": "Открыть настройки RequestKit",
+    "description": "Пункт контекстного меню для открытия настроек"
+  },
+  "contextmenu_toggle_extension": {
+    "message": "Переключить RequestKit",
+    "description": "Пункт контекстного меню для переключения расширения"
+  },
+  "devtools_panel_title": {
+    "message": "RequestKit",
+    "description": "Заголовок панели DevTools"
+  },
+  "devtools_requests_tab": {
+    "message": "Запросы",
+    "description": "Вкладка запросов в DevTools"
+  },
+  "devtools_rules_tab": {
+    "message": "Правила",
+    "description": "Вкладка правил в DevTools"
+  },
+  "devtools_performance_tab": {
+    "message": "Производительность",
+    "description": "Вкладка производительности в DevTools"
+  },
+  "devtools_no_requests": {
+    "message": "Запросы еще не захвачены",
+    "description": "Сообщение когда запросы не захвачены"
+  },
+  "devtools_request_details": {
+    "message": "Детали запроса",
+    "description": "Заголовок секции деталей запроса"
+  },
+  "devtools_matched_rules": {
+    "message": "Совпавшие правила",
+    "description": "Заголовок секции совпавших правил"
+  }
+}

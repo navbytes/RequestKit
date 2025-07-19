@@ -3,12 +3,13 @@
  * Follows the same pattern as ChromeApiUtils for consistency
  */
 
+import { SUPPORTED_LOCALES } from '@/config';
+import { type SupportedLocale } from '@/config';
 import { loggers } from '@/shared/utils/debug';
 
 import { LanguageDetector } from './language-detector';
 import { MessageFormatter } from './message-formatter';
 import type {
-  SupportedLocale,
   LocalizationConfig,
   MessageParams,
   FormatterOptions,
@@ -24,7 +25,7 @@ const logger = loggers.shared;
 const DEFAULT_CONFIG: LocalizationConfig = {
   defaultLocale: 'en',
   fallbackLocale: 'en',
-  supportedLocales: ['en', 'es', 'fr', 'de', 'ja'],
+  supportedLocales: [...SUPPORTED_LOCALES],
   enableFallback: true,
   enableCache: true,
   cacheTimeout: 300000, // 5 minutes
@@ -37,7 +38,7 @@ const DEFAULT_CONFIG: LocalizationConfig = {
 export class LocaleManager {
   private static config: LocalizationConfig = DEFAULT_CONFIG;
   private static currentLocale: SupportedLocale = 'en';
-  private static messageCache = new Map<string, string>();
+  private static readonly messageCache = new Map<string, string>();
   private static cacheTimestamp = 0;
   private static initialized = false;
 

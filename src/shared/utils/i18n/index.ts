@@ -3,10 +3,11 @@
  * Provides strongly-typed wrappers around Chrome i18n APIs following chrome-api pattern
  */
 
+import { type SupportedLocale } from '@/config';
+
 import { LanguageDetector } from './language-detector';
 import { LocaleManager } from './locale-manager';
 import { MessageFormatter } from './message-formatter';
-import type { SupportedLocale } from './types';
 
 // Re-export main API class (similar to ChromeApiUtils)
 export { LocaleManager };

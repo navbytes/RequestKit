@@ -2,9 +2,10 @@
  * Message formatting utilities for internationalization
  */
 
+import { type SupportedLocale } from '@/config';
 import { loggers } from '@/shared/utils/debug';
 
-import type { SupportedLocale, MessageParams, FormatterOptions } from './types';
+import type { MessageParams, FormatterOptions } from './types';
 
 const logger = loggers.shared;
 

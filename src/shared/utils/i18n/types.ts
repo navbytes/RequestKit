@@ -2,10 +2,8 @@
  * Internationalization (i18n) type definitions
  */
 
-/**
- * Supported locale codes
- */
-export type SupportedLocale = 'en' | 'es' | 'fr' | 'de' | 'ja';
+import { type SupportedLocale } from '@/config';
+import { SUPPORTED_LOCALES } from '@/config/constants';
 
 /**
  * Message category types for organization
@@ -144,8 +142,8 @@ export class LocalizationError extends Error {
  * Type guards for runtime validation
  */
 export const LocalizationTypeGuards = {
-  isSupportedLocale(locale: string): locale is SupportedLocale {
-    return ['en', 'es', 'fr', 'de', 'ja'].includes(locale);
+  isSupportedLocale(locale: SupportedLocale): locale is SupportedLocale {
+    return SUPPORTED_LOCALES.includes(locale);
   },
 
   isLocaleData(obj: unknown): obj is LocaleData {

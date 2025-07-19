@@ -3,11 +3,8 @@
  * Provides easy access to i18n functionality
  */
 
-import {
-  I18nUtils,
-  type SupportedLocale,
-  type MessageParams,
-} from '@/shared/utils/i18n';
+import { type SupportedLocale } from '@/config';
+import { I18nUtils, type MessageParams } from '@/shared/utils/i18n';
 
 import { loggers } from '../utils/debug';
 

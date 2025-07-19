@@ -1,0 +1,448 @@
+{
+  "extensionName": {
+    "message": "RequestKit",
+    "description": "The name of the extension"
+  },
+  "extensionDescription": {
+    "message": "Advanced Chrome extension for injecting custom headers with powerful Variable System, pattern matching, and testing tools",
+    "description": "Description of the extension"
+  },
+  "extensionShortName": {
+    "message": "RequestKit",
+    "description": "Short name for the extension"
+  },
+  "app_name": {
+    "message": "RequestKit",
+    "description": "Application name"
+  },
+  "app_version": {
+    "message": "1.0.0",
+    "description": "Application version"
+  },
+  "ui_button_save": {
+    "message": "Save",
+    "description": "Save button label"
+  },
+  "ui_button_cancel": {
+    "message": "Cancel",
+    "description": "Cancel button label"
+  },
+  "ui_button_delete": {
+    "message": "Delete",
+    "description": "Delete button label"
+  },
+  "ui_button_edit": {
+    "message": "Edit",
+    "description": "Edit button label"
+  },
+  "ui_button_add": {
+    "message": "Add",
+    "description": "Add button label"
+  },
+  "ui_button_create": {
+    "message": "Create",
+    "description": "Create button label"
+  },
+  "ui_button_update": {
+    "message": "Update",
+    "description": "Update button label"
+  },
+  "ui_button_remove": {
+    "message": "Remove",
+    "description": "Remove button label"
+  },
+  "ui_button_close": {
+    "message": "Close",
+    "description": "Close button label"
+  },
+  "ui_button_back": {
+    "message": "Back",
+    "description": "Back button label"
+  },
+  "ui_button_next": {
+    "message": "Next",
+    "description": "Next button label"
+  },
+  "ui_button_finish": {
+    "message": "Finish",
+    "description": "Finish button label"
+  },
+  "ui_button_apply": {
+    "message": "Apply",
+    "description": "Apply button label"
+  },
+  "ui_button_reset": {
+    "message": "Reset",
+    "description": "Reset button label"
+  },
+  "ui_button_clear": {
+    "message": "Clear",
+    "description": "Clear button label"
+  },
+  "ui_button_refresh": {
+    "message": "Refresh",
+    "description": "Refresh button label"
+  },
+  "ui_button_export": {
+    "message": "Export",
+    "description": "Export button label"
+  },
+  "ui_button_import": {
+    "message": "Import",
+    "description": "Import button label"
+  },
+  "ui_button_copy": {
+    "message": "Copy",
+    "description": "Copy button label"
+  },
+  "ui_button_paste": {
+    "message": "Paste",
+    "description": "Paste button label"
+  },
+
+  "ui_label_name": {
+    "message": "Name",
+    "description": "Name field label"
+  },
+  "ui_label_description": {
+    "message": "Description",
+    "description": "Description field label"
+  },
+  "ui_label_url": {
+    "message": "URL",
+    "description": "URL field label"
+  },
+  "ui_label_method": {
+    "message": "Method",
+    "description": "HTTP method field label"
+  },
+  "ui_label_headers": {
+    "message": "Headers",
+    "description": "Headers field label"
+  },
+  "ui_label_value": {
+    "message": "Value",
+    "description": "Value field label"
+  },
+  "ui_label_enabled": {
+    "message": "Enabled",
+    "description": "Enabled field label"
+  },
+  "ui_label_disabled": {
+    "message": "Disabled",
+    "description": "Disabled field label"
+  },
+  "ui_label_priority": {
+    "message": "Priority",
+    "description": "Priority field label"
+  },
+  "ui_label_pattern": {
+    "message": "Pattern",
+    "description": "Pattern field label"
+  },
+  "ui_label_operation": {
+    "message": "Operation",
+    "description": "Operation field label"
+  },
+  "ui_label_status": {
+    "message": "Status",
+    "description": "Status field label"
+  },
+  "ui_label_type": {
+    "message": "Type",
+    "description": "Type field label"
+  },
+  "ui_label_category": {
+    "message": "Category",
+    "description": "Category field label"
+  },
+  "ui_label_tags": {
+    "message": "Tags",
+    "description": "Tags field label"
+  },
+
+  "ui_tooltip_save": {
+    "message": "Save current changes",
+    "description": "Save button tooltip"
+  },
+  "ui_tooltip_delete": {
+    "message": "Delete this item",
+    "description": "Delete button tooltip"
+  },
+  "ui_tooltip_edit": {
+    "message": "Edit this item",
+    "description": "Edit button tooltip"
+  },
+  "ui_tooltip_enable": {
+    "message": "Enable this rule",
+    "description": "Enable button tooltip"
+  },
+  "ui_tooltip_disable": {
+    "message": "Disable this rule",
+    "description": "Disable button tooltip"
+  },
+
+  "errors_validation_domain_invalid": {
+    "message": "Invalid domain pattern",
+    "description": "Error message for invalid domain"
+  },
+  "errors_validation_path_invalid": {
+    "message": "Path must start with /",
+    "description": "Error message for invalid path"
+  },
+  "errors_validation_header_name_invalid": {
+    "message": "Header name contains invalid characters",
+    "description": "Error message for invalid header name"
+  },
+  "errors_validation_port_invalid": {
+    "message": "Port must be a number between 1-65535 or *",
+    "description": "Error message for invalid port"
+  },
+  "errors_rule_not_found": {
+    "message": "Rule not found",
+    "description": "Error message when rule is not found"
+  },
+  "errors_template_not_found": {
+    "message": "Template not found",
+    "description": "Error message when template is not found"
+  },
+  "errors_storage_error": {
+    "message": "Failed to save data",
+    "description": "Error message for storage failures"
+  },
+  "errors_import_error": {
+    "message": "Failed to import data",
+    "description": "Error message for import failures"
+  },
+  "errors_export_error": {
+    "message": "Failed to export data",
+    "description": "Error message for export failures"
+  },
+  "errors_network_error": {
+    "message": "Network error occurred",
+    "description": "Error message for network failures"
+  },
+  "errors_permission_denied": {
+    "message": "Permission denied",
+    "description": "Error message for permission issues"
+  },
+  "errors_invalid_format": {
+    "message": "Invalid format",
+    "description": "Error message for format validation"
+  },
+
+  "notifications_rule_created": {
+    "message": "Rule '$1' created successfully",
+    "description": "Notification when a rule is created",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "My API Rule"
+      }
+    }
+  },
+  "notifications_rule_updated": {
+    "message": "Rule '$1' updated successfully",
+    "description": "Notification when a rule is updated",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "My API Rule"
+      }
+    }
+  },
+  "notifications_rule_deleted": {
+    "message": "Rule '$1' deleted successfully",
+    "description": "Notification when a rule is deleted",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "My API Rule"
+      }
+    }
+  },
+  "notifications_profile_switched": {
+    "message": "Switched to profile '$1'",
+    "description": "Notification when profile is switched",
+    "placeholders": {
+      "profileName": {
+        "content": "$1",
+        "example": "Development"
+      }
+    }
+  },
+  "notifications_extension_enabled": {
+    "message": "RequestKit enabled",
+    "description": "Notification when extension is enabled"
+  },
+  "notifications_extension_disabled": {
+    "message": "RequestKit disabled",
+    "description": "Notification when extension is disabled"
+  },
+  "notifications_backup_created": {
+    "message": "Backup created successfully",
+    "description": "Notification when backup is created"
+  },
+  "notifications_data_imported": {
+    "message": "Data imported successfully",
+    "description": "Notification when data is imported"
+  },
+
+  "templates_cors_name": {
+    "message": "CORS Headers",
+    "description": "Name of CORS template"
+  },
+  "templates_cors_description": {
+    "message": "Enable Cross-Origin Resource Sharing",
+    "description": "Description of CORS template"
+  },
+  "templates_auth_bearer_name": {
+    "message": "Bearer Token",
+    "description": "Name of Bearer token template"
+  },
+  "templates_auth_bearer_description": {
+    "message": "Add Authorization header with Bearer token",
+    "description": "Description of Bearer token template"
+  },
+  "templates_debug_name": {
+    "message": "Debug Headers",
+    "description": "Name of debug template"
+  },
+  "templates_debug_description": {
+    "message": "Add debugging information headers",
+    "description": "Description of debug template"
+  },
+  "templates_security_name": {
+    "message": "Security Headers",
+    "description": "Name of security template"
+  },
+  "templates_security_description": {
+    "message": "Add common security headers",
+    "description": "Description of security template"
+  },
+
+  "profiles_default_dev_name": {
+    "message": "Development",
+    "description": "Name of default development profile"
+  },
+  "profiles_default_dev_description": {
+    "message": "Profile for development environment with debug features enabled",
+    "description": "Description of default development profile"
+  },
+  "profiles_default_prod_name": {
+    "message": "Production",
+    "description": "Name of default production profile"
+  },
+  "profiles_default_prod_description": {
+    "message": "Profile for production environment with minimal logging",
+    "description": "Description of default production profile"
+  },
+
+  "rules_header_operations_set": {
+    "message": "Set",
+    "description": "Set header operation"
+  },
+  "rules_header_operations_append": {
+    "message": "Append",
+    "description": "Append header operation"
+  },
+  "rules_header_operations_remove": {
+    "message": "Remove",
+    "description": "Remove header operation"
+  },
+  "rules_priority_very_low": {
+    "message": "Very Low",
+    "description": "Very low priority label"
+  },
+  "rules_priority_low": {
+    "message": "Low",
+    "description": "Low priority label"
+  },
+  "rules_priority_normal": {
+    "message": "Normal",
+    "description": "Normal priority label"
+  },
+  "rules_priority_high": {
+    "message": "High",
+    "description": "High priority label"
+  },
+  "rules_priority_very_high": {
+    "message": "Very High",
+    "description": "Very high priority label"
+  },
+
+  "settings_general": {
+    "message": "General",
+    "description": "General settings tab"
+  },
+  "settings_notifications": {
+    "message": "Notifications",
+    "description": "Notifications settings tab"
+  },
+  "settings_performance": {
+    "message": "Performance",
+    "description": "Performance settings tab"
+  },
+  "settings_security": {
+    "message": "Security",
+    "description": "Security settings tab"
+  },
+  "settings_backup": {
+    "message": "Backup",
+    "description": "Backup settings tab"
+  },
+  "settings_theme_light": {
+    "message": "Light",
+    "description": "Light theme option"
+  },
+  "settings_theme_dark": {
+    "message": "Dark",
+    "description": "Dark theme option"
+  },
+  "settings_theme_auto": {
+    "message": "Auto",
+    "description": "Auto theme option"
+  },
+
+  "contextmenu_create_rule": {
+    "message": "Create rule for this URL",
+    "description": "Context menu item to create rule"
+  },
+  "contextmenu_open_options": {
+    "message": "Open RequestKit Options",
+    "description": "Context menu item to open options"
+  },
+  "contextmenu_toggle_extension": {
+    "message": "Toggle RequestKit",
+    "description": "Context menu item to toggle extension"
+  },
+
+  "devtools_panel_title": {
+    "message": "RequestKit",
+    "description": "DevTools panel title"
+  },
+  "devtools_requests_tab": {
+    "message": "Requests",
+    "description": "Requests tab in DevTools"
+  },
+  "devtools_rules_tab": {
+    "message": "Rules",
+    "description": "Rules tab in DevTools"
+  },
+  "devtools_performance_tab": {
+    "message": "Performance",
+    "description": "Performance tab in DevTools"
+  },
+  "devtools_no_requests": {
+    "message": "No requests captured yet",
+    "description": "Message when no requests are captured"
+  },
+  "devtools_request_details": {
+    "message": "Request Details",
+    "description": "Request details section title"
+  },
+  "devtools_matched_rules": {
+    "message": "Matched Rules",
+    "description": "Matched rules section title"
+  }
+}

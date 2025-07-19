@@ -2,7 +2,6 @@ import type { RuleTemplate } from '@/shared/types/templates';
 import { ChromeApiUtils } from '@/shared/utils';
 import { loggers } from '@/shared/utils/debug';
 
-
 // Get logger for this module
 const logger = loggers.shared;
 

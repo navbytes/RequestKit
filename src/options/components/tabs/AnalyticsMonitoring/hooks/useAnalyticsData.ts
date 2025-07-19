@@ -14,7 +14,6 @@ interface AnalyticsState {
   isLoading: boolean;
 }
 
-
 // Get logger for this module
 const logger = loggers.shared;
 

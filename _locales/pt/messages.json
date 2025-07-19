@@ -1,0 +1,438 @@
+{
+  "extensionName": {
+    "message": "RequestKit",
+    "description": "O nome da extensão"
+  },
+  "extensionDescription": {
+    "message": "Extensão avançada do Chrome para injetar cabeçalhos personalizados com poderoso Sistema de Variáveis, correspondência de padrões e ferramentas de teste",
+    "description": "Descrição da extensão"
+  },
+  "extensionShortName": {
+    "message": "RequestKit",
+    "description": "Nome curto da extensão"
+  },
+  "app_name": {
+    "message": "RequestKit",
+    "description": "Nome da aplicação"
+  },
+  "app_version": {
+    "message": "1.0.0",
+    "description": "Versão da aplicação"
+  },
+  "ui_button_save": {
+    "message": "Salvar",
+    "description": "Rótulo do botão salvar"
+  },
+  "ui_button_cancel": {
+    "message": "Cancelar",
+    "description": "Rótulo do botão cancelar"
+  },
+  "ui_button_delete": {
+    "message": "Excluir",
+    "description": "Rótulo do botão excluir"
+  },
+  "ui_button_edit": {
+    "message": "Editar",
+    "description": "Rótulo do botão editar"
+  },
+  "ui_button_add": {
+    "message": "Adicionar",
+    "description": "Rótulo do botão adicionar"
+  },
+  "ui_button_create": {
+    "message": "Criar",
+    "description": "Rótulo do botão criar"
+  },
+  "ui_button_update": {
+    "message": "Atualizar",
+    "description": "Rótulo do botão atualizar"
+  },
+  "ui_button_remove": {
+    "message": "Remover",
+    "description": "Rótulo do botão remover"
+  },
+  "ui_button_close": {
+    "message": "Fechar",
+    "description": "Rótulo do botão fechar"
+  },
+  "ui_button_back": {
+    "message": "Voltar",
+    "description": "Rótulo do botão voltar"
+  },
+  "ui_button_next": {
+    "message": "Próximo",
+    "description": "Rótulo do botão próximo"
+  },
+  "ui_button_finish": {
+    "message": "Finalizar",
+    "description": "Rótulo do botão finalizar"
+  },
+  "ui_button_apply": {
+    "message": "Aplicar",
+    "description": "Rótulo do botão aplicar"
+  },
+  "ui_button_reset": {
+    "message": "Redefinir",
+    "description": "Rótulo do botão redefinir"
+  },
+  "ui_button_clear": {
+    "message": "Limpar",
+    "description": "Rótulo do botão limpar"
+  },
+  "ui_button_refresh": {
+    "message": "Atualizar",
+    "description": "Rótulo do botão atualizar"
+  },
+  "ui_button_export": {
+    "message": "Exportar",
+    "description": "Rótulo do botão exportar"
+  },
+  "ui_button_import": {
+    "message": "Importar",
+    "description": "Rótulo do botão importar"
+  },
+  "ui_button_copy": {
+    "message": "Copiar",
+    "description": "Rótulo do botão copiar"
+  },
+  "ui_button_paste": {
+    "message": "Colar",
+    "description": "Rótulo do botão colar"
+  },
+  "ui_label_name": {
+    "message": "Nome",
+    "description": "Rótulo do campo nome"
+  },
+  "ui_label_description": {
+    "message": "Descrição",
+    "description": "Rótulo do campo descrição"
+  },
+  "ui_label_url": {
+    "message": "URL",
+    "description": "Rótulo do campo URL"
+  },
+  "ui_label_method": {
+    "message": "Método",
+    "description": "Rótulo do campo método HTTP"
+  },
+  "ui_label_headers": {
+    "message": "Cabeçalhos",
+    "description": "Rótulo do campo cabeçalhos"
+  },
+  "ui_label_value": {
+    "message": "Valor",
+    "description": "Rótulo do campo valor"
+  },
+  "ui_label_enabled": {
+    "message": "Ativado",
+    "description": "Rótulo do campo ativado"
+  },
+  "ui_label_disabled": {
+    "message": "Desativado",
+    "description": "Rótulo do campo desativado"
+  },
+  "ui_label_priority": {
+    "message": "Prioridade",
+    "description": "Rótulo do campo prioridade"
+  },
+  "ui_label_pattern": {
+    "message": "Padrão",
+    "description": "Rótulo do campo padrão"
+  },
+  "ui_label_operation": {
+    "message": "Operação",
+    "description": "Rótulo do campo operação"
+  },
+  "ui_label_status": {
+    "message": "Status",
+    "description": "Rótulo do campo status"
+  },
+  "ui_label_type": {
+    "message": "Tipo",
+    "description": "Rótulo do campo tipo"
+  },
+  "ui_label_category": {
+    "message": "Categoria",
+    "description": "Rótulo do campo categoria"
+  },
+  "ui_label_tags": {
+    "message": "Tags",
+    "description": "Rótulo do campo tags"
+  },
+  "ui_tooltip_save": {
+    "message": "Salvar alterações atuais",
+    "description": "Tooltip do botão salvar"
+  },
+  "ui_tooltip_delete": {
+    "message": "Excluir este item",
+    "description": "Tooltip do botão excluir"
+  },
+  "ui_tooltip_edit": {
+    "message": "Editar este item",
+    "description": "Tooltip do botão editar"
+  },
+  "ui_tooltip_enable": {
+    "message": "Ativar esta regra",
+    "description": "Tooltip do botão ativar"
+  },
+  "ui_tooltip_disable": {
+    "message": "Desativar esta regra",
+    "description": "Tooltip do botão desativar"
+  },
+  "errors_validation_domain_invalid": {
+    "message": "Padrão de domínio inválido",
+    "description": "Mensagem de erro para domínio inválido"
+  },
+  "errors_validation_path_invalid": {
+    "message": "O caminho deve começar com /",
+    "description": "Mensagem de erro para caminho inválido"
+  },
+  "errors_validation_header_name_invalid": {
+    "message": "O nome do cabeçalho contém caracteres inválidos",
+    "description": "Mensagem de erro para nome de cabeçalho inválido"
+  },
+  "errors_validation_port_invalid": {
+    "message": "A porta deve ser um número entre 1-65535 ou *",
+    "description": "Mensagem de erro para porta inválida"
+  },
+  "errors_rule_not_found": {
+    "message": "Regra não encontrada",
+    "description": "Mensagem de erro quando a regra não é encontrada"
+  },
+  "errors_template_not_found": {
+    "message": "Modelo não encontrado",
+    "description": "Mensagem de erro quando o modelo não é encontrado"
+  },
+  "errors_storage_error": {
+    "message": "Falha ao salvar dados",
+    "description": "Mensagem de erro para falhas de armazenamento"
+  },
+  "errors_import_error": {
+    "message": "Falha ao importar dados",
+    "description": "Mensagem de erro para falhas de importação"
+  },
+  "errors_export_error": {
+    "message": "Falha ao exportar dados",
+    "description": "Mensagem de erro para falhas de exportação"
+  },
+  "errors_network_error": {
+    "message": "Erro de rede ocorreu",
+    "description": "Mensagem de erro para falhas de rede"
+  },
+  "errors_permission_denied": {
+    "message": "Permissão negada",
+    "description": "Mensagem de erro para problemas de permissão"
+  },
+  "errors_invalid_format": {
+    "message": "Formato inválido",
+    "description": "Mensagem de erro para validação de formato"
+  },
+  "notifications_rule_created": {
+    "message": "Regra '$1' criada com sucesso",
+    "description": "Notificação quando uma regra é criada",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "Minha Regra API"
+      }
+    }
+  },
+  "notifications_rule_updated": {
+    "message": "Regra '$1' atualizada com sucesso",
+    "description": "Notificação quando uma regra é atualizada",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "Minha Regra API"
+      }
+    }
+  },
+  "notifications_rule_deleted": {
+    "message": "Regra '$1' excluída com sucesso",
+    "description": "Notificação quando uma regra é excluída",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "Minha Regra API"
+      }
+    }
+  },
+  "notifications_profile_switched": {
+    "message": "Alternado para o perfil '$1'",
+    "description": "Notificação quando o perfil é alternado",
+    "placeholders": {
+      "profileName": {
+        "content": "$1",
+        "example": "Desenvolvimento"
+      }
+    }
+  },
+  "notifications_extension_enabled": {
+    "message": "RequestKit ativado",
+    "description": "Notificação quando a extensão é ativada"
+  },
+  "notifications_extension_disabled": {
+    "message": "RequestKit desativado",
+    "description": "Notificação quando a extensão é desativada"
+  },
+  "notifications_backup_created": {
+    "message": "Backup criado com sucesso",
+    "description": "Notificação quando o backup é criado"
+  },
+  "notifications_data_imported": {
+    "message": "Dados importados com sucesso",
+    "description": "Notificação quando os dados são importados"
+  },
+  "templates_cors_name": {
+    "message": "Cabeçalhos CORS",
+    "description": "Nome do modelo CORS"
+  },
+  "templates_cors_description": {
+    "message": "Ativar Compartilhamento de Recursos Cross-Origin",
+    "description": "Descrição do modelo CORS"
+  },
+  "templates_auth_bearer_name": {
+    "message": "Token Bearer",
+    "description": "Nome do modelo de token Bearer"
+  },
+  "templates_auth_bearer_description": {
+    "message": "Adicionar cabeçalho Authorization com token Bearer",
+    "description": "Descrição do modelo de token Bearer"
+  },
+  "templates_debug_name": {
+    "message": "Cabeçalhos de Debug",
+    "description": "Nome do modelo de debug"
+  },
+  "templates_debug_description": {
+    "message": "Adicionar cabeçalhos de informação de debug",
+    "description": "Descrição do modelo de debug"
+  },
+  "templates_security_name": {
+    "message": "Cabeçalhos de Segurança",
+    "description": "Nome do modelo de segurança"
+  },
+  "templates_security_description": {
+    "message": "Adicionar cabeçalhos de segurança comuns",
+    "description": "Descrição do modelo de segurança"
+  },
+  "profiles_default_dev_name": {
+    "message": "Desenvolvimento",
+    "description": "Nome do perfil de desenvolvimento padrão"
+  },
+  "profiles_default_dev_description": {
+    "message": "Perfil para ambiente de desenvolvimento com recursos de debug ativados",
+    "description": "Descrição do perfil de desenvolvimento padrão"
+  },
+  "profiles_default_prod_name": {
+    "message": "Produção",
+    "description": "Nome do perfil de produção padrão"
+  },
+  "profiles_default_prod_description": {
+    "message": "Perfil para ambiente de produção com log mínimo",
+    "description": "Descrição do perfil de produção padrão"
+  },
+  "rules_header_operations_set": {
+    "message": "Definir",
+    "description": "Operação de definir cabeçalho"
+  },
+  "rules_header_operations_append": {
+    "message": "Anexar",
+    "description": "Operação de anexar cabeçalho"
+  },
+  "rules_header_operations_remove": {
+    "message": "Remover",
+    "description": "Operação de remover cabeçalho"
+  },
+  "rules_priority_very_low": {
+    "message": "Muito Baixa",
+    "description": "Rótulo de prioridade muito baixa"
+  },
+  "rules_priority_low": {
+    "message": "Baixa",
+    "description": "Rótulo de prioridade baixa"
+  },
+  "rules_priority_normal": {
+    "message": "Normal",
+    "description": "Rótulo de prioridade normal"
+  },
+  "rules_priority_high": {
+    "message": "Alta",
+    "description": "Rótulo de prioridade alta"
+  },
+  "rules_priority_very_high": {
+    "message": "Muito Alta",
+    "description": "Rótulo de prioridade muito alta"
+  },
+  "settings_general": {
+    "message": "Geral",
+    "description": "Aba de configurações gerais"
+  },
+  "settings_notifications": {
+    "message": "Notificações",
+    "description": "Aba de configurações de notificações"
+  },
+  "settings_performance": {
+    "message": "Performance",
+    "description": "Aba de configurações de performance"
+  },
+  "settings_security": {
+    "message": "Segurança",
+    "description": "Aba de configurações de segurança"
+  },
+  "settings_backup": {
+    "message": "Backup",
+    "description": "Aba de configurações de backup"
+  },
+  "settings_theme_light": {
+    "message": "Claro",
+    "description": "Opção de tema claro"
+  },
+  "settings_theme_dark": {
+    "message": "Escuro",
+    "description": "Opção de tema escuro"
+  },
+  "settings_theme_auto": {
+    "message": "Auto",
+    "description": "Opção de tema automático"
+  },
+  "contextmenu_create_rule": {
+    "message": "Criar regra para esta URL",
+    "description": "Item do menu de contexto para criar regra"
+  },
+  "contextmenu_open_options": {
+    "message": "Abrir Opções do RequestKit",
+    "description": "Item do menu de contexto para abrir opções"
+  },
+  "contextmenu_toggle_extension": {
+    "message": "Alternar RequestKit",
+    "description": "Item do menu de contexto para alternar extensão"
+  },
+  "devtools_panel_title": {
+    "message": "RequestKit",
+    "description": "Título do painel DevTools"
+  },
+  "devtools_requests_tab": {
+    "message": "Requisições",
+    "description": "Aba de requisições no DevTools"
+  },
+  "devtools_rules_tab": {
+    "message": "Regras",
+    "description": "Aba de regras no DevTools"
+  },
+  "devtools_performance_tab": {
+    "message": "Performance",
+    "description": "Aba de performance no DevTools"
+  },
+  "devtools_no_requests": {
+    "message": "Nenhuma requisição capturada ainda",
+    "description": "Mensagem quando nenhuma requisição é capturada"
+  },
+  "devtools_request_details": {
+    "message": "Detalhes da Requisição",
+    "description": "Título da seção de detalhes da requisição"
+  },
+  "devtools_matched_rules": {
+    "message": "Regras Correspondentes",
+    "description": "Título da seção de regras correspondentes"
+  }
+}

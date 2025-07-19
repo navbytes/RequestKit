@@ -149,7 +149,9 @@ function BasicRuleInfo({ newRule, setNewRule }: BasicRuleInfoProps) {
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
-          <label htmlFor="rule-name-input" className="form-label">Rule Name</label>
+          <label htmlFor="rule-name-input" className="form-label">
+            Rule Name
+          </label>
           <input
             type="text"
             id="rule-name-input"
@@ -162,7 +164,9 @@ function BasicRuleInfo({ newRule, setNewRule }: BasicRuleInfoProps) {
           />
         </div>
         <div>
-          <label htmlFor="protocol-select" className="form-label">Protocol</label>
+          <label htmlFor="protocol-select" className="form-label">
+            Protocol
+          </label>
           <select
             id="protocol-select"
             className="input"
@@ -183,7 +187,9 @@ function BasicRuleInfo({ newRule, setNewRule }: BasicRuleInfoProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         <div>
-          <label htmlFor="domain-input" className="form-label">Domain</label>
+          <label htmlFor="domain-input" className="form-label">
+            Domain
+          </label>
           <input
             type="text"
             id="domain-input"
@@ -199,7 +205,9 @@ function BasicRuleInfo({ newRule, setNewRule }: BasicRuleInfoProps) {
           />
         </div>
         <div>
-          <label htmlFor="path-input" className="form-label">Path</label>
+          <label htmlFor="path-input" className="form-label">
+            Path
+          </label>
           <input
             type="text"
             id="path-input"
@@ -252,7 +260,9 @@ function ConditionsSection({
   return (
     <div className="mb-6">
       <div className="flex items-center justify-between mb-4">
-        <label htmlFor="conditions-section" className="form-label">Conditions</label>
+        <label htmlFor="conditions-section" className="form-label">
+          Conditions
+        </label>
         <div className="flex items-center space-x-2">
           <span className="text-sm text-gray-600 dark:text-gray-400">
             Logic:
@@ -300,7 +310,12 @@ function ConditionsSection({
         <h4 className="font-medium mb-3">Add Condition</h4>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-3 mb-3">
           <div>
-            <label htmlFor="condition-type-select" className="form-label text-xs">Type</label>
+            <label
+              htmlFor="condition-type-select"
+              className="form-label text-xs"
+            >
+              Type
+            </label>
             <select
               id="condition-type-select"
               className="input"
@@ -322,7 +337,12 @@ function ConditionsSection({
             </select>
           </div>
           <div>
-            <label htmlFor="condition-operator-select" className="form-label text-xs">Operator</label>
+            <label
+              htmlFor="condition-operator-select"
+              className="form-label text-xs"
+            >
+              Operator
+            </label>
             <select
               id="condition-operator-select"
               className="input"
@@ -342,7 +362,12 @@ function ConditionsSection({
             </select>
           </div>
           <div>
-            <label htmlFor="condition-value-input" className="form-label text-xs">Value</label>
+            <label
+              htmlFor="condition-value-input"
+              className="form-label text-xs"
+            >
+              Value
+            </label>
             <input
               type="text"
               id="condition-value-input"
@@ -428,7 +453,9 @@ function HeadersSection({
 }: HeadersSectionProps) {
   return (
     <div className="mb-6">
-      <label htmlFor="headers-section" className="form-label">Headers to Apply</label>
+      <label htmlFor="headers-section" className="form-label">
+        Headers to Apply
+      </label>
       <div className="space-y-2">
         {Object.entries(newRule.headers).map(([key, value]) => (
           <div key={key} className="flex items-center space-x-2">

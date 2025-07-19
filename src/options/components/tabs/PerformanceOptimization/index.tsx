@@ -200,7 +200,9 @@ export function PerformanceOptimization({
           {NAVIGATION_TABS.map(tab => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as 'metrics' | 'optimization' | 'cache')}
+              onClick={() =>
+                setActiveTab(tab.id as 'metrics' | 'optimization' | 'cache')
+              }
               className={`flex items-center py-2 px-1 border-b-2 font-medium text-sm ${
                 activeTab === tab.id
                   ? 'border-primary-500 text-primary-600 dark:text-primary-400'

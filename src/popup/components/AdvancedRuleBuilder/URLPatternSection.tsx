@@ -21,7 +21,10 @@ export function URLPatternSection({
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         <div>
-          <label htmlFor="url-protocol-select" className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
+          <label
+            htmlFor="url-protocol-select"
+            className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1"
+          >
             Protocol
           </label>
           <select
@@ -44,7 +47,10 @@ export function URLPatternSection({
         </div>
 
         <div>
-          <label htmlFor="url-domain-input" className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
+          <label
+            htmlFor="url-domain-input"
+            className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1"
+          >
             Domain *
           </label>
           <input
@@ -61,7 +67,10 @@ export function URLPatternSection({
         </div>
 
         <div>
-          <label htmlFor="url-path-input" className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
+          <label
+            htmlFor="url-path-input"
+            className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1"
+          >
             Path
           </label>
           <input

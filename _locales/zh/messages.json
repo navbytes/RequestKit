@@ -1,0 +1,438 @@
+{
+  "extensionName": {
+    "message": "RequestKit",
+    "description": "扩展的名称"
+  },
+  "extensionDescription": {
+    "message": "高级Chrome扩展，用于注入自定义头部，具有强大的变量系统、模式匹配和测试工具",
+    "description": "扩展的描述"
+  },
+  "extensionShortName": {
+    "message": "RequestKit",
+    "description": "扩展的简称"
+  },
+  "app_name": {
+    "message": "RequestKit",
+    "description": "应用程序名称"
+  },
+  "app_version": {
+    "message": "1.0.0",
+    "description": "应用程序版本"
+  },
+  "ui_button_save": {
+    "message": "保存",
+    "description": "保存按钮标签"
+  },
+  "ui_button_cancel": {
+    "message": "取消",
+    "description": "取消按钮标签"
+  },
+  "ui_button_delete": {
+    "message": "删除",
+    "description": "删除按钮标签"
+  },
+  "ui_button_edit": {
+    "message": "编辑",
+    "description": "编辑按钮标签"
+  },
+  "ui_button_add": {
+    "message": "添加",
+    "description": "添加按钮标签"
+  },
+  "ui_button_create": {
+    "message": "创建",
+    "description": "创建按钮标签"
+  },
+  "ui_button_update": {
+    "message": "更新",
+    "description": "更新按钮标签"
+  },
+  "ui_button_remove": {
+    "message": "移除",
+    "description": "移除按钮标签"
+  },
+  "ui_button_close": {
+    "message": "关闭",
+    "description": "关闭按钮标签"
+  },
+  "ui_button_back": {
+    "message": "返回",
+    "description": "返回按钮标签"
+  },
+  "ui_button_next": {
+    "message": "下一步",
+    "description": "下一步按钮标签"
+  },
+  "ui_button_finish": {
+    "message": "完成",
+    "description": "完成按钮标签"
+  },
+  "ui_button_apply": {
+    "message": "应用",
+    "description": "应用按钮标签"
+  },
+  "ui_button_reset": {
+    "message": "重置",
+    "description": "重置按钮标签"
+  },
+  "ui_button_clear": {
+    "message": "清除",
+    "description": "清除按钮标签"
+  },
+  "ui_button_refresh": {
+    "message": "刷新",
+    "description": "刷新按钮标签"
+  },
+  "ui_button_export": {
+    "message": "导出",
+    "description": "导出按钮标签"
+  },
+  "ui_button_import": {
+    "message": "导入",
+    "description": "导入按钮标签"
+  },
+  "ui_button_copy": {
+    "message": "复制",
+    "description": "复制按钮标签"
+  },
+  "ui_button_paste": {
+    "message": "粘贴",
+    "description": "粘贴按钮标签"
+  },
+  "ui_label_name": {
+    "message": "名称",
+    "description": "名称字段标签"
+  },
+  "ui_label_description": {
+    "message": "描述",
+    "description": "描述字段标签"
+  },
+  "ui_label_url": {
+    "message": "URL",
+    "description": "URL字段标签"
+  },
+  "ui_label_method": {
+    "message": "方法",
+    "description": "HTTP方法字段标签"
+  },
+  "ui_label_headers": {
+    "message": "头部",
+    "description": "头部字段标签"
+  },
+  "ui_label_value": {
+    "message": "值",
+    "description": "值字段标签"
+  },
+  "ui_label_enabled": {
+    "message": "已启用",
+    "description": "已启用字段标签"
+  },
+  "ui_label_disabled": {
+    "message": "已禁用",
+    "description": "已禁用字段标签"
+  },
+  "ui_label_priority": {
+    "message": "优先级",
+    "description": "优先级字段标签"
+  },
+  "ui_label_pattern": {
+    "message": "模式",
+    "description": "模式字段标签"
+  },
+  "ui_label_operation": {
+    "message": "操作",
+    "description": "操作字段标签"
+  },
+  "ui_label_status": {
+    "message": "状态",
+    "description": "状态字段标签"
+  },
+  "ui_label_type": {
+    "message": "类型",
+    "description": "类型字段标签"
+  },
+  "ui_label_category": {
+    "message": "类别",
+    "description": "类别字段标签"
+  },
+  "ui_label_tags": {
+    "message": "标签",
+    "description": "标签字段标签"
+  },
+  "ui_tooltip_save": {
+    "message": "保存当前更改",
+    "description": "保存按钮工具提示"
+  },
+  "ui_tooltip_delete": {
+    "message": "删除此项目",
+    "description": "删除按钮工具提示"
+  },
+  "ui_tooltip_edit": {
+    "message": "编辑此项目",
+    "description": "编辑按钮工具提示"
+  },
+  "ui_tooltip_enable": {
+    "message": "启用此规则",
+    "description": "启用按钮工具提示"
+  },
+  "ui_tooltip_disable": {
+    "message": "禁用此规则",
+    "description": "禁用按钮工具提示"
+  },
+  "errors_validation_domain_invalid": {
+    "message": "无效的域名模式",
+    "description": "无效域名的错误消息"
+  },
+  "errors_validation_path_invalid": {
+    "message": "路径必须以/开头",
+    "description": "无效路径的错误消息"
+  },
+  "errors_validation_header_name_invalid": {
+    "message": "头部名称包含无效字符",
+    "description": "无效头部名称的错误消息"
+  },
+  "errors_validation_port_invalid": {
+    "message": "端口必须是1-65535之间的数字或*",
+    "description": "无效端口的错误消息"
+  },
+  "errors_rule_not_found": {
+    "message": "未找到规则",
+    "description": "未找到规则时的错误消息"
+  },
+  "errors_template_not_found": {
+    "message": "未找到模板",
+    "description": "未找到模板时的错误消息"
+  },
+  "errors_storage_error": {
+    "message": "保存数据失败",
+    "description": "存储失败的错误消息"
+  },
+  "errors_import_error": {
+    "message": "导入数据失败",
+    "description": "导入失败的错误消息"
+  },
+  "errors_export_error": {
+    "message": "导出数据失败",
+    "description": "导出失败的错误消息"
+  },
+  "errors_network_error": {
+    "message": "发生网络错误",
+    "description": "网络失败的错误消息"
+  },
+  "errors_permission_denied": {
+    "message": "权限被拒绝",
+    "description": "权限问题的错误消息"
+  },
+  "errors_invalid_format": {
+    "message": "无效格式",
+    "description": "格式验证的错误消息"
+  },
+  "notifications_rule_created": {
+    "message": "规则'$1'创建成功",
+    "description": "创建规则时的通知",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "我的API规则"
+      }
+    }
+  },
+  "notifications_rule_updated": {
+    "message": "规则'$1'更新成功",
+    "description": "更新规则时的通知",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "我的API规则"
+      }
+    }
+  },
+  "notifications_rule_deleted": {
+    "message": "规则'$1'删除成功",
+    "description": "删除规则时的通知",
+    "placeholders": {
+      "ruleName": {
+        "content": "$1",
+        "example": "我的API规则"
+      }
+    }
+  },
+  "notifications_profile_switched": {
+    "message": "已切换到配置文件'$1'",
+    "description": "切换配置文件时的通知",
+    "placeholders": {
+      "profileName": {
+        "content": "$1",
+        "example": "开发"
+      }
+    }
+  },
+  "notifications_extension_enabled": {
+    "message": "RequestKit已启用",
+    "description": "启用扩展时的通知"
+  },
+  "notifications_extension_disabled": {
+    "message": "RequestKit已禁用",
+    "description": "禁用扩展时的通知"
+  },
+  "notifications_backup_created": {
+    "message": "备份创建成功",
+    "description": "创建备份时的通知"
+  },
+  "notifications_data_imported": {
+    "message": "数据导入成功",
+    "description": "导入数据时的通知"
+  },
+  "templates_cors_name": {
+    "message": "CORS头部",
+    "description": "CORS模板的名称"
+  },
+  "templates_cors_description": {
+    "message": "启用跨源资源共享",
+    "description": "CORS模板的描述"
+  },
+  "templates_auth_bearer_name": {
+    "message": "Bearer令牌",
+    "description": "Bearer令牌模板的名称"
+  },
+  "templates_auth_bearer_description": {
+    "message": "添加带Bearer令牌的Authorization头部",
+    "description": "Bearer令牌模板的描述"
+  },
+  "templates_debug_name": {
+    "message": "调试头部",
+    "description": "调试模板的名称"
+  },
+  "templates_debug_description": {
+    "message": "添加调试信息头部",
+    "description": "调试模板的描述"
+  },
+  "templates_security_name": {
+    "message": "安全头部",
+    "description": "安全模板的名称"
+  },
+  "templates_security_description": {
+    "message": "添加常见安全头部",
+    "description": "安全模板的描述"
+  },
+  "profiles_default_dev_name": {
+    "message": "开发",
+    "description": "默认开发配置文件的名称"
+  },
+  "profiles_default_dev_description": {
+    "message": "用于开发环境的配置文件，启用调试功能",
+    "description": "默认开发配置文件的描述"
+  },
+  "profiles_default_prod_name": {
+    "message": "生产",
+    "description": "默认生产配置文件的名称"
+  },
+  "profiles_default_prod_description": {
+    "message": "用于生产环境的配置文件，最小日志记录",
+    "description": "默认生产配置文件的描述"
+  },
+  "rules_header_operations_set": {
+    "message": "设置",
+    "description": "头部设置操作"
+  },
+  "rules_header_operations_append": {
+    "message": "追加",
+    "description": "头部追加操作"
+  },
+  "rules_header_operations_remove": {
+    "message": "移除",
+    "description": "头部移除操作"
+  },
+  "rules_priority_very_low": {
+    "message": "极低",
+    "description": "极低优先级标签"
+  },
+  "rules_priority_low": {
+    "message": "低",
+    "description": "低优先级标签"
+  },
+  "rules_priority_normal": {
+    "message": "普通",
+    "description": "普通优先级标签"
+  },
+  "rules_priority_high": {
+    "message": "高",
+    "description": "高优先级标签"
+  },
+  "rules_priority_very_high": {
+    "message": "极高",
+    "description": "极高优先级标签"
+  },
+  "settings_general": {
+    "message": "常规",
+    "description": "常规设置选项卡"
+  },
+  "settings_notifications": {
+    "message": "通知",
+    "description": "通知设置选项卡"
+  },
+  "settings_performance": {
+    "message": "性能",
+    "description": "性能设置选项卡"
+  },
+  "settings_security": {
+    "message": "安全",
+    "description": "安全设置选项卡"
+  },
+  "settings_backup": {
+    "message": "备份",
+    "description": "备份设置选项卡"
+  },
+  "settings_theme_light": {
+    "message": "浅色",
+    "description": "浅色主题选项"
+  },
+  "settings_theme_dark": {
+    "message": "深色",
+    "description": "深色主题选项"
+  },
+  "settings_theme_auto": {
+    "message": "自动",
+    "description": "自动主题选项"
+  },
+  "contextmenu_create_rule": {
+    "message": "为此URL创建规则",
+    "description": "创建规则的上下文菜单项"
+  },
+  "contextmenu_open_options": {
+    "message": "打开RequestKit选项",
+    "description": "打开选项的上下文菜单项"
+  },
+  "contextmenu_toggle_extension": {
+    "message": "切换RequestKit",
+    "description": "切换扩展的上下文菜单项"
+  },
+  "devtools_panel_title": {
+    "message": "RequestKit",
+    "description": "DevTools面板标题"
+  },
+  "devtools_requests_tab": {
+    "message": "请求",
+    "description": "DevTools中的请求选项卡"
+  },
+  "devtools_rules_tab": {
+    "message": "规则",
+    "description": "DevTools中的规则选项卡"
+  },
+  "devtools_performance_tab": {
+    "message": "性能",
+    "description": "DevTools中的性能选项卡"
+  },
+  "devtools_no_requests": {
+    "message": "尚未捕获任何请求",
+    "description": "未捕获请求时的消息"
+  },
+  "devtools_request_details": {
+    "message": "请求详细信息",
+    "description": "请求详细信息部分标题"
+  },
+  "devtools_matched_rules": {
+    "message": "匹配的规则",
+    "description": "匹配规则部分标题"
+  }
+}

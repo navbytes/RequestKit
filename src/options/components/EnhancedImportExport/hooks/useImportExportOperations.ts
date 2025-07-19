@@ -29,7 +29,6 @@ interface ExportOptions {
   appVersion: boolean;
 }
 
-
 // Get logger for this module
 const logger = loggers.shared;
 

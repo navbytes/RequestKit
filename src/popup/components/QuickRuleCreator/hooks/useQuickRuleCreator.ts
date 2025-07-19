@@ -3,7 +3,6 @@ import { useState } from 'preact/hooks';
 import type { HeaderRule } from '@/shared/types/rules';
 import { loggers } from '@/shared/utils/debug';
 
-
 // Get logger for this module
 const logger = loggers.shared;
 

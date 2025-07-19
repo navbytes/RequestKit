@@ -73,8 +73,8 @@ export function HelpAbout() {
                   Create Your First Rule
                 </h4>
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Go to Rule Management and click &quot;Create New Rule&quot; to set up
-                  header injection for specific URLs.
+                  Go to Rule Management and click &quot;Create New Rule&quot; to
+                  set up header injection for specific URLs.
                 </p>
               </div>
             </div>

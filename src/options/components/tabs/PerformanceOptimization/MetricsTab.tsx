@@ -16,7 +16,7 @@ export function MetricsTab({
   loading,
   onGenerateReport,
   onResetMetrics,
-}: MetricsTabProps) {
+}: Readonly<MetricsTabProps>) {
   if (!performanceReport || performanceReport.summary.totalExecutions === 0) {
     return <EmptyMetricsState />;
   }
@@ -134,7 +134,7 @@ function EmptyMetricsState() {
 }
 
 interface CacheStatisticsProps {
-  cache: {
+  readonly cache: {
     size: number;
     hits: number;
     misses: number;
@@ -185,7 +185,7 @@ function CacheStatistics({ cache }: CacheStatisticsProps) {
 }
 
 interface SlowestRulesProps {
-  rules: Array<{
+  readonly rules: Array<{
     ruleId: string;
     averageTime: number;
     executionCount: number;
@@ -226,7 +226,7 @@ function SlowestRules({ rules }: SlowestRulesProps) {
 }
 
 interface PerformanceRecommendationsProps {
-  recommendations: string[];
+  readonly recommendations: string[];
 }
 
 function PerformanceRecommendations({

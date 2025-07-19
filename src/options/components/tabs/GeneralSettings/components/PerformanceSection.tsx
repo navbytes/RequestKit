@@ -14,7 +14,7 @@ interface PerformanceSectionProps {
 export function PerformanceSection({
   performance,
   onPerformanceChange,
-}: PerformanceSectionProps) {
+}: Readonly<PerformanceSectionProps>) {
   return (
     <SettingsSection title="Performance">
       <div className="space-y-4">

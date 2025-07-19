@@ -4,12 +4,12 @@
     "description": "拡張機能の名前"
   },
   "extensionDescription": {
-    "message": "強力な変数システム、パターンマッチング、テストツールを備えたカスタムヘッダーを注入するための高度なChrome拡張機能",
+    "message": "強力な変数システム、パターンマッチング、およびテストツールを備えた高度なChrome拡張機能で、カスタムヘッダーを注入します",
     "description": "拡張機能の説明"
   },
   "extensionShortName": {
     "message": "RequestKit",
-    "description": "拡張機能の短縮名"
+    "description": "短縮名"
   },
   "app_name": {
     "message": "RequestKit",
@@ -61,7 +61,7 @@
   },
   "ui_button_next": {
     "message": "次へ",
-    "description": "次へボタンのラベル"
+    "description": "次のボタンのラベル"
   },
   "ui_button_finish": {
     "message": "完了",
@@ -99,6 +99,7 @@
     "message": "貼り付け",
     "description": "貼り付けボタンのラベル"
   },
+
   "ui_label_name": {
     "message": "名前",
     "description": "名前フィールドのラベル"
@@ -131,6 +132,18 @@
     "message": "無効",
     "description": "無効フィールドのラベル"
   },
+  "ui_label_rules_active": {
+    "message": "有効なルール",
+    "description": "有効なルールの数のラベル"
+  },
+  "ui_label_extension_disabled": {
+    "message": "拡張機能無効",
+    "description": "拡張機能が無効の場合のラベル"
+  },
+  "ui_label_extension_status": {
+    "message": "拡張機能の状態",
+    "description": "拡張機能のステータステグのラベル"
+  },
   "ui_label_priority": {
     "message": "優先度",
     "description": "優先度フィールドのラベル"
@@ -144,21 +157,22 @@
     "description": "操作フィールドのラベル"
   },
   "ui_label_status": {
-    "message": "ステータス",
-    "description": "ステータスフィールドのラベル"
+    "message": "状態",
+    "description": "状態フィールドのラベル"
   },
   "ui_label_type": {
     "message": "タイプ",
     "description": "タイプフィールドのラベル"
   },
   "ui_label_category": {
-    "message": "カテゴリ",
-    "description": "カテゴリフィールドのラベル"
+    "message": "カテゴリー",
+    "description": "カテゴリーのラベル"
   },
   "ui_label_tags": {
     "message": "タグ",
     "description": "タグフィールドのラベル"
   },
+
   "ui_tooltip_save": {
     "message": "現在の変更を保存",
     "description": "保存ボタンのツールチップ"
@@ -173,35 +187,48 @@
   },
   "ui_tooltip_enable": {
     "message": "このルールを有効にする",
-    "description": "有効ボタンのツールチップ"
+    "description": "有効化のツールチップ"
   },
   "ui_tooltip_disable": {
     "message": "このルールを無効にする",
-    "description": "無効ボタンのツールチップ"
+    "description": "無効化のツールチップ"
   },
+  "ui_tooltip_open_options": {
+    "message": "設定を開く",
+    "description": "オプションページを開くツールチップ"
+  },
+  "ui_aria_enable_extension": {
+    "message": "拡張機能を有効にする",
+    "description": "有効にするボタンのARIAラベル"
+  },
+  "ui_aria_disable_extension": {
+    "message": "拡張機能を無効にする",
+    "description": "無効にするボタンのARIAラベル"
+  },
+
   "errors_validation_domain_invalid": {
     "message": "無効なドメインパターン",
-    "description": "無効なドメインのエラーメッセージ"
+    "description": "無効なドメインに対するエラーメッセージ"
   },
   "errors_validation_path_invalid": {
-    "message": "パスは/で始まる必要があります",
-    "description": "無効なパスのエラーメッセージ"
+    "message": "/で始まる必要があります",
+    "description": "無効なパスに対するエラーメッセージ"
   },
   "errors_validation_header_name_invalid": {
     "message": "ヘッダー名に無効な文字が含まれています",
-    "description": "無効なヘッダー名のエラーメッセージ"
+    "description": "無効なヘッダー名に対するエラーメッセージ"
   },
   "errors_validation_port_invalid": {
-    "message": "ポートは1-65535の数値または*である必要があります",
-    "description": "無効なポートのエラーメッセージ"
+    "message": "ポートは1-65535の数字、または*でなければなりません",
+    "description": "無効なポートに対するエラーメッセージ"
   },
   "errors_rule_not_found": {
     "message": "ルールが見つかりません",
-    "description": "ルールが見つからない時のエラーメッセージ"
+    "description": "ルールが見つからない場合のエラーメッセージ"
   },
   "errors_template_not_found": {
     "message": "テンプレートが見つかりません",
-    "description": "テンプレートが見つからない時のエラーメッセージ"
+    "description": "テンプレートが見つからない場合のエラーメッセージ"
   },
   "errors_storage_error": {
     "message": "データの保存に失敗しました",
@@ -217,18 +244,19 @@
   },
   "errors_network_error": {
     "message": "ネットワークエラーが発生しました",
-    "description": "ネットワーク失敗のエラーメッセージ"
+    "description": "ネットワークエラーのエラーメッセージ"
   },
   "errors_permission_denied": {
-    "message": "アクセス拒否",
-    "description": "アクセス許可問題のエラーメッセージ"
+    "message": "アクセス許可が拒否されました",
+    "description": "許可問題のエラーメッセージ"
   },
   "errors_invalid_format": {
     "message": "無効な形式",
-    "description": "形式検証のエラーメッセージ"
+    "description": "フォーマット検証のエラーメッセージ"
   },
+
   "notifications_rule_created": {
-    "message": "ルール'$1'が正常に作成されました",
+    "message": "'$1' ルールが正常に作成されました",
     "description": "ルール作成時の通知",
     "placeholders": {
       "ruleName": {
@@ -238,7 +266,7 @@
     }
   },
   "notifications_rule_updated": {
-    "message": "ルール'$1'が正常に更新されました",
+    "message": "'$1' ルールが正常に更新されました",
     "description": "ルール更新時の通知",
     "placeholders": {
       "ruleName": {
@@ -248,7 +276,7 @@
     }
   },
   "notifications_rule_deleted": {
-    "message": "ルール'$1'が正常に削除されました",
+    "message": "'$1' ルールが正常に削除されました",
     "description": "ルール削除時の通知",
     "placeholders": {
       "ruleName": {
@@ -258,8 +286,8 @@
     }
   },
   "notifications_profile_switched": {
-    "message": "プロファイル'$1'に切り替えました",
-    "description": "プロファイル切り替え時の通知",
+    "message": "'$1' プロファイルに切り替わりました",
+    "description": "プロファイル切り替え通知",
     "placeholders": {
       "profileName": {
         "content": "$1",
@@ -268,12 +296,12 @@
     }
   },
   "notifications_extension_enabled": {
-    "message": "RequestKitが有効になりました",
-    "description": "拡張機能有効時の通知"
+    "message": "RequestKit が有効になりました",
+    "description": "拡張機能が有効になったときの通知"
   },
   "notifications_extension_disabled": {
-    "message": "RequestKitが無効になりました",
-    "description": "拡張機能無効時の通知"
+    "message": "RequestKit が無効になりました",
+    "description": "拡張機能が無効になったときの通知"
   },
   "notifications_backup_created": {
     "message": "バックアップが正常に作成されました",
@@ -283,28 +311,29 @@
     "message": "データが正常にインポートされました",
     "description": "データインポート時の通知"
   },
+
   "templates_cors_name": {
-    "message": "CORSヘッダー",
+    "message": "CORS ヘッダー",
     "description": "CORSテンプレートの名前"
   },
   "templates_cors_description": {
-    "message": "クロスオリジンリソースシェアリングを有効にする",
+    "message": "クロスオリジンリソース共有を有効にする",
     "description": "CORSテンプレートの説明"
   },
   "templates_auth_bearer_name": {
     "message": "Bearerトークン",
-    "description": "Bearerトークンテンプレートの名前"
+    "description": "Bearerトークンのテンプレート名"
   },
   "templates_auth_bearer_description": {
-    "message": "Bearerトークン付きAuthorizationヘッダーを追加",
-    "description": "Bearerトークンテンプレートの説明"
+    "message": "Bearerトークンを含む認証ヘッダーを追加",
+    "description": "Bearerトークンのテンプレートの説明"
   },
   "templates_debug_name": {
     "message": "デバッグヘッダー",
     "description": "デバッグテンプレートの名前"
   },
   "templates_debug_description": {
-    "message": "デバッグ情報ヘッダーを追加",
+    "message": "デバッグ情報用のヘッダーを追加",
     "description": "デバッグテンプレートの説明"
   },
   "templates_security_name": {
@@ -315,33 +344,35 @@
     "message": "一般的なセキュリティヘッダーを追加",
     "description": "セキュリティテンプレートの説明"
   },
+
   "profiles_default_dev_name": {
     "message": "開発",
-    "description": "デフォルト開発プロファイルの名前"
+    "description": "デフォルトの開発プロファイルの名前"
   },
   "profiles_default_dev_description": {
-    "message": "デバッグ機能を有効にした開発環境用プロファイル",
-    "description": "デフォルト開発プロファイルの説明"
+    "message": "デバッグ機能が有効な開発環境用のプロファイル",
+    "description": "デフォルトの開発プロファイルの説明"
   },
   "profiles_default_prod_name": {
     "message": "本番",
-    "description": "デフォルト本番プロファイルの名前"
+    "description": "デフォルトの本番プロファイルの名前"
   },
   "profiles_default_prod_description": {
-    "message": "最小限のログ記録を持つ本番環境用プロファイル",
-    "description": "デフォルト本番プロファイルの説明"
+    "message": "最小限のログ記録を行う本番環境用のプロファイル",
+    "description": "デフォルトの本番プロファイルの説明"
   },
+
   "rules_header_operations_set": {
     "message": "設定",
-    "description": "ヘッダー設定操作"
+    "description": "ヘッダー操作の設定"
   },
   "rules_header_operations_append": {
     "message": "追加",
-    "description": "ヘッダー追加操作"
+    "description": "ヘッダー操作の追加"
   },
   "rules_header_operations_remove": {
     "message": "削除",
-    "description": "ヘッダー削除操作"
+    "description": "ヘッダー操作の削除"
   },
   "rules_priority_very_low": {
     "message": "非常に低い",
@@ -353,7 +384,7 @@
   },
   "rules_priority_normal": {
     "message": "通常",
-    "description": "通常優先度のラベル"
+    "description": "標準の優先度のラベル"
   },
   "rules_priority_high": {
     "message": "高い",
@@ -363,6 +394,7 @@
     "message": "非常に高い",
     "description": "非常に高い優先度のラベル"
   },
+
   "settings_general": {
     "message": "一般",
     "description": "一般設定タブ"
@@ -385,31 +417,33 @@
   },
   "settings_theme_light": {
     "message": "ライト",
-    "description": "ライトテーマオプション"
+    "description": "ライトテーマのオプション"
   },
   "settings_theme_dark": {
     "message": "ダーク",
-    "description": "ダークテーマオプション"
+    "description": "ダークテーマのオプション"
   },
   "settings_theme_auto": {
     "message": "自動",
-    "description": "自動テーマオプション"
+    "description": "自動テーマのオプション"
   },
+
   "contextmenu_create_rule": {
     "message": "このURLのルールを作成",
-    "description": "ルール作成のコンテキストメニューアイテム"
+    "description": "コンテキストメニューのルール作成項目"
   },
   "contextmenu_open_options": {
-    "message": "RequestKitオプションを開く",
-    "description": "オプション開くコンテキストメニューアイテム"
+    "message": "RequestKitのオプションを開く",
+    "description": "コンテキストメニューのオプションを開く項目"
   },
   "contextmenu_toggle_extension": {
-    "message": "RequestKitを切り替え",
-    "description": "拡張機能切り替えのコンテキストメニューアイテム"
+    "message": "RequestKitを切り替える",
+    "description": "拡張機能の切り替えメニュー項目"
   },
+
   "devtools_panel_title": {
-    "message": "RequestKit",
-    "description": "DevToolsパネルタイトル"
+    "message": "RequestKit DevTools",
+    "description": "DevToolsパネルのタイトル"
   },
   "devtools_requests_tab": {
     "message": "リクエスト",
@@ -424,15 +458,485 @@
     "description": "DevToolsのパフォーマンスタブ"
   },
   "devtools_no_requests": {
-    "message": "まだリクエストがキャプチャされていません",
-    "description": "リクエストがキャプチャされていない時のメッセージ"
+    "message": "まだリクエストはキャプチャされていません",
+    "description": "リクエスト未キャプチャ時のメッセージ"
   },
   "devtools_request_details": {
-    "message": "リクエスト詳細",
-    "description": "リクエスト詳細セクションタイトル"
+    "message": "リクエストの詳細",
+    "description": "リクエスト詳細セクションのタイトル"
   },
   "devtools_matched_rules": {
-    "message": "マッチしたルール",
-    "description": "マッチしたルールセクションタイトル"
+    "message": "一致したルール",
+    "description": "一致したルールのセクションタイトル"
+  },
+  "ui_label_profile": {
+    "message": "プロファイル:"
+  },
+  "ui_option_unassigned": {
+    "message": "未割り当て"
+  },
+  "ui_label_rules": {
+    "message": "ルール:"
+  },
+  "ui_tooltip_unassigned_rules": {
+    "message": "未割り当てのルール"
+  },
+  "ui_label_unassigned_rules": {
+    "message": "未割り当てのルール"
+  },
+  "ui_description_unassigned_rules": {
+    "message": "プロファイルに割り当てられていないルールを表示"
+  },
+  "rules_empty_title": {
+    "message": "まだルールが作成されていません"
+  },
+  "rules_empty_description": {
+    "message": "最初のルールを作成してヘッダーの編集を始めましょう"
+  },
+  "rules_create_first": {
+    "message": "最初のルールを作成"
+  },
+
+  "templates_management_title": {
+    "message": "ルールテンプレート",
+    "description": "テンプレート管理タブのタイトル"
+  },
+  "templates_management_description": {
+    "message": "ヘッダー、条件、および高度な機能を含む包括的なルールテンプレートを閲覧、作成、管理します。テンプレートは一般的なユースケースに再利用可能な設定を提供し、必要に応じてカスタマイズ可能です。",
+    "description": "テンプレート管理セクションの説明"
+  },
+  "templates_management_features_1": {
+    "message": "ビルトインおよびカスタムテンプレートを閲覧",
+    "description": "機能の説明"
+  },
+  "templates_management_features_2": {
+    "message": "ヘッダーと条件を含むテンプレートを作成",
+    "description": "機能の説明"
+  },
+  "templates_management_features_3": {
+    "message": "テンプレートのインポート/エクスポートで共有",
+    "description": "機能の説明"
+  },
+  "templates_management_features_4": {
+    "message": "既存のテンプレートをクローンしてカスタマイズ",
+    "description": "機能の説明"
+  },
+  "templates_management_features_5": {
+    "message": "条件付きの高度なテンプレートタイプ",
+    "description": "機能の説明"
+  },
+  "templates_management_features_6": {
+    "message": "テンプレートを直接ルールとして適用",
+    "description": "機能の説明"
+  },
+  "templates_management_use_cases_1": {
+    "message": "頻繁に使用するルール設定を保存",
+    "description": "ユースケース"
+  },
+  "templates_management_use_cases_2": {
+    "message": "チーム間でルール設定を共有",
+    "description": "ユースケース"
+  },
+  "templates_management_use_cases_3": {
+    "message": "一般的なAPIシナリオのクイック設定",
+    "description": "ユースケース"
+  },
+  "templates_management_use_cases_4": {
+    "message": "異なる環境向けのテンプレートライブラリ",
+    "description": "ユースケース"
+  },
+  "templates_management_use_cases_5": {
+    "message": "ルール設定の標準化",
+    "description": "ユースケース"
+  },
+  "templates_import": {
+    "message": "インポート",
+    "description": "インポートボタンのテキスト"
+  },
+  "templates_create": {
+    "message": "テンプレートを作成",
+    "description": "テンプレート作成ボタン"
+  },
+  "templates_applied_from_template": {
+    "message": "テンプレートから適用済み",
+    "description": "テンプレートから作成されたルール名のサフィックス"
+  },
+
+  "variables_management_title": {
+    "message": "変数マネージャー",
+    "description": "変数管理タブのタイトル"
+  },
+  "variables_management_description": {
+    "message": "ヘッダー値やURLパターンで使用するための変数を作成・管理します。変数は動的値、計算式をサポートし、グローバルまたはプロファイルごとにスコープ可能です。",
+    "description": "変数管理セクションの説明"
+  },
+  "variables_management_features_1": {
+    "message": "関数サポート付きの静的変数を作成",
+    "description": "機能の説明"
+  },
+  "variables_management_features_2": {
+    "message": "グローバルおよびプロファイル固有のスコープ",
+    "description": "機能の説明"
+  },
+  "variables_management_features_3": {
+    "message": "隠し表示できるシークレット変数をサポート",
+    "description": "機能の説明"
+  },
+  "variables_management_features_4": {
+    "message": "${variable_name} 構文を用いた変数テンプレート",
+    "description": "機能の説明"
+  },
+  "variables_management_features_5": {
+    "message": "変数のインポート/エクスポートによるバックアップと共有",
+    "description": "機能の説明"
+  },
+  "variables_management_features_6": {
+    "message": "使用分析と検証",
+    "description": "機能の説明"
+  },
+  "variables_management_use_cases_1": {
+    "message": "APIキーと認証トークンを保存",
+    "description": "ユースケース"
+  },
+  "variables_management_use_cases_2": {
+    "message": "動的なタイムスタンプやUUIDを生成",
+    "description": "ユースケース"
+  },
+  "variables_management_use_cases_3": {
+    "message": "リクエストコンテキスト（ドメイン、パス、メソッド）を参照",
+    "description": "ユースケース"
+  },
+  "variables_management_use_cases_4": {
+    "message": "再利用可能なヘッダー値テンプレートを作成",
+    "description": "ユースケース"
+  },
+  "variables_management_use_cases_5": {
+    "message": "環境固有の設定値",
+    "description": "ユースケース"
+  },
+  "variables_loading": {
+    "message": "変数を読み込み中...",
+    "description": "読み込みメッセージ"
+  },
+  "variables_no_match_filters": {
+    "message": "フィルターと一致する変数はありません",
+    "description": "一致する変数がない場合"
+  },
+  "variables_no_configured": {
+    "message": "変数が設定されていません",
+    "description": "設定されていない場合"
+  },
+  "variables_no_match_description": {
+    "message": "検索クエリやフィルターを調整して変数を見つけてください。",
+    "description": "一致する変数がない場合"
+  },
+  "variables_no_configured_description": {
+    "message": "最初の変数を作成して動的ヘッダー値とテンプレートを開始しましょう。",
+    "description": "設定されていない場合"
+  },
+  "variables_clear_filters": {
+    "message": "フィルターをクリア",
+    "description": "フィルタークリアボタン"
+  },
+  "variables_create_first": {
+    "message": "最初の変数を作成",
+    "description": "最初の変数作成ボタン"
+  },
+
+  "settings_general_title": {
+    "message": "一般設定",
+    "description": "一般設定タブのタイトル"
+  },
+  "settings_general_description": {
+    "message": "拡張機能の動作、外観、およびパフォーマンス設定を構成します。RequestKitの動作を制御し、ユーザーインターフェースをカスタマイズし、高度なオプションを調整して最適なパフォーマンスを実現します。",
+    "description": "一般設定セクションの説明"
+  },
+  "settings_general_features_1": {
+    "message": "拡張機能の機能を有効/無効にする",
+    "description": "機能の説明"
+  },
+  "settings_general_features_2": {
+    "message": "デバッグモードとロギングコントロール",
+    "description": "機能の説明"
+  },
+  "settings_general_features_3": {
+    "message": "通知の設定",
+    "description": "機能の説明"
+  },
+  "settings_general_features_4": {
+    "message": "テーマとUIのカスタマイズ",
+    "description": "機能の説明"
+  },
+  "settings_general_features_5": {
+    "message": "パフォーマンス最適化設定",
+    "description": "機能の説明"
+  },
+  "settings_general_use_cases_1": {
+    "message": "拡張機能の外観をカスタマイズ",
+    "description": "ユースケース"
+  },
+  "settings_general_use_cases_2": {
+    "message": "トラブルシューティングのためにデバッグモードを有効にする",
+    "description": "ユースケース"
+  },
+  "settings_general_use_cases_3": {
+    "message": "通知の設定を構成",
+    "description": "ユースケース"
+  },
+  "settings_general_use_cases_4": {
+    "message": "大量のルールセットのパフォーマンスを最適化",
+    "description": "ユースケース"
+  },
+  "settings_general_use_cases_5": {
+    "message": "セキュリティと検証のオプションを設定",
+    "description": "ユースケース"
+  },
+  "settings_save": {
+    "message": "設定を保存",
+    "description": "保存ボタン"
+  },
+  "settings_saving": {
+    "message": "保存中...",
+    "description": "保存中のメッセージ"
+  },
+  "settings_reset_title": {
+    "message": "デフォルトにリセット",
+    "description": "リセットセクションのタイトル"
+  },
+  "settings_reset_description": {
+    "message": "すべての拡張機能の設定、ルール、テンプレート、変数、プロファイルをデフォルト値にリセットします。この操作は元に戻せません。",
+    "description": "リセットセクションの説明"
+  },
+  "settings_reset_action": {
+    "message": "すべての設定をリセット",
+    "description": "すべてリセットボタン"
+  },
+  "settings_resetting": {
+    "message": "リセット中...",
+    "description": "リセット時のメッセージ"
+  },
+
+  "import_export_title": {
+    "message": "高度なインポート/エクスポート",
+    "description": "インポート/エクスポートタブのタイトル"
+  },
+  "import_export_description": {
+    "message": "RequestKitの全データの包括的なバックアップと復元機能。ルール、テンプレート、プロファイル、設定、統計、構成をエクスポート・インポートし、含めるデータを詳細に制御します。",
+    "description": "インポート/エクスポートセクションの説明"
+  },
+  "import_export_features_1": {
+    "message": "選択的なデータエクスポートとカスタマイズ可能なオプション",
+    "description": "機能の説明"
+  },
+  "import_export_features_2": {
+    "message": "ルール、テンプレート、プロファイルを含む完全バックアップ",
+    "description": "機能の説明"
+  },
+  "import_export_features_3": {
+    "message": "設定と統計のバックアップと復元",
+    "description": "機能の説明"
+  },
+  "import_export_features_4": {
+    "message": "インポート時のマージまたは置換オプション",
+    "description": "機能の説明"
+  },
+  "import_export_features_5": {
+    "message": "大規模データ操作の進行状況追跡",
+    "description": "機能の説明"
+  },
+  "import_export_use_cases_1": {
+    "message": "重要な変更前に完全バックアップを作成",
+    "description": "ユースケース"
+  },
+  "import_export_use_cases_2": {
+    "message": "デバイス間でルール設定を共有",
+    "description": "ユースケース"
+  },
+  "import_export_use_cases_3": {
+    "message": "新しいブラウザインストールにデータを移行",
+    "description": "ユースケース"
+  },
+  "import_export_use_cases_4": {
+    "message": "特定のデータタイプをエクスポートしてコラボレーション",
+    "description": "ユースケース"
+  },
+
+  "ui_danger_zone_title": {
+    "message": "危険ゾーン",
+    "description": "危険ゾーンのタイトル"
+  },
+  "ui_danger_zone_description": {
+    "message": "これらの操作は永久的で取り消せません。",
+    "description": "危険ゾーンの説明"
+  },
+  "ui_tips_title": {
+    "message": "💡 ヒント",
+    "description": "ヒントセクションのタイトル"
+  },
+  "ui_key_features": {
+    "message": "主な機能",
+    "description": "主な機能セクションのラベル"
+  },
+  "ui_common_use_cases": {
+    "message": "一般的なユースケース",
+    "description": "一般的なユースケースセクションのラベル"
+  },
+  "ui_button_view": {
+    "message": "表示",
+    "description": "表示ボタンのラベル"
+  },
+  "ui_button_clone": {
+    "message": "クローン",
+    "description": "クローンボタンのラベル"
+  },
+
+  "templates_features_headers": {
+    "message": "$1 ヘッダー",
+    "description": "テンプレートの機能：ヘッダーの数",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "templates_features_file_rules": {
+    "message": "$1 ファイルルール",
+    "description": "テンプレートの機能：ファイルルールの数",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "templates_features_conditions": {
+    "message": "$1 条件",
+    "description": "テンプレートの機能：条件の数",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "templates_features_scheduled": {
+    "message": "スケジュール済み",
+    "description": "テンプレートの機能：スケジュールされている"
+  },
+  "templates_features_rate_limited": {
+    "message": "レート制限中",
+    "description": "テンプレートの機能：レート制限中"
+  },
+  "templates_features_none": {
+    "message": "機能が設定されていません",
+    "description": "テンプレートに機能がない場合のメッセージ"
+  },
+  "templates_official_template": {
+    "message": "公式テンプレート",
+    "description": "公式テンプレートのバッジ"
+  },
+  "templates_custom_template": {
+    "message": "カスタムテンプレート",
+    "description": "カスタムテンプレートのバッジ"
+  },
+  "templates_type_label": {
+    "message": "$1 テンプレート",
+    "description": "テンプレートタイプのラベル",
+    "placeholders": {
+      "type": {
+        "content": "$1",
+        "example": "ヘッダー"
+      }
+    }
+  },
+  "templates_features_label": {
+    "message": "特徴",
+    "description": "テンプレートの特徴セクションのラベル"
+  },
+
+  "variables_usage_label": {
+    "message": "使用",
+    "description": "変数使用数のラベル"
+  },
+  "variables_scope_label": {
+    "message": "スコープ",
+    "description": "変数のスコープのラベル"
+  },
+  "variables_actions_label": {
+    "message": "操作",
+    "description": "変数の操作列のラベル"
+  },
+  "variables_profile_fallback": {
+    "message": "プロファイル $1",
+    "description": "不明なプロファイルのフォールバックテキスト",
+    "placeholders": {
+      "profileId": {
+        "content": "$1",
+        "example": "abc123"
+      }
+    }
+  },
+  "variables_rule_fallback": {
+    "message": "ルール $1",
+    "description": "不明なルールのフォールバックテキスト",
+    "placeholders": {
+      "ruleId": {
+        "content": "$1",
+        "example": "rule123"
+      }
+    }
+  },
+  "variables_tooltip_edit": {
+    "message": "変数を編集",
+    "description": "変数編集ボタンのツールチップ"
+  },
+  "variables_tooltip_copy": {
+    "message": "変数をコピー",
+    "description": "変数コピーのツールチップ"
+  },
+  "variables_tooltip_delete": {
+    "message": "変数を削除",
+    "description": "変数削除のツールチップ"
+  },
+  "variables_details_title": {
+    "message": "詳細",
+    "description": "変数詳細セクションのタイトル"
+  },
+  "variables_full_value_label": {
+    "message": "完全な値",
+    "description": "変数の完全な値のラベル"
+  },
+  "variables_profile_label": {
+    "message": "プロファイル",
+    "description": "変数のプロファイル関連付けのラベル"
+  },
+  "variables_rule_label": {
+    "message": "ルール",
+    "description": "変数のルール関連付けのラベル"
+  },
+  "variables_metadata_title": {
+    "message": "メタデータ",
+    "description": "変数のメタデータセクションのタイトル"
+  },
+  "variables_created_label": {
+    "message": "作成日",
+    "description": "変数の作成日ラベル"
+  },
+  "variables_updated_label": {
+    "message": "更新日",
+    "description": "変数の更新日ラベル"
+  },
+  "variables_last_used_label": {
+    "message": "最終使用日",
+    "description": "変数の最終使用日ラベル"
+  },
+  "variables_usage_count_label": {
+    "message": "使用回数",
+    "description": "変数の使用回数ラベル"
+  },
+  "variables_unknown_date": {
+    "message": "不明",
+    "description": "不明な日付のテキスト"
   }
 }

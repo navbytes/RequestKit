@@ -22,7 +22,7 @@ type SortDirection = 'asc' | 'desc';
 export function RulePerformanceTable({
   data,
   className = '',
-}: RulePerformanceTableProps) {
+}: Readonly<RulePerformanceTableProps>) {
   const [sortField, setSortField] = useState<SortField>('averageExecutionTime');
   const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
   const [searchTerm, setSearchTerm] = useState('');

@@ -8,7 +8,7 @@ interface PerformanceAnalysisTabProps {
 
 export function PerformanceAnalysisTab({
   performanceAnalysis,
-}: PerformanceAnalysisTabProps) {
+}: Readonly<PerformanceAnalysisTabProps>) {
   if (!performanceAnalysis) {
     return <NoPerformanceDataState />;
   }
@@ -48,7 +48,7 @@ function PerformanceAnalysisHeader() {
 }
 
 interface PerformanceMetricsProps {
-  performanceAnalysis: PerformanceAnalysis;
+  readonly performanceAnalysis: PerformanceAnalysis;
 }
 
 function PerformanceMetrics({ performanceAnalysis }: PerformanceMetricsProps) {
@@ -79,9 +79,9 @@ function PerformanceMetrics({ performanceAnalysis }: PerformanceMetricsProps) {
 }
 
 interface MetricCardProps {
-  title: string;
-  value: number;
-  color: string;
+  readonly title: string;
+  readonly value: number;
+  readonly color: string;
 }
 
 function MetricCard({ title, value, color }: MetricCardProps) {
@@ -96,7 +96,7 @@ function MetricCard({ title, value, color }: MetricCardProps) {
 }
 
 interface PerformanceImpactSummaryProps {
-  performanceAnalysis: PerformanceAnalysis;
+  readonly performanceAnalysis: PerformanceAnalysis;
 }
 
 function PerformanceImpactSummary({
@@ -116,7 +116,7 @@ function PerformanceImpactSummary({
 }
 
 interface PerformanceImpactHeaderProps {
-  performanceAnalysis: PerformanceAnalysis;
+  readonly performanceAnalysis: PerformanceAnalysis;
 }
 
 function PerformanceImpactHeader({
@@ -135,7 +135,7 @@ function PerformanceImpactHeader({
 }
 
 interface PerformanceRecommendationsProps {
-  recommendations: string[];
+  readonly recommendations: string[];
 }
 
 function PerformanceRecommendations({

@@ -21,7 +21,7 @@ export function ExportOptions({
   exportOptions,
   setExportOptions,
   rulesCount,
-}: ExportOptionsProps) {
+}: Readonly<ExportOptionsProps>) {
   const handleOptionChange = (
     key: keyof ExportOptionsState,
     checked: boolean

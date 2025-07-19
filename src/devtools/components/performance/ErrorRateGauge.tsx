@@ -11,7 +11,7 @@ export function ErrorRateGauge({
   value,
   size = 120,
   className = '',
-}: ErrorRateGaugeProps) {
+}: Readonly<ErrorRateGaugeProps>) {
   // Clamp value between 0 and 100
   const clampedValue = Math.max(0, Math.min(100, value));
 

@@ -1,5 +1,6 @@
 import { TabDescription } from '@/shared/components/TabDescription';
 import { DangerZone } from '@/shared/components/ui/DangerZone';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { ExtensionSettings } from '@/shared/types/storage';
 
 import { DebugSettingsSection } from './components/DebugSettingsSection';
@@ -19,7 +20,8 @@ interface GeneralSettingsProps {
 export function GeneralSettings({
   settings,
   onSettingsUpdate,
-}: GeneralSettingsProps) {
+}: Readonly<GeneralSettingsProps>) {
+  const { t } = useI18n();
   const {
     localSettings,
     saving,
@@ -54,22 +56,22 @@ export function GeneralSettings({
       className={`p-6 ${localSettings.ui.compactMode ? 'compact-mode' : ''}`}
     >
       <TabDescription
-        title="General Settings"
-        description="Configure extension behavior, appearance, and performance settings. Control how RequestKit operates, customize the user interface, and adjust advanced options for optimal performance."
+        title={t('settings_general_title')}
+        description={t('settings_general_description')}
         icon="settings"
         features={[
-          'Enable/disable extension functionality',
-          'Debug mode and logging controls',
-          'Notification preferences',
-          'Theme and UI customization',
-          'Performance optimization settings',
+          t('settings_general_features_1'),
+          t('settings_general_features_2'),
+          t('settings_general_features_3'),
+          t('settings_general_features_4'),
+          t('settings_general_features_5'),
         ]}
         useCases={[
-          'Customize extension appearance',
-          'Enable debug mode for troubleshooting',
-          'Configure notification preferences',
-          'Optimize performance for large rule sets',
-          'Set up security and validation options',
+          t('settings_general_use_cases_1'),
+          t('settings_general_use_cases_2'),
+          t('settings_general_use_cases_3'),
+          t('settings_general_use_cases_4'),
+          t('settings_general_use_cases_5'),
         ]}
       />
 
@@ -79,7 +81,7 @@ export function GeneralSettings({
           disabled={saving}
           className="btn btn-primary ml-auto"
         >
-          {saving ? 'Saving...' : 'Save Settings'}
+          {saving ? t('settings_saving') : t('settings_save')}
         </button>
       </div>
 
@@ -143,9 +145,11 @@ export function GeneralSettings({
         )}
 
         <DangerZone
-          title="Reset to Defaults"
-          description="Reset all extension settings, rules, templates, variables, and profiles to their default values. This action cannot be undone."
-          actionLabel={resetting ? 'Resetting...' : 'Reset All Settings'}
+          title={t('settings_reset_title')}
+          description={t('settings_reset_description')}
+          actionLabel={
+            resetting ? t('settings_resetting') : t('settings_reset_action')
+          }
           onAction={onResetToDefaults}
           actionLoading={resetting}
         />

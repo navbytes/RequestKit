@@ -1,3 +1,5 @@
+import { useI18n } from '@/shared/hooks/useI18n';
+
 import type {
   FilterableRequest,
   FilterState,
@@ -16,16 +18,16 @@ interface NetworkRequest extends FilterableRequest {
 }
 
 interface RequestsListProps {
-  requests: NetworkRequest[];
-  selectedRequest: NetworkRequest | null;
-  onSelectRequest: (request: NetworkRequest) => void;
-  filterState: FilterState;
-  filterResult: FilterResult | null;
-  isFiltering: boolean;
-  onUpdateCriteria: (criteria: FilterCriteria) => void;
-  onClearFilters: () => void;
-  onToggleCollapsed: () => void;
-  isRecording: boolean;
+  readonly requests: NetworkRequest[];
+  readonly selectedRequest: NetworkRequest | null;
+  readonly onSelectRequest: (request: NetworkRequest) => void;
+  readonly filterState: FilterState;
+  readonly filterResult: FilterResult | null;
+  readonly isFiltering: boolean;
+  readonly onUpdateCriteria: (criteria: FilterCriteria) => void;
+  readonly onClearFilters: () => void;
+  readonly onToggleCollapsed: () => void;
+  readonly isRecording: boolean;
 }
 
 export function RequestsList({
@@ -40,6 +42,8 @@ export function RequestsList({
   onToggleCollapsed,
   isRecording,
 }: RequestsListProps) {
+  const { t } = useI18n();
+
   return (
     <div className="w-1/2 border-r border-gray-200 dark:border-gray-700 flex flex-col">
       {/* Advanced Filter Panel */}
@@ -55,7 +59,7 @@ export function RequestsList({
 
       <div className="p-4 border-b border-gray-200 dark:border-gray-700">
         <h2 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-          Network Requests ({requests.length})
+          {t('devtools_network_requests')} ({requests.length})
           {filterResult &&
             filterResult.filteredCount !== filterResult.totalCount && (
               <span className="ml-2 text-xs text-gray-500">
@@ -68,7 +72,9 @@ export function RequestsList({
       <div className="flex-1 overflow-y-auto">
         {requests.length === 0 ? (
           <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-            {isRecording ? 'No requests captured yet' : 'Recording stopped'}
+            {isRecording
+              ? t('devtools_no_requests_captured')
+              : t('devtools_recording_stopped')}
           </div>
         ) : (
           <div className="space-y-1 p-4">

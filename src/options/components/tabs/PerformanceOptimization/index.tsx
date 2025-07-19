@@ -15,8 +15,8 @@ import { MetricsTab } from './MetricsTab';
 import { OptimizationTab } from './OptimizationTab';
 
 interface PerformanceOptimizationProps {
-  rules: HeaderRule[];
-  onRulesUpdate: (rules: HeaderRule[]) => void;
+  readonly rules: HeaderRule[];
+  readonly onRulesUpdate: (rules: HeaderRule[]) => void;
 }
 
 // Get logger for this module

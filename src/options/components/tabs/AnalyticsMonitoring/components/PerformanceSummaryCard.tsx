@@ -1,7 +1,7 @@
 import type { UsageAnalytics } from '@/lib/integrations/analytics-monitor';
 
 interface PerformanceSummaryCardProps {
-  metrics: UsageAnalytics['performanceMetrics'];
+  readonly metrics: UsageAnalytics['performanceMetrics'];
 }
 
 export function PerformanceSummaryCard({

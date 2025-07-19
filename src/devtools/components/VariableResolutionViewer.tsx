@@ -17,7 +17,7 @@ interface VariableResolutionViewerProps {
 export function VariableResolutionViewer({
   trace,
   onClose,
-}: VariableResolutionViewerProps) {
+}: Readonly<VariableResolutionViewerProps>) {
   const [activeTab, setActiveTab] = useState<'steps' | 'tree' | 'metrics'>(
     'steps'
   );

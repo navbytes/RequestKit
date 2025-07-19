@@ -2,6 +2,7 @@ import { useState, useEffect } from 'preact/hooks';
 
 import { Icon } from '@/shared/components/Icon';
 import { TabDescription } from '@/shared/components/TabDescription';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { HeaderRule } from '@/shared/types/rules';
 import type { RuleTemplate } from '@/shared/types/templates';
 import { loggers } from '@/shared/utils/debug';
@@ -26,7 +27,8 @@ export function TemplateManager({
   onTemplateUpdate,
   onTemplateDelete,
   onTemplateApply,
-}: TemplateManagerProps) {
+}: Readonly<TemplateManagerProps>) {
+  const { t } = useI18n();
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingTemplate, setEditingTemplate] = useState<RuleTemplate | null>(
     null
@@ -112,7 +114,7 @@ export function TemplateManager({
       // Create a rule from the template
       const rule: HeaderRule = {
         id: `rule_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-        name: `${template.name} - Applied from Template`,
+        name: `${template.name} - ${t('templates_applied_from_template')}`,
         pattern: template.pattern || {
           domain: '*',
           path: '/*',
@@ -145,23 +147,23 @@ export function TemplateManager({
   return (
     <div className="space-y-6">
       <TabDescription
-        title="Rule Templates"
-        description="Browse, create, and manage comprehensive rule templates that include headers, conditions, and advanced features. Templates provide reusable configurations for common use cases and can be customized for your specific needs."
+        title={t('templates_management_title')}
+        description={t('templates_management_description')}
         icon="file-text"
         features={[
-          'Browse built-in and custom templates',
-          'Create templates with headers and conditions',
-          'Import/export templates for sharing',
-          'Clone and customize existing templates',
-          'Advanced template types with conditions',
-          'Apply templates directly as rules',
+          t('templates_management_features_1'),
+          t('templates_management_features_2'),
+          t('templates_management_features_3'),
+          t('templates_management_features_4'),
+          t('templates_management_features_5'),
+          t('templates_management_features_6'),
         ]}
         useCases={[
-          'Save frequently used rule configurations',
-          'Share rule setups across teams',
-          'Quick setup for common API scenarios',
-          'Template library for different environments',
-          'Standardize rule configurations',
+          t('templates_management_use_cases_1'),
+          t('templates_management_use_cases_2'),
+          t('templates_management_use_cases_3'),
+          t('templates_management_use_cases_4'),
+          t('templates_management_use_cases_5'),
         ]}
       />
 
@@ -170,7 +172,7 @@ export function TemplateManager({
         <div className="flex space-x-2">
           <label className="btn btn-secondary btn-sm">
             <Icon name="upload" className="w-4 h-4 mr-2" />
-            Import
+            {t('templates_import')}
             <input
               type="file"
               accept=".json"
@@ -183,7 +185,7 @@ export function TemplateManager({
             className="btn btn-primary btn-sm"
           >
             <Icon name="plus" className="w-4 h-4 mr-2" />
-            Create Template
+            {t('templates_create')}
           </button>
         </div>
       </div>

@@ -26,7 +26,7 @@ export function RegexSearchInput({
   useRegex,
   placeholder = 'Enter search pattern...',
   className = '',
-}: RegexSearchInputProps) {
+}: Readonly<RegexSearchInputProps>) {
   const [showSuggestions, setShowSuggestions] = useState(false);
 
   const {

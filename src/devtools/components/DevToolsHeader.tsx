@@ -1,20 +1,21 @@
 import { Icon } from '@/shared/components/Icon';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { Profile } from '@/shared/types/profiles';
 import type { HeaderRule } from '@/shared/types/rules';
 
 interface DevToolsHeaderProps {
-  extensionStatus: {
+  readonly extensionStatus: {
     enabled: boolean;
     activeProfile: string;
     profiles: Profile[];
     rules: HeaderRule[];
   } | null;
-  isRecording: boolean;
-  requestsCount: number;
-  onToggleRecording: () => void;
-  onClearRequests: () => void;
-  onExportRequests: () => void;
-  onSwitchProfile: (profileId: string) => void;
+  readonly isRecording: boolean;
+  readonly requestsCount: number;
+  readonly onToggleRecording: () => void;
+  readonly onClearRequests: () => void;
+  readonly onExportRequests: () => void;
+  readonly onSwitchProfile: (profileId: string) => void;
 }
 
 export function DevToolsHeader({
@@ -26,17 +27,19 @@ export function DevToolsHeader({
   onExportRequests,
   onSwitchProfile,
 }: DevToolsHeaderProps) {
+  const { t } = useI18n();
+
   return (
     <div className="border-b border-gray-200 dark:border-gray-700 p-4">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
-            RequestKit DevTools
+            {t('devtools_header_title')}
           </h1>
           {extensionStatus && (
             <div className="flex items-center space-x-2">
               <span className="text-sm text-gray-500 dark:text-gray-400">
-                Profile:
+                {t('devtools_profile_label')}
               </span>
               <select
                 value={extensionStatus.activeProfile}
@@ -73,12 +76,12 @@ export function DevToolsHeader({
             {isRecording ? (
               <>
                 <Icon name="stop" className="w-4 h-4 mr-2" />
-                Stop
+                {t('devtools_stop_recording')}
               </>
             ) : (
               <>
                 <Icon name="play" className="w-4 h-4 mr-2" />
-                Record
+                {t('devtools_start_recording')}
               </>
             )}
           </button>
@@ -87,7 +90,7 @@ export function DevToolsHeader({
             className="btn btn-sm btn-secondary"
           >
             <Icon name="trash" className="w-4 h-4 mr-2" />
-            Clear
+            {t('devtools_clear_requests')}
           </button>
           <button
             onClick={onExportRequests}
@@ -95,7 +98,7 @@ export function DevToolsHeader({
             disabled={requestsCount === 0}
           >
             <Icon name="download" className="w-4 h-4 mr-2" />
-            Export
+            {t('devtools_export_requests')}
           </button>
         </div>
       </div>

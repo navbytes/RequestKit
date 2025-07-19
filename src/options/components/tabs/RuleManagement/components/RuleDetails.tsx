@@ -1,7 +1,7 @@
 import type { HeaderRule } from '@/shared/types/rules';
 
 interface RuleDetailsProps {
-  rule: HeaderRule;
+  readonly rule: HeaderRule;
 }
 
 export function RuleDetails({ rule }: RuleDetailsProps) {
@@ -23,9 +23,9 @@ export function RuleDetails({ rule }: RuleDetailsProps) {
 
       {rule.headers.length > 0 && (
         <div className="space-y-1">
-          {rule.headers.map((header, index) => (
+          {rule.headers.map(header => (
             <div
-              key={index}
+              key={header.name}
               className="font-mono text-xs bg-blue-100 dark:bg-blue-900 p-1 rounded"
             >
               <span className="text-blue-600 dark:text-blue-400">

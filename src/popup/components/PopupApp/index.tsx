@@ -2,6 +2,7 @@ import { useState, useEffect } from 'preact/hooks';
 
 import { matchURLPattern } from '@/lib/core/pattern-matcher';
 import { Icon } from '@/shared/components/Icon';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { HeaderRule } from '@/shared/types/rules';
 
 import { LoadingSpinner } from '../LoadingSpinner';
@@ -13,6 +14,7 @@ import { useThemeManager } from './hooks/useThemeManager';
 import { PopupContent } from './PopupContent';
 
 export function PopupApp() {
+  const { t } = useI18n();
   const [currentTab, setCurrentTab] = useState<chrome.tabs.Tab | null>(null);
   const [showQuickCreator, setShowQuickCreator] = useState(false);
   const [showTemplateBrowser, setShowTemplateBrowser] = useState(false);
@@ -108,11 +110,14 @@ export function PopupApp() {
       />
       <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-4 text-center">
         <p className="text-sm text-gray-600 dark:text-gray-400">
-          RequestKit is open source software released under the MIT License.
+          {t('popup_footer_license')}
           <br />
-          Built with&nbsp;
-          <Icon name="heart" className="w-4 h-4 inline mx-1 text-red-500" /> for
-          developers by developers.
+          {t('popup_footer_built_with')}&nbsp;
+          <Icon
+            name="heart"
+            className="w-4 h-4 inline mx-1 text-red-500"
+          />{' '}
+          {t('popup_footer_developers')}
         </p>
       </div>
     </div>

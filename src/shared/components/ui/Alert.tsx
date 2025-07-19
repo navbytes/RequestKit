@@ -18,7 +18,7 @@ export function Alert({
   icon,
   className = '',
   onClose,
-}: AlertProps) {
+}: Readonly<AlertProps>) {
   const baseClasses = 'rounded-lg p-4 border';
 
   const variantClasses = {

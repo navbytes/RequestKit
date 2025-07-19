@@ -22,7 +22,7 @@ export function FilterPresets({
   onLoadPreset,
   onClearFilters,
   className = '',
-}: FilterPresetsProps) {
+}: Readonly<FilterPresetsProps>) {
   const [showSaveDialog, setShowSaveDialog] = useState(false);
   const [presetName, setPresetName] = useState('');
   const [presetDescription, setPresetDescription] = useState('');

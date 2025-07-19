@@ -1,8 +1,8 @@
 import { Icon } from '@/shared/components/Icon';
 
 interface ProgressModalProps {
-  step: string;
-  progress: number;
+  readonly step: string;
+  readonly progress: number;
 }
 
 export function ProgressModal({ step, progress }: ProgressModalProps) {

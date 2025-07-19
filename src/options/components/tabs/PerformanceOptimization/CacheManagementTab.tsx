@@ -15,7 +15,7 @@ export function CacheManagementTab({
   onClearCache,
   onOptimizeCache,
   onRefreshStats,
-}: CacheManagementTabProps) {
+}: Readonly<CacheManagementTabProps>) {
   return (
     <div className="space-y-6">
       <CacheOverview
@@ -38,9 +38,9 @@ export function CacheManagementTab({
 }
 
 interface CacheOverviewProps {
-  cacheStats: CacheStats | null;
-  loading: boolean;
-  onRefreshStats: () => void;
+  readonly cacheStats: CacheStats | null;
+  readonly loading: boolean;
+  readonly onRefreshStats: () => void;
 }
 
 function CacheOverview({
@@ -75,7 +75,7 @@ function CacheOverview({
 }
 
 interface CacheStatsGridProps {
-  cacheStats: CacheStats;
+  readonly cacheStats: CacheStats;
 }
 
 function CacheStatsGrid({ cacheStats }: CacheStatsGridProps) {
@@ -144,7 +144,7 @@ function EmptyCacheState() {
 }
 
 interface CacheDetailsProps {
-  cacheStats: CacheStats;
+  readonly cacheStats: CacheStats;
 }
 
 function CacheDetails({ cacheStats }: CacheDetailsProps) {
@@ -161,7 +161,7 @@ function CacheDetails({ cacheStats }: CacheDetailsProps) {
 }
 
 interface CachePerformanceMetricsProps {
-  cacheStats: CacheStats;
+  readonly cacheStats: CacheStats;
 }
 
 function CachePerformanceMetrics({ cacheStats }: CachePerformanceMetricsProps) {
@@ -201,7 +201,7 @@ function CachePerformanceMetrics({ cacheStats }: CachePerformanceMetricsProps) {
 }
 
 interface CacheHealthIndicatorsProps {
-  cacheStats: CacheStats;
+  readonly cacheStats: CacheStats;
 }
 
 function CacheHealthIndicators({ cacheStats }: CacheHealthIndicatorsProps) {
@@ -271,8 +271,8 @@ function CacheHealthIndicators({ cacheStats }: CacheHealthIndicatorsProps) {
 }
 
 interface CacheActionsProps {
-  onClearCache: () => void;
-  onOptimizeCache: () => void;
+  readonly onClearCache: () => void;
+  readonly onOptimizeCache: () => void;
 }
 
 function CacheActions({ onClearCache, onOptimizeCache }: CacheActionsProps) {
@@ -289,7 +289,7 @@ function CacheActions({ onClearCache, onOptimizeCache }: CacheActionsProps) {
 }
 
 interface ClearCacheSectionProps {
-  onClearCache: () => void;
+  readonly onClearCache: () => void;
 }
 
 function ClearCacheSection({ onClearCache }: ClearCacheSectionProps) {
@@ -309,7 +309,7 @@ function ClearCacheSection({ onClearCache }: ClearCacheSectionProps) {
 }
 
 interface OptimizeCacheSectionProps {
-  onOptimizeCache: () => void;
+  readonly onOptimizeCache: () => void;
 }
 
 function OptimizeCacheSection({ onOptimizeCache }: OptimizeCacheSectionProps) {

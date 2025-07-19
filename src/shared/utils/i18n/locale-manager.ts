@@ -50,19 +50,17 @@ export class LocaleManager {
       // Merge with default config
       this.config = { ...DEFAULT_CONFIG, ...config };
 
-      // Validate configuration
-      if (!LanguageDetector.validateConfig(this.config)) {
-        throw new Error('Invalid localization configuration');
-      }
+      // Get the current UI language from Chrome
+      const chromeLocale = chrome.i18n.getUILanguage();
 
-      // Detect best language for user
-      const detection = await LanguageDetector.detectBestLanguage(this.config);
-      this.currentLocale = detection.detected;
+      // Chrome automatically selects the best locale file based on browser settings
+      // We just need to track what Chrome is using
+      this.currentLocale = this.mapChromeLocaleToSupported(chromeLocale);
 
       logger.info('Locale manager initialized:', {
-        locale: this.currentLocale,
-        source: detection.source,
-        confidence: detection.confidence,
+        chromeLocale,
+        mappedLocale: this.currentLocale,
+        source: 'chrome',
       });
 
       this.initialized = true;
@@ -74,6 +72,24 @@ export class LocaleManager {
   }
 
   /**
+   * Map Chrome's locale to our supported locales
+   */
+  private static mapChromeLocaleToSupported(
+    chromeLocale: string
+  ): SupportedLocale {
+    // Chrome locale might be like 'en-US', we want 'en'
+    const baseLocale = chromeLocale.toLowerCase().split('-')[0];
+
+    // Check if we support this base locale
+    if (SUPPORTED_LOCALES.includes(baseLocale as SupportedLocale)) {
+      return baseLocale as SupportedLocale;
+    }
+
+    // Fallback to default
+    return this.config.defaultLocale;
+  }
+
+  /**
    * Get localized message by key
    */
   static getMessage(key: string, substitutions?: string[]): string {
@@ -81,7 +97,7 @@ export class LocaleManager {
       this.ensureInitialized();
 
       // Check cache first
-      const cacheKey = `${key}:${this.currentLocale}:${substitutions?.join(',')}`;
+      const cacheKey = `${key}:${substitutions?.join(',')}`;
       if (this.config.enableCache && this.isCacheValid()) {
         const cached = this.messageCache.get(cacheKey);
         if (cached) {
@@ -89,29 +105,12 @@ export class LocaleManager {
         }
       }
 
-      // Get message from Chrome i18n API
+      // Get message from Chrome i18n API (Chrome handles locale selection automatically)
       let message = chrome.i18n.getMessage(key, substitutions);
 
-      // Fallback to default locale if message not found
-      if (
-        !message &&
-        this.config.enableFallback &&
-        this.currentLocale !== this.config.fallbackLocale
-      ) {
-        logger.warn(
-          `Message not found for key '${key}' in locale '${this.currentLocale}', falling back to '${this.config.fallbackLocale}'`
-        );
-
-        // Temporarily switch to fallback locale
-        const originalLocale = this.currentLocale;
-        this.currentLocale = this.config.fallbackLocale;
-        message = chrome.i18n.getMessage(key, substitutions);
-        this.currentLocale = originalLocale;
-      }
-
-      // If still no message, return the key as fallback
+      // If no message found, return the key as fallback
       if (!message) {
-        logger.warn(`Message not found for key '${key}' in any locale`);
+        logger.warn(`Message not found for key '${key}'`);
         message = key;
       }
 

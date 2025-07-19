@@ -1,3 +1,4 @@
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { HeaderEntry } from '@/shared/types/rules';
 
 interface HeadersSectionProps {
@@ -12,19 +13,21 @@ export function HeadersSection({
   onAdd,
   onRemove,
   onUpdate,
-}: HeadersSectionProps) {
+}: Readonly<HeadersSectionProps>) {
+  const { t } = useI18n();
+
   return (
     <div>
       <div className="flex items-center justify-between mb-2">
         <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-          Headers
+          {t('ui_label_headers')}
         </h4>
         <button
           type="button"
           onClick={onAdd}
           className="btn btn-sm btn-primary"
         >
-          Add Header
+          {t('forms_add_header')}
         </button>
       </div>
 
@@ -38,7 +41,7 @@ export function HeadersSection({
                 onChange={e =>
                   onUpdate(index, 'name', (e.target as HTMLInputElement).value)
                 }
-                placeholder="Header name"
+                placeholder={t('forms_header_name_placeholder')}
                 className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
@@ -50,7 +53,7 @@ export function HeadersSection({
                 onChange={e =>
                   onUpdate(index, 'value', (e.target as HTMLInputElement).value)
                 }
-                placeholder="Header value"
+                placeholder={t('forms_header_value_placeholder')}
                 className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
@@ -67,9 +70,13 @@ export function HeadersSection({
                 }
                 className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               >
-                <option value="set">Set</option>
-                <option value="append">Append</option>
-                <option value="remove">Remove</option>
+                <option value="set">{t('rules_header_operations_set')}</option>
+                <option value="append">
+                  {t('rules_header_operations_append')}
+                </option>
+                <option value="remove">
+                  {t('rules_header_operations_remove')}
+                </option>
               </select>
             </div>
 
@@ -85,8 +92,8 @@ export function HeadersSection({
                 }
                 className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               >
-                <option value="request">Request</option>
-                <option value="response">Response</option>
+                <option value="request">{t('popup_request')}</option>
+                <option value="response">{t('popup_response')}</option>
               </select>
             </div>
 
@@ -97,7 +104,7 @@ export function HeadersSection({
                 className="w-full btn btn-sm btn-error"
                 disabled={headers.length === 1}
               >
-                Remove
+                {t('ui_button_remove')}
               </button>
             </div>
           </div>

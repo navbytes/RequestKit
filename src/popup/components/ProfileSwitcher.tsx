@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'preact/hooks';
 
 import { Icon } from '@/shared/components/Icon';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { Profile } from '@/shared/types/profiles';
 import { ChromeApiUtils } from '@/shared/utils';
 import { loggers } from '@/shared/utils/debug';
@@ -33,7 +34,8 @@ export function ProfileSwitcher({
   className = '',
   activeProfile: externalActiveProfile,
   onProfileChange,
-}: ProfileSwitcherProps) {
+}: Readonly<ProfileSwitcherProps>) {
+  const { t } = useI18n();
   const [profileData, setProfileData] = useState<ProfileData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -128,9 +130,9 @@ export function ProfileSwitcher({
     <div className="border-b border-gray-200 dark:border-gray-700 pb-3">
       <div className={`profile-switcher ${className}`}>
         <div className="flex items-center space-x-2">
-          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-            Profile:
-          </span>
+          <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            {t('ui_label_profile')}
+          </div>
 
           <div className="relative">
             <select
@@ -141,7 +143,7 @@ export function ProfileSwitcher({
               disabled={isLoading}
               className="appearance-none bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md px-3 py-1 pr-8 text-sm text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent disabled:opacity-50"
             >
-              <option value="unassigned">Unassigned</option>
+              <option value="unassigned">{t('ui_option_unassigned')}</option>
               {profileData.profiles.map(profile => (
                 <option key={profile.id} value={profile.id}>
                   {profile.name}
@@ -166,7 +168,7 @@ export function ProfileSwitcher({
                 title={`${activeProfile.name} (${activeProfile.environment})`}
               />
               <span>
-                Rules:&nbsp;
+                {t('ui_label_rules')}&nbsp;
                 <span className="font-medium">
                   {activeProfile.rules.length}
                 </span>
@@ -180,9 +182,9 @@ export function ProfileSwitcher({
               {/* Unassigned indicator dot */}
               <span
                 className="w-3 h-3 rounded-full border border-gray-300 dark:border-gray-600 bg-gray-400"
-                title="Unassigned rules"
+                title={t('ui_tooltip_unassigned_rules')}
               />
-              <span>Unassigned Rules</span>
+              <span>{t('ui_label_unassigned_rules')}</span>
             </div>
           )}
 
@@ -202,7 +204,7 @@ export function ProfileSwitcher({
         {/* Unassigned view description */}
         {isUnassignedView && (
           <div className="mt-1 text-gray-400 dark:text-gray-500">
-            Showing rules that are not assigned to any profile
+            {t('ui_description_unassigned_rules')}
           </div>
         )}
       </div>

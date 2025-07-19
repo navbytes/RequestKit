@@ -6,7 +6,11 @@ interface HeaderEntryProps {
   onRemove: () => void;
 }
 
-export function HeaderEntry({ header, onUpdate, onRemove }: HeaderEntryProps) {
+export function HeaderEntry({
+  header,
+  onUpdate,
+  onRemove,
+}: Readonly<HeaderEntryProps>) {
   return (
     <div className="border border-gray-200 dark:border-gray-600 rounded-lg p-3">
       <div className="grid grid-cols-1 md:grid-cols-5 gap-3">

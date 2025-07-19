@@ -4,7 +4,7 @@
     "description": "Le nom de l'extension"
   },
   "extensionDescription": {
-    "message": "Extension Chrome avancée pour injecter des en-têtes personnalisés avec un puissant système de variables, correspondance de motifs et outils de test",
+    "message": "Extension Chrome avancée pour injecter des en-têtes personnalisés avec un système de variables puissant, de la correspondance de motifs et des outils de test",
     "description": "Description de l'extension"
   },
   "extensionShortName": {
@@ -32,8 +32,8 @@
     "description": "Libellé du bouton supprimer"
   },
   "ui_button_edit": {
-    "message": "Modifier",
-    "description": "Libellé du bouton modifier"
+    "message": "Éditer",
+    "description": "Libellé du bouton éditer"
   },
   "ui_button_add": {
     "message": "Ajouter",
@@ -48,7 +48,7 @@
     "description": "Libellé du bouton mettre à jour"
   },
   "ui_button_remove": {
-    "message": "Retirer",
+    "message": "Supprimer",
     "description": "Libellé du bouton retirer"
   },
   "ui_button_close": {
@@ -80,8 +80,8 @@
     "description": "Libellé du bouton effacer"
   },
   "ui_button_refresh": {
-    "message": "Actualiser",
-    "description": "Libellé du bouton actualiser"
+    "message": "Rafraîchir",
+    "description": "Libellé du bouton rafraîchir"
   },
   "ui_button_export": {
     "message": "Exporter",
@@ -99,13 +99,14 @@
     "message": "Coller",
     "description": "Libellé du bouton coller"
   },
+
   "ui_label_name": {
     "message": "Nom",
-    "description": "Libellé du champ nom"
+    "description": "Libellé du champ de nom"
   },
   "ui_label_description": {
     "message": "Description",
-    "description": "Libellé du champ description"
+    "description": "Libellé du champ de description"
   },
   "ui_label_url": {
     "message": "URL",
@@ -130,6 +131,18 @@
   "ui_label_disabled": {
     "message": "Désactivé",
     "description": "Libellé du champ désactivé"
+  },
+  "ui_label_rules_active": {
+    "message": "Règles actives",
+    "description": "Libellé pour le nombre de règles actives"
+  },
+  "ui_label_extension_disabled": {
+    "message": "Extension désactivée",
+    "description": "Libellé lorsque l'extension est désactivée"
+  },
+  "ui_label_extension_status": {
+    "message": "Statut de l'extension",
+    "description": "Libellé pour le basculement du statut de l'extension"
   },
   "ui_label_priority": {
     "message": "Priorité",
@@ -156,55 +169,69 @@
     "description": "Libellé du champ catégorie"
   },
   "ui_label_tags": {
-    "message": "Étiquettes",
-    "description": "Libellé du champ étiquettes"
+    "message": "Tags",
+    "description": "Libellé du champ tags"
   },
+
   "ui_tooltip_save": {
     "message": "Enregistrer les modifications actuelles",
-    "description": "Info-bulle du bouton enregistrer"
+    "description": "Infobulle du bouton enregistrer"
   },
   "ui_tooltip_delete": {
     "message": "Supprimer cet élément",
-    "description": "Info-bulle du bouton supprimer"
+    "description": "Infobulle du bouton supprimer"
   },
   "ui_tooltip_edit": {
-    "message": "Modifier cet élément",
-    "description": "Info-bulle du bouton modifier"
+    "message": "Éditer cet élément",
+    "description": "Infobulle du bouton éditer"
   },
   "ui_tooltip_enable": {
     "message": "Activer cette règle",
-    "description": "Info-bulle du bouton activer"
+    "description": "Infobulle pour activer la règle"
   },
   "ui_tooltip_disable": {
     "message": "Désactiver cette règle",
-    "description": "Info-bulle du bouton désactiver"
+    "description": "Infobulle pour désactiver la règle"
   },
+  "ui_tooltip_open_options": {
+    "message": "Ouvrir les options",
+    "description": "Infobulle pour ouvrir la page des options"
+  },
+  "ui_aria_enable_extension": {
+    "message": "Activer l'extension",
+    "description": "Libellé ARIA pour le bouton d'activation de l'extension"
+  },
+  "ui_aria_disable_extension": {
+    "message": "Désactiver l'extension",
+    "description": "Libellé ARIA pour le bouton de désactivation de l'extension"
+  },
+
   "errors_validation_domain_invalid": {
     "message": "Motif de domaine invalide",
-    "description": "Message d'erreur pour domaine invalide"
+    "description": "Message d'erreur pour un domaine invalide"
   },
   "errors_validation_path_invalid": {
     "message": "Le chemin doit commencer par /",
-    "description": "Message d'erreur pour chemin invalide"
+    "description": "Message d'erreur pour un chemin invalide"
   },
   "errors_validation_header_name_invalid": {
     "message": "Le nom de l'en-tête contient des caractères invalides",
-    "description": "Message d'erreur pour nom d'en-tête invalide"
+    "description": "Message d'erreur pour un nom d'en-tête invalide"
   },
   "errors_validation_port_invalid": {
     "message": "Le port doit être un nombre entre 1-65535 ou *",
-    "description": "Message d'erreur pour port invalide"
+    "description": "Message d'erreur pour un port invalide"
   },
   "errors_rule_not_found": {
-    "message": "Règle non trouvée",
-    "description": "Message d'erreur quand la règle n'est pas trouvée"
+    "message": "Règle introuvable",
+    "description": "Message d'erreur lorsque la règle n'est pas trouvée"
   },
   "errors_template_not_found": {
-    "message": "Modèle non trouvé",
-    "description": "Message d'erreur quand le modèle n'est pas trouvé"
+    "message": "Modèle introuvable",
+    "description": "Message d'erreur lorsque le modèle n'est pas trouvé"
   },
   "errors_storage_error": {
-    "message": "Échec de l'enregistrement des données",
+    "message": "Échec de la sauvegarde des données",
     "description": "Message d'erreur pour les échecs de stockage"
   },
   "errors_import_error": {
@@ -216,50 +243,51 @@
     "description": "Message d'erreur pour les échecs d'exportation"
   },
   "errors_network_error": {
-    "message": "Erreur réseau survenue",
-    "description": "Message d'erreur pour les échecs réseau"
+    "message": "Erreur réseau",
+    "description": "Message d'erreur pour les défaillances réseau"
   },
   "errors_permission_denied": {
     "message": "Permission refusée",
-    "description": "Message d'erreur pour les problèmes de permission"
+    "description": "Message d'erreur pour les problèmes d'autorisation"
   },
   "errors_invalid_format": {
     "message": "Format invalide",
-    "description": "Message d'erreur pour la validation de format"
+    "description": "Message d'erreur pour la validation du format"
   },
+
   "notifications_rule_created": {
-    "message": "Règle '$1' créée avec succès",
-    "description": "Notification quand une règle est créée",
+    "message": "La règle '$1' a été créée avec succès",
+    "description": "Notification lors de la création d'une règle",
     "placeholders": {
       "ruleName": {
         "content": "$1",
-        "example": "Ma Règle API"
+        "example": "Ma règle API"
       }
     }
   },
   "notifications_rule_updated": {
-    "message": "Règle '$1' mise à jour avec succès",
-    "description": "Notification quand une règle est mise à jour",
+    "message": "La règle '$1' a été mise à jour avec succès",
+    "description": "Notification lors de la mise à jour d'une règle",
     "placeholders": {
       "ruleName": {
         "content": "$1",
-        "example": "Ma Règle API"
+        "example": "Ma règle API"
       }
     }
   },
   "notifications_rule_deleted": {
-    "message": "Règle '$1' supprimée avec succès",
-    "description": "Notification quand une règle est supprimée",
+    "message": "La règle '$1' a été supprimée avec succès",
+    "description": "Notification lors de la suppression d'une règle",
     "placeholders": {
       "ruleName": {
         "content": "$1",
-        "example": "Ma Règle API"
+        "example": "Ma règle API"
       }
     }
   },
   "notifications_profile_switched": {
-    "message": "Basculé vers le profil '$1'",
-    "description": "Notification quand le profil est changé",
+    "message": "Passé au profil '$1'",
+    "description": "Notification lors du changement de profil",
     "placeholders": {
       "profileName": {
         "content": "$1",
@@ -269,20 +297,21 @@
   },
   "notifications_extension_enabled": {
     "message": "RequestKit activé",
-    "description": "Notification quand l'extension est activée"
+    "description": "Notification lorsque l'extension est activée"
   },
   "notifications_extension_disabled": {
     "message": "RequestKit désactivé",
-    "description": "Notification quand l'extension est désactivée"
+    "description": "Notification lorsque l'extension est désactivée"
   },
   "notifications_backup_created": {
     "message": "Sauvegarde créée avec succès",
-    "description": "Notification quand la sauvegarde est créée"
+    "description": "Notification lors de la création d'une sauvegarde"
   },
   "notifications_data_imported": {
     "message": "Données importées avec succès",
-    "description": "Notification quand les données sont importées"
+    "description": "Notification lors de l'importation de données"
   },
+
   "templates_cors_name": {
     "message": "En-têtes CORS",
     "description": "Nom du modèle CORS"
@@ -296,25 +325,26 @@
     "description": "Nom du modèle de token Bearer"
   },
   "templates_auth_bearer_description": {
-    "message": "Ajouter un en-tête Authorization avec token Bearer",
+    "message": "Ajouter un en-tête d'autorisation avec un token Bearer",
     "description": "Description du modèle de token Bearer"
   },
   "templates_debug_name": {
-    "message": "En-têtes de Débogage",
+    "message": "En-têtes de débogage",
     "description": "Nom du modèle de débogage"
   },
   "templates_debug_description": {
-    "message": "Ajouter des en-têtes d'information de débogage",
+    "message": "Ajouter des en-têtes d'informations de débogage",
     "description": "Description du modèle de débogage"
   },
   "templates_security_name": {
-    "message": "En-têtes de Sécurité",
+    "message": "En-têtes de sécurité",
     "description": "Nom du modèle de sécurité"
   },
   "templates_security_description": {
-    "message": "Ajouter des en-têtes de sécurité communs",
+    "message": "Ajouter des en-têtes de sécurité courants",
     "description": "Description du modèle de sécurité"
   },
+
   "profiles_default_dev_name": {
     "message": "Développement",
     "description": "Nom du profil de développement par défaut"
@@ -328,48 +358,50 @@
     "description": "Nom du profil de production par défaut"
   },
   "profiles_default_prod_description": {
-    "message": "Profil pour l'environnement de production avec journalisation minimale",
+    "message": "Profil pour l'environnement de production avec un journal minimal",
     "description": "Description du profil de production par défaut"
   },
+
   "rules_header_operations_set": {
     "message": "Définir",
-    "description": "Opération de définition d'en-tête"
+    "description": "Définir l'opération d'en-tête"
   },
   "rules_header_operations_append": {
     "message": "Ajouter",
-    "description": "Opération d'ajout d'en-tête"
+    "description": "Ajouter l'opération d'en-tête"
   },
   "rules_header_operations_remove": {
     "message": "Supprimer",
-    "description": "Opération de suppression d'en-tête"
+    "description": "Supprimer l'opération d'en-tête"
   },
   "rules_priority_very_low": {
-    "message": "Très Basse",
-    "description": "Libellé de priorité très basse"
+    "message": "Très basse",
+    "description": "Étiquette de priorité très faible"
   },
   "rules_priority_low": {
-    "message": "Basse",
-    "description": "Libellé de priorité basse"
+    "message": "Faible",
+    "description": "Étiquette de priorité faible"
   },
   "rules_priority_normal": {
     "message": "Normale",
-    "description": "Libellé de priorité normale"
+    "description": "Étiquette de priorité normale"
   },
   "rules_priority_high": {
     "message": "Haute",
-    "description": "Libellé de priorité haute"
+    "description": "Étiquette de priorité élevée"
   },
   "rules_priority_very_high": {
-    "message": "Très Haute",
-    "description": "Libellé de priorité très haute"
+    "message": "Très haute",
+    "description": "Étiquette de priorité très élevée"
   },
+
   "settings_general": {
     "message": "Général",
     "description": "Onglet des paramètres généraux"
   },
   "settings_notifications": {
     "message": "Notifications",
-    "description": "Onglet des paramètres de notifications"
+    "description": "Onglet des paramètres de notification"
   },
   "settings_performance": {
     "message": "Performance",
@@ -392,47 +424,519 @@
     "description": "Option de thème sombre"
   },
   "settings_theme_auto": {
-    "message": "Auto",
+    "message": "Automatique",
     "description": "Option de thème automatique"
   },
+
   "contextmenu_create_rule": {
     "message": "Créer une règle pour cette URL",
     "description": "Élément de menu contextuel pour créer une règle"
   },
   "contextmenu_open_options": {
-    "message": "Ouvrir les Options RequestKit",
+    "message": "Ouvrir les options RequestKit",
     "description": "Élément de menu contextuel pour ouvrir les options"
   },
   "contextmenu_toggle_extension": {
     "message": "Basculer RequestKit",
     "description": "Élément de menu contextuel pour basculer l'extension"
   },
+
   "devtools_panel_title": {
-    "message": "RequestKit",
+    "message": "RequestKit DevTools",
     "description": "Titre du panneau DevTools"
   },
   "devtools_requests_tab": {
     "message": "Requêtes",
-    "description": "Onglet des requêtes dans DevTools"
+    "description": "Onglet Requêtes dans DevTools"
   },
   "devtools_rules_tab": {
     "message": "Règles",
-    "description": "Onglet des règles dans DevTools"
+    "description": "Onglet Règles dans DevTools"
   },
   "devtools_performance_tab": {
     "message": "Performance",
-    "description": "Onglet de performance dans DevTools"
+    "description": "Onglet Performance dans DevTools"
   },
   "devtools_no_requests": {
     "message": "Aucune requête capturée pour le moment",
     "description": "Message quand aucune requête n'est capturée"
   },
   "devtools_request_details": {
-    "message": "Détails de la Requête",
-    "description": "Titre de la section des détails de requête"
+    "message": "Détails de la requête",
+    "description": "Titre de la section détails de la requête"
   },
   "devtools_matched_rules": {
-    "message": "Règles Correspondantes",
-    "description": "Titre de la section des règles correspondantes"
+    "message": "Règles correspondantes",
+    "description": "Titre de la section règles correspondantes"
+  },
+  "ui_label_profile": {
+    "message": "Profil:"
+  },
+  "ui_option_unassigned": {
+    "message": "Non assigné"
+  },
+  "ui_label_rules": {
+    "message": "Règles:"
+  },
+  "ui_tooltip_unassigned_rules": {
+    "message": "Règles non assignées"
+  },
+  "ui_label_unassigned_rules": {
+    "message": "Règles non assignées"
+  },
+  "ui_description_unassigned_rules": {
+    "message": "Affichage des règles non assignées à un profil"
+  },
+  "rules_empty_title": {
+    "message": "Aucune règle créée pour le moment"
+  },
+  "rules_empty_description": {
+    "message": "Créez votre première règle pour commencer à modifier les en-têtes"
+  },
+  "rules_create_first": {
+    "message": "Créez votre première règle"
+  },
+
+  "templates_management_title": {
+    "message": "Modèles de règles",
+    "description": "Titre de l'onglet gestion des modèles"
+  },
+  "templates_management_description": {
+    "message": "Parcourir, créer et gérer des modèles de règles complets comprenant des en-têtes, des conditions et des fonctionnalités avancées. Les modèles offrent des configurations réutilisables pour des cas d'utilisation courants et peuvent être personnalisés selon vos besoins spécifiques.",
+    "description": "Description de la gestion des modèles"
+  },
+  "templates_management_features_1": {
+    "message": "Parcourir les modèles intégrés et personnalisés",
+    "description": "Description de la fonctionnalité"
+  },
+  "templates_management_features_2": {
+    "message": "Créer des modèles avec en-têtes et conditions",
+    "description": "Description de la fonctionnalité"
+  },
+  "templates_management_features_3": {
+    "message": "Importer/exporter des modèles pour partager",
+    "description": "Description de la fonctionnalité"
+  },
+  "templates_management_features_4": {
+    "message": "Cloner et personnaliser des modèles existants",
+    "description": "Description de la fonctionnalité"
+  },
+  "templates_management_features_5": {
+    "message": "Types de modèles avancés avec conditions",
+    "description": "Description de la fonctionnalité"
+  },
+  "templates_management_features_6": {
+    "message": "Appliquer directement des modèles en tant que règles",
+    "description": "Description de la fonctionnalité"
+  },
+  "templates_management_use_cases_1": {
+    "message": "Enregistrer les configurations de règles fréquemment utilisées",
+    "description": "Cas d'utilisation"
+  },
+  "templates_management_use_cases_2": {
+    "message": "Partager les configurations de règles entre équipes",
+    "description": "Cas d'utilisation"
+  },
+  "templates_management_use_cases_3": {
+    "message": "Configuration rapide pour scénarios API courants",
+    "description": "Cas d'utilisation"
+  },
+  "templates_management_use_cases_4": {
+    "message": "Bibliothèque de modèles pour différents environnements",
+    "description": "Cas d'utilisation"
+  },
+  "templates_management_use_cases_5": {
+    "message": "Standardiser la configuration des règles",
+    "description": "Cas d'utilisation"
+  },
+  "templates_import": {
+    "message": "Importer",
+    "description": "Bouton d'importation"
+  },
+  "templates_create": {
+    "message": "Créer un modèle",
+    "description": "Bouton pour créer un modèle"
+  },
+  "templates_applied_from_template": {
+    "message": "Appliqué depuis le modèle",
+    "description": "Suffixe pour les règles créées à partir de modèles"
+  },
+
+  "variables_management_title": {
+    "message": "Gestionnaire de variables",
+    "description": "Titre de l'onglet gestion des variables"
+  },
+  "variables_management_description": {
+    "message": "Créer et gérer des variables pour l'utilisation dans les valeurs d'en-tête et les motifs d'URL. Les variables prennent en charge des valeurs dynamiques, des expressions calculées, et peuvent être globales ou spécifiques au profil.",
+    "description": "Description de la gestion des variables"
+  },
+  "variables_management_features_1": {
+    "message": "Créer des variables statiques avec support de fonctions",
+    "description": "Description de la fonctionnalité"
+  },
+  "variables_management_features_2": {
+    "message": "Scopes de variables globaux et spécifiques au profil",
+    "description": "Description de la fonctionnalité"
+  },
+  "variables_management_features_3": {
+    "message": "Support de variables secrètes avec affichage masqué",
+    "description": "Description de la fonctionnalité"
+  },
+  "variables_management_features_4": {
+    "message": "Modèles de variables avec syntaxe ${variable_name}",
+    "description": "Description de la fonctionnalité"
+  },
+  "variables_management_features_5": {
+    "message": "Importer/exporter des variables pour sauvegarde et partage",
+    "description": "Description de la fonctionnalité"
+  },
+  "variables_management_features_6": {
+    "message": "Analyse d'utilisation et validation",
+    "description": "Description de la fonctionnalité"
+  },
+  "variables_management_use_cases_1": {
+    "message": "Stocker des clés API et des jetons d'authentification",
+    "description": "Cas d'utilisation"
+  },
+  "variables_management_use_cases_2": {
+    "message": "Générer des timestamps dynamiques et des UUID",
+    "description": "Cas d'utilisation"
+  },
+  "variables_management_use_cases_3": {
+    "message": "Référencer le contexte de la requête (domaine, chemin, méthode)",
+    "description": "Cas d'utilisation"
+  },
+  "variables_management_use_cases_4": {
+    "message": "Créer des modèles réutilisables de valeurs d'en-tête",
+    "description": "Cas d'utilisation"
+  },
+  "variables_management_use_cases_5": {
+    "message": "Valeurs de configuration spécifiques à l'environnement",
+    "description": "Cas d'utilisation"
+  },
+  "variables_loading": {
+    "message": "Chargement des variables...",
+    "description": "Message de chargement"
+  },
+  "variables_no_match_filters": {
+    "message": "Aucune variable ne correspond à vos filtres",
+    "description": "Lorsque aucune variable ne correspond aux filtres"
+  },
+  "variables_no_configured": {
+    "message": "Aucune variable configurée",
+    "description": "Lorsque aucune variable n'est configurée"
+  },
+  "variables_no_match_description": {
+    "message": "Essayez d'ajuster votre recherche ou vos filtres pour trouver des variables.",
+    "description": "Lorsque aucune variable ne correspond aux filtres"
+  },
+  "variables_no_configured_description": {
+    "message": "Créez votre première variable pour commencer à utiliser des valeurs d'en-tête dynamiques et des modèles.",
+    "description": "Lorsque aucune variable n'est configurée"
+  },
+  "variables_clear_filters": {
+    "message": "Effacer les filtres",
+    "description": "Bouton pour effacer les filtres"
+  },
+  "variables_create_first": {
+    "message": "Créer votre première variable",
+    "description": "Bouton pour créer la première variable"
+  },
+
+  "settings_general_title": {
+    "message": "Paramètres généraux",
+    "description": "Titre de l'onglet paramètres généraux"
+  },
+  "settings_general_description": {
+    "message": "Configurer le comportement, l'apparence et les paramètres de performance de l'extension. Contrôler le fonctionnement de RequestKit, personnaliser l'interface utilisateur, et ajuster des options avancées pour une performance optimale.",
+    "description": "Description de l'onglet paramètres généraux"
+  },
+  "settings_general_features_1": {
+    "message": "Activer/désactiver la fonctionnalité de l'extension",
+    "description": "Description de la fonctionnalité"
+  },
+  "settings_general_features_2": {
+    "message": "Contrôles du mode debug et de la journalisation",
+    "description": "Description de la fonctionnalité"
+  },
+  "settings_general_features_3": {
+    "message": "Préférences de notification",
+    "description": "Description de la fonctionnalité"
+  },
+  "settings_general_features_4": {
+    "message": "Personnalisation du thème et de l'UI",
+    "description": "Description de la fonctionnalité"
+  },
+  "settings_general_features_5": {
+    "message": "Paramètres d'optimisation des performances",
+    "description": "Description de la fonctionnalité"
+  },
+  "settings_general_use_cases_1": {
+    "message": "Personnaliser l'apparence de l'extension",
+    "description": "Cas d'utilisation"
+  },
+  "settings_general_use_cases_2": {
+    "message": "Activer le mode debug pour le dépannage",
+    "description": "Cas d'utilisation"
+  },
+  "settings_general_use_cases_3": {
+    "message": "Configurer les préférences de notification",
+    "description": "Cas d'utilisation"
+  },
+  "settings_general_use_cases_4": {
+    "message": "Optimiser la performance pour de grands ensembles de règles",
+    "description": "Cas d'utilisation"
+  },
+  "settings_general_use_cases_5": {
+    "message": "Configurer la sécurité et la validation",
+    "description": "Cas d'utilisation"
+  },
+  "settings_save": {
+    "message": "Enregistrer les paramètres",
+    "description": "Bouton pour sauvegarder"
+  },
+  "settings_saving": {
+    "message": "Enregistrement en cours...",
+    "description": "Message lors de l'enregistrement"
+  },
+  "settings_reset_title": {
+    "message": "Réinitialiser aux valeurs par défaut",
+    "description": "Titre de la section de réinitialisation"
+  },
+  "settings_reset_description": {
+    "message": "Réinitialiser tous les paramètres, règles, modèles, variables et profils de l'extension à leurs valeurs par défaut. Cette action est irréversible.",
+    "description": "Description de la section de réinitialisation"
+  },
+  "settings_reset_action": {
+    "message": "Réinitialiser tous les paramètres",
+    "description": "Bouton pour réinitialiser"
+  },
+  "settings_resetting": {
+    "message": "Réinitialisation en cours...",
+    "description": "Message lors de la réinitialisation"
+  },
+
+  "import_export_title": {
+    "message": "Importation/Exportation avancée",
+    "description": "Titre de l'onglet import/export"
+  },
+  "import_export_description": {
+    "message": "Fonctionnalité complète de sauvegarde et restauration pour toutes les données RequestKit. Exporter et importer des règles, modèles, profils, paramètres, statistiques et configurations avec un contrôle granulaire sur les données à inclure.",
+    "description": "Description de l'onglet import/export"
+  },
+  "import_export_features_1": {
+    "message": "Exportation sélective des données avec options personnalisables",
+    "description": "Description de la fonctionnalité"
+  },
+  "import_export_features_2": {
+    "message": "Sauvegarde complète incluant règles, modèles et profils",
+    "description": "Description de la fonctionnalité"
+  },
+  "import_export_features_3": {
+    "message": "Sauvegarde et restauration des paramètres et statistiques",
+    "description": "Description de la fonctionnalité"
+  },
+  "import_export_features_4": {
+    "message": "Options de fusion ou de remplacement lors de l'importation",
+    "description": "Description de la fonctionnalité"
+  },
+  "import_export_features_5": {
+    "message": "Suivi de progression pour les opérations de grande taille",
+    "description": "Description de la fonctionnalité"
+  },
+  "import_export_use_cases_1": {
+    "message": "Créer des sauvegardes complètes avant des changements majeurs",
+    "description": "Cas d'utilisation"
+  },
+  "import_export_use_cases_2": {
+    "message": "Partager les configurations de règles entre appareils",
+    "description": "Cas d'utilisation"
+  },
+  "import_export_use_cases_3": {
+    "message": "Migrer des données vers de nouvelles installations de navigateur",
+    "description": "Cas d'utilisation"
+  },
+  "import_export_use_cases_4": {
+    "message": "Exporter des types de données spécifiques pour la collaboration",
+    "description": "Cas d'utilisation"
+  },
+
+  "ui_danger_zone_title": {
+    "message": "Zone de danger",
+    "description": "Titre de la zone de danger"
+  },
+  "ui_danger_zone_description": {
+    "message": "Ces actions sont permanentes et ne peuvent pas être annulées.",
+    "description": "Description de la zone de danger"
+  },
+  "ui_tips_title": {
+    "message": "💡 Conseils",
+    "description": "Titre de la section conseils"
+  },
+  "ui_key_features": {
+    "message": "Fonctionnalités clés",
+    "description": "Libellé de la section fonctionnalités clés"
+  },
+  "ui_common_use_cases": {
+    "message": "Cas d'utilisation courants",
+    "description": "Libellé de la section cas d'utilisation courants"
+  },
+  "ui_button_view": {
+    "message": "Voir",
+    "description": "Libellé du bouton voir"
+  },
+  "ui_button_clone": {
+    "message": "Cloner",
+    "description": "Libellé du bouton cloner"
+  },
+
+  "templates_features_headers": {
+    "message": "$1 en-têtes",
+    "description": "Caractéristique du modèle montrant le nombre d'en-têtes",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "templates_features_file_rules": {
+    "message": "$1 règles de fichiers",
+    "description": "Caractéristique du modèle montrant le nombre de règles de fichiers",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "templates_features_conditions": {
+    "message": "$1 conditions",
+    "description": "Caractéristique du modèle montrant le nombre de conditions",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "templates_features_scheduled": {
+    "message": "planifié",
+    "description": "Caractéristique du modèle indiquant qu'il est planifié"
+  },
+  "templates_features_rate_limited": {
+    "message": "limité en fréquence",
+    "description": "Caractéristique du modèle indiquant qu'il est limité en fréquence"
+  },
+  "templates_features_none": {
+    "message": "Aucune fonctionnalité configurée",
+    "description": "Message lorsque le modèle n'a pas de fonctionnalités"
+  },
+  "templates_official_template": {
+    "message": "Modèle officiel",
+    "description": "Badge pour les modèles officiels"
+  },
+  "templates_custom_template": {
+    "message": "Modèle personnalisé",
+    "description": "Badge pour les modèles personnalisés"
+  },
+  "templates_type_label": {
+    "message": "$1 Modèle",
+    "description": "Étiquette du type de modèle",
+    "placeholders": {
+      "type": {
+        "content": "$1",
+        "example": "En-têtes"
+      }
+    }
+  },
+  "templates_features_label": {
+    "message": "Fonctionnalités",
+    "description": "Libellé de la section fonctionnalités du modèle"
+  },
+
+  "variables_usage_label": {
+    "message": "Utilisation",
+    "description": "Libellé pour le nombre d'utilisations de la variable"
+  },
+  "variables_scope_label": {
+    "message": "Portée",
+    "description": "Libellé pour la portée de la variable"
+  },
+  "variables_actions_label": {
+    "message": "Actions",
+    "description": "Libellé pour la colonne des actions de la variable"
+  },
+  "variables_profile_fallback": {
+    "message": "Profil $1",
+    "description": "Texte de secours pour profil inconnu",
+    "placeholders": {
+      "profileId": {
+        "content": "$1",
+        "example": "abc123"
+      }
+    }
+  },
+  "variables_rule_fallback": {
+    "message": "Règle $1",
+    "description": "Texte de secours pour règle inconnue",
+    "placeholders": {
+      "ruleId": {
+        "content": "$1",
+        "example": "rule123"
+      }
+    }
+  },
+  "variables_tooltip_edit": {
+    "message": "Éditer la variable",
+    "description": "Infobulle pour le bouton d'édition de la variable"
+  },
+  "variables_tooltip_copy": {
+    "message": "Copier la variable",
+    "description": "Infobulle pour le bouton de copie de la variable"
+  },
+  "variables_tooltip_delete": {
+    "message": "Supprimer la variable",
+    "description": "Infobulle pour le bouton de suppression de la variable"
+  },
+  "variables_details_title": {
+    "message": "Détails",
+    "description": "Titre de la section détails de la variable"
+  },
+  "variables_full_value_label": {
+    "message": "Valeur complète",
+    "description": "Libellé pour la valeur complète de la variable"
+  },
+  "variables_profile_label": {
+    "message": "Profil",
+    "description": "Libellé pour l'association de profil de la variable"
+  },
+  "variables_rule_label": {
+    "message": "Règle",
+    "description": "Libellé pour l'association règle de la variable"
+  },
+  "variables_metadata_title": {
+    "message": "Métadonnées",
+    "description": "Titre de la section métadonnées de la variable"
+  },
+  "variables_created_label": {
+    "message": "Créé",
+    "description": "Libellé pour la date de création de la variable"
+  },
+  "variables_updated_label": {
+    "message": "Mis à jour",
+    "description": "Libellé pour la date de mise à jour de la variable"
+  },
+  "variables_last_used_label": {
+    "message": "Dernière utilisation",
+    "description": "Libellé pour la dernière utilisation de la variable"
+  },
+  "variables_usage_count_label": {
+    "message": "Nombre d'utilisations",
+    "description": "Libellé pour le nombre d'utilisations de la variable"
+  },
+  "variables_unknown_date": {
+    "message": "Inconnu",
+    "description": "Texte pour la date inconnue"
   }
 }

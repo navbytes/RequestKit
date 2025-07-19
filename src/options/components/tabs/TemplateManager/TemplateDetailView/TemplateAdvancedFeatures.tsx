@@ -6,7 +6,7 @@ interface TemplateAdvancedFeaturesProps {
 
 export function TemplateAdvancedFeatures({
   template,
-}: TemplateAdvancedFeaturesProps) {
+}: Readonly<TemplateAdvancedFeaturesProps>) {
   return (
     <div>
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">

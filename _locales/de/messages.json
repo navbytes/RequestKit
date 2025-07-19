@@ -434,5 +434,1052 @@
   "devtools_matched_rules": {
     "message": "Passende Regeln",
     "description": "Titel des passenden Regeln-Bereichs"
+  },
+
+  "devtools_header_title": {
+    "message": "RequestKit DevTools",
+    "description": "Titel für DevTools-Header"
+  },
+  "devtools_profile_label": {
+    "message": "Profil",
+    "description": "Label für Profil-Auswahl in DevTools"
+  },
+  "devtools_stop_recording": {
+    "message": "Aufzeichnung stoppen",
+    "description": "Button-Text zum Stoppen der Anfragen-Aufzeichnung"
+  },
+  "devtools_start_recording": {
+    "message": "Aufzeichnung starten",
+    "description": "Button-Text zum Starten der Anfragen-Aufzeichnung"
+  },
+  "devtools_clear_requests": {
+    "message": "Anfragen löschen",
+    "description": "Button-Text zum Löschen aufgezeichneter Anfragen"
+  },
+  "devtools_export_requests": {
+    "message": "Anfragen exportieren",
+    "description": "Button-Text zum Exportieren aufgezeichneter Anfragen"
+  },
+  "devtools_network_requests": {
+    "message": "Netzwerk-Anfragen",
+    "description": "Titel für Netzwerk-Anfragen-Bereich"
+  },
+  "devtools_no_requests_recording": {
+    "message": "Keine Anfragen erfasst. Starten Sie die Aufzeichnung um Netzwerk-Aktivität zu sehen.",
+    "description": "Nachricht wenn keine Anfragen aufgezeichnet werden"
+  },
+  "devtools_recording_stopped": {
+    "message": "Aufzeichnung gestoppt. Klicken Sie auf Aufzeichnung starten um Anfragen zu erfassen.",
+    "description": "Nachricht wenn Aufzeichnung gestoppt ist"
+  },
+  "devtools_select_request": {
+    "message": "Wählen Sie eine Anfrage um Details anzuzeigen",
+    "description": "Nachricht die Benutzer auffordert eine Anfrage auszuwählen"
+  },
+  "devtools_url_label": {
+    "message": "URL",
+    "description": "Label für Anfrage-URL"
+  },
+  "devtools_method_label": {
+    "message": "Methode",
+    "description": "Label für HTTP-Methode"
+  },
+  "devtools_status_label": {
+    "message": "Status",
+    "description": "Label für Antwort-Status"
+  },
+  "devtools_headers_tab": {
+    "message": "Header",
+    "description": "Tab-Label für Header-Ansicht"
+  },
+  "devtools_variables_tab": {
+    "message": "Variablen",
+    "description": "Tab-Label für Variablen-Ansicht"
+  },
+  "devtools_profile_rules_info": {
+    "message": "Profil-Regeln-Informationen",
+    "description": "Titel für Profil-Regeln-Informations-Bereich"
+  },
+  "devtools_matched_rules_label": {
+    "message": "Passende Regeln",
+    "description": "Label für passende Regeln-Bereich"
+  },
+  "devtools_modified_headers_request": {
+    "message": "Geänderte Anfrage-Header",
+    "description": "Label für geänderte Anfrage-Header"
+  },
+  "devtools_modified_headers_response": {
+    "message": "Geänderte Antwort-Header",
+    "description": "Label für geänderte Antwort-Header"
+  },
+  "devtools_timestamp_label": {
+    "message": "Zeitstempel",
+    "description": "Label für Anfrage-Zeitstempel"
+  },
+  "devtools_cache_hit": {
+    "message": "Cache-Treffer",
+    "description": "Label für Cache-Treffer-Status"
+  },
+  "devtools_cache_miss": {
+    "message": "Cache-Fehlschlag",
+    "description": "Label für Cache-Fehlschlag-Status"
+  },
+  "devtools_input_label": {
+    "message": "Eingabe",
+    "description": "Label für Variablen-Eingabewert"
+  },
+  "devtools_output_label": {
+    "message": "Ausgabe",
+    "description": "Label für Variablen-Ausgabewert"
+  },
+  "devtools_metadata_label": {
+    "message": "Metadaten",
+    "description": "Label für Variablen-Metadaten"
+  },
+  "devtools_depth_label": {
+    "message": "Tiefe",
+    "description": "Label für Auflösungstiefe"
+  },
+  "devtools_recursive_label": {
+    "message": "Rekursiv",
+    "description": "Label für rekursive Auflösung"
+  },
+  "devtools_function_args_label": {
+    "message": "Funktions-Argumente",
+    "description": "Label für Funktions-Argumente"
+  },
+  "devtools_variable_details_label": {
+    "message": "Variablen-Details",
+    "description": "Label für Variablen-Details-Bereich"
+  },
+  "devtools_no_requests_captured": {
+    "message": "Noch keine Anfragen erfasst",
+    "description": "Nachricht wenn noch keine Anfragen erfasst wurden"
+  },
+  "devtools_headers_modified": {
+    "message": "Header geändert",
+    "description": "Label das anzeigt dass Header geändert wurden"
+  },
+  "devtools_rules_matched": {
+    "message": "Regeln gefunden",
+    "description": "Label für Anzahl gefundener Regeln"
+  },
+  "devtools_variable_resolution": {
+    "message": "Variablen-Auflösung",
+    "description": "Label für Variablen-Auflösungs-Bereich"
+  },
+
+  "ui_label_rules_active": {
+    "message": "Regeln aktiv",
+    "description": "Label für Anzahl aktiver Regeln"
+  },
+  "ui_label_extension_disabled": {
+    "message": "Erweiterung deaktiviert",
+    "description": "Label wenn Erweiterung deaktiviert ist"
+  },
+  "ui_label_extension_status": {
+    "message": "Erweiterungs-Status",
+    "description": "Label für Erweiterungs-Status-Umschalter"
+  },
+  "ui_tooltip_open_options": {
+    "message": "Optionen öffnen",
+    "description": "Tooltip für Optionen-Seite öffnen"
+  },
+  "ui_aria_enable_extension": {
+    "message": "Erweiterung aktivieren",
+    "description": "Aria-Label für Erweiterung aktivieren Button"
+  },
+  "ui_aria_disable_extension": {
+    "message": "Erweiterung deaktivieren",
+    "description": "Aria-Label für Erweiterung deaktivieren Button"
+  },
+
+  "ui_label_profile": {
+    "message": "Profil:",
+    "description": "Label für Profil-Auswahl"
+  },
+  "ui_option_unassigned": {
+    "message": "Nicht zugewiesen",
+    "description": "Option für nicht zugewiesene Elemente"
+  },
+  "ui_label_rules": {
+    "message": "Regeln:",
+    "description": "Label für Regeln-Anzeige"
+  },
+  "ui_tooltip_unassigned_rules": {
+    "message": "Nicht zugewiesene Regeln",
+    "description": "Tooltip für nicht zugewiesene Regeln"
+  },
+  "ui_label_unassigned_rules": {
+    "message": "Nicht zugewiesene Regeln",
+    "description": "Label für nicht zugewiesene Regeln"
+  },
+  "ui_description_unassigned_rules": {
+    "message": "Zeigt Regeln an, die keinem Profil zugewiesen sind",
+    "description": "Beschreibung für nicht zugewiesene Regeln"
+  },
+
+  "rules_empty_title": {
+    "message": "Noch keine Regeln erstellt",
+    "description": "Titel wenn keine Regeln vorhanden sind"
+  },
+  "rules_empty_description": {
+    "message": "Erstellen Sie Ihre erste Header-Regel um zu beginnen",
+    "description": "Beschreibung wenn keine Regeln vorhanden sind"
+  },
+  "rules_header_title": {
+    "message": "Regeln",
+    "description": "Titel für Regeln-Bereich"
+  },
+  "rules_badge_active": {
+    "message": "aktiv",
+    "description": "Badge-Text für aktive Regeln"
+  },
+
+  "quick_rule_title": {
+    "message": "Schnellregel für",
+    "description": "Titel für Schnellregel-Dialog"
+  },
+  "quick_rule_tooltip_cancel": {
+    "message": "Abbrechen",
+    "description": "Tooltip für Abbrechen-Button"
+  },
+  "quick_rule_description": {
+    "message": "Dies fügt einen Header zu allen Anfragen hinzu, die übereinstimmen mit",
+    "description": "Beschreibung für Schnellregel"
+  },
+  "quick_rule_label_name": {
+    "message": "Regelname",
+    "description": "Label für Regelname-Eingabe"
+  },
+  "quick_rule_placeholder_name": {
+    "message": "Header für",
+    "description": "Platzhalter für Regelname"
+  },
+  "quick_rule_label_header_name": {
+    "message": "Header-Name",
+    "description": "Label für Header-Name-Eingabe"
+  },
+  "quick_rule_placeholder_header_name": {
+    "message": "z.B. X-Custom-Header",
+    "description": "Platzhalter für Header-Name"
+  },
+  "quick_rule_label_header_value": {
+    "message": "Header-Wert",
+    "description": "Label für Header-Wert-Eingabe"
+  },
+  "quick_rule_placeholder_header_value": {
+    "message": "z.B. custom-value",
+    "description": "Platzhalter für Header-Wert"
+  },
+  "quick_rule_button_creating": {
+    "message": "Erstelle...",
+    "description": "Button-Text während Regelerstellung"
+  },
+  "quick_rule_button_create": {
+    "message": "Regel erstellen",
+    "description": "Button-Text für Regel erstellen"
+  },
+
+  "button_cancel": {
+    "message": "Abbrechen",
+    "description": "Allgemeiner Abbrechen-Button"
+  },
+  "add_rule_button_text": {
+    "message": "Regel erstellen für",
+    "description": "Text für Regel-hinzufügen-Button"
+  },
+  "add_rule_button_description": {
+    "message": "Schnelle Einrichtung für aktuelle Seite",
+    "description": "Beschreibung für Regel-hinzufügen-Button"
+  },
+  "add_rule_default_domain": {
+    "message": "diese Seite",
+    "description": "Standard-Domain-Text"
+  },
+
+  "options_tab_rules": {
+    "message": "Regel-Verwaltung",
+    "description": "Tab-Titel für Regel-Verwaltung"
+  },
+  "options_tab_rules_desc": {
+    "message": "Header-Injection-Regeln erstellen und verwalten",
+    "description": "Beschreibung für Regel-Verwaltung-Tab"
+  },
+  "options_tab_profiles": {
+    "message": "Profil-Verwaltung",
+    "description": "Tab-Titel für Profil-Verwaltung"
+  },
+  "options_tab_profiles_desc": {
+    "message": "Umgebungsprofile erstellen und verwalten",
+    "description": "Beschreibung für Profil-Verwaltung-Tab"
+  },
+  "options_tab_templates": {
+    "message": "Regel-Vorlagen",
+    "description": "Tab-Titel für Regel-Vorlagen"
+  },
+  "options_tab_templates_desc": {
+    "message": "Regel-Vorlagen durchsuchen und verwalten",
+    "description": "Beschreibung für Regel-Vorlagen-Tab"
+  },
+  "options_tab_variables": {
+    "message": "Variablen-Manager",
+    "description": "Tab-Titel für Variablen-Manager"
+  },
+  "options_tab_variables_desc": {
+    "message": "Variablen für dynamische Werte erstellen und verwalten",
+    "description": "Beschreibung für Variablen-Manager-Tab"
+  },
+  "options_tab_conditional_rules": {
+    "message": "Bedingte Regeln",
+    "description": "Tab-Titel für bedingte Regeln"
+  },
+  "options_tab_conditional_rules_desc": {
+    "message": "Regeln mit erweiterten Bedingungen erstellen",
+    "description": "Beschreibung für bedingte Regeln-Tab"
+  },
+  "options_tab_rule_testing": {
+    "message": "Regel-Tests",
+    "description": "Tab-Titel für Regel-Tests"
+  },
+  "options_tab_rule_testing_desc": {
+    "message": "Regeln testen und validieren",
+    "description": "Beschreibung für Regel-Tests-Tab"
+  },
+  "options_tab_performance": {
+    "message": "Leistung",
+    "description": "Tab-Titel für Leistung"
+  },
+  "options_tab_performance_desc": {
+    "message": "Leistung überwachen und optimieren",
+    "description": "Beschreibung für Leistungs-Tab"
+  },
+  "options_tab_analytics": {
+    "message": "Analytics & Überwachung",
+    "description": "Tab-Titel für Analytics"
+  },
+  "options_tab_analytics_desc": {
+    "message": "Nutzungsanalysen und Leistungseinblicke anzeigen",
+    "description": "Beschreibung für Analytics-Tab"
+  },
+  "options_tab_settings": {
+    "message": "Allgemeine Einstellungen",
+    "description": "Tab-Titel für allgemeine Einstellungen"
+  },
+  "options_tab_settings_desc": {
+    "message": "Erweiterungskonfiguration und Einstellungen",
+    "description": "Beschreibung für Einstellungen-Tab"
+  },
+  "options_tab_import_export": {
+    "message": "Import/Export",
+    "description": "Tab-Titel für Import/Export"
+  },
+  "options_tab_import_export_desc": {
+    "message": "Regeln sichern und wiederherstellen",
+    "description": "Beschreibung für Import/Export-Tab"
+  },
+  "options_tab_help": {
+    "message": "Hilfe & Info",
+    "description": "Tab-Titel für Hilfe"
+  },
+  "options_tab_help_desc": {
+    "message": "Dokumentation und Support",
+    "description": "Beschreibung für Hilfe-Tab"
+  },
+
+  "options_group_core": {
+    "message": "Kernfunktionen",
+    "description": "Gruppe für Kernfunktionen"
+  },
+  "options_group_advanced": {
+    "message": "Erweiterte Features",
+    "description": "Gruppe für erweiterte Features"
+  },
+  "options_group_system": {
+    "message": "System & Analytics",
+    "description": "Gruppe für System und Analytics"
+  },
+  "options_group_support": {
+    "message": "Support & Tools",
+    "description": "Gruppe für Support und Tools"
+  },
+
+  "rule_badge_active": {
+    "message": "Aktiv",
+    "description": "Badge für aktive Regeln"
+  },
+  "rule_badge_disabled": {
+    "message": "Deaktiviert",
+    "description": "Badge für deaktivierte Regeln"
+  },
+  "rule_tooltip_disable": {
+    "message": "Regel deaktivieren",
+    "description": "Tooltip für Regel deaktivieren"
+  },
+  "rule_tooltip_enable": {
+    "message": "Regel aktivieren",
+    "description": "Tooltip für Regel aktivieren"
+  },
+  "rule_tooltip_edit": {
+    "message": "Regel bearbeiten",
+    "description": "Tooltip für Regel bearbeiten"
+  },
+  "rule_tooltip_delete": {
+    "message": "Regel löschen",
+    "description": "Tooltip für Regel löschen"
+  },
+  "rule_header_count_single": {
+    "message": "Header",
+    "description": "Singular für Header-Anzahl"
+  },
+  "rule_header_count_plural": {
+    "message": "Header",
+    "description": "Plural für Header-Anzahl"
+  },
+
+  "popup_footer_license": {
+    "message": "RequestKit ist Open-Source-Software unter der MIT-Lizenz.",
+    "description": "Footer-Text für Lizenz"
+  },
+  "popup_footer_built_with": {
+    "message": "Entwickelt mit",
+    "description": "Footer-Text für 'entwickelt mit'"
+  },
+  "popup_footer_developers": {
+    "message": "für Entwickler von Entwicklern.",
+    "description": "Footer-Text für Entwickler"
+  },
+
+  "template_browser_title": {
+    "message": "Vorlagen durchsuchen",
+    "description": "Titel für Vorlagen-Browser"
+  },
+  "template_browser_description": {
+    "message": "Wählen Sie eine Vorlage aus um schnell Regeln zu erstellen",
+    "description": "Beschreibung für Vorlagen-Browser"
+  },
+  "template_browser_empty": {
+    "message": "Keine Vorlagen verfügbar",
+    "description": "Nachricht wenn keine Vorlagen verfügbar sind"
+  },
+  "template_browser_search_placeholder": {
+    "message": "Vorlagen durchsuchen...",
+    "description": "Platzhalter für Vorlagen-Suche"
+  },
+  "template_browser_category_all": {
+    "message": "Alle Kategorien",
+    "description": "Option für alle Kategorien"
+  },
+  "template_browser_category_auth": {
+    "message": "Authentifizierung",
+    "description": "Authentifizierungs-Kategorie"
+  },
+  "template_browser_category_cors": {
+    "message": "CORS",
+    "description": "CORS-Kategorie"
+  },
+  "template_browser_category_security": {
+    "message": "Sicherheit",
+    "description": "Sicherheits-Kategorie"
+  },
+  "template_browser_category_debug": {
+    "message": "Debug",
+    "description": "Debug-Kategorie"
+  },
+  "template_browser_category_custom": {
+    "message": "Benutzerdefiniert",
+    "description": "Benutzerdefinierte Kategorie"
+  },
+  "template_browser_use_template": {
+    "message": "Vorlage verwenden",
+    "description": "Button-Text für Vorlage verwenden"
+  },
+  "template_browser_preview": {
+    "message": "Vorschau",
+    "description": "Button-Text für Vorlagen-Vorschau"
+  },
+  "template_browser_close": {
+    "message": "Schließen",
+    "description": "Button-Text für Browser schließen"
+  },
+  "template_preview_title": {
+    "message": "Vorlagen-Vorschau",
+    "description": "Titel für Vorlagen-Vorschau"
+  },
+  "template_preview_headers": {
+    "message": "Header",
+    "description": "Header-Bereich in Vorschau"
+  },
+  "template_preview_rules": {
+    "message": "Regeln",
+    "description": "Regeln-Bereich in Vorschau"
+  },
+  "template_preview_variables": {
+    "message": "Variablen",
+    "description": "Variablen-Bereich in Vorschau"
+  },
+  "template_apply_success": {
+    "message": "Vorlage erfolgreich angewendet",
+    "description": "Erfolgsmeldung bei Vorlagen-Anwendung"
+  },
+  "template_apply_error": {
+    "message": "Fehler beim Anwenden der Vorlage",
+    "description": "Fehlermeldung bei Vorlagen-Anwendung"
+  },
+  "variables_manager_title": {
+    "message": "Variablen-Manager",
+    "description": "Titel für Variablen-Manager"
+  },
+  "variables_manager_description": {
+    "message": "Erstellen und verwalten Sie Variablen für dynamische Header-Werte",
+    "description": "Beschreibung für Variablen-Manager"
+  },
+  "variables_empty_title": {
+    "message": "Keine Variablen definiert",
+    "description": "Titel wenn keine Variablen vorhanden sind"
+  },
+  "variables_empty_description": {
+    "message": "Erstellen Sie Ihre erste Variable um dynamische Werte zu verwenden",
+    "description": "Beschreibung wenn keine Variablen vorhanden sind"
+  },
+  "variables_create_button": {
+    "message": "Variable erstellen",
+    "description": "Button-Text für Variable erstellen"
+  },
+  "variables_edit_title": {
+    "message": "Variable bearbeiten",
+    "description": "Titel für Variable bearbeiten"
+  },
+  "variables_create_title": {
+    "message": "Variable erstellen",
+    "description": "Titel für Variable erstellen"
+  },
+  "variables_form_name": {
+    "message": "Variablen-Name",
+    "description": "Label für Variablen-Name"
+  },
+  "variables_form_name_placeholder": {
+    "message": "z.B. api_key",
+    "description": "Platzhalter für Variablen-Name"
+  },
+  "variables_form_description": {
+    "message": "Beschreibung",
+    "description": "Label für Variablen-Beschreibung"
+  },
+  "variables_form_description_placeholder": {
+    "message": "Beschreibung der Variable...",
+    "description": "Platzhalter für Variablen-Beschreibung"
+  },
+  "variables_form_type": {
+    "message": "Typ",
+    "description": "Label für Variablen-Typ"
+  },
+  "variables_form_type_static": {
+    "message": "Statisch",
+    "description": "Statischer Variablen-Typ"
+  },
+  "variables_form_type_dynamic": {
+    "message": "Dynamisch",
+    "description": "Dynamischer Variablen-Typ"
+  },
+  "variables_form_type_function": {
+    "message": "Funktion",
+    "description": "Funktions-Variablen-Typ"
+  },
+  "variables_form_value": {
+    "message": "Wert",
+    "description": "Label für Variablen-Wert"
+  },
+  "variables_form_value_placeholder": {
+    "message": "Variablen-Wert eingeben...",
+    "description": "Platzhalter für Variablen-Wert"
+  },
+  "variables_form_function": {
+    "message": "Funktion",
+    "description": "Label für Variablen-Funktion"
+  },
+  "variables_form_function_placeholder": {
+    "message": "JavaScript-Funktion eingeben...",
+    "description": "Platzhalter für Variablen-Funktion"
+  },
+  "variables_form_scope": {
+    "message": "Gültigkeitsbereich",
+    "description": "Label für Variablen-Gültigkeitsbereich"
+  },
+  "variables_form_scope_global": {
+    "message": "Global",
+    "description": "Globaler Gültigkeitsbereich"
+  },
+  "variables_form_scope_profile": {
+    "message": "Profil",
+    "description": "Profil-Gültigkeitsbereich"
+  },
+  "variables_form_scope_rule": {
+    "message": "Regel",
+    "description": "Regel-Gültigkeitsbereich"
+  },
+  "variables_save_button": {
+    "message": "Variable speichern",
+    "description": "Button-Text für Variable speichern"
+  },
+  "variables_cancel_button": {
+    "message": "Abbrechen",
+    "description": "Button-Text für Abbrechen"
+  },
+  "variables_delete_confirm": {
+    "message": "Sind Sie sicher, dass Sie diese Variable löschen möchten?",
+    "description": "Bestätigungsnachricht für Variable löschen"
+  },
+  "variables_delete_button": {
+    "message": "Variable löschen",
+    "description": "Button-Text für Variable löschen"
+  },
+  "variables_test_button": {
+    "message": "Variable testen",
+    "description": "Button-Text für Variable testen"
+  },
+  "variables_test_result": {
+    "message": "Test-Ergebnis",
+    "description": "Label für Variable Test-Ergebnis"
+  },
+  "variables_usage_count": {
+    "message": "Verwendet in $1 Regel(n)",
+    "description": "Anzahl der Verwendungen einer Variable",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "profiles_manager_title": {
+    "message": "Profil-Manager",
+    "description": "Titel für Profil-Manager"
+  },
+  "profiles_manager_description": {
+    "message": "Erstellen und verwalten Sie Umgebungsprofile für verschiedene Szenarien",
+    "description": "Beschreibung für Profil-Manager"
+  },
+  "profiles_empty_title": {
+    "message": "Keine Profile definiert",
+    "description": "Titel wenn keine Profile vorhanden sind"
+  },
+  "profiles_empty_description": {
+    "message": "Erstellen Sie Ihr erstes Profil um Regeln zu organisieren",
+    "description": "Beschreibung wenn keine Profile vorhanden sind"
+  },
+  "profiles_create_button": {
+    "message": "Profil erstellen",
+    "description": "Button-Text für Profil erstellen"
+  },
+  "profiles_edit_title": {
+    "message": "Profil bearbeiten",
+    "description": "Titel für Profil bearbeiten"
+  },
+  "profiles_create_title": {
+    "message": "Profil erstellen",
+    "description": "Titel für Profil erstellen"
+  },
+  "profiles_form_name": {
+    "message": "Profil-Name",
+    "description": "Label für Profil-Name"
+  },
+  "profiles_form_name_placeholder": {
+    "message": "z.B. Entwicklung",
+    "description": "Platzhalter für Profil-Name"
+  },
+  "profiles_form_description": {
+    "message": "Beschreibung",
+    "description": "Label für Profil-Beschreibung"
+  },
+  "profiles_form_description_placeholder": {
+    "message": "Beschreibung des Profils...",
+    "description": "Platzhalter für Profil-Beschreibung"
+  },
+  "profiles_form_color": {
+    "message": "Farbe",
+    "description": "Label für Profil-Farbe"
+  },
+  "profiles_form_icon": {
+    "message": "Symbol",
+    "description": "Label für Profil-Symbol"
+  },
+  "profiles_form_rules": {
+    "message": "Zugewiesene Regeln",
+    "description": "Label für zugewiesene Regeln"
+  },
+  "profiles_save_button": {
+    "message": "Profil speichern",
+    "description": "Button-Text für Profil speichern"
+  },
+  "profiles_cancel_button": {
+    "message": "Abbrechen",
+    "description": "Button-Text für Abbrechen"
+  },
+  "profiles_delete_confirm": {
+    "message": "Sind Sie sicher, dass Sie dieses Profil löschen möchten?",
+    "description": "Bestätigungsnachricht für Profil löschen"
+  },
+  "profiles_delete_button": {
+    "message": "Profil löschen",
+    "description": "Button-Text für Profil löschen"
+  },
+  "profiles_activate_button": {
+    "message": "Profil aktivieren",
+    "description": "Button-Text für Profil aktivieren"
+  },
+  "profiles_active_badge": {
+    "message": "Aktiv",
+    "description": "Badge für aktives Profil"
+  },
+  "profiles_rules_count": {
+    "message": "$1 Regel(n)",
+    "description": "Anzahl der Regeln in einem Profil",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "conditional_rules_title": {
+    "message": "Bedingte Regeln",
+    "description": "Titel für bedingte Regeln"
+  },
+  "conditional_rules_description": {
+    "message": "Erstellen Sie Regeln mit erweiterten Bedingungen und Logik",
+    "description": "Beschreibung für bedingte Regeln"
+  },
+  "conditional_rules_empty_title": {
+    "message": "Keine bedingten Regeln",
+    "description": "Titel wenn keine bedingten Regeln vorhanden sind"
+  },
+  "conditional_rules_empty_description": {
+    "message": "Erstellen Sie Ihre erste bedingte Regel für erweiterte Logik",
+    "description": "Beschreibung wenn keine bedingten Regeln vorhanden sind"
+  },
+  "conditional_rules_create_button": {
+    "message": "Bedingte Regel erstellen",
+    "description": "Button-Text für bedingte Regel erstellen"
+  },
+  "conditional_rules_condition_type": {
+    "message": "Bedingungstyp",
+    "description": "Label für Bedingungstyp"
+  },
+  "conditional_rules_condition_url": {
+    "message": "URL-Bedingung",
+    "description": "URL-Bedingungstyp"
+  },
+  "conditional_rules_condition_header": {
+    "message": "Header-Bedingung",
+    "description": "Header-Bedingungstyp"
+  },
+  "conditional_rules_condition_time": {
+    "message": "Zeit-Bedingung",
+    "description": "Zeit-Bedingungstyp"
+  },
+  "conditional_rules_condition_custom": {
+    "message": "Benutzerdefinierte Bedingung",
+    "description": "Benutzerdefinierter Bedingungstyp"
+  },
+  "conditional_rules_operator": {
+    "message": "Operator",
+    "description": "Label für Bedingungsoperator"
+  },
+  "conditional_rules_operator_equals": {
+    "message": "Gleich",
+    "description": "Gleich-Operator"
+  },
+  "conditional_rules_operator_contains": {
+    "message": "Enthält",
+    "description": "Enthält-Operator"
+  },
+  "conditional_rules_operator_starts_with": {
+    "message": "Beginnt mit",
+    "description": "Beginnt-mit-Operator"
+  },
+  "conditional_rules_operator_ends_with": {
+    "message": "Endet mit",
+    "description": "Endet-mit-Operator"
+  },
+  "conditional_rules_operator_regex": {
+    "message": "Regex",
+    "description": "Regex-Operator"
+  },
+  "conditional_rules_value": {
+    "message": "Wert",
+    "description": "Label für Bedingungswert"
+  },
+  "conditional_rules_action": {
+    "message": "Aktion",
+    "description": "Label für Regel-Aktion"
+  },
+  "conditional_rules_action_add_header": {
+    "message": "Header hinzufügen",
+    "description": "Header-hinzufügen-Aktion"
+  },
+  "conditional_rules_action_modify_header": {
+    "message": "Header ändern",
+    "description": "Header-ändern-Aktion"
+  },
+  "conditional_rules_action_remove_header": {
+    "message": "Header entfernen",
+    "description": "Header-entfernen-Aktion"
+  },
+  "conditional_rules_action_redirect": {
+    "message": "Umleiten",
+    "description": "Umleitungs-Aktion"
+  },
+  "conditional_rules_action_block": {
+    "message": "Blockieren",
+    "description": "Blockier-Aktion"
+  },
+  "rule_testing_title": {
+    "message": "Regel-Tests",
+    "description": "Titel für Regel-Tests"
+  },
+  "rule_testing_description": {
+    "message": "Testen und validieren Sie Ihre Regeln mit verschiedenen Szenarien",
+    "description": "Beschreibung für Regel-Tests"
+  },
+  "rule_testing_empty_title": {
+    "message": "Keine Tests definiert",
+    "description": "Titel wenn keine Tests vorhanden sind"
+  },
+  "rule_testing_empty_description": {
+    "message": "Erstellen Sie Ihren ersten Test um Regeln zu validieren",
+    "description": "Beschreibung wenn keine Tests vorhanden sind"
+  },
+  "rule_testing_create_button": {
+    "message": "Test erstellen",
+    "description": "Button-Text für Test erstellen"
+  },
+  "rule_testing_run_button": {
+    "message": "Test ausführen",
+    "description": "Button-Text für Test ausführen"
+  },
+  "rule_testing_run_all_button": {
+    "message": "Alle Tests ausführen",
+    "description": "Button-Text für alle Tests ausführen"
+  },
+  "rule_testing_test_name": {
+    "message": "Test-Name",
+    "description": "Label für Test-Name"
+  },
+  "rule_testing_test_url": {
+    "message": "Test-URL",
+    "description": "Label für Test-URL"
+  },
+  "rule_testing_expected_headers": {
+    "message": "Erwartete Header",
+    "description": "Label für erwartete Header"
+  },
+  "rule_testing_actual_headers": {
+    "message": "Tatsächliche Header",
+    "description": "Label für tatsächliche Header"
+  },
+  "rule_testing_result_passed": {
+    "message": "Bestanden",
+    "description": "Test bestanden Ergebnis"
+  },
+  "rule_testing_result_failed": {
+    "message": "Fehlgeschlagen",
+    "description": "Test fehlgeschlagen Ergebnis"
+  },
+  "rule_testing_result_error": {
+    "message": "Fehler",
+    "description": "Test Fehler Ergebnis"
+  },
+  "performance_monitor_title": {
+    "message": "Leistungsüberwachung",
+    "description": "Titel für Leistungsüberwachung"
+  },
+  "performance_monitor_description": {
+    "message": "Überwachen Sie die Leistung und Auswirkungen Ihrer Regeln",
+    "description": "Beschreibung für Leistungsüberwachung"
+  },
+  "performance_metrics_requests": {
+    "message": "Verarbeitete Anfragen",
+    "description": "Label für verarbeitete Anfragen"
+  },
+  "performance_metrics_rules_applied": {
+    "message": "Angewendete Regeln",
+    "description": "Label für angewendete Regeln"
+  },
+  "performance_metrics_avg_processing_time": {
+    "message": "Durchschnittliche Verarbeitungszeit",
+    "description": "Label für durchschnittliche Verarbeitungszeit"
+  },
+  "performance_metrics_memory_usage": {
+    "message": "Speicherverbrauch",
+    "description": "Label für Speicherverbrauch"
+  },
+  "performance_chart_requests_over_time": {
+    "message": "Anfragen über Zeit",
+    "description": "Titel für Anfragen-über-Zeit-Diagramm"
+  },
+  "performance_chart_rule_usage": {
+    "message": "Regel-Nutzung",
+    "description": "Titel für Regel-Nutzungs-Diagramm"
+  },
+  "performance_chart_processing_time": {
+    "message": "Verarbeitungszeit",
+    "description": "Titel für Verarbeitungszeit-Diagramm"
+  },
+  "analytics_title": {
+    "message": "Analytics & Überwachung",
+    "description": "Titel für Analytics"
+  },
+  "analytics_description": {
+    "message": "Detaillierte Einblicke in die Nutzung und Leistung der Erweiterung",
+    "description": "Beschreibung für Analytics"
+  },
+  "analytics_overview_title": {
+    "message": "Übersicht",
+    "description": "Titel für Analytics-Übersicht"
+  },
+  "analytics_rules_title": {
+    "message": "Regel-Analytics",
+    "description": "Titel für Regel-Analytics"
+  },
+  "analytics_performance_title": {
+    "message": "Leistungs-Analytics",
+    "description": "Titel für Leistungs-Analytics"
+  },
+  "analytics_usage_title": {
+    "message": "Nutzungs-Analytics",
+    "description": "Titel für Nutzungs-Analytics"
+  },
+  "import_export_title": {
+    "message": "Import/Export",
+    "description": "Titel für Import/Export"
+  },
+  "import_export_description": {
+    "message": "Sichern und wiederherstellen Sie Ihre Regeln, Profile und Einstellungen",
+    "description": "Beschreibung für Import/Export"
+  },
+  "import_export_backup_title": {
+    "message": "Backup erstellen",
+    "description": "Titel für Backup erstellen"
+  },
+  "import_export_restore_title": {
+    "message": "Backup wiederherstellen",
+    "description": "Titel für Backup wiederherstellen"
+  },
+  "import_export_export_rules": {
+    "message": "Regeln exportieren",
+    "description": "Button-Text für Regeln exportieren"
+  },
+  "import_export_import_rules": {
+    "message": "Regeln importieren",
+    "description": "Button-Text für Regeln importieren"
+  },
+  "import_export_export_profiles": {
+    "message": "Profile exportieren",
+    "description": "Button-Text für Profile exportieren"
+  },
+  "import_export_import_profiles": {
+    "message": "Profile importieren",
+    "description": "Button-Text für Profile importieren"
+  },
+  "import_export_export_all": {
+    "message": "Alles exportieren",
+    "description": "Button-Text für alles exportieren"
+  },
+  "import_export_import_all": {
+    "message": "Alles importieren",
+    "description": "Button-Text für alles importieren"
+  },
+  "import_export_file_format": {
+    "message": "Datei-Format",
+    "description": "Label für Datei-Format"
+  },
+  "import_export_format_json": {
+    "message": "JSON",
+    "description": "JSON-Format"
+  },
+  "import_export_format_csv": {
+    "message": "CSV",
+    "description": "CSV-Format"
+  },
+  "import_export_success": {
+    "message": "Erfolgreich $1",
+    "description": "Erfolgsmeldung für Import/Export",
+    "placeholders": {
+      "action": {
+        "content": "$1",
+        "example": "exportiert"
+      }
+    }
+  },
+  "import_export_error": {
+    "message": "Fehler beim $1: $2",
+    "description": "Fehlermeldung für Import/Export",
+    "placeholders": {
+      "action": {
+        "content": "$1",
+        "example": "Exportieren"
+      },
+      "error": {
+        "content": "$2",
+        "example": "Datei nicht gefunden"
+      }
+    }
+  },
+  "help_title": {
+    "message": "Hilfe & Informationen",
+    "description": "Titel für Hilfe"
+  },
+  "help_description": {
+    "message": "Dokumentation, Tutorials und Support für RequestKit",
+    "description": "Beschreibung für Hilfe"
+  },
+  "help_getting_started": {
+    "message": "Erste Schritte",
+    "description": "Titel für Erste Schritte"
+  },
+  "help_documentation": {
+    "message": "Dokumentation",
+    "description": "Titel für Dokumentation"
+  },
+  "help_tutorials": {
+    "message": "Tutorials",
+    "description": "Titel für Tutorials"
+  },
+  "help_faq": {
+    "message": "Häufig gestellte Fragen",
+    "description": "Titel für FAQ"
+  },
+  "help_support": {
+    "message": "Support",
+    "description": "Titel für Support"
+  },
+  "help_about": {
+    "message": "Über RequestKit",
+    "description": "Titel für Über"
+  },
+  "help_version": {
+    "message": "Version",
+    "description": "Label für Version"
+  },
+  "help_license": {
+    "message": "Lizenz",
+    "description": "Label für Lizenz"
+  },
+  "help_contributors": {
+    "message": "Mitwirkende",
+    "description": "Label für Mitwirkende"
+  },
+  "help_report_bug": {
+    "message": "Fehler melden",
+    "description": "Button-Text für Fehler melden"
+  },
+  "help_request_feature": {
+    "message": "Feature anfordern",
+    "description": "Button-Text für Feature anfordern"
+  },
+  "help_contact_support": {
+    "message": "Support kontaktieren",
+    "description": "Button-Text für Support kontaktieren"
   }
 }

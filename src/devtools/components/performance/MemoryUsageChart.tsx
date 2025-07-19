@@ -13,7 +13,7 @@ export function MemoryUsageChart({
   data,
   height = 200,
   className = '',
-}: MemoryUsageChartProps) {
+}: Readonly<MemoryUsageChartProps>) {
   // Process data for chart
   const chartData = useMemo(() => {
     if (!data || data.length === 0) {

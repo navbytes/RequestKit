@@ -15,7 +15,7 @@ interface ExportData {
 }
 
 interface LastExportInfoProps {
-  lastExport: ExportData;
+  readonly lastExport: ExportData;
 }
 
 export function LastExportInfo({ lastExport }: LastExportInfoProps) {

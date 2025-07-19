@@ -371,7 +371,10 @@ export const getEnvironmentConfig = (environment: string) => {
 };
 
 // Main Component
-export function ProfileManager({ rules, onRulesUpdate }: ProfileManagerProps) {
+export function ProfileManager({
+  rules,
+  onRulesUpdate,
+}: Readonly<ProfileManagerProps>) {
   const { profileData, setProfileData, loadProfiles } = useProfileData();
   const {
     showCreateForm,

@@ -4,6 +4,7 @@ import { STORAGE_KEYS } from '@/config/constants';
 import { AnalyticsMonitor } from '@/lib/integrations/analytics-monitor';
 import { ThemeIcon } from '@/shared/components/ThemeIcon';
 import { Alert } from '@/shared/components/ui/Alert';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { HeaderRule } from '@/shared/types/rules';
 import type { ExtensionSettings } from '@/shared/types/storage';
 import { ChromeApiUtils } from '@/shared/utils/chrome-api';
@@ -85,6 +86,7 @@ const cleanUrlParameters = () => {
 };
 
 export function OptionsApp() {
+  const { t } = useI18n();
   const [state, setState] = useState<OptionsState>({
     activeTab: getTabFromUrl(),
     rules: [],
@@ -127,6 +129,67 @@ export function OptionsApp() {
 
   // Check for URL parameters to determine initial tab and actions
   useEffect(() => {
+    const loadData = async () => {
+      try {
+        setState(prev => ({ ...prev, loading: true, error: null }));
+
+        const storage = (await ChromeApiUtils.storage.get([
+          STORAGE_KEYS.RULES,
+          STORAGE_KEYS.SETTINGS,
+        ])) as Record<string, unknown>;
+        const rules = Object.values(
+          (storage[STORAGE_KEYS.RULES] as Record<string, HeaderRule>) || {}
+        );
+        const settings = (storage[
+          STORAGE_KEYS.SETTINGS
+        ] as ExtensionSettings) || {
+          enabled: true,
+          debugMode: false,
+          logLevel: 'info' as const,
+          notifications: {
+            enabled: true,
+            showRuleMatches: false,
+            showErrors: true,
+            showUpdates: true,
+          },
+          ui: {
+            theme: 'auto' as const,
+            compactMode: false,
+            showAdvancedOptions: false,
+            defaultTab: 'rules',
+          },
+          performance: {
+            maxRules: 100,
+            cacheTimeout: 300,
+            enableMetrics: false,
+          },
+          backup: {
+            autoBackup: true,
+            backupInterval: 24,
+            maxBackups: 5,
+          },
+          security: {
+            requireConfirmation: false,
+            allowExternalImport: true,
+            validatePatterns: true,
+          },
+        };
+
+        setState(prev => ({
+          ...prev,
+          rules,
+          settings,
+          loading: false,
+        }));
+      } catch (error) {
+        logger.error('Failed to load options data:', error);
+        setState(prev => ({
+          ...prev,
+          loading: false,
+          error: t('options_error_load_data'),
+        }));
+      }
+    };
     // Initialize theme manager
     ThemeManager.getInstance();
 
@@ -165,69 +228,7 @@ export function OptionsApp() {
     return () => {
       window.removeEventListener('hashchange', handleHashChange);
     };
-  }, []);
-
-  const loadData = async () => {
-    try {
-      setState(prev => ({ ...prev, loading: true, error: null }));
-
-      const storage = (await ChromeApiUtils.storage.get([
-        STORAGE_KEYS.RULES,
-        STORAGE_KEYS.SETTINGS,
-      ])) as Record<string, unknown>;
-      const rules = Object.values(
-        (storage[STORAGE_KEYS.RULES] as Record<string, HeaderRule>) || {}
-      ) as HeaderRule[];
-      const settings = (storage[
-        STORAGE_KEYS.SETTINGS
-      ] as ExtensionSettings) || {
-        enabled: true,
-        debugMode: false,
-        logLevel: 'info' as const,
-        notifications: {
-          enabled: true,
-          showRuleMatches: false,
-          showErrors: true,
-          showUpdates: true,
-        },
-        ui: {
-          theme: 'auto' as const,
-          compactMode: false,
-          showAdvancedOptions: false,
-          defaultTab: 'rules',
-        },
-        performance: {
-          maxRules: 100,
-          cacheTimeout: 300,
-          enableMetrics: false,
-        },
-        backup: {
-          autoBackup: true,
-          backupInterval: 24,
-          maxBackups: 5,
-        },
-        security: {
-          requireConfirmation: false,
-          allowExternalImport: true,
-          validatePatterns: true,
-        },
-      };
-
-      setState(prev => ({
-        ...prev,
-        rules,
-        settings,
-        loading: false,
-      }));
-    } catch (error) {
-      logger.error('Failed to load options data:', error);
-      setState(prev => ({
-        ...prev,
-        loading: false,
-        error: 'Failed to load extension data',
-      }));
-    }
-  };
+  }, [t]);
 
   const handleTabChange = (tab: TabType) => {
     setState(prev => ({ ...prev, activeTab: tab }));
@@ -292,9 +293,7 @@ export function OptionsApp() {
 
     // Show success notification
     const templateName = rule.name.replace(' - Applied from Template', '');
-    showNotification(
-      `Template "${templateName}" has been applied successfully! You can now view and edit it in the Rules tab.`
-    );
+    showNotification(t('options_template_applied_success', [templateName]));
 
     // Navigate to rules tab
     setState(prev => ({ ...prev, activeTab: 'rules' }));
@@ -313,7 +312,7 @@ export function OptionsApp() {
         <div className="text-center">
           <div className="spinner w-8 h-8 mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400">
-            Loading RequestKit options...
+            {t('options_loading')}
           </p>
         </div>
       </div>
@@ -347,13 +346,13 @@ export function OptionsApp() {
               </div>
               <div>
                 <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  RequestKit Options
+                  {t('options_title')}
                 </h1>
               </div>
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-500 dark:text-gray-400">
-                {state.rules.length} rules configured
+                {state.rules.length} {t('options_rules_configured')}
               </span>
             </div>
           </div>

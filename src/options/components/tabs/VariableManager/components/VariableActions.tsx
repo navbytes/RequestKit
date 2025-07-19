@@ -12,7 +12,7 @@ export function VariableActions({
   onImport,
   onExport,
   onCreateVariable,
-}: VariableActionsProps) {
+}: Readonly<VariableActionsProps>) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex space-x-2">

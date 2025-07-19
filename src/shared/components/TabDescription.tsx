@@ -1,3 +1,5 @@
+import { useI18n } from '@/shared/hooks/useI18n';
+
 import { Icon, type IconName } from './Icon';
 
 interface TabDescriptionProps {
@@ -14,7 +16,8 @@ export function TabDescription({
   icon,
   features,
   useCases,
-}: TabDescriptionProps) {
+}: Readonly<TabDescriptionProps>) {
+  const { t } = useI18n();
   return (
     <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg">
       <div className="flex items-start space-x-3 mb-3">
@@ -40,7 +43,7 @@ export function TabDescription({
           {features && (
             <div>
               <h4 className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
-                Key Features:
+                {t('ui_key_features')}:
               </h4>
               <ul className="text-xs text-blue-600 dark:text-blue-400 space-y-1">
                 {features.map((feature, index) => (
@@ -60,7 +63,7 @@ export function TabDescription({
           {useCases && (
             <div>
               <h4 className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-2">
-                Common Use Cases:
+                {t('ui_common_use_cases')}:
               </h4>
               <ul className="text-xs text-blue-600 dark:text-blue-400 space-y-1">
                 {useCases.map((useCase, index) => (

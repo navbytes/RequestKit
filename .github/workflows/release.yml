@@ -185,6 +185,25 @@ jobs:
           echo "**Localization:** ✅ All locale files validated" >> $GITHUB_STEP_SUMMARY
           echo "**Build:** ✅ Extension built successfully" >> $GITHUB_STEP_SUMMARY
 
+      - name: Generate technical details
+        if: steps.check-release.outputs.EXISTS == 'false'
+        id: tech-details
+        run: |
+          # Get package size
+          ZIP_SIZE=$(stat -c%s RequestKit_${{ steps.manifest-version.outputs.VERSION }}.zip)
+          PACKAGE_SIZE=$(echo $ZIP_SIZE | awk '{printf "%.1f MB", $1/1024/1024}')
+
+          # Get build date
+          BUILD_DATE=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+
+          # Get previous version for changelog
+          PREV_VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo '0.0.0')
+
+          # Store in outputs
+          echo "PACKAGE_SIZE=$PACKAGE_SIZE" >> $GITHUB_OUTPUT
+          echo "BUILD_DATE=$BUILD_DATE" >> $GITHUB_OUTPUT
+          echo "PREV_VERSION=$PREV_VERSION" >> $GITHUB_OUTPUT
+
       - name: Create Release
         id: create_release
         if: steps.check-release.outputs.EXISTS == 'false'
@@ -213,12 +232,12 @@ jobs:
 
             - **Manifest Version:** 3
             - **Minimum Chrome Version:** 88
-            - **Package Size:** $(stat -c%s RequestKit_${{ steps.manifest-version.outputs.VERSION }}.zip | awk '{printf "%.1f MB", $1/1024/1024}')
-            - **Build Date:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')
+            - **Package Size:** ${{ steps.tech-details.outputs.PACKAGE_SIZE }}
+            - **Build Date:** ${{ steps.tech-details.outputs.BUILD_DATE }}
 
             ---
 
-            **Full Changelog**: https://github.com/${{ github.repository }}/compare/v$(git describe --tags --abbrev=0 2>/dev/null || echo '0.0.0')...v${{ steps.manifest-version.outputs.VERSION }}
+            **Full Changelog**: https://github.com/${{ github.repository }}/compare/v${{ steps.tech-details.outputs.PREV_VERSION }}...v${{ steps.manifest-version.outputs.VERSION }}
           files: RequestKit_${{ steps.manifest-version.outputs.VERSION }}.zip
           draft: false
           prerelease: false

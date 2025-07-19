@@ -6,7 +6,9 @@ interface TemplateUrlPatternProps {
   };
 }
 
-export function TemplateUrlPattern({ pattern }: TemplateUrlPatternProps) {
+export function TemplateUrlPattern({
+  pattern,
+}: Readonly<TemplateUrlPatternProps>) {
   return (
     <div>
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">

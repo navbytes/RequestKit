@@ -14,7 +14,7 @@ import { RequestDetails } from './RequestDetails';
 import { RequestsList } from './RequestsList';
 
 interface DevToolsPanelProps {
-  tabId?: number;
+  readonly tabId?: number;
 }
 
 interface WindowWithPanel extends Window {

@@ -9,7 +9,9 @@ interface TemplateConditionsProps {
   conditions: TemplateCondition[];
 }
 
-export function TemplateConditions({ conditions }: TemplateConditionsProps) {
+export function TemplateConditions({
+  conditions,
+}: Readonly<TemplateConditionsProps>) {
   return (
     <div>
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">

@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'manifest.json' # Only trigger when manifest.json changes (version bump)
+  workflow_dispatch: # Allow manual triggering
 
 permissions:
   contents: write # Required for creating releases
@@ -13,8 +14,6 @@ permissions:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
-    # Only run if the commit message contains version-related keywords
-    if: contains(github.event.head_commit.message, 'version') || contains(github.event.head_commit.message, 'release') || contains(github.event.head_commit.message, 'bump')
 
     steps:
       - name: Checkout code

@@ -1,6 +1,6 @@
 {
   "name": "requestkit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "RequestKit - A sophisticated Chrome extension for injecting custom headers on network requests using wildcard patterns, featuring an advanced Variable System with hierarchical scoping",
   "type": "module",
   "scripts": {

@@ -31,16 +31,28 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install rollup native dependencies (workaround for CI)
+        run: |
+          npm install @rollup/rollup-linux-x64-gnu
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+
       - name: Run tests
         run: npm test
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
 
       - name: Validate localization
         run: |
           npm run validate-messages
           npm run test:i18n
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
 
       - name: Build extension
         run: npm run build
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
 
       - name: Get version from manifest.json
         id: manifest-version

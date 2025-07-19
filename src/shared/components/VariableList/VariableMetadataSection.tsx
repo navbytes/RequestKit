@@ -1,3 +1,4 @@
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { Variable } from '@/shared/types/variables';
 
 const MetadataField = ({
@@ -5,9 +6,9 @@ const MetadataField = ({
   value,
   className = '',
 }: {
-  label: string;
-  value: string;
-  className?: string;
+  readonly label: string;
+  readonly value: string;
+  readonly className?: string;
 }) => (
   <div className={className}>
     <span className="text-gray-500 dark:text-gray-400">{label}:</span>
@@ -19,43 +20,46 @@ export const VariableMetadataSection = ({
   variable,
   formatDate,
 }: {
-  variable: Variable;
-  formatDate: (date?: Date | string) => string;
-}) => (
-  <div>
-    <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
-      Metadata
-    </h4>
-    <div className="space-y-2 text-sm">
-      <MetadataField
-        label="Created"
-        value={
-          variable.metadata?.createdAt
-            ? formatDate(variable.metadata.createdAt)
-            : 'Unknown'
-        }
-      />
-
-      <MetadataField
-        label="Updated"
-        value={
-          variable.metadata?.updatedAt
-            ? formatDate(variable.metadata.updatedAt)
-            : 'Unknown'
-        }
-      />
-
-      {variable.metadata?.lastUsed && (
+  readonly variable: Variable;
+  readonly formatDate: (date?: Date | string) => string;
+}) => {
+  const { t } = useI18n();
+  return (
+    <div>
+      <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
+        {t('variables_metadata_title')}
+      </h4>
+      <div className="space-y-2 text-sm">
         <MetadataField
-          label="Last Used"
-          value={formatDate(variable.metadata.lastUsed)}
+          label={t('variables_created_label')}
+          value={
+            variable.metadata?.createdAt
+              ? formatDate(variable.metadata.createdAt)
+              : t('variables_unknown_date')
+          }
         />
-      )}
 
-      <MetadataField
-        label="Usage Count"
-        value={String(variable.metadata?.usageCount || 0)}
-      />
+        <MetadataField
+          label={t('variables_updated_label')}
+          value={
+            variable.metadata?.updatedAt
+              ? formatDate(variable.metadata.updatedAt)
+              : t('variables_unknown_date')
+          }
+        />
+
+        {variable.metadata?.lastUsed && (
+          <MetadataField
+            label={t('variables_last_used_label')}
+            value={formatDate(variable.metadata.lastUsed)}
+          />
+        )}
+
+        <MetadataField
+          label={t('variables_usage_count_label')}
+          value={String(variable.metadata?.usageCount || 0)}
+        />
+      </div>
     </div>
-  </div>
-);
+  );
+};

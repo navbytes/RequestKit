@@ -74,7 +74,6 @@ import {
   ListX,
   Cpu,
   ArrowUpDown,
-  type LucideIcon,
 } from 'lucide-preact';
 
 import { loggers } from '@/shared/utils/debug';
@@ -204,8 +203,8 @@ export function Icon({
   size = 16,
   className = '',
   strokeWidth = 2,
-}: IconProps) {
-  const IconComponent = iconMap[name] as LucideIcon;
+}: Readonly<IconProps>) {
+  const IconComponent = iconMap[name];
 
   if (!IconComponent) {
     logger.warn(`Icon "${name}" not found in iconMap`);

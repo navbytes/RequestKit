@@ -1,9 +1,10 @@
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { Profile } from '@/shared/types/profiles';
 
 interface ProfileSelectorProps {
-  activeProfile: string;
-  profiles: Profile[];
-  onSwitchProfile: (profileId: string) => void;
+  readonly activeProfile: string;
+  readonly profiles: Profile[];
+  readonly onSwitchProfile: (profileId: string) => void;
 }
 
 export function ProfileSelector({
@@ -11,11 +12,14 @@ export function ProfileSelector({
   profiles,
   onSwitchProfile,
 }: ProfileSelectorProps) {
+  const { t } = useI18n();
   const activeProfileData = profiles.find(p => p.id === activeProfile);
 
   return (
     <div className="flex items-center space-x-2">
-      <span className="text-sm text-gray-500 dark:text-gray-400">Profile:</span>
+      <span className="text-sm text-gray-500 dark:text-gray-400">
+        {t('devtools_profile_label')}
+      </span>
       <select
         value={activeProfile}
         onChange={e => onSwitchProfile((e.target as HTMLSelectElement).value)}

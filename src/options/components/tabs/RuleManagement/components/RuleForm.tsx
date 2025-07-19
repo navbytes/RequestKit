@@ -35,7 +35,7 @@ export function RuleForm({
   addHeader,
   updateHeader,
   removeHeader,
-}: RuleFormProps) {
+}: Readonly<RuleFormProps>) {
   return (
     <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-6">
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">

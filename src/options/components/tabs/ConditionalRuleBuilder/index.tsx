@@ -125,7 +125,7 @@ const saveRules = async (rulesToSave: HeaderRule[]) => {
 export function ConditionalRuleBuilder({
   rules,
   onRulesUpdate,
-}: ConditionalRuleBuilderProps) {
+}: Readonly<ConditionalRuleBuilderProps>) {
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingRule, setEditingRule] = useState<ConditionalRule | null>(null);
 
@@ -257,8 +257,8 @@ export function ConditionalRuleBuilder({
       return;
 
     const condition: RuleCondition = {
-      type: newCondition.type as RuleCondition['type'],
-      operator: newCondition.operator as RuleCondition['operator'],
+      type: newCondition.type,
+      operator: newCondition.operator,
       value: newCondition.value as string | number,
       ...(newCondition.negate !== undefined && { negate: newCondition.negate }),
       ...(newCondition.caseSensitive !== undefined && {

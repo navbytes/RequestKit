@@ -4,23 +4,23 @@
     "description": "এক্সটেনশনের নাম"
   },
   "extensionDescription": {
-    "message": "শক্তিশালী ভেরিয়েবল সিস্টেম, প্যাটার্ন ম্যাচিং এবং পরীক্ষার সরঞ্জাম সহ কাস্টম হেডার ইনজেক্ট করার জন্য উন্নত Chrome এক্সটেনশন",
+    "message": "শক্তিশালী ভ্যারিয়েবল সিস্টেম, প্যাটার্ন ম্যাচিং, এবং পরীক্ষার সরঞ্জামগুলির সাথে কাস্টম হেডার ইনজেকশন জন্য উন্নত ক্রোম এক্সটেনশন",
     "description": "এক্সটেনশনের বিবরণ"
   },
   "extensionShortName": {
     "message": "RequestKit",
-    "description": "এক্সটেনশনের সংক্ষিপ্ত নাম"
+    "description": "সংক্ষিপ্ত নাম"
   },
   "app_name": {
     "message": "RequestKit",
-    "description": "অ্যাপ্লিকেশনের নাম"
+    "description": "অ্যাপ্লিকেশন নাম"
   },
   "app_version": {
     "message": "1.0.0",
-    "description": "অ্যাপ্লিকেশনের সংস্করণ"
+    "description": "অ্যাপ্লিকেশন সংস্করণ"
   },
   "ui_button_save": {
-    "message": "সংরক্ষণ",
+    "message": "সংরক্ষণ করুন",
     "description": "সংরক্ষণ বোতামের লেবেল"
   },
   "ui_button_cancel": {
@@ -28,84 +28,85 @@
     "description": "বাতিল বোতামের লেবেল"
   },
   "ui_button_delete": {
-    "message": "মুছুন",
-    "description": "মুছুন বোতামের লেবেল"
+    "message": "মুছে ফেলুন",
+    "description": "মুছে ফেলার বোতামের লেবেল"
   },
   "ui_button_edit": {
-    "message": "সম্পাদনা",
+    "message": "সম্পাদনা করুন",
     "description": "সম্পাদনা বোতামের লেবেল"
   },
   "ui_button_add": {
     "message": "যোগ করুন",
-    "description": "যোগ করুন বোতামের লেবেল"
+    "description": "যোগ করার বোতামের লেবেল"
   },
   "ui_button_create": {
-    "message": "তৈরি করুন",
-    "description": "তৈরি করুন বোতামের লেবেল"
+    "message": "সৃষ্টি করুন",
+    "description": "সৃষ্টি বোতামের লেবেল"
   },
   "ui_button_update": {
-    "message": "আপডেট",
+    "message": "আপডেট করুন",
     "description": "আপডেট বোতামের লেবেল"
   },
   "ui_button_remove": {
-    "message": "সরান",
-    "description": "সরান বোতামের লেবেল"
+    "message": "অপসারণ করুন",
+    "description": "অপসারণ বোতামের লেবেল"
   },
   "ui_button_close": {
-    "message": "বন্ধ",
+    "message": "বন্ধ করুন",
     "description": "বন্ধ বোতামের লেবেল"
   },
   "ui_button_back": {
-    "message": "পেছনে",
-    "description": "পেছনে বোতামের লেবেল"
+    "message": "বেক",
+    "description": "পেছনের বোতামের লেবেল"
   },
   "ui_button_next": {
     "message": "পরবর্তী",
     "description": "পরবর্তী বোতামের লেবেল"
   },
   "ui_button_finish": {
-    "message": "শেষ",
-    "description": "শেষ বোতামের লেবেল"
+    "message": "সমাপ্তি",
+    "description": "সমাপ্ত বোতামের লেবেল"
   },
   "ui_button_apply": {
-    "message": "প্রয়োগ",
-    "description": "প্রয়োগ বোতামের লেবেল"
+    "message": "প্রয়োগ করুন",
+    "description": "প্রয়োগ বোতামের লেবেল"
   },
   "ui_button_reset": {
-    "message": "রিসেট",
+    "message": "রিসেট করুন",
     "description": "রিসেট বোতামের লেবেল"
   },
   "ui_button_clear": {
-    "message": "পরিষ্কার",
+    "message": "পরিষ্কার করুন",
     "description": "পরিষ্কার বোতামের লেবেল"
   },
   "ui_button_refresh": {
-    "message": "রিফ্রেশ",
+    "message": "রিফ্রেশ করুন",
     "description": "রিফ্রেশ বোতামের লেবেল"
   },
   "ui_button_export": {
-    "message": "এক্সপোর্ট",
-    "description": "এক্সপোর্ট বোতামের লেবেল"
+    "message": "রপ্তানি করুন",
+    "description": "রপ্তানি বোতামের লেবেল"
   },
   "ui_button_import": {
-    "message": "ইমপোর্ট",
-    "description": "ইমপোর্ট বোতামের লেবেল"
+    "message": "আমদানি করুন",
+    "description": "আমদানি বোতামের লেবেল"
   },
   "ui_button_copy": {
-    "message": "কপি",
-    "description": "কপি বোতামের লেবেল"
+    "message": "নকল করুন",
+    "description": "নকল বোতামের লেবেল"
   },
   "ui_button_paste": {
-    "message": "পেস্ট",
-    "description": "পেস্ট বোতামের লেবেল"
+    "message": "চাপুন",
+    "description": "চাপানোর বোতামের লেবেল"
   },
+
   "ui_label_name": {
     "message": "নাম",
     "description": "নাম ক্ষেত্রের লেবেল"
   },
   "ui_label_description": {
-    "message": "বিবরণ",
-    "description": "বিবরণ ক্ষেত্রের লেবেল"
+    "message": "বর্ণনা",
+    "description": "বর্ণনা ক্ষেত্রের লেবেল"
   },
   "ui_label_url": {
     "message": "URL",
@@ -116,8 +117,8 @@
     "description": "HTTP পদ্ধতি ক্ষেত্রের লেবেল"
   },
   "ui_label_headers": {
-    "message": "হেডার",
-    "description": "হেডার ক্ষেত্রের লেবেল"
+    "message": "হেডারস",
+    "description": "হেডারস ক্ষেত্রের লেবেল"
   },
   "ui_label_value": {
     "message": "মান",
@@ -128,8 +129,20 @@
     "description": "সক্রিয় ক্ষেত্রের লেবেল"
   },
   "ui_label_disabled": {
-    "message": "নিষ্ক্রিয়",
-    "description": "নিষ্ক্রিয় ক্ষেত্রের লেবেল"
+    "message": "বিভ্রান্ত",
+    "description": "বিভ্রান্ত ক্ষেত্রের লেবেল"
+  },
+  "ui_label_rules_active": {
+    "message": "সক্রিয় নিয়ম",
+    "description": "সক্রিয় নিয়মের সংখ্যা লেবেল"
+  },
+  "ui_label_extension_disabled": {
+    "message": "এক্সটেনশন অক্ষম",
+    "description": "এক্সটেনশন অক্ষম হলে লেবেল"
+  },
+  "ui_label_extension_status": {
+    "message": "এক্সটেনশন অবস্থা",
+    "description": "এক্সটেনশন স্টেটাস টগল এর জন্য লেবেল"
   },
   "ui_label_priority": {
     "message": "অগ্রাধিকার",
@@ -148,88 +161,103 @@
     "description": "অবস্থা ক্ষেত্রের লেবেল"
   },
   "ui_label_type": {
-    "message": "প্রকার",
-    "description": "প্রকার ক্ষেত্রের লেবেল"
+    "message": "ধরণ",
+    "description": "ধরণ ক্ষেত্রের লেবেল"
   },
   "ui_label_category": {
-    "message": "বিভাগ",
-    "description": "বিভাগ ক্ষেত্রের লেবেল"
+    "message": "শ্রেণী",
+    "description": "শ্রেণীর ক্ষেত্রের লেবেল"
   },
   "ui_label_tags": {
-    "message": "ট্যাগ",
-    "description": "ট্যাগ ক্ষেত্রের লেবেল"
+    "message": "ট্যাগস",
+    "description": "ট্যাগস ক্ষেত্রের লেবেল"
   },
+
   "ui_tooltip_save": {
-    "message": "বর্তমান পরিবর্তনগুলি সংরক্ষণ করুন",
+    "message": "বর্তমান পরিবর্তন সংরক্ষণ করুন",
     "description": "সংরক্ষণ বোতামের টুলটিপ"
   },
   "ui_tooltip_delete": {
-    "message": "এই আইটেমটি মুছুন",
-    "description": "মুছুন বোতামের টুলটিপ"
+    "message": "এই আইটেম মুছে ফেলুন",
+    "description": "মুছে ফেলার বোতামের টুলটিপ"
   },
   "ui_tooltip_edit": {
-    "message": "এই আইটেমটি সম্পাদনা করুন",
+    "message": "এই আইটেম সম্পাদনা করুন",
     "description": "সম্পাদনা বোতামের টুলটিপ"
   },
   "ui_tooltip_enable": {
-    "message": "এই নিয়মটি সক্রিয় করুন",
-    "description": "সক্রিয় বোতামের টুলটিপ"
+    "message": "এই নিয়ম সক্ষম করুন",
+    "description": "সক্ষম করার টুলটিপ"
   },
   "ui_tooltip_disable": {
-    "message": "এই নিয়মটি নিষ্ক্রিয় করুন",
-    "description": "নিষ্ক্রিয় বোতামের টুলটিপ"
+    "message": "এই নিয়ম অক্ষম করুন",
+    "description": "অক্ষম করার টুলটিপ"
   },
+  "ui_tooltip_open_options": {
+    "message": "বিকল্প খুলুন",
+    "description": "বিকল্প পৃষ্ঠা খোলার টুলটিপ"
+  },
+  "ui_aria_enable_extension": {
+    "message": "এক্সটেনশন সক্ষম করুন",
+    "description": "অ্যারিয়া লেবেল সক্ষম বাটনের জন্য"
+  },
+  "ui_aria_disable_extension": {
+    "message": "এক্সটেনশন অক্ষম করুন",
+    "description": "অ্যারিয়া লেবেল অক্ষম বাটনের জন্য"
+  },
+
   "errors_validation_domain_invalid": {
-    "message": "অবৈধ ডোমেইন প্যাটার্ন",
-    "description": "অবৈধ ডোমেইনের জন্য ত্রুটি বার্তা"
+    "message": "অবৈধ ডোমেন প্যাটার্ন",
+    "description": "অবৈধ ডোমেনের জন্য ত্রুটি বার্তা"
   },
   "errors_validation_path_invalid": {
-    "message": "পথটি / দিয়ে শুরু হতে হবে",
-    "description": "অবৈধ পথের জন্য ত্রুটি বার্তা"
+    "message": "/ দিয়ে পাথ শুরু করতে হবে",
+    "description": "অবৈধ পাথের জন্য ত্রুটি বার্তা"
   },
   "errors_validation_header_name_invalid": {
-    "message": "হেডারের নামে অবৈধ অক্ষর রয়েছে",
+    "message": "হেডার নামের মধ্যে অবৈধ অক্ষর রয়েছে",
     "description": "অবৈধ হেডার নামের জন্য ত্রুটি বার্তা"
   },
   "errors_validation_port_invalid": {
-    "message": "পোর্ট অবশ্যই 1-65535 এর মধ্যে একটি সংখ্যা বা * হতে হবে",
+    "message": "পোর্ট 1-65535 এর মধ্যে একটি সংখ্যা বা * হতে হবে",
     "description": "অবৈধ পোর্টের জন্য ত্রুটি বার্তা"
   },
   "errors_rule_not_found": {
-    "message": "নিয়ম পাওয়া যায়নি",
-    "description": "নিয়ম না পাওয়া গেলে ত্রুটি বার্তা"
+    "message": "নियम পাওয়া যায়নি",
+    "description": "যখন নিয়ম পাওয়া যায় না তখন ত্রুটি বার্তা"
   },
   "errors_template_not_found": {
-    "message": "টেমপ্লেট পাওয়া যায়নি",
-    "description": "টেমপ্লেট না পাওয়া গেলে ত্রুটি বার্তা"
+    "message": "টেম্প্লেট পাওয়া যায়নি",
+    "description": "যখন টেম্প্লেট পাওয়া যায় না তখন ত্রুটি বার্তা"
   },
   "errors_storage_error": {
     "message": "ডেটা সংরক্ষণে ব্যর্থ",
-    "description": "স্টোরেজ ব্যর্থতার জন্য ত্রুটি বার্তা"
+    "description": "সঞ্চয় ব্যর্থতার জন্য ত্রুটি বার্তা"
   },
   "errors_import_error": {
-    "message": "ডেটা ইমপোর্টে ব্যর্থ",
-    "description": "ইমপোর্ট ব্যর্থতার জন্য ত্রুটি বার্তা"
+    "message": "ডেটা আমদানি ব্যর্থ",
+    "description": "আমদানি ব্যর্থতার জন্য ত্রুটি বার্তা"
   },
   "errors_export_error": {
-    "message": "ডেটা এক্সপোর্টে ব্যর্থ",
-    "description": "এক্সপোর্ট ব্যর্থতার জন্য ত্রুটি বার্তা"
+    "message": "ডেটা রপ্তানি ব্যর্থ",
+    "description": "রপ্তানি ব্যর্থতার জন্য ত্রুটি বার্তা"
   },
   "errors_network_error": {
-    "message": "নেটওয়ার্ক ত্রুটি ঘটেছে",
+    "message": "নেটওয়ার্ক ত্রুটি",
     "description": "নেটওয়ার্ক ব্যর্থতার জন্য ত্রুটি বার্তা"
   },
   "errors_permission_denied": {
-    "message": "অনুমতি প্রত্যাখ্যাত",
-    "description": "অনুমতি সমস্যার জন্য ত্রুটি বার্তা"
+    "message": "অনুমতি অস্বীকৃতি",
+    "description": "অনুমতি সমস্যা হলে ত্রুটি বার্তা"
   },
   "errors_invalid_format": {
-    "message": "অবৈধ ফরম্যাট",
-    "description": "ফরম্যাট যাচাইকরণের জন্য ত্রুটি বার্তা"
+    "message": "অবৈধ ফর্ম্যাট",
+    "description": "ফর্ম্যাট ভ্যালিডেশনের জন্য ত্রুটি বার্তা"
   },
+
   "notifications_rule_created": {
-    "message": "নিয়ম '$1' সফলভাবে তৈরি হয়েছে",
-    "description": "নিয়ম তৈরি হলে বিজ্ঞপ্তি",
+    "message": "'$1' নিয়ম সফলভাবে তৈরি হয়েছে",
+    "description": "নিয়ম তৈরি হলে নোটিফিকেশন",
     "placeholders": {
       "ruleName": {
         "content": "$1",
@@ -238,8 +266,8 @@
     }
   },
   "notifications_rule_updated": {
-    "message": "নিয়ম '$1' সফলভাবে আপডেট হয়েছে",
-    "description": "নিয়ম আপডেট হলে বিজ্ঞপ্তি",
+    "message": "'$1' নিয়ম সফলভাবে আপডেট হয়েছে",
+    "description": "নিয়ম আপডেট হলে নোটিফিকেশন",
     "placeholders": {
       "ruleName": {
         "content": "$1",
@@ -248,8 +276,8 @@
     }
   },
   "notifications_rule_deleted": {
-    "message": "নিয়ম '$1' সফলভাবে মুছে ফেলা হয়েছে",
-    "description": "নিয়ম মুছে ফেলা হলে বিজ্ঞপ্তি",
+    "message": "'$1' নিয়ম সফলভাবে মোছা হয়েছে",
+    "description": "নিয়ম মোছার পরে নোটিফিকেশন",
     "placeholders": {
       "ruleName": {
         "content": "$1",
@@ -258,8 +286,8 @@
     }
   },
   "notifications_profile_switched": {
-    "message": "প্রোফাইল '$1'-এ পরিবর্তন হয়েছে",
-    "description": "প্রোফাইল পরিবর্তন হলে বিজ্ঞপ্তি",
+    "message": "'$1' প্রোফাইলে সুইচ হয়েছে",
+    "description": "প্রোফাইল পরিবর্তনের পরে নোটিফিকেশন",
     "placeholders": {
       "profileName": {
         "content": "$1",
@@ -268,59 +296,61 @@
     }
   },
   "notifications_extension_enabled": {
-    "message": "RequestKit সক্রিয় করা হয়েছে",
-    "description": "এক্সটেনশন সক্রিয় হলে বিজ্ঞপ্তি"
+    "message": "RequestKit সক্ষম হয়েছে",
+    "description": "এক্সটেনশন সক্ষম হলে নোটিফিকেশন"
   },
   "notifications_extension_disabled": {
-    "message": "RequestKit নিষ্ক্রিয় করা হয়েছে",
-    "description": "এক্সটেনশন নিষ্ক্রিয় হলে বিজ্ঞপ্তি"
+    "message": "RequestKit অক্ষম হয়েছে",
+    "description": "এক্সটেনশন অক্ষম হলে নোটিফিকেশন"
   },
   "notifications_backup_created": {
     "message": "ব্যাকআপ সফলভাবে তৈরি হয়েছে",
-    "description": "ব্যাকআপ তৈরি হলে বিজ্ঞপ্তি"
+    "description": "ব্যাকআপ তৈরি হলে নোটিফিকেশন"
   },
   "notifications_data_imported": {
-    "message": "ডেটা সফলভাবে ইমপোর্ট হয়েছে",
-    "description": "ডেটা ইমপোর্ট হলে বিজ্ঞপ্তি"
+    "message": "ডেটা সফলভাবে আমদানি হয়েছে",
+    "description": "ডেটা আমদানি হলে নোটিফিকেশন"
   },
+
   "templates_cors_name": {
     "message": "CORS হেডার",
-    "description": "CORS টেমপ্লেটের নাম"
+    "description": "CORS টেম্প্লেটের নাম"
   },
   "templates_cors_description": {
-    "message": "ক্রস-অরিজিন রিসোর্স শেয়ারিং সক্রিয় করুন",
-    "description": "CORS টেমপ্লেটের বিবরণ"
+    "message": "ক্রস-অরিজিন রিসোর্স শেয়ারিং সক্ষম করুন",
+    "description": "CORS টেম্প্লেটের বিবরণ"
   },
   "templates_auth_bearer_name": {
     "message": "Bearer টোকেন",
-    "description": "Bearer টোকেন টেমপ্লেটের নাম"
+    "description": "Bearer টোকেন টেম্প্লেটের নাম"
   },
   "templates_auth_bearer_description": {
-    "message": "Bearer টোকেন সহ Authorization হেডার যোগ করুন",
-    "description": "Bearer টোকেন টেমপ্লেটের বিবরণ"
+    "message": "অধিকার হেডারে Bearer টোকেন যোগ করুন",
+    "description": "Bearer টোকেন টেম্প্লেটের বিবরণ"
   },
   "templates_debug_name": {
     "message": "ডিবাগ হেডার",
-    "description": "ডিবাগ টেমপ্লেটের নাম"
+    "description": "ডিবাগ টেম্প্লেটের নাম"
   },
   "templates_debug_description": {
     "message": "ডিবাগিং তথ্য হেডার যোগ করুন",
-    "description": "ডিবাগ টেমপ্লেটের বিবরণ"
+    "description": "ডিবাগ টেম্প্লেটের বিবরণ"
   },
   "templates_security_name": {
     "message": "নিরাপত্তা হেডার",
-    "description": "নিরাপত্তা টেমপ্লেটের নাম"
+    "description": "নিরাপত্তা টেম্প্লেটের নাম"
   },
   "templates_security_description": {
     "message": "সাধারণ নিরাপত্তা হেডার যোগ করুন",
-    "description": "নিরাপত্তা টেমপ্লেটের বিবরণ"
+    "description": "নিরাপত্তা টেম্প্লেটের বিবরণ"
   },
+
   "profiles_default_dev_name": {
     "message": "উন্নয়ন",
     "description": "ডিফল্ট উন্নয়ন প্রোফাইলের নাম"
   },
   "profiles_default_dev_description": {
-    "message": "ডিবাগ বৈশিষ্ট্য সক্রিয় সহ উন্নয়ন পরিবেশের জন্য প্রোফাইল",
+    "message": "ডিবাগ বৈশিষ্ট্যসহ উন্নয়ন পরিবেশের জন্য প্রোফাইল",
     "description": "ডিফল্ট উন্নয়ন প্রোফাইলের বিবরণ"
   },
   "profiles_default_prod_name": {
@@ -331,38 +361,40 @@
     "message": "ন্যূনতম লগিং সহ উৎপাদন পরিবেশের জন্য প্রোফাইল",
     "description": "ডিফল্ট উৎপাদন প্রোফাইলের বিবরণ"
   },
+
   "rules_header_operations_set": {
     "message": "সেট",
-    "description": "হেডার সেট অপারেশন"
+    "description": "হেডার অপারেশন সেট করুন"
   },
   "rules_header_operations_append": {
-    "message": "যুক্ত করুন",
-    "description": "হেডার যুক্ত করার অপারেশন"
+    "message": "যোগ",
+    "description": "হেডার অপারেশন যোগ করুন"
   },
   "rules_header_operations_remove": {
-    "message": "সরান",
-    "description": "হেডার সরানোর অপারেশন"
+    "message": "অপসারণ",
+    "description": "হেডার অপারেশন অপসারণ করুন"
   },
   "rules_priority_very_low": {
     "message": "খুব কম",
-    "description": "খুব কম অগ্রাধিকারের লেবেল"
+    "description": "খুব কম অগ্রাধিকার লেবেল"
   },
   "rules_priority_low": {
     "message": "কম",
-    "description": "কম অগ্রাধিকারের লেবেল"
+    "description": "কম অগ্রাধিকার লেবেল"
   },
   "rules_priority_normal": {
-    "message": "স্বাভাবিক",
-    "description": "স্বাভাবিক অগ্রাধিকারের লেবেল"
+    "message": "সাধারণ",
+    "description": "সাধারণ অগ্রাধিকার লেবেল"
   },
   "rules_priority_high": {
     "message": "উচ্চ",
-    "description": "উচ্চ অগ্রাধিকারের লেবেল"
+    "description": "উচ্চ অগ্রাধিকার লেবেল"
   },
   "rules_priority_very_high": {
     "message": "খুব উচ্চ",
-    "description": "খুব উচ্চ অগ্রাধিকারের লেবেল"
+    "description": "খুব উচ্চ অগ্রাধিকার লেবেল"
   },
+
   "settings_general": {
     "message": "সাধারণ",
     "description": "সাধারণ সেটিংস ট্যাব"
@@ -372,8 +404,8 @@
     "description": "বিজ্ঞপ্তি সেটিংস ট্যাব"
   },
   "settings_performance": {
-    "message": "কর্মক্ষমতা",
-    "description": "কর্মক্ষমতা সেটিংস ট্যাব"
+    "message": "পারফরম্যান্স",
+    "description": "পারফরম্যান্স সেটিংস ট্যাব"
   },
   "settings_security": {
     "message": "নিরাপত্তা",
@@ -384,55 +416,527 @@
     "description": "ব্যাকআপ সেটিংস ট্যাব"
   },
   "settings_theme_light": {
-    "message": "হালকা",
-    "description": "হালকা থিম অপশন"
+    "message": "আলো",
+    "description": "আলো থিম বিকল্প"
   },
   "settings_theme_dark": {
-    "message": "গাঢ়",
-    "description": "গাঢ় থিম অপশন"
+    "message": "অন্ধকার",
+    "description": "অন্ধকার থিম বিকল্প"
   },
   "settings_theme_auto": {
-    "message": "স্বয়ংক্রিয়",
-    "description": "স্বয়ংক্রিয় থিম অপশন"
+    "message": "অটো",
+    "description": "অটো থিম বিকল্প"
   },
+
   "contextmenu_create_rule": {
-    "message": "এই URL-এর জন্য নিয়ম তৈরি করুন",
-    "description": "নিয়ম তৈরির জন্য কনটেক্সট মেনু আইটেম"
+    "message": "এই URL এর জন্য নিয়ম তৈরি করুন",
+    "description": "কনটেক্সট মেনু আইটেম নিয়ম তৈরির জন্য"
   },
   "contextmenu_open_options": {
-    "message": "RequestKit অপশন খুলুন",
-    "description": "অপশন খোলার জন্য কনটেক্সট মেনু আইটেম"
+    "message": "RequestKit বিকল্প খুলুন",
+    "description": "অপশন খুলতে আইটেম"
   },
   "contextmenu_toggle_extension": {
     "message": "RequestKit টগল করুন",
-    "description": "এক্সটেনশন টগল করার জন্য কনটেক্সট মেনু আইটেম"
+    "description": "এক্সটেনশন টগল করার আইটেম"
   },
+
   "devtools_panel_title": {
-    "message": "RequestKit",
+    "message": "RequestKit DevTools",
     "description": "DevTools প্যানেলের শিরোনাম"
   },
   "devtools_requests_tab": {
     "message": "অনুরোধ",
-    "description": "DevTools-এ অনুরোধ ট্যাব"
+    "description": "DevTools এ অনুরোধ ট্যাব"
   },
   "devtools_rules_tab": {
     "message": "নিয়ম",
-    "description": "DevTools-এ নিয়ম ট্যাব"
+    "description": "DevTools এ নিয়ম ট্যাব"
   },
   "devtools_performance_tab": {
-    "message": "কর্মক্ষমতা",
-    "description": "DevTools-এ কর্মক্ষমতা ট্যাব"
+    "message": "পারফরম্যান্স",
+    "description": "DevTools এ পারফরম্যান্স ট্যাব"
   },
   "devtools_no_requests": {
-    "message": "এখনো কোনো অনুরোধ ক্যাপচার করা হয়নি",
-    "description": "কোনো অনুরোধ ক্যাপচার না হলে বার্তা"
+    "message": "এখনও পর্যন্ত কোনও অনুরোধ ধরা পড়েনি",
+    "description": "যখন কোনও অনুরোধ ধরা পড়ছে না"
   },
   "devtools_request_details": {
-    "message": "অনুরোধের বিস্তারিত",
-    "description": "অনুরোধের বিস্তারিত বিভাগের শিরোনাম"
+    "message": "অনুরোধের বিবরণ",
+    "description": "অনুরোধের বিবরণ বিভাগ শিরোনাম"
   },
   "devtools_matched_rules": {
-    "message": "মিলে যাওয়া নিয়ম",
-    "description": "মিলে যাওয়া নিয়মের বিভাগের শিরোনাম"
+    "message": "মিল থাকা নিয়ম",
+    "description": "মিল থাকা নিয়ম বিভাগ শিরোনাম"
+  },
+  "ui_label_profile": {
+    "message": "প্রোফাইল:"
+  },
+  "ui_option_unassigned": {
+    "message": "অসাইনড নয়"
+  },
+  "ui_label_rules": {
+    "message": "নিয়ম:"
+  },
+  "ui_tooltip_unassigned_rules": {
+    "message": "অসাইনড নিয়ম"
+  },
+  "ui_label_unassigned_rules": {
+    "message": "অসাইনড নিয়ম"
+  },
+  "ui_description_unassigned_rules": {
+    "message": "যেগুলি কোনও প্রোফাইলে নির্ধারিত নয় এমন নিয়ম দেখানো হচ্ছে"
+  },
+  "rules_empty_title": {
+    "message": "এখনও পর্যন্ত কোনও নিয়ম তৈরি হয়নি"
+  },
+  "rules_empty_description": {
+    "message": "শুরু করতে প্রথম নিয়ম তৈরি করুন"
+  },
+  "rules_create_first": {
+    "message": "আপনার প্রথম নিয়ম তৈরি করুন"
+  },
+
+  "templates_management_title": {
+    "message": "নিয়ম টেম্প্লেট",
+    "description": "টেম্প্লেট ম্যানেজমেন্ট ট্যাবের শিরোনাম"
+  },
+  "templates_management_description": {
+    "message": "হেডার, শর্ত এবং উন্নত বৈশিষ্ট্য সহ বিস্তৃত নিয়ম টেম্প্লেট ব্রাউজ করুন, তৈরি করুন, এবং পরিচালনা করুন। টেম্প্লেটগুলি সাধারণ ব্যবহারের জন্য পুনরায় ব্যবহারযোগ্য কনফিগারেশন সরবরাহ করে এবং আপনার নির্দিষ্ট প্রয়োজন অনুযায়ী কাস্টমাইজ করা যায়।",
+    "description": "টেম্প্লেট ম্যানেজমেন্ট বিভাগের বিবরণ"
+  },
+  "templates_management_features_1": {
+    "message": "বিল্ট-ইন এবং কাস্টম টেম্প্লেট ব্রাউজ করুন",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "templates_management_features_2": {
+    "message": "হেডার এবং শর্ত সহ টেম্প্লেট তৈরি করুন",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "templates_management_features_3": {
+    "message": "শেয়ারিংয়ের জন্য ইনপোর্ট/এক্সপোর্ট টেম্প্লেট",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "templates_management_features_4": {
+    "message": "বিদ্যমান টেম্প্লেট ক্লোন করুন এবং কাস্টমাইজ করুন",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "templates_management_features_5": {
+    "message": "শর্ত সহ উন্নত টেম্প্লেট ধরণ",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "templates_management_features_6": {
+    "message": "টেম্প্লেট সরাসরি নিয়ম হিসেবে প্রয়োগ করুন",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "templates_management_use_cases_1": {
+    "message": "প্রায়ই ব্যবহৃত নিয়ম কনফিগারেশন সংরক্ষণ করুন",
+    "description": "ব্যবহার কেস"
+  },
+  "templates_management_use_cases_2": {
+    "message": "নিয়ম সেটআপগুলি দলগুলির মধ্যে শেয়ার করুন",
+    "description": "ব্যবহার কেস"
+  },
+  "templates_management_use_cases_3": {
+    "message": "সাধারণ API পরিস্থিতির জন্য দ্রুত সেটআপ",
+    "description": "ব্যবহার কেস"
+  },
+  "templates_management_use_cases_4": {
+    "message": "বিভিন্ন পরিবেশের জন্য টেম্প্লেট লাইব্রেরি",
+    "description": "ব্যবহার কেস"
+  },
+  "templates_management_use_cases_5": {
+    "message": "মানকরণ নিয়ম কনফিগারেশন",
+    "description": "ব্যবহার কেস"
+  },
+  "templates_import": {
+    "message": "ইম্পোর্ট",
+    "description": "ইম্পোর্ট বোতামের টেক্সট"
+  },
+  "templates_create": {
+    "message": "টেম্প্লেট তৈরি করুন",
+    "description": "টেম্প্লেট তৈরি বোতাম"
+  },
+  "templates_applied_from_template": {
+    "message": "টেম্প্লেট থেকে প্রয়োগ",
+    "description": "টেম্প্লেট থেকে তৈরি নিয়মের suffix"
+  },
+
+  "variables_management_title": {
+    "message": "ভ্যারিয়েবল ম্যানেজার",
+    "description": "ভ্যারিয়েবল ম্যানেজমেন্ট ট্যাবের শিরোনাম"
+  },
+  "variables_management_description": {
+    "message": "শীর্ষক মান এবং URL প্যাটার্নে ব্যবহারের জন্য ভ্যারিয়েবল তৈরি এবং পরিচালনা করুন। ভ্যারিয়েবলগুলি ডাইনামিক মান, গণনা করা অভিব্যক্তি সমর্থন করে, এবং গ্লোবালি বা প্রোফাইল-ভিত্তিক স্কোপে থাকতে পারে।",
+    "description": "ভ্যারিয়েবল ম্যানেজমেন্ট বিভাগে বিবরণ"
+  },
+  "variables_management_features_1": {
+    "message": "ফাংশন সমর্থিত স্থির ভ্যারিয়েবল তৈরি করুন",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "variables_management_features_2": {
+    "message": "গ্লোবাল এবং প্রোফাইল-নির্দিষ্ট স্কোপ",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "variables_management_features_3": {
+    "message": "গোপন ভ্যারিয়েবল সমর্থন, মাস্ক করা প্রদর্শন সহ",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "variables_management_features_4": {
+    "message": "${variable_name} সিনট্যাক্স সহ টেম্প্লেট",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "variables_management_features_5": {
+    "message": "ব্যাকআপ এবং শেয়ারিংয়ের জন্য ইনপোর্ট/এক্সপোর্ট ভ্যারিয়েবল",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "variables_management_features_6": {
+    "message": "ব্যবহার বিশ্লেষণ এবং ভ্যালিডেশন",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "variables_management_use_cases_1": {
+    "message": "API কী এবং প্রমাণীকরণ টোকেন সংরক্ষণ করুন",
+    "description": "ব্যবহার কেস"
+  },
+  "variables_management_use_cases_2": {
+    "message": "ডায়নামিক টাইমস্ট্যাম্প ও UUID তৈরি করুন",
+    "description": "ব্যবহার কেস"
+  },
+  "variables_management_use_cases_3": {
+    "message": "অনুরোধের প্রসঙ্গ উল্লেখ করুন (ডোমেইন, পাথ, পদ্ধতি)",
+    "description": "ব্যবহার কেস"
+  },
+  "variables_management_use_cases_4": {
+    "message": "পুনঃ ব্যবহার যোগ্য শীর্ষক মান টেম্প্লেট তৈরি করুন",
+    "description": "ব্যবহার কেস"
+  },
+  "variables_management_use_cases_5": {
+    "message": "পরিবেশ-নির্দিষ্ট কনফিগারেশন মান",
+    "description": "ব্যবহার কেস"
+  },
+  "variables_loading": {
+    "message": "ভ্যারিয়েবল লোড হচ্ছে...",
+    "description": "ভ্যারিয়েবল লোডিং বার্তা"
+  },
+  "variables_no_match_filters": {
+    "message": "কোনো ভ্যারিয়েবল আপনার ফিল্টারগুলির সাথে মিলছে না",
+    "description": "যখন কোনও ভ্যারিয়েবল ফিল্টারগুলির সাথে মিলছে না"
+  },
+  "variables_no_configured": {
+    "message": "কোনো ভ্যারিয়েবল কনফিগার হয়নি",
+    "description": "যখন কোনও ভ্যারিয়েবল কনফিগার হয়নি"
+  },
+  "variables_no_match_description": {
+    "message": "ভ্যারিয়েবল খুঁজতে আপনার অনুসন্ধান বা ফিল্টার সামঞ্জস্য করুন।",
+    "description": "যখন কোনও ভ্যারিয়েবল ফিল্টারগুলির সাথে মিলছে না"
+  },
+  "variables_no_configured_description": {
+    "message": "ডাইনামিক হেডার মান এবং টেম্প্লেট দিয়ে শুরু করতে প্রথম ভ্যারিয়েবল তৈরি করুন।",
+    "description": "যখন কোনও ভ্যারিয়েবল কনফিগার হয়নি"
+  },
+  "variables_clear_filters": {
+    "message": "ফিল্টার পরিষ্কার করুন",
+    "description": "ফিল্টার ক্লিয়ার বাটনের জন্য"
+  },
+  "variables_create_first": {
+    "message": "আপনার প্রথম ভ্যারিয়েবল তৈরি করুন",
+    "description": "প্রথম ভ্যারিয়েবল তৈরির জন্য বোতাম"
+  },
+
+  "settings_general_title": {
+    "message": "সাধারণ সেটিংস",
+    "description": "সাধারণ সেটিংস ট্যাবের শিরোনাম"
+  },
+  "settings_general_description": {
+    "message": "এক্সটেনশনের আচরণ, চেহারা, এবং পারফরম্যান্স সেটিংস কনফিগার করুন। RequestKit কিভাবে কাজ করে তা নিয়ন্ত্রণ করুন, ব্যবহারকারীর ইন্টারফেস কাস্টমাইজ করুন, এবং পারফরম্যান্সের জন্য উন্নত অপশন সামঞ্জস্য করুন।",
+    "description": "সাধারণ সেটিংস বিভাগের বিবরণ"
+  },
+  "settings_general_features_1": {
+    "message": "এক্সটেনশনের কার্যকারিতা সক্ষম/অক্ষম করুন",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "settings_general_features_2": {
+    "message": "ডিবাগ মোড এবং লগিং নিয়ন্ত্রণ",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "settings_general_features_3": {
+    "message": "বিজ্ঞপ্তি পছন্দসমূহ",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "settings_general_features_4": {
+    "message": "থিম এবং UI কাস্টমাইজেশন",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "settings_general_features_5": {
+    "message": "পারফরম্যান্স উন্নত করার সেটিংস",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "settings_general_use_cases_1": {
+    "message": "এক্সটেনশনের চেহারা কাস্টমাইজ করুন",
+    "description": "ব্যবহার কেস"
+  },
+  "settings_general_use_cases_2": {
+    "message": "সমস্যা সমাধানের জন্য ডিবাগ মোড সক্ষম করুন",
+    "description": "ব্যবহার কেস"
+  },
+  "settings_general_use_cases_3": {
+    "message": "বিজ্ঞপ্তি পছন্দসমূহ কনফিগার করুন",
+    "description": "ব্যবহার কেস"
+  },
+  "settings_general_use_cases_4": {
+    "message": "বড় নিয়ম সেটের জন্য পারফরম্যান্স অপ্টিমাইজ করুন",
+    "description": "ব্যবহার কেস"
+  },
+  "settings_general_use_cases_5": {
+    "message": "সুরক্ষা এবং ভ্যালিডেশন অপশন সেট করুন",
+    "description": "ব্যবহার কেস"
+  },
+  "settings_save": {
+    "message": "সেটিংস সংরক্ষণ করুন",
+    "description": "সেটিংস সংরক্ষণের বোতাম"
+  },
+  "settings_saving": {
+    "message": "সংরক্ষণ করা হচ্ছে...",
+    "description": "সংরক্ষণ করার সময় বার্তা"
+  },
+  "settings_reset_title": {
+    "message": "ডিফল্টে রিসেট করুন",
+    "description": "রিসেট বিভাগ শিরোনাম"
+  },
+  "settings_reset_description": {
+    "message": "সকল এক্সটেনশনের সেটিংস, নিয়ম, টেম্প্লেট, ভ্যারিয়েবল, এবং প্রোফাইল তাদের ডিফল্ট মানে রিসেট করুন। এই কাজটি পূর্বাবস্থায় ফিরানো যাবে না।",
+    "description": "রিসেট বিভাগে বিবরণ"
+  },
+  "settings_reset_action": {
+    "message": "সব সেটিংস রিসেট করুন",
+    "description": "সব সেটিংস রিসেট বোতাম"
+  },
+  "settings_resetting": {
+    "message": "রিসেট হচ্ছে...",
+    "description": "রিসেট করার সময় বার্তা"
+  },
+
+  "import_export_title": {
+    "message": "উন্নত আমদানি/রপ্তানি",
+    "description": "আমদানি/রপ্তানি ট্যাবের শিরোনাম"
+  },
+  "import_export_description": {
+    "message": "RequestKit এর সমস্ত ডেটার জন্য বিস্তৃত ব্যাকআপ এবং পুনরুদ্ধার কার্যকারিতা। নিয়ম, টেম্প্লেট, প্রোফাইল, সেটিংস, পরিসংখ্যান, এবং কনফিগারেশন রপ্তানি ও আমদানি করুন, এবং কোন ডেটা অন্তর্ভুক্ত করতে হবে তা নির্ধারণের উপর আরও নিয়ন্ত্রণ পান।",
+    "description": "আমদানি/রপ্তানি বিভাগের বিবরণ"
+  },
+  "import_export_features_1": {
+    "message": "পছন্দের ডেটা নির্দিষ্ট করে রপ্তানি করুন",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "import_export_features_2": {
+    "message": "নিয়ম, টেম্প্লেট, প্রোফাইল সহ সম্পূর্ণ ব্যাকআপ",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "import_export_features_3": {
+    "message": "সেটিংস এবং পরিসংখ্যানের ব্যাকআপ ও পুনরুদ্ধার",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "import_export_features_4": {
+    "message": "আমদানি সময় মার্জ বা প্রতিস্থাপন অপশন",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "import_export_features_5": {
+    "message": "বড় ডেটা অপারেশনের জন্য অগ্রগতি ট্র্যাকিং",
+    "description": "বৈশিষ্ট্যের বিবরণ"
+  },
+  "import_export_use_cases_1": {
+    "message": "প্রধান পরিবর্তনের আগে সম্পূর্ণ ব্যাকআপ তৈরি করুন",
+    "description": "ব্যবহার কেস"
+  },
+  "import_export_use_cases_2": {
+    "message": "ডিভাইসের মধ্যে নিয়ম কনফিগারেশন শেয়ার করুন",
+    "description": "ব্যবহার কেস"
+  },
+  "import_export_use_cases_3": {
+    "message": "নতুন ব্রাউজার ইনস্টলেশনে ডেটা স্থানান্তর করুন",
+    "description": "ব্যবহার কেস"
+  },
+  "import_export_use_cases_4": {
+    "message": "বিশেষ ডেটা টাইপের জন্য রপ্তানি করুন",
+    "description": "ব্যবহার কেস"
+  },
+
+  "ui_danger_zone_title": {
+    "message": "সতর্কতা অঞ্চল",
+    "description": "সতর্কতা জোনের শিরোনাম"
+  },
+  "ui_danger_zone_description": {
+    "message": "এই কার্যক্রমগুলি স্থায়ী এবং ফিরে নেওয়া যাবে না।",
+    "description": "সতর্কতা জোনের বিবরণ"
+  },
+  "ui_tips_title": {
+    "message": "💡 পরামর্শ",
+    "description": "টিপস বিভাগের শিরোনাম"
+  },
+  "ui_key_features": {
+    "message": "মূল বৈশিষ্ট্য",
+    "description": "মূল বৈশিষ্ট্য বিভাগের লেবেল"
+  },
+  "ui_common_use_cases": {
+    "message": "সাধারণ ব্যবহার কেস",
+    "description": "সাধারণ ব্যবহার কেস বিভাগের লেবেল"
+  },
+  "ui_button_view": {
+    "message": "দেখুন",
+    "description": "দেখার বোতাম"
+  },
+  "ui_button_clone": {
+    "message": "ক্লোন করুন",
+    "description": "ক্লোন বোতাম"
+  },
+
+  "templates_features_headers": {
+    "message": "$1 হেডারস",
+    "description": "টেম্প্লেট বৈশিষ্ট্য: হেডারসের সংখ্যা",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "templates_features_file_rules": {
+    "message": "$1 ফাইল নিয়ম",
+    "description": "টেম্প্লেট বৈশিষ্ট্য: ফাইলের নিয়মের সংখ্যা",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "2"
+      }
+    }
+  },
+  "templates_features_conditions": {
+    "message": "$1 শর্ত",
+    "description": "টেম্প্লেট বৈশিষ্ট্য: শর্তের সংখ্যা",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "templates_features_scheduled": {
+    "message": "অনুসূচীত",
+    "description": "টেম্প্লেট বৈশিষ্ট্য: এটি অনুসূচীত"
+  },
+  "templates_features_rate_limited": {
+    "message": "হার সীমাবদ্ধ",
+    "description": "টেম্প্লেট বৈশিষ্ট্য: এটি হার সীমাবদ্ধ"
+  },
+  "templates_features_none": {
+    "message": "কোনো বৈশিষ্ট্য কনফিগার হয়নি",
+    "description": "যখন টেম্প্লেটে কোনও বৈশিষ্ট্য থাকে না"
+  },
+  "templates_official_template": {
+    "message": "আধিকারিক টেম্প্লেট",
+    "description": "আধিকারিক টেম্প্লেটের ব্যাজ"
+  },
+  "templates_custom_template": {
+    "message": "কাস্টম টেম্প্লেট",
+    "description": "কাস্টম টেম্প্লেটের ব্যাজ"
+  },
+  "templates_type_label": {
+    "message": "$1 টেম্প্লেট",
+    "description": "টেম্প্লেট ধরণ লেবেল",
+    "placeholders": {
+      "type": {
+        "content": "$1",
+        "example": "হেডারস"
+      }
+    }
+  },
+  "templates_features_label": {
+    "message": "বৈশিষ্ট্যসমূহ",
+    "description": "টেম্প্লেট বৈশিষ্ট্য বিভাগ লেবেল"
+  },
+
+  "variables_usage_label": {
+    "message": "ব্যবহার",
+    "description": "ভ্যারিয়েবলের ব্যবহার গণনার লেবেল"
+  },
+  "variables_scope_label": {
+    "message": "স্কোপ",
+    "description": "ভ্যারিয়েবলের স্কোপের লেবেল"
+  },
+  "variables_actions_label": {
+    "message": "কার্যক্রম",
+    "description": "ভ্যারিয়েবলের কার্যক্রম কলামের লেবেল"
+  },
+  "variables_profile_fallback": {
+    "message": "প্রোফাইল $1",
+    "description": "অজানা প্রোফাইলের জন্য fallback টেক্সট",
+    "placeholders": {
+      "profileId": {
+        "content": "$1",
+        "example": "abc123"
+      }
+    }
+  },
+  "variables_rule_fallback": {
+    "message": "নিয়ম $1",
+    "description": "অজানা নিয়মের জন্য fallback টেক্সট",
+    "placeholders": {
+      "ruleId": {
+        "content": "$1",
+        "example": "rule123"
+      }
+    }
+  },
+  "variables_tooltip_edit": {
+    "message": "ভ্যারিয়েবল সম্পাদনা করুন",
+    "description": "ভ্যারিয়েবল সম্পাদনা বোতামের টুলটিপ"
+  },
+  "variables_tooltip_copy": {
+    "message": "ভ্যারিয়েবল কপি করুন",
+    "description": "ভ্যারিয়েবল কপি বোতামের টুলটিপ"
+  },
+  "variables_tooltip_delete": {
+    "message": "ভ্যারিয়েবল মুছে ফেলুন",
+    "description": "ভ্যারিয়েবল মোছার টুলটিপ"
+  },
+  "variables_details_title": {
+    "message": "বিবরণ",
+    "description": "ভ্যারিয়েবল বিবরণ বিভাগের শিরোনাম"
+  },
+  "variables_full_value_label": {
+    "message": "সম্পূর্ণ মান",
+    "description": "ভ্যারিয়েবল পূর্ণ মানের লেবেল"
+  },
+  "variables_profile_label": {
+    "message": "প্রোফাইল",
+    "description": "ভ্যারিয়েবল প্রোফাইল সংযুক্তির লেবেল"
+  },
+  "variables_rule_label": {
+    "message": "নিয়ম",
+    "description": "ভ্যারিয়েবল নিয়ম সংযুক্তির লেবেল"
+  },
+  "variables_metadata_title": {
+    "message": "মেটাডেটা",
+    "description": "ভ্যারিয়েবল মেটাডেটা বিভাগের শিরোনাম"
+  },
+  "variables_created_label": {
+    "message": "তৈরি হয়েছে",
+    "description": "ভ্যারিয়েবল তৈরির তারিখের লেবেল"
+  },
+  "variables_updated_label": {
+    "message": "আপডেট হয়েছে",
+    "description": "ভ্যারিয়েবল আপডেটের তারিখের লেবেল"
+  },
+  "variables_last_used_label": {
+    "message": "শেষ ব্যবহার",
+    "description": "ভ্যারিয়েবল শেষ ব্যবহারের তারিখের লেবেল"
+  },
+  "variables_usage_count_label": {
+    "message": "ব্যবহার গণনা",
+    "description": "ভ্যারিয়েবলের ব্যবহার গণনার লেবেল"
+  },
+  "variables_unknown_date": {
+    "message": "অজানা",
+    "description": "অজানা তারিখের জন্য টেক্সট"
   }
 }

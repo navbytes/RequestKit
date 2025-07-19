@@ -18,7 +18,7 @@ import { PerformanceAnalysisTab } from './PerformanceAnalysisTab';
 import { SingleRuleTestTab } from './SingleRuleTestTab';
 
 interface RuleTestingFrameworkProps {
-  rules: HeaderRule[];
+  readonly rules: HeaderRule[];
 }
 
 // Get logger for this module

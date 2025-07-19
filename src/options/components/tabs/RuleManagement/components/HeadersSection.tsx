@@ -18,7 +18,7 @@ export function HeadersSection({
   onAddHeader,
   onUpdateHeader,
   onRemoveHeader,
-}: HeadersSectionProps) {
+}: Readonly<HeadersSectionProps>) {
   return (
     <div className="mb-4">
       <div className="flex items-center justify-between mb-2">

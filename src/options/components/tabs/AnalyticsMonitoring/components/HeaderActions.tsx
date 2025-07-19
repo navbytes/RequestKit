@@ -5,7 +5,10 @@ interface HeaderActionsProps {
   onClear: () => void;
 }
 
-export function HeaderActions({ onExport, onClear }: HeaderActionsProps) {
+export function HeaderActions({
+  onExport,
+  onClear,
+}: Readonly<HeaderActionsProps>) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex space-x-2">

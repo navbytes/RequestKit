@@ -6,7 +6,7 @@ interface RuleOptionsSectionProps {
 export function RuleOptionsSection({
   enabled,
   onUpdate,
-}: RuleOptionsSectionProps) {
+}: Readonly<RuleOptionsSectionProps>) {
   return (
     <div className="flex items-center space-x-4">
       <label className="flex items-center space-x-2">

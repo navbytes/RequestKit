@@ -1,5 +1,6 @@
 import { Icon } from '@/shared/components/Icon';
 import { Badge } from '@/shared/components/ui';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { HeaderRule } from '@/shared/types/rules';
 
 interface RuleItemProps {
@@ -20,7 +21,9 @@ export function RuleItem({
   onDelete,
   compact = false,
   showPattern = true,
-}: RuleItemProps) {
+}: Readonly<RuleItemProps>) {
+  const { t } = useI18n();
+
   const formatPattern = (rule: HeaderRule): string => {
     const { protocol, domain, path } = rule.pattern;
     return `${protocol || '*'}://${domain}${path || ''}`;
@@ -48,12 +51,12 @@ export function RuleItem({
                 size={compact ? 'xs' : 'sm'}
                 icon="check"
               >
-                Active
+                {t('rule_badge_active')}
               </Badge>
             )}
             {!rule.enabled && (
               <Badge variant="secondary" size={compact ? 'xs' : 'sm'}>
-                Disabled
+                {t('rule_badge_disabled')}
               </Badge>
             )}
           </div>
@@ -72,7 +75,11 @@ export function RuleItem({
               className={`p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 ${
                 rule.enabled ? 'text-success-600' : 'text-gray-400'
               }`}
-              title={rule.enabled ? 'Disable rule' : 'Enable rule'}
+              title={
+                rule.enabled
+                  ? t('rule_tooltip_disable')
+                  : t('rule_tooltip_enable')
+              }
             >
               <Icon
                 name={rule.enabled ? 'eye' : 'eye-off'}
@@ -83,7 +90,7 @@ export function RuleItem({
             <button
               onClick={onEdit}
               className="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-primary-600"
-              title="Edit rule"
+              title={t('rule_tooltip_edit')}
             >
               <Icon
                 name="edit"
@@ -94,7 +101,7 @@ export function RuleItem({
             <button
               onClick={onDelete}
               className="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-error-600"
-              title="Delete rule"
+              title={t('rule_tooltip_delete')}
             >
               <Icon
                 name="trash"
@@ -104,8 +111,10 @@ export function RuleItem({
           </div>
           {!compact && (
             <span className="text-xs text-gray-500 dark:text-gray-500">
-              {rule.headers.length} header
-              {rule.headers.length !== 1 ? 's' : ''}
+              {rule.headers.length}{' '}
+              {rule.headers.length !== 1
+                ? t('rule_header_count_plural')
+                : t('rule_header_count_single')}
             </span>
           )}
         </div>

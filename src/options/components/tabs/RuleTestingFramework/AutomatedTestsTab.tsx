@@ -19,7 +19,7 @@ export function AutomatedTestsTab({
   onRuleSelection,
   onRunAutomatedTests,
   onTestResultClear,
-}: AutomatedTestsTabProps) {
+}: Readonly<AutomatedTestsTabProps>) {
   return (
     <div className="space-y-6">
       <AutomatedTestsHeader />
@@ -52,12 +52,12 @@ function AutomatedTestsHeader() {
 }
 
 interface RuleSelectionAndActionsProps {
-  rules: HeaderRule[];
-  selectedRule: HeaderRule | null;
-  loading: boolean;
-  onRuleSelection: (ruleId: string) => void;
-  onRunAutomatedTests: () => void;
-  onTestResultClear: () => void;
+  readonly rules: HeaderRule[];
+  readonly selectedRule: HeaderRule | null;
+  readonly loading: boolean;
+  readonly onRuleSelection: (ruleId: string) => void;
+  readonly onRunAutomatedTests: () => void;
+  readonly onTestResultClear: () => void;
 }
 
 function RuleSelectionAndActions({
@@ -103,7 +103,7 @@ function RuleSelectionAndActions({
 }
 
 interface AutomatedTestResultsProps {
-  automatedTestResult: AutomatedTestResult;
+  readonly automatedTestResult: AutomatedTestResult;
 }
 
 function AutomatedTestResults({
@@ -119,7 +119,7 @@ function AutomatedTestResults({
 }
 
 interface TestResultsHeaderProps {
-  automatedTestResult: AutomatedTestResult;
+  readonly automatedTestResult: AutomatedTestResult;
 }
 
 function TestResultsHeader({ automatedTestResult }: TestResultsHeaderProps) {
@@ -142,7 +142,7 @@ function TestResultsHeader({ automatedTestResult }: TestResultsHeaderProps) {
 }
 
 interface TestResultsMetricsProps {
-  automatedTestResult: AutomatedTestResult;
+  readonly automatedTestResult: AutomatedTestResult;
 }
 
 function TestResultsMetrics({ automatedTestResult }: TestResultsMetricsProps) {
@@ -173,9 +173,9 @@ function TestResultsMetrics({ automatedTestResult }: TestResultsMetricsProps) {
 }
 
 interface MetricCardProps {
-  title: string;
-  value: number | string;
-  color: string;
+  readonly title: string;
+  readonly value: number | string;
+  readonly color: string;
 }
 
 function MetricCard({ title, value, color }: MetricCardProps) {
@@ -188,7 +188,7 @@ function MetricCard({ title, value, color }: MetricCardProps) {
 }
 
 interface TestResultsDetailsProps {
-  automatedTestResult: AutomatedTestResult;
+  readonly automatedTestResult: AutomatedTestResult;
 }
 
 function TestResultsDetails({ automatedTestResult }: TestResultsDetailsProps) {
@@ -202,7 +202,7 @@ function TestResultsDetails({ automatedTestResult }: TestResultsDetailsProps) {
 }
 
 interface TestResultItemProps {
-  result: {
+  readonly result: {
     scenario: string;
     passed: boolean;
     expectedResult: {
@@ -237,7 +237,7 @@ function TestResultItem({ result }: TestResultItemProps) {
 }
 
 interface TestResultItemHeaderProps {
-  result: {
+  readonly result: {
     scenario: string;
     passed: boolean;
   };
@@ -261,7 +261,7 @@ function TestResultItemHeader({ result }: TestResultItemHeaderProps) {
 }
 
 interface TestResultItemDetailsProps {
-  result: {
+  readonly result: {
     expectedResult: {
       shouldMatch: boolean;
       expectedHeaders: number;
@@ -287,7 +287,7 @@ function TestResultItemDetails({ result }: TestResultItemDetailsProps) {
 }
 
 interface TestResultItemErrorsProps {
-  errors: string[];
+  readonly errors: string[];
 }
 
 function TestResultItemErrors({ errors }: TestResultItemErrorsProps) {

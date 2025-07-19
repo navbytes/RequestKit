@@ -14,7 +14,7 @@ interface SecuritySectionProps {
 export function SecuritySection({
   security,
   onSecurityChange,
-}: SecuritySectionProps) {
+}: Readonly<SecuritySectionProps>) {
   return (
     <SettingsSection title="Security">
       <div className="space-y-4">

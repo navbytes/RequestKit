@@ -15,7 +15,7 @@ export function PerformanceAlerts({
   alerts,
   onAcknowledge,
   className = '',
-}: PerformanceAlertsProps) {
+}: Readonly<PerformanceAlertsProps>) {
   const [expandedAlert, setExpandedAlert] = useState<string | null>(null);
 
   const getSeverityColor = (severity: PerformanceAlert['severity']) => {

@@ -37,7 +37,7 @@ export function ExportSection({
   onQuickExport,
   rulesCount,
   lastExport,
-}: ExportSectionProps) {
+}: Readonly<ExportSectionProps>) {
   return (
     <div className="space-y-6">
       <div>

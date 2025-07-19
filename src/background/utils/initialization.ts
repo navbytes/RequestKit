@@ -4,6 +4,7 @@
 
 import { STORAGE_KEYS, DEFAULT_SETTINGS } from '@/config/constants';
 import { VariableStorageUtils } from '@/lib/core/variable-storage';
+import { LocalizationUtils } from '@/shared/hooks/useLocalization';
 import { ChromeApiUtils } from '@/shared/utils/chrome-api';
 import { loggers } from '@/shared/utils/debug';
 import { createDefaultProfiles } from '@/shared/utils/default-profiles';
@@ -17,6 +18,10 @@ const logger = loggers.shared;
 
 export async function initializeExtension(): Promise<void> {
   try {
+    // Initialize localization system first
+    await LocalizationUtils.initialize();
+    logger.info('Localization system initialized for background');
+
     // Set default settings and profiles
     await ChromeApiUtils.storage.sync.set({
       [STORAGE_KEYS.SETTINGS]: DEFAULT_SETTINGS,

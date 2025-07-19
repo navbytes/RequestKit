@@ -1,3 +1,5 @@
+import { useI18n } from '@/shared/hooks/useI18n';
+
 interface FormData {
   protocol: 'http' | 'https' | '*';
   domain: string;
@@ -12,11 +14,13 @@ interface URLPatternSectionProps {
 export function URLPatternSection({
   formData,
   onUpdate,
-}: URLPatternSectionProps) {
+}: Readonly<URLPatternSectionProps>) {
+  const { t } = useI18n();
+
   return (
     <div className="space-y-3">
       <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-        URL Pattern
+        {t('forms_url_pattern')}
       </h4>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -25,7 +29,7 @@ export function URLPatternSection({
             htmlFor="url-protocol-select"
             className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1"
           >
-            Protocol
+            {t('popup_protocol')}
           </label>
           <select
             id="url-protocol-select"
@@ -40,9 +44,9 @@ export function URLPatternSection({
             }
             className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           >
-            <option value="*">Any</option>
-            <option value="https">HTTPS</option>
-            <option value="http">HTTP</option>
+            <option value="*">{t('popup_any')}</option>
+            <option value="https">{t('popup_https')}</option>
+            <option value="http">{t('popup_http')}</option>
           </select>
         </div>
 
@@ -51,7 +55,7 @@ export function URLPatternSection({
             htmlFor="url-domain-input"
             className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1"
           >
-            Domain *
+            {t('popup_domain')} *
           </label>
           <input
             type="text"
@@ -60,7 +64,7 @@ export function URLPatternSection({
             onChange={e =>
               onUpdate({ domain: (e.target as HTMLInputElement).value })
             }
-            placeholder="example.com"
+            placeholder={t('popup_example_domain')}
             className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             required
           />
@@ -71,7 +75,7 @@ export function URLPatternSection({
             htmlFor="url-path-input"
             className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1"
           >
-            Path
+            {t('popup_path')}
           </label>
           <input
             type="text"
@@ -80,7 +84,7 @@ export function URLPatternSection({
             onChange={e =>
               onUpdate({ path: (e.target as HTMLInputElement).value })
             }
-            placeholder="/api/*"
+            placeholder={t('popup_example_path')}
             className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
           />
         </div>

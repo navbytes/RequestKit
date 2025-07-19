@@ -8,7 +8,7 @@ interface URLPatternSectionProps {
 export function URLPatternSection({
   pattern,
   onPatternChange,
-}: URLPatternSectionProps) {
+}: Readonly<URLPatternSectionProps>) {
   return (
     <div className="mb-4">
       <h4 className="font-medium text-gray-900 dark:text-white mb-2">

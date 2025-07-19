@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'preact/hooks';
 
 import { TabDescription } from '@/shared/components/TabDescription';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { HeaderRule } from '@/shared/types/rules';
 import { loggers } from '@/shared/utils/debug';
 
@@ -24,7 +25,8 @@ export function RuleManagement({
   initialAction,
   initialRuleId,
   initialUrl,
-}: RuleManagementProps) {
+}: Readonly<RuleManagementProps>) {
+  const { t } = useI18n();
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingRule, setEditingRule] = useState<HeaderRule | null>(null);
 
@@ -105,21 +107,21 @@ export function RuleManagement({
   return (
     <div className="p-6">
       <TabDescription
-        title="Rule Management"
-        description="Create and manage header modification rules for your requests and responses. Configure URL patterns, headers, and conditions to customize your browsing experience."
+        title={t('rules_management_title')}
+        description={t('rules_management_description')}
         icon="settings"
         features={[
-          'Create custom header modification rules',
-          'Support for request and response headers',
-          'Flexible URL pattern matching with wildcards',
-          'Priority-based rule execution',
-          'Rule enabling/disabling and organization',
+          t('rules_management_features_1'),
+          t('rules_management_features_2'),
+          t('rules_management_features_3'),
+          t('rules_management_features_4'),
+          t('rules_management_features_5'),
         ]}
         useCases={[
-          'Add authentication headers to API requests',
-          'Override CORS headers for development',
-          'Add custom headers for tracking or debugging',
-          'Remove unwanted headers from responses',
+          t('rules_management_use_cases_1'),
+          t('rules_management_use_cases_2'),
+          t('rules_management_use_cases_3'),
+          t('rules_management_use_cases_4'),
         ]}
       />
 
@@ -145,14 +147,14 @@ export function RuleManagement({
       <div className="space-y-4">
         <div className="flex justify-between items-center">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-            Rules ({rules.length})
+            {t('rules_count', [rules.length.toString()])}
           </h3>
           {!showCreateForm && (
             <button
               onClick={() => setShowCreateForm(true)}
               className="btn btn-primary"
             >
-              + Create Rule
+              {t('rules_create_new_with_plus')}
             </button>
           )}
         </div>

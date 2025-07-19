@@ -14,7 +14,7 @@ export function Toggle({
   size = 'md',
   className = '',
   'aria-label': ariaLabel,
-}: ToggleProps) {
+}: Readonly<ToggleProps>) {
   const sizeClasses = {
     sm: 'w-8 h-4',
     md: 'w-10 h-5',

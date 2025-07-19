@@ -1,4 +1,5 @@
 import { Icon } from '@/shared/components/Icon';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { HeaderRule } from '@/shared/types/rules';
 
 import { useQuickRuleCreator } from './hooks/useQuickRuleCreator';
@@ -14,7 +15,8 @@ export function QuickRuleCreator({
   currentUrl,
   onRuleCreated,
   onCancel,
-}: QuickRuleCreatorProps) {
+}: Readonly<QuickRuleCreatorProps>) {
+  const { t } = useI18n();
   const {
     ruleName,
     setRuleName,
@@ -31,12 +33,12 @@ export function QuickRuleCreator({
     <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-gray-50 dark:bg-gray-800">
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-sm font-medium text-gray-900 dark:text-white">
-          Quick Rule for {domain}
+          {t('quick_rule_title')} {domain}
         </h3>
         <button
           onClick={onCancel}
           className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
-          title="Cancel"
+          title={t('quick_rule_tooltip_cancel')}
         >
           <Icon name="close" className="w-4 h-4" />
         </button>
@@ -56,7 +58,7 @@ export function QuickRuleCreator({
       />
 
       <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-        This will add a header to all requests matching {domain}
+        {t('quick_rule_description')} {domain}
       </p>
     </div>
   );

@@ -134,6 +134,18 @@
     "message": "Deshabilitado",
     "description": "Etiqueta del campo deshabilitado"
   },
+  "ui_label_rules_active": {
+    "message": "reglas activas",
+    "description": "Etiqueta para el número de reglas activas"
+  },
+  "ui_label_extension_disabled": {
+    "message": "Extensión deshabilitada",
+    "description": "Etiqueta cuando la extensión está deshabilitada"
+  },
+  "ui_label_extension_status": {
+    "message": "Estado de la Extensión",
+    "description": "Etiqueta para el interruptor de estado de la extensión"
+  },
   "ui_label_priority": {
     "message": "Prioridad",
     "description": "Etiqueta del campo prioridad"
@@ -182,6 +194,18 @@
   "ui_tooltip_disable": {
     "message": "Deshabilitar esta regla",
     "description": "Tooltip del botón deshabilitar"
+  },
+  "ui_tooltip_open_options": {
+    "message": "Abrir Opciones",
+    "description": "Tooltip para abrir página de opciones"
+  },
+  "ui_aria_enable_extension": {
+    "message": "Habilitar extensión",
+    "description": "Etiqueta aria para el botón de habilitar extensión"
+  },
+  "ui_aria_disable_extension": {
+    "message": "Deshabilitar extensión",
+    "description": "Etiqueta aria para el botón de deshabilitar extensión"
   },
 
   "errors_validation_domain_invalid": {
@@ -446,5 +470,585 @@
   "devtools_matched_rules": {
     "message": "Reglas Coincidentes",
     "description": "Título de la sección de reglas coincidentes"
+  },
+  "ui_label_profile": {
+    "message": "Perfil:"
+  },
+  "ui_option_unassigned": {
+    "message": "Sin asignar"
+  },
+  "ui_label_rules": {
+    "message": "Reglas:"
+  },
+  "ui_tooltip_unassigned_rules": {
+    "message": "Reglas sin asignar"
+  },
+  "ui_label_unassigned_rules": {
+    "message": "Reglas Sin Asignar"
+  },
+  "ui_description_unassigned_rules": {
+    "message": "Mostrando reglas que no están asignadas a ningún perfil"
+  },
+  "rules_empty_title": {
+    "message": "Aún no se han creado reglas"
+  },
+  "rules_empty_description": {
+    "message": "Crea tu primera regla de encabezado para empezar"
+  },
+  "rules_header_title": {
+    "message": "Reglas"
+  },
+  "rules_badge_active": {
+    "message": "activas"
+  },
+  "quick_rule_title": {
+    "message": "Regla Rápida para"
+  },
+  "quick_rule_tooltip_cancel": {
+    "message": "Cancelar"
+  },
+  "quick_rule_description": {
+    "message": "Esto agregará un encabezado a todas las solicitudes que coincidan con"
+  },
+  "quick_rule_label_name": {
+    "message": "Nombre de la Regla"
+  },
+  "quick_rule_placeholder_name": {
+    "message": "Encabezados para"
+  },
+  "quick_rule_label_header_name": {
+    "message": "Nombre del Encabezado"
+  },
+  "quick_rule_placeholder_header_name": {
+    "message": "ej., X-Custom-Header"
+  },
+  "quick_rule_label_header_value": {
+    "message": "Valor del Encabezado"
+  },
+  "quick_rule_placeholder_header_value": {
+    "message": "ej., valor-personalizado"
+  },
+  "quick_rule_button_creating": {
+    "message": "Creando..."
+  },
+  "quick_rule_button_create": {
+    "message": "Crear Regla"
+  },
+  "button_cancel": {
+    "message": "Cancelar"
+  },
+  "add_rule_button_text": {
+    "message": "Crear Regla para"
+  },
+  "add_rule_button_description": {
+    "message": "Configuración rápida para la página actual"
+  },
+  "add_rule_default_domain": {
+    "message": "esta página"
+  },
+  "options_tab_rules": {
+    "message": "Gestión de Reglas"
+  },
+  "options_tab_rules_desc": {
+    "message": "Crear y gestionar reglas de inyección de encabezados"
+  },
+  "options_tab_profiles": {
+    "message": "Gestión de Perfiles"
+  },
+  "options_tab_profiles_desc": {
+    "message": "Crear y gestionar perfiles de entorno"
+  },
+  "options_tab_templates": {
+    "message": "Plantillas de Reglas"
+  },
+  "options_tab_templates_desc": {
+    "message": "Explorar y gestionar plantillas de reglas"
+  },
+  "options_tab_variables": {
+    "message": "Gestor de Variables"
+  },
+  "options_tab_variables_desc": {
+    "message": "Crear y gestionar variables para valores dinámicos"
+  },
+  "options_tab_conditional_rules": {
+    "message": "Reglas Condicionales"
+  },
+  "options_tab_conditional_rules_desc": {
+    "message": "Crear reglas con condiciones avanzadas"
+  },
+  "options_tab_rule_testing": {
+    "message": "Pruebas de Reglas"
+  },
+  "options_tab_rule_testing_desc": {
+    "message": "Probar y validar sus reglas"
+  },
+  "options_tab_performance": {
+    "message": "Rendimiento"
+  },
+  "options_tab_performance_desc": {
+    "message": "Monitorear y optimizar el rendimiento"
+  },
+  "options_tab_analytics": {
+    "message": "Análisis y Monitoreo"
+  },
+  "options_tab_analytics_desc": {
+    "message": "Ver análisis de uso e información de rendimiento"
+  },
+  "options_tab_settings": {
+    "message": "Configuración General"
+  },
+  "options_tab_settings_desc": {
+    "message": "Configuración de la extensión y preferencias"
+  },
+  "options_tab_import_export": {
+    "message": "Importar/Exportar"
+  },
+  "options_tab_import_export_desc": {
+    "message": "Respaldar y restaurar sus reglas"
+  },
+  "options_tab_help": {
+    "message": "Ayuda y Acerca de"
+  },
+  "options_tab_help_desc": {
+    "message": "Documentación y soporte"
+  },
+  "options_group_core": {
+    "message": "Funciones Principales"
+  },
+  "options_group_advanced": {
+    "message": "Características Avanzadas"
+  },
+  "options_group_system": {
+    "message": "Sistema y Análisis"
+  },
+  "options_group_support": {
+    "message": "Soporte y Herramientas"
+  },
+  "rule_badge_active": {
+    "message": "Activa"
+  },
+  "rule_badge_disabled": {
+    "message": "Deshabilitada"
+  },
+  "rule_tooltip_disable": {
+    "message": "Deshabilitar regla"
+  },
+  "rule_tooltip_enable": {
+    "message": "Habilitar regla"
+  },
+  "rule_tooltip_edit": {
+    "message": "Editar regla"
+  },
+  "rule_tooltip_delete": {
+    "message": "Eliminar regla"
+  },
+  "rule_header_count_single": {
+    "message": "encabezado"
+  },
+  "rule_header_count_plural": {
+    "message": "encabezados"
+  },
+  "popup_footer_license": {
+    "message": "RequestKit es software de código abierto publicado bajo la Licencia MIT."
+  },
+  "popup_footer_built_with": {
+    "message": "Construido con"
+  },
+  "popup_footer_developers": {
+    "message": "para desarrolladores por desarrolladores."
+  },
+  "template_browser_title": {
+    "message": "Explorar Plantillas"
+  },
+
+  "devtools_header_title": {
+    "message": "RequestKit DevTools",
+    "description": "Title for DevTools header"
+  },
+  "devtools_profile_label": {
+    "message": "Perfil",
+    "description": "Label for profile selector in DevTools"
+  },
+  "devtools_stop_recording": {
+    "message": "Detener Grabación",
+    "description": "Button text to stop recording requests"
+  },
+  "devtools_start_recording": {
+    "message": "Iniciar Grabación",
+    "description": "Button text to start recording requests"
+  },
+  "devtools_clear_requests": {
+    "message": "Limpiar Solicitudes",
+    "description": "Button text to clear recorded requests"
+  },
+  "devtools_export_requests": {
+    "message": "Exportar Solicitudes",
+    "description": "Button text to export recorded requests"
+  },
+  "devtools_network_requests": {
+    "message": "Solicitudes de Red",
+    "description": "Title for network requests section"
+  },
+  "devtools_no_requests_recording": {
+    "message": "No se capturaron solicitudes. Inicie la grabación para ver la actividad de red.",
+    "description": "Message when no requests are being recorded"
+  },
+  "devtools_recording_stopped": {
+    "message": "Grabación detenida. Haga clic en Iniciar Grabación para capturar solicitudes.",
+    "description": "Message when recording is stopped"
+  },
+  "devtools_select_request": {
+    "message": "Seleccione una solicitud para ver detalles",
+    "description": "Message prompting user to select a request"
+  },
+  "devtools_request_details": {
+    "message": "Detalles de Solicitud",
+    "description": "Title for request details section"
+  },
+  "devtools_url_label": {
+    "message": "URL",
+    "description": "Label for request URL"
+  },
+  "devtools_method_label": {
+    "message": "Método",
+    "description": "Label for HTTP method"
+  },
+  "devtools_status_label": {
+    "message": "Estado",
+    "description": "Label for response status"
+  },
+  "devtools_headers_tab": {
+    "message": "Cabeceras",
+    "description": "Tab label for headers view"
+  },
+  "devtools_variables_tab": {
+    "message": "Variables",
+    "description": "Tab label for variables view"
+  },
+  "devtools_profile_rules_info": {
+    "message": "Información de Reglas del Perfil",
+    "description": "Title for profile rules information section"
+  },
+  "devtools_matched_rules_label": {
+    "message": "Reglas Coincidentes",
+    "description": "Label for matched rules section"
+  },
+  "devtools_modified_headers_request": {
+    "message": "Cabeceras de Solicitud Modificadas",
+    "description": "Label for modified request headers"
+  },
+  "devtools_modified_headers_response": {
+    "message": "Cabeceras de Respuesta Modificadas",
+    "description": "Label for modified response headers"
+  },
+  "devtools_timestamp_label": {
+    "message": "Marca de Tiempo",
+    "description": "Label for request timestamp"
+  },
+  "devtools_cache_hit": {
+    "message": "Acierto de Caché",
+    "description": "Label for cache hit status"
+  },
+  "devtools_cache_miss": {
+    "message": "Fallo de Caché",
+    "description": "Label for cache miss status"
+  },
+  "devtools_input_label": {
+    "message": "Entrada",
+    "description": "Label for variable input value"
+  },
+  "devtools_output_label": {
+    "message": "Salida",
+    "description": "Label for variable output value"
+  },
+  "devtools_metadata_label": {
+    "message": "Metadatos",
+    "description": "Label for variable metadata"
+  },
+  "devtools_depth_label": {
+    "message": "Profundidad",
+    "description": "Label for resolution depth"
+  },
+  "devtools_recursive_label": {
+    "message": "Recursivo",
+    "description": "Label for recursive resolution"
+  },
+  "devtools_function_args_label": {
+    "message": "Argumentos de Función",
+    "description": "Label for function arguments"
+  },
+  "devtools_variable_details_label": {
+    "message": "Detalles de Variable",
+    "description": "Label for variable details section"
+  },
+  "devtools_no_requests_captured": {
+    "message": "Aún no se han capturado solicitudes",
+    "description": "Message when no requests have been captured"
+  },
+  "devtools_headers_modified": {
+    "message": "Cabeceras Modificadas",
+    "description": "Label indicating headers were modified"
+  },
+  "devtools_rules_matched": {
+    "message": "Reglas Coincidentes",
+    "description": "Label for number of rules matched"
+  },
+  "devtools_variable_resolution": {
+    "message": "Resolución de Variables",
+    "description": "Etiqueta para la sección de resolución de variables"
+  },
+  "template_browser_description": {
+    "message": "Seleccione una plantilla para crear reglas rápidamente",
+    "description": "Descripción para el explorador de plantillas"
+  },
+  "template_browser_empty": {
+    "message": "No hay plantillas disponibles",
+    "description": "Mensaje cuando no hay plantillas disponibles"
+  },
+  "template_browser_search_placeholder": {
+    "message": "Buscar plantillas...",
+    "description": "Marcador de posición para búsqueda de plantillas"
+  },
+  "template_browser_category_all": {
+    "message": "Todas las Categorías",
+    "description": "Opción para todas las categorías"
+  },
+  "template_browser_category_auth": {
+    "message": "Autenticación",
+    "description": "Categoría de autenticación"
+  },
+  "template_browser_category_cors": {
+    "message": "CORS",
+    "description": "Categoría CORS"
+  },
+  "template_browser_category_security": {
+    "message": "Seguridad",
+    "description": "Categoría de seguridad"
+  },
+  "template_browser_category_debug": {
+    "message": "Depuración",
+    "description": "Categoría de depuración"
+  },
+  "template_browser_category_custom": {
+    "message": "Personalizado",
+    "description": "Categoría personalizada"
+  },
+  "template_browser_use_template": {
+    "message": "Usar Plantilla",
+    "description": "Texto del botón para usar plantilla"
+  },
+  "template_browser_preview": {
+    "message": "Vista Previa",
+    "description": "Texto del botón para vista previa de plantilla"
+  },
+  "template_browser_close": {
+    "message": "Cerrar",
+    "description": "Texto del botón para cerrar explorador"
+  },
+  "template_preview_title": {
+    "message": "Vista Previa de Plantilla",
+    "description": "Título para vista previa de plantilla"
+  },
+  "template_preview_headers": {
+    "message": "Cabeceras",
+    "description": "Sección de cabeceras en vista previa"
+  },
+  "template_preview_rules": {
+    "message": "Reglas",
+    "description": "Sección de reglas en vista previa"
+  },
+  "template_preview_variables": {
+    "message": "Variables",
+    "description": "Sección de variables en vista previa"
+  },
+  "template_apply_success": {
+    "message": "Plantilla aplicada exitosamente",
+    "description": "Mensaje de éxito al aplicar plantilla"
+  },
+  "template_apply_error": {
+    "message": "Error al aplicar la plantilla",
+    "description": "Mensaje de error al aplicar plantilla"
+  },
+  "variables_manager_title": {
+    "message": "Gestor de Variables",
+    "description": "Título para el gestor de variables"
+  },
+  "variables_manager_description": {
+    "message": "Crear y gestionar variables para valores dinámicos de cabeceras",
+    "description": "Descripción para el gestor de variables"
+  },
+  "variables_empty_title": {
+    "message": "No hay variables definidas",
+    "description": "Título cuando no hay variables"
+  },
+  "variables_empty_description": {
+    "message": "Cree su primera variable para usar valores dinámicos",
+    "description": "Descripción cuando no hay variables"
+  },
+  "variables_create_button": {
+    "message": "Crear Variable",
+    "description": "Texto del botón para crear variable"
+  },
+  "variables_edit_title": {
+    "message": "Editar Variable",
+    "description": "Título para editar variable"
+  },
+  "variables_create_title": {
+    "message": "Crear Variable",
+    "description": "Título para crear variable"
+  },
+  "variables_form_name": {
+    "message": "Nombre de Variable",
+    "description": "Etiqueta para nombre de variable"
+  },
+  "variables_form_name_placeholder": {
+    "message": "ej. api_key",
+    "description": "Marcador de posición para nombre de variable"
+  },
+  "variables_form_description": {
+    "message": "Descripción",
+    "description": "Etiqueta para descripción de variable"
+  },
+  "variables_form_description_placeholder": {
+    "message": "Descripción de la variable...",
+    "description": "Marcador de posición para descripción de variable"
+  },
+  "variables_form_type": {
+    "message": "Tipo",
+    "description": "Etiqueta para tipo de variable"
+  },
+  "variables_form_type_static": {
+    "message": "Estático",
+    "description": "Tipo de variable estático"
+  },
+  "variables_form_type_dynamic": {
+    "message": "Dinámico",
+    "description": "Tipo de variable dinámico"
+  },
+  "variables_form_type_function": {
+    "message": "Función",
+    "description": "Tipo de variable función"
+  },
+  "variables_form_value": {
+    "message": "Valor",
+    "description": "Etiqueta para valor de variable"
+  },
+  "variables_form_value_placeholder": {
+    "message": "Ingrese el valor de la variable...",
+    "description": "Marcador de posición para valor de variable"
+  },
+  "variables_form_function": {
+    "message": "Función",
+    "description": "Etiqueta para función de variable"
+  },
+  "variables_form_function_placeholder": {
+    "message": "Ingrese la función JavaScript...",
+    "description": "Marcador de posición para función de variable"
+  },
+  "variables_form_scope": {
+    "message": "Ámbito",
+    "description": "Etiqueta para ámbito de variable"
+  },
+  "variables_form_scope_global": {
+    "message": "Global",
+    "description": "Ámbito global"
+  },
+  "variables_form_scope_profile": {
+    "message": "Perfil",
+    "description": "Ámbito de perfil"
+  },
+  "variables_form_scope_rule": {
+    "message": "Regla",
+    "description": "Ámbito de regla"
+  },
+  "variables_save_button": {
+    "message": "Guardar Variable",
+    "description": "Texto del botón para guardar variable"
+  },
+  "variables_cancel_button": {
+    "message": "Cancelar",
+    "description": "Texto del botón para cancelar"
+  },
+  "variables_delete_confirm": {
+    "message": "¿Está seguro de que desea eliminar esta variable?",
+    "description": "Mensaje de confirmación para eliminar variable"
+  },
+  "variables_delete_button": {
+    "message": "Eliminar Variable",
+    "description": "Texto del botón para eliminar variable"
+  },
+  "variables_test_button": {
+    "message": "Probar Variable",
+    "description": "Texto del botón para probar variable"
+  },
+  "variables_test_result": {
+    "message": "Resultado de Prueba",
+    "description": "Etiqueta para resultado de prueba de variable"
+  },
+  "variables_usage_count": {
+    "message": "Usado en $1 regla(s)",
+    "description": "Número de usos de una variable",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "help_title": {
+    "message": "Ayuda e Información",
+    "description": "Título para ayuda"
+  },
+  "help_description": {
+    "message": "Documentación, tutoriales y soporte para RequestKit",
+    "description": "Descripción para ayuda"
+  },
+  "help_getting_started": {
+    "message": "Primeros Pasos",
+    "description": "Título para primeros pasos"
+  },
+  "help_documentation": {
+    "message": "Documentación",
+    "description": "Título para documentación"
+  },
+  "help_tutorials": {
+    "message": "Tutoriales",
+    "description": "Título para tutoriales"
+  },
+  "help_faq": {
+    "message": "Preguntas Frecuentes",
+    "description": "Título para FAQ"
+  },
+  "help_support": {
+    "message": "Soporte",
+    "description": "Título para soporte"
+  },
+  "help_about": {
+    "message": "Acerca de RequestKit",
+    "description": "Título para acerca de"
+  },
+  "help_version": {
+    "message": "Versión",
+    "description": "Etiqueta para versión"
+  },
+  "help_license": {
+    "message": "Licencia",
+    "description": "Etiqueta para licencia"
+  },
+  "help_contributors": {
+    "message": "Colaboradores",
+    "description": "Etiqueta para colaboradores"
+  },
+  "help_report_bug": {
+    "message": "Reportar Error",
+    "description": "Texto del botón para reportar error"
+  },
+  "help_request_feature": {
+    "message": "Solicitar Función",
+    "description": "Texto del botón para solicitar función"
+  },
+  "help_contact_support": {
+    "message": "Contactar Soporte",
+    "description": "Texto del botón para contactar soporte"
   }
 }

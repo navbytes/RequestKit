@@ -5,6 +5,7 @@ import { TabDescription } from '@/shared/components/TabDescription';
 import { EmptyState, Card } from '@/shared/components/ui';
 import { VariableForm } from '@/shared/components/VariableForm';
 import { VariableList } from '@/shared/components/VariableList';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { Variable } from '@/shared/types/variables';
 
 import { AvailableFunctions } from './components/AvailableFunctions';
@@ -16,6 +17,7 @@ import { useVariableFilters } from './hooks/useVariableFilters';
 import { useVariableOperations } from './hooks/useVariableOperations';
 
 export function VariableManager() {
+  const { t } = useI18n();
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingVariable, setEditingVariable] = useState<Variable | null>(null);
 
@@ -85,7 +87,7 @@ export function VariableManager() {
     return (
       <div className="p-6 flex items-center justify-center">
         <Icon name="loader" className="animate-spin mr-2" />
-        <span>Loading variables...</span>
+        <span>{t('variables_loading')}</span>
       </div>
     );
   }
@@ -93,23 +95,23 @@ export function VariableManager() {
   return (
     <div className="space-y-6">
       <TabDescription
-        title="Variable Manager"
-        description="Create and manage variables for use in header values and URL patterns. Variables support dynamic values, computed expressions, and can be scoped globally or per profile."
+        title={t('variables_management_title')}
+        description={t('variables_management_description')}
         icon="sparkles"
         features={[
-          'Create static variables with function support',
-          'Global and profile-specific variable scopes',
-          'Secret variable support with masked display',
-          'Variable templates with ${variable_name} syntax',
-          'Import/export variables for backup and sharing',
-          'Usage analytics and validation',
+          t('variables_management_features_1'),
+          t('variables_management_features_2'),
+          t('variables_management_features_3'),
+          t('variables_management_features_4'),
+          t('variables_management_features_5'),
+          t('variables_management_features_6'),
         ]}
         useCases={[
-          'Store API keys and authentication tokens',
-          'Generate dynamic timestamps and UUIDs',
-          'Reference request context (domain, path, method)',
-          'Create reusable header value templates',
-          'Environment-specific configuration values',
+          t('variables_management_use_cases_1'),
+          t('variables_management_use_cases_2'),
+          t('variables_management_use_cases_3'),
+          t('variables_management_use_cases_4'),
+          t('variables_management_use_cases_5'),
         ]}
       />
 
@@ -165,16 +167,18 @@ export function VariableManager() {
           icon="sparkles"
           title={
             hasActiveFilters
-              ? 'No variables match your filters'
-              : 'No variables configured'
+              ? t('variables_no_match_filters')
+              : t('variables_no_configured')
           }
           description={
             hasActiveFilters
-              ? 'Try adjusting your search query or filters to find variables.'
-              : 'Create your first variable to get started with dynamic header values and templates.'
+              ? t('variables_no_match_description')
+              : t('variables_no_configured_description')
           }
           actionLabel={
-            hasActiveFilters ? 'Clear Filters' : 'Create Your First Variable'
+            hasActiveFilters
+              ? t('variables_clear_filters')
+              : t('variables_create_first')
           }
           onAction={() => {
             if (hasActiveFilters) {

@@ -20,7 +20,7 @@ export function OptimizationTab({
   onOptimizeRules,
   onApplyOptimizations,
   onCancelOptimization,
-}: OptimizationTabProps) {
+}: Readonly<OptimizationTabProps>) {
   return (
     <div className="space-y-6">
       <OptimizationAnalysis
@@ -41,9 +41,9 @@ export function OptimizationTab({
 }
 
 interface OptimizationAnalysisProps {
-  rules: HeaderRule[];
-  loading: boolean;
-  onOptimizeRules: () => void;
+  readonly rules: HeaderRule[];
+  readonly loading: boolean;
+  readonly onOptimizeRules: () => void;
 }
 
 function OptimizationAnalysis({
@@ -81,9 +81,9 @@ function OptimizationAnalysis({
 }
 
 interface OptimizationResultsProps {
-  result: RuleOptimizationResult;
-  onApplyOptimizations: () => void;
-  onCancelOptimization: () => void;
+  readonly result: RuleOptimizationResult;
+  readonly onApplyOptimizations: () => void;
+  readonly onCancelOptimization: () => void;
 }
 
 function OptimizationResults({
@@ -111,7 +111,7 @@ function OptimizationResults({
 }
 
 interface OptimizationSummaryProps {
-  result: RuleOptimizationResult;
+  readonly result: RuleOptimizationResult;
 }
 
 function OptimizationSummary({ result }: OptimizationSummaryProps) {
@@ -149,7 +149,7 @@ function OptimizationSummary({ result }: OptimizationSummaryProps) {
 }
 
 interface OptimizationSuggestionsProps {
-  suggestions: Array<{
+  readonly suggestions: Array<{
     ruleId: string;
     ruleName: string;
     type: string;
@@ -198,8 +198,8 @@ function OptimizationSuggestions({
 }
 
 interface ApplyOptimizationsProps {
-  onApplyOptimizations: () => void;
-  onCancelOptimization: () => void;
+  readonly onApplyOptimizations: () => void;
+  readonly onCancelOptimization: () => void;
 }
 
 function ApplyOptimizations({

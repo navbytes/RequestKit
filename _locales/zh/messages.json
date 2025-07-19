@@ -434,5 +434,138 @@
   "devtools_matched_rules": {
     "message": "匹配的规则",
     "description": "匹配规则部分标题"
+  },
+
+  "devtools_header_title": {
+    "message": "RequestKit DevTools",
+    "description": "Title for DevTools header"
+  },
+  "devtools_profile_label": {
+    "message": "Profile",
+    "description": "Label for profile selector in DevTools"
+  },
+  "devtools_stop_recording": {
+    "message": "Stop Recording",
+    "description": "Button text to stop recording requests"
+  },
+  "devtools_start_recording": {
+    "message": "Start Recording",
+    "description": "Button text to start recording requests"
+  },
+  "devtools_clear_requests": {
+    "message": "Clear Requests",
+    "description": "Button text to clear recorded requests"
+  },
+  "devtools_export_requests": {
+    "message": "Export Requests",
+    "description": "Button text to export recorded requests"
+  },
+  "devtools_network_requests": {
+    "message": "Network Requests",
+    "description": "Title for network requests section"
+  },
+  "devtools_no_requests_recording": {
+    "message": "No requests captured. Start recording to see network activity.",
+    "description": "Message when no requests are being recorded"
+  },
+  "devtools_recording_stopped": {
+    "message": "Recording stopped. Click Start Recording to capture requests.",
+    "description": "Message when recording is stopped"
+  },
+  "devtools_select_request": {
+    "message": "Select a request to view details",
+    "description": "Message prompting user to select a request"
+  },
+  "devtools_url_label": {
+    "message": "URL",
+    "description": "Label for request URL"
+  },
+  "devtools_method_label": {
+    "message": "Method",
+    "description": "Label for HTTP method"
+  },
+  "devtools_status_label": {
+    "message": "Status",
+    "description": "Label for response status"
+  },
+  "devtools_headers_tab": {
+    "message": "Headers",
+    "description": "Tab label for headers view"
+  },
+  "devtools_variables_tab": {
+    "message": "Variables",
+    "description": "Tab label for variables view"
+  },
+  "devtools_profile_rules_info": {
+    "message": "Profile Rules Information",
+    "description": "Title for profile rules information section"
+  },
+  "devtools_matched_rules_label": {
+    "message": "Matched Rules",
+    "description": "Label for matched rules section"
+  },
+  "devtools_modified_headers_request": {
+    "message": "Modified Request Headers",
+    "description": "Label for modified request headers"
+  },
+  "devtools_modified_headers_response": {
+    "message": "Modified Response Headers",
+    "description": "Label for modified response headers"
+  },
+  "devtools_timestamp_label": {
+    "message": "Timestamp",
+    "description": "Label for request timestamp"
+  },
+  "devtools_cache_hit": {
+    "message": "Cache Hit",
+    "description": "Label for cache hit status"
+  },
+  "devtools_cache_miss": {
+    "message": "Cache Miss",
+    "description": "Label for cache miss status"
+  },
+  "devtools_input_label": {
+    "message": "Input",
+    "description": "Label for variable input value"
+  },
+  "devtools_output_label": {
+    "message": "Output",
+    "description": "Label for variable output value"
+  },
+  "devtools_metadata_label": {
+    "message": "Metadata",
+    "description": "Label for variable metadata"
+  },
+  "devtools_depth_label": {
+    "message": "Depth",
+    "description": "Label for resolution depth"
+  },
+  "devtools_recursive_label": {
+    "message": "Recursive",
+    "description": "Label for recursive resolution"
+  },
+  "devtools_function_args_label": {
+    "message": "Function Arguments",
+    "description": "Label for function arguments"
+  },
+  "devtools_variable_details_label": {
+    "message": "Variable Details",
+    "description": "Label for variable details section"
+  },
+  "devtools_no_requests_captured": {
+    "message": "No requests captured yet",
+    "description": "Message when no requests have been captured"
+  },
+  "devtools_headers_modified": {
+    "message": "Headers Modified",
+    "description": "Label indicating headers were modified"
+  },
+  "devtools_rules_matched": {
+    "message": "Rules Matched",
+    "description": "Label for number of rules matched"
+  },
+  "devtools_variable_resolution": {
+    "message": "Variable Resolution",
+    "description": "Label for variable resolution section"
   }
 }

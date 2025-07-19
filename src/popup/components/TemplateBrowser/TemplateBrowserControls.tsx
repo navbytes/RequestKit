@@ -1,4 +1,5 @@
 import { Icon, IconName } from '@/shared/components/Icon';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { RuleTemplate } from '@/shared/types/templates';
 
 interface TemplateBrowserControlsProps {
@@ -19,14 +20,16 @@ export function TemplateBrowserControls({
   categories,
   selectedCategoryInfo,
   templates,
-}: TemplateBrowserControlsProps) {
+}: Readonly<TemplateBrowserControlsProps>) {
+  const { t } = useI18n();
+
   return (
     <div className="p-4 space-y-3 border-b border-gray-200 dark:border-gray-700">
       {/* Search */}
       <div>
         <input
           type="text"
-          placeholder="Search templates..."
+          placeholder={t('common_search_templates')}
           value={searchQuery}
           onInput={e => {
             const target = e.target as HTMLInputElement;

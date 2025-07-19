@@ -24,7 +24,7 @@ export function TemplateGrid({
   onClone,
   onExport,
   isApplying,
-}: TemplateGridProps) {
+}: Readonly<TemplateGridProps>) {
   if (templates.length === 0) {
     return (
       <EmptyState

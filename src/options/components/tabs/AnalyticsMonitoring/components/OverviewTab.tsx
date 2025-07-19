@@ -15,7 +15,10 @@ interface OverviewTabProps {
   suggestions: OptimizationSuggestion[];
 }
 
-export function OverviewTab({ analytics, suggestions }: OverviewTabProps) {
+export function OverviewTab({
+  analytics,
+  suggestions,
+}: Readonly<OverviewTabProps>) {
   return (
     <div className="space-y-6">
       {/* Key Metrics */}

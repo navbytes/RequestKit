@@ -1,4 +1,5 @@
 import { Icon } from '@/shared/components/Icon';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { HeaderRule } from '@/shared/types/rules';
 
 import { BasicRuleInfo } from './BasicRuleInfo';
@@ -20,7 +21,8 @@ export function AdvancedRuleBuilder({
   onRuleCreated,
   onCancel,
   initialRule,
-}: AdvancedRuleBuilderProps) {
+}: Readonly<AdvancedRuleBuilderProps>) {
+  const { t } = useI18n();
   const {
     formData,
     profiles,
@@ -37,12 +39,12 @@ export function AdvancedRuleBuilder({
     <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4 bg-white dark:bg-gray-800">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-          {initialRule ? 'Edit Rule' : 'Create Advanced Rule'}
+          {initialRule ? t('popup_edit_rule') : t('popup_create_advanced_rule')}
         </h3>
         <button
           onClick={onCancel}
           className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
-          title="Cancel"
+          title={t('popup_cancel')}
         >
           <Icon name="close" className="w-5 h-5" />
         </button>
@@ -91,17 +93,17 @@ export function AdvancedRuleBuilder({
             className="flex-1 btn btn-primary"
           >
             {isSubmitting
-              ? 'Saving...'
+              ? `${t('ui_button_save')}...`
               : initialRule
-                ? 'Update Rule'
-                : 'Create Rule'}
+                ? t('ui_button_update')
+                : t('ui_button_create')}
           </button>
           <button
             type="button"
             onClick={onCancel}
             className="flex-1 btn btn-secondary"
           >
-            Cancel
+            {t('ui_button_cancel')}
           </button>
         </div>
       </form>

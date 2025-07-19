@@ -17,7 +17,7 @@ export function HeadersView({
   request,
   selectedTab,
   onTabChange,
-}: HeadersViewProps) {
+}: Readonly<HeadersViewProps>) {
   const headers =
     selectedTab === 'request'
       ? request.requestHeaders

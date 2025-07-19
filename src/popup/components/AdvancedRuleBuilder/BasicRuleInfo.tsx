@@ -1,3 +1,4 @@
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { Profile } from '@/shared/types/profiles';
 
 interface FormData {
@@ -16,7 +17,9 @@ export function BasicRuleInfo({
   formData,
   profiles,
   onUpdate,
-}: BasicRuleInfoProps) {
+}: Readonly<BasicRuleInfoProps>) {
+  const { t } = useI18n();
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       <div>
@@ -24,7 +27,7 @@ export function BasicRuleInfo({
           htmlFor={`rule-info-${formData.ruleName}`}
           className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
         >
-          Rule Name *
+          {t('forms_rule_name')} *
         </label>
         <input
           type="text"
@@ -33,7 +36,7 @@ export function BasicRuleInfo({
           onChange={e =>
             onUpdate({ ruleName: (e.target as HTMLInputElement).value })
           }
-          placeholder="My Custom Headers"
+          placeholder={t('forms_rule_name_placeholder')}
           className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
           required
         />
@@ -44,7 +47,7 @@ export function BasicRuleInfo({
           htmlFor="profile-select"
           className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
         >
-          Profile
+          {t('ui_label_profile')}
         </label>
         <select
           id="profile-select"
@@ -54,7 +57,7 @@ export function BasicRuleInfo({
           }
           className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
         >
-          <option value="">No Profile (Global)</option>
+          <option value="">{t('forms_no_profile_global')}</option>
           {profiles.map(profile => (
             <option key={profile.id} value={profile.id}>
               {profile.name} ({profile.environment})
@@ -68,7 +71,7 @@ export function BasicRuleInfo({
           htmlFor="priority-input"
           className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
         >
-          Priority
+          {t('ui_label_priority')}
         </label>
         <input
           type="number"

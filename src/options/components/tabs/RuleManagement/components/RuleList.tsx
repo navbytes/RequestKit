@@ -16,7 +16,7 @@ export function RuleList({
   onDeleteRule,
   onToggleRule,
   onDuplicateRule,
-}: RuleListProps) {
+}: Readonly<RuleListProps>) {
   return (
     <div className="space-y-4">
       {rules.map(rule => (

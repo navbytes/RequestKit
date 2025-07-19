@@ -61,6 +61,21 @@ This directory contains comprehensive GitHub Actions workflows for the RequestKi
 - **Test Localization**: Runs i18n-specific tests
 - **Check Translation Quality**: PR-specific translation change analysis
 
+### 5. Release Workflow (`release.yml`)
+
+**Triggers:** Push to `main` branch with version-related commits or `manifest.json` changes
+
+**Jobs:**
+
+- **Build and Release**:
+  - Runs full test suite and localization validation
+  - Extracts version from `manifest.json`
+  - Generates release notes from `CHANGELOG.md`
+  - Creates ZIP package for Chrome Web Store
+  - Validates extension package integrity
+  - Creates GitHub release with detailed information
+  - Prevents duplicate releases for the same version
+
 ## Required Secrets
 
 To fully utilize all workflows, configure these secrets in your GitHub repository:
@@ -124,6 +139,7 @@ Add these badges to your main README.md:
 [![CI](https://github.com/navbytes/RequestKit/workflows/CI/badge.svg)](https://github.com/navbytes/RequestKit/actions/workflows/ci.yml)
 [![Code Quality](https://github.com/navbytes/RequestKit/workflows/Code%20Quality/badge.svg)](https://github.com/navbytes/RequestKit/actions/workflows/code-quality.yml)
 [![Localization](https://github.com/navbytes/RequestKit/workflows/Localization/badge.svg)](https://github.com/navbytes/RequestKit/actions/workflows/localization.yml)
+[![Release](https://github.com/navbytes/RequestKit/workflows/Create%20Release/badge.svg)](https://github.com/navbytes/RequestKit/actions/workflows/release.yml)
 ```
 
 ## Local Development

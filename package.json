@@ -8,7 +8,7 @@
     "dev:ui": "vite --config vite.dev.config.ts",
     "build": "tsc && vite build && npm run post-build",
     "build:dev": "vite build --config vite.dev.config.ts",
-    "post-build": "cp manifest.json dist/ && cp rules.json dist/ && cp -r src/assets dist/ && cp src/content/injected-script.ts dist/src/content/injected-script.js && mkdir -p dist/src/shared && cp src/shared/theme-init.js dist/src/shared/",
+    "post-build": "cp manifest.json dist/ && cp rules.json dist/ && cp -r src/assets dist/ && cp src/content/injected-script.ts dist/src/content/injected-script.js && mkdir -p dist/src/shared && cp src/shared/theme-init.js dist/src/shared/ && cp -r _locales dist/",
     "build:extension": "npm run build",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",

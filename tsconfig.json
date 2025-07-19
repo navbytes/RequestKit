@@ -36,7 +36,8 @@
       "@/*": ["src/*"],
       "@/types/*": ["src/shared/types/*"],
       "@/utils/*": ["src/shared/utils/*"],
-      "@/shared/*": ["src/shared/*"]
+      "@/shared/*": ["src/shared/*"],
+      "@/config/*": ["src/config/*"]
     },
     /* Chrome Extension Types */
     "types": ["chrome", "node", "vite/client"]

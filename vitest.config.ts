@@ -102,6 +102,7 @@ export default defineConfig({
       '@/types': resolve(__dirname, './src/shared/types'),
       '@/utils': resolve(__dirname, './src/shared/utils'),
       '@/shared': resolve(__dirname, './src/shared'),
+      '@/config': resolve(__dirname, './src/config'),
     },
   },
 

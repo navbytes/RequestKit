@@ -9,6 +9,10 @@ import {
   type MessageParams,
 } from '@/shared/utils/i18n';
 
+import { loggers } from '../utils/debug';
+
+const logger = loggers.shared;
+
 /**
  * Localization utility class for non-React contexts
  */
@@ -160,10 +164,9 @@ export const localization = createLocalizationHelper();
 /**
  * Initialize localization on module load for Chrome extension contexts
  */
-if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.id) {
+if (typeof chrome !== 'undefined' && chrome.runtime?.id) {
   LocalizationUtils.initialize().catch(error => {
-    // eslint-disable-next-line no-console
-    console.error('Failed to initialize localization:', error);
+    logger.error('Failed to initialize localization:', error);
   });
 }
 

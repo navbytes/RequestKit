@@ -64,11 +64,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install rollup native dependencies
+        run: npm install @rollup/rollup-linux-x64-gnu --no-save || true
+
       - name: Run tests
-        run: npm test
+        run: npx vitest run
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
 
       - name: Run tests with coverage
-        run: npm run test:coverage
+        run: npx vitest run --coverage
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
@@ -92,8 +97,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install rollup native dependencies
+        run: npm install @rollup/rollup-linux-x64-gnu --no-save || true
+
       - name: Run localization tests
-        run: npm run test:i18n
+        run: npx vitest run src/__tests__/i18n/
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
 
       - name: Validate locale messages
         run: npm run validate-messages
@@ -118,8 +128,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install rollup native dependencies
+        run: npm install @rollup/rollup-linux-x64-gnu --no-save || true
+
       - name: Build extension
         run: npm run build
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4

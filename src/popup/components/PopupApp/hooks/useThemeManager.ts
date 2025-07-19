@@ -3,7 +3,6 @@ import { useState, useEffect } from 'preact/hooks';
 import { loggers } from '@/shared/utils/debug';
 import { ThemeManager } from '@/shared/utils/theme';
 
-
 // Get logger for this module
 const logger = loggers.shared;
 

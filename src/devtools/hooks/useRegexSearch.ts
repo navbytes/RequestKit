@@ -43,7 +43,6 @@ interface UseRegexSearchReturn {
   clearHistory: () => void;
 }
 
-
 // Get logger for this module
 const logger = loggers.shared;
 
@@ -146,7 +145,14 @@ export function useRegexSearch({
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [pattern, flags, validateOnChange, validatePattern, debounceMs, debounceTimer]);
+  }, [
+    pattern,
+    flags,
+    validateOnChange,
+    validatePattern,
+    debounceMs,
+    debounceTimer,
+  ]);
 
   // Set pattern with validation
   const setPattern = useCallback((newPattern: string) => {

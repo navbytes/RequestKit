@@ -43,7 +43,9 @@ export function VariableFilters({
         <select
           value={filterScope}
           onChange={e =>
-            onScopeChange((e.target as HTMLSelectElement).value as VariableScope | 'all')
+            onScopeChange(
+              (e.target as HTMLSelectElement).value as VariableScope | 'all'
+            )
           }
           className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
         >
@@ -56,7 +58,12 @@ export function VariableFilters({
         <select
           value={filterFunctions}
           onChange={e =>
-            onFunctionsChange((e.target as HTMLSelectElement).value as 'all' | 'functions' | 'static')
+            onFunctionsChange(
+              (e.target as HTMLSelectElement).value as
+                | 'all'
+                | 'functions'
+                | 'static'
+            )
           }
           className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent"
         >

@@ -45,7 +45,6 @@ interface UseFilterPresetsReturn {
   searchPresets: (query: string) => FilterPreset[];
 }
 
-
 // Get logger for this module
 const logger = loggers.shared;
 

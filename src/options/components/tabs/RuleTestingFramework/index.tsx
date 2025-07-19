@@ -266,7 +266,11 @@ export function RuleTestingFrameworkComponent({
           {NAVIGATION_TABS.map(tab => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as 'single' | 'conflicts' | 'performance' | 'automated')}
+              onClick={() =>
+                setActiveTab(
+                  tab.id as 'single' | 'conflicts' | 'performance' | 'automated'
+                )
+              }
               className={`py-2 px-1 border-b-2 font-medium text-sm flex items-center space-x-2 ${
                 activeTab === tab.id
                   ? 'border-primary-500 text-primary-600 dark:text-primary-400'

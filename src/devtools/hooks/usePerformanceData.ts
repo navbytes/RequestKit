@@ -13,7 +13,6 @@ import type {
   PerformanceThresholds,
 } from '../types/performance';
 
-
 // Get logger for this module
 const logger = loggers.shared;
 

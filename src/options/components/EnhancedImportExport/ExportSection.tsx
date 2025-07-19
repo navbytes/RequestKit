@@ -7,7 +7,6 @@ import {
 } from './ExportSection/ExportOptions';
 import { LastExportInfo } from './ExportSection/LastExportInfo';
 
-
 interface ExportData {
   version: string;
   timestamp: string;

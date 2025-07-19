@@ -8,7 +8,6 @@ import type { HeaderRule } from '@/shared/types/rules';
 import { loggers } from '@/shared/utils/debug';
 // import type { PerformanceTimer } from '../types/background-types';
 
-
 // Get logger for this module
 const logger = loggers.shared;
 

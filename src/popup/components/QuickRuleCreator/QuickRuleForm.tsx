@@ -26,7 +26,10 @@ export function QuickRuleForm({
   return (
     <form onSubmit={onSubmit} className="space-y-3">
       <div>
-        <label htmlFor="quick-rule-name" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label
+          htmlFor="quick-rule-name"
+          className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1"
+        >
           Rule Name
         </label>
         <input
@@ -41,7 +44,10 @@ export function QuickRuleForm({
       </div>
 
       <div>
-        <label htmlFor="quick-header-name" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label
+          htmlFor="quick-header-name"
+          className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1"
+        >
           Header Name
         </label>
         <input
@@ -56,7 +62,10 @@ export function QuickRuleForm({
       </div>
 
       <div>
-        <label htmlFor="quick-header-value" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label
+          htmlFor="quick-header-value"
+          className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1"
+        >
           Header Value
         </label>
         <input

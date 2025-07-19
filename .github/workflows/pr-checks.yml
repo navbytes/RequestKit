@@ -86,8 +86,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install rollup native dependencies
+        run: npm install @rollup/rollup-linux-x64-gnu --no-save || true
+
       - name: Build extension
         run: npm run build
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
 
       - name: Check bundle size
         run: |
@@ -148,10 +153,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install rollup native dependencies
+        run: npm install @rollup/rollup-linux-x64-gnu --no-save || true
+
       - name: Run performance tests
         run: |
           echo "⚡ Running performance benchmarks..."
           npm test -- --run --reporter=verbose | grep -E "(ms|performance|benchmark)" || true
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
 
       - name: Check test execution time
         run: |
@@ -167,6 +177,8 @@ jobs:
           else
             echo "✅ Test execution time is acceptable"
           fi
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
 
   accessibility-check:
     name: Accessibility Check
@@ -184,24 +196,52 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install rollup native dependencies
+        run: npm install @rollup/rollup-linux-x64-gnu --no-save || true
+
       - name: Build extension
         run: npm run build
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
 
       - name: Check for accessibility issues
         run: |
           echo "♿ Checking for accessibility issues..."
 
           # Check for missing alt attributes in HTML files
-          if find dist -name "*.html" -exec grep -l "<img" {} \; | xargs grep -L "alt=" | head -1; then
-            echo "⚠️ Warning: Found images without alt attributes"
-            find dist -name "*.html" -exec grep -l "<img" {} \; | xargs grep -L "alt="
+          echo "🔍 Checking for images without alt attributes..."
+
+          # Find HTML files with img tags
+          img_files=$(find dist -name "*.html" -exec grep -l "<img" {} \; 2>/dev/null || true)
+
+          if [ -z "$img_files" ]; then
+            echo "✅ No images found in HTML files"
           else
-            echo "✅ All images have alt attributes"
+            echo "📄 Found HTML files with images, checking alt attributes..."
+            
+            # Check each file for missing alt attributes
+            missing_alt_files=""
+            for file in $img_files; do
+              if ! grep -q "alt=" "$file"; then
+                missing_alt_files="$missing_alt_files $file"
+              fi
+            done
+            
+            if [ -n "$missing_alt_files" ]; then
+              echo "⚠️ Warning: Found images without alt attributes in:"
+              for file in $missing_alt_files; do
+                echo "  - $file"
+                grep -n "<img" "$file" || true
+              done
+              exit 1
+            else
+              echo "✅ All images have alt attributes"
+            fi
           fi
 
           # Check for proper heading structure
           echo "📋 Checking heading structure in HTML files..."
-          find dist -name "*.html" -exec grep -H "<h[1-6]" {} \; || echo "No headings found"
+          find dist -name "*.html" -exec grep -H "<h[1-6]" {} \; 2>/dev/null || echo "No headings found"
 
   manifest-validation:
     name: Chrome Extension Manifest Validation
@@ -219,8 +259,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install rollup native dependencies
+        run: npm install @rollup/rollup-linux-x64-gnu --no-save || true
+
       - name: Build extension
         run: npm run build
+        env:
+          NODE_OPTIONS: '--max-old-space-size=4096'
 
       - name: Validate manifest.json
         run: |

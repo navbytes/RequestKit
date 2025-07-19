@@ -65,10 +65,7 @@ export const resetExtensionData = async (): Promise<void> => {
       );
     }
   } catch (error) {
-    logger.warn(
-      '[Reset] Failed to communicate with background script:',
-      error
-    );
+    logger.warn('[Reset] Failed to communicate with background script:', error);
   }
 
   // Notify background script to reload rules

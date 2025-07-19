@@ -40,7 +40,10 @@ export function BasicRuleInfo({
       </div>
 
       <div>
-        <label htmlFor="profile-select" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label
+          htmlFor="profile-select"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+        >
           Profile
         </label>
         <select
@@ -61,7 +64,10 @@ export function BasicRuleInfo({
       </div>
 
       <div>
-        <label htmlFor="priority-input" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label
+          htmlFor="priority-input"
+          className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+        >
           Priority
         </label>
         <input

@@ -107,7 +107,7 @@ export function useAdvancedRuleBuilder(
       if (currentHeader) {
         updatedHeaders[index] = {
           ...currentHeader,
-          [field]: value
+          [field]: value,
         };
       }
       return { ...prev, headers: updatedHeaders };
@@ -152,7 +152,8 @@ export function useAdvancedRuleBuilder(
           protocol: formData.protocol === '*' ? 'https' : formData.protocol,
         },
         headers: validHeaders,
-        resourceTypes: formData.resourceTypes.length > 0 ? formData.resourceTypes : [],
+        resourceTypes:
+          formData.resourceTypes.length > 0 ? formData.resourceTypes : [],
         enabled: formData.enabled,
         priority: formData.priority,
         createdAt: initialRule?.createdAt || new Date(),

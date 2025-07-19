@@ -35,7 +35,6 @@ interface SwitchProfileResponse {
   error?: string;
 }
 
-
 // Get logger for this module
 const logger = loggers.shared;
 

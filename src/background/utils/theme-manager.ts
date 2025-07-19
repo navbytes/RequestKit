@@ -7,7 +7,6 @@ import type { ExtensionSettings } from '@/shared/types/storage';
 import { ChromeApiUtils } from '@/shared/utils/chrome-api';
 import { loggers } from '@/shared/utils/debug';
 
-
 // Get logger for this module
 const logger = loggers.shared;
 

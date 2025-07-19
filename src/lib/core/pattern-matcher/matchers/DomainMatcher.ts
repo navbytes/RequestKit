@@ -16,7 +16,7 @@ export function matchDomain(url: string, domainPattern: string): boolean {
     // Handle wildcard subdomain patterns like *.example.com
     if (pattern.startsWith('*.')) {
       const baseDomain = pattern.slice(2);
-      return hostname === baseDomain || hostname.endsWith(`.${  baseDomain}`);
+      return hostname === baseDomain || hostname.endsWith(`.${baseDomain}`);
     }
 
     // Handle exact match or wildcard

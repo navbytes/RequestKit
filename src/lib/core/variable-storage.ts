@@ -277,14 +277,14 @@ export class VariableStorageUtils {
           const profileVars = updatedProfileVariables[profileId];
           if (profileVars) {
             profileVars[variableId] = {
-            ...variable,
-            metadata: {
-              createdAt:
-                variable.metadata?.createdAt || new Date().toISOString(),
-              updatedAt: new Date().toISOString(),
-              ...variable.metadata,
-              usageCount,
-            },
+              ...variable,
+              metadata: {
+                createdAt:
+                  variable.metadata?.createdAt || new Date().toISOString(),
+                updatedAt: new Date().toISOString(),
+                ...variable.metadata,
+                usageCount,
+              },
             };
           }
         }
@@ -302,14 +302,14 @@ export class VariableStorageUtils {
           const ruleVars = updatedRuleVariables[ruleId];
           if (ruleVars) {
             ruleVars[variableId] = {
-            ...variable,
-            metadata: {
-              createdAt:
-                variable.metadata?.createdAt || new Date().toISOString(),
-              updatedAt: new Date().toISOString(),
-              ...variable.metadata,
-              usageCount,
-            },
+              ...variable,
+              metadata: {
+                createdAt:
+                  variable.metadata?.createdAt || new Date().toISOString(),
+                updatedAt: new Date().toISOString(),
+                ...variable.metadata,
+                usageCount,
+              },
             };
           }
         }

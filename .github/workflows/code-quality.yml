@@ -1,0 +1,278 @@
+name: Code Quality
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+
+jobs:
+  eslint:
+    name: ESLint Analysis
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Run ESLint with SARIF output
+        run: |
+          npx eslint src \
+            --ext .ts,.tsx \
+            --format @microsoft/eslint-formatter-sarif \
+            --output-file eslint-results.sarif
+        continue-on-error: true
+
+      - name: Upload ESLint results to GitHub
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: eslint-results.sarif
+          wait-for-processing: true
+
+  prettier:
+    name: Prettier Format Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check Prettier formatting
+        run: npm run format:check
+
+      - name: Generate formatting report
+        if: failure()
+        run: |
+          echo "## 🎨 Prettier Formatting Issues" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The following files need formatting:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          npx prettier --check . || true >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Run \`npm run format\` to fix these issues." >> $GITHUB_STEP_SUMMARY
+
+  sonarcloud:
+    name: SonarCloud Analysis
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests with coverage
+        run: npm run test:coverage
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  complexity-analysis:
+    name: Code Complexity Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install complexity analysis tools
+        run: npm install -g complexity-report jscpd
+
+      - name: Run complexity analysis
+        run: |
+          echo "## 📊 Code Complexity Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Analyze complexity for TypeScript files
+          find src -name "*.ts" -not -path "*/node_modules/*" -not -name "*.test.ts" -not -name "*.spec.ts" | head -10 | while read file; do
+            echo "### $file" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            cr --format json "$file" | jq -r '.reports[0] | "Complexity: \(.complexity.cyclomatic), Functions: \(.complexity.functions), Lines: \(.lines.physical)"' >> $GITHUB_STEP_SUMMARY || echo "Could not analyze $file" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+          done
+
+      - name: Check for code duplication
+        run: |
+          echo "## 🔍 Code Duplication Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          jscpd src --threshold 10 --format "console" || echo "No significant code duplication found" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+  dependency-vulnerability:
+    name: Dependency Vulnerability Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: |
+          echo "## 🔒 Security Audit Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          npm audit --audit-level=moderate || true >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Run Snyk security scan
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=medium
+
+  type-coverage:
+    name: TypeScript Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install type coverage tool
+        run: npm install -g type-coverage
+
+      - name: Check TypeScript coverage
+        run: |
+          echo "## 📝 TypeScript Coverage Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          type-coverage --detail || true >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Strict TypeScript check
+        run: |
+          echo "## 🔧 Strict TypeScript Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check if strict mode is enabled
+          if grep -q '"strict": true' tsconfig.json; then
+            echo "✅ Strict mode is enabled" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ Strict mode is not enabled" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Run type check with strict settings
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          npx tsc --noEmit --strict || true >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+  performance-budget:
+    name: Performance Budget Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension
+        run: npm run build
+
+      - name: Check bundle sizes
+        run: |
+          echo "## 📦 Bundle Size Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| File | Size | Gzipped |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|------|---------|" >> $GITHUB_STEP_SUMMARY
+
+          find dist -name "*.js" | while read file; do
+            size=$(stat -c%s "$file")
+            size_kb=$((size / 1024))
+            gzip_size=$(gzip -c "$file" | wc -c)
+            gzip_kb=$((gzip_size / 1024))
+            filename=$(basename "$file")
+            echo "| $filename | ${size_kb}KB | ${gzip_kb}KB |" >> $GITHUB_STEP_SUMMARY
+            
+            # Check if file exceeds budget (500KB)
+            if [ $size_kb -gt 500 ]; then
+              echo "⚠️ Warning: $filename exceeds 500KB budget" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+
+      - name: Check total extension size
+        run: |
+          total_size=$(du -sb dist | cut -f1)
+          total_mb=$((total_size / 1024 / 1024))
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Total extension size: ${total_mb}MB**" >> $GITHUB_STEP_SUMMARY
+
+          if [ $total_mb -gt 10 ]; then
+            echo "⚠️ Warning: Extension exceeds 10MB recommended size" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ Extension size is within recommended limits" >> $GITHUB_STEP_SUMMARY
+          fi

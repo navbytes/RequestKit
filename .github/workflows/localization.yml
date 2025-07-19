@@ -1,0 +1,306 @@
+name: Localization
+
+on:
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - '_locales/**'
+      - 'src/**/*.ts'
+      - 'src/**/*.tsx'
+      - 'scripts/validate-messages.js'
+      - 'scripts/check-missing-keys.js'
+  push:
+    branches: [main, develop]
+    paths:
+      - '_locales/**'
+      - 'src/**/*.ts'
+      - 'src/**/*.tsx'
+
+jobs:
+  validate-locales:
+    name: Validate Locale Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate locale message files
+        run: npm run validate-messages
+
+      - name: Check locale file structure
+        run: |
+          echo "## 🌐 Locale File Structure" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Locale | Messages | Size |" >> $GITHUB_STEP_SUMMARY
+          echo "|--------|----------|------|" >> $GITHUB_STEP_SUMMARY
+
+          for locale_dir in _locales/*/; do
+            if [ -d "$locale_dir" ]; then
+              locale=$(basename "$locale_dir")
+              messages_file="$locale_dir/messages.json"
+              
+              if [ -f "$messages_file" ]; then
+                message_count=$(jq 'length' "$messages_file")
+                file_size=$(stat -c%s "$messages_file")
+                size_kb=$((file_size / 1024))
+                echo "| $locale | $message_count | ${size_kb}KB |" >> $GITHUB_STEP_SUMMARY
+              else
+                echo "| $locale | ❌ Missing | - |" >> $GITHUB_STEP_SUMMARY
+              fi
+            fi
+          done
+
+      - name: Check for Chrome extension compatibility
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 🔍 Chrome Extension Compatibility" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check for invalid comment keys
+          if find _locales -name "messages.json" -exec grep -l "_comment_" {} \; | head -1; then
+            echo "❌ Found invalid comment keys (Chrome extensions don't support _comment_ keys)" >> $GITHUB_STEP_SUMMARY
+            find _locales -name "messages.json" -exec grep -l "_comment_" {} \; >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No invalid comment keys found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          # Check for proper message format
+          for messages_file in _locales/*/messages.json; do
+            if [ -f "$messages_file" ]; then
+              locale=$(basename $(dirname "$messages_file"))
+              echo "Checking $locale..." >> $GITHUB_STEP_SUMMARY
+              
+              # Validate JSON structure
+              if ! jq empty "$messages_file" 2>/dev/null; then
+                echo "❌ Invalid JSON in $locale" >> $GITHUB_STEP_SUMMARY
+              fi
+              
+              # Check for required message structure
+              invalid_messages=$(jq -r 'to_entries[] | select(.value.message == null or (.value.message | type) != "string") | .key' "$messages_file" 2>/dev/null || echo "")
+              if [ -n "$invalid_messages" ]; then
+                echo "❌ Invalid message format in $locale: $invalid_messages" >> $GITHUB_STEP_SUMMARY
+              fi
+            fi
+          done
+
+  check-missing-translations:
+    name: Check Missing Translations
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for missing localization keys
+        run: |
+          echo "## 🔍 Missing Localization Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Run the missing keys check and capture output
+          npm run check-missing-keys > missing_keys_output.txt 2>&1 || true
+
+          # Extract summary information
+          if grep -q "potential missing keys" missing_keys_output.txt; then
+            missing_count=$(grep "potential missing keys" missing_keys_output.txt | grep -o '[0-9]\+' | tail -1)
+            echo "Found **$missing_count** potential hardcoded strings that might need localization." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "<details>" >> $GITHUB_STEP_SUMMARY
+            echo "<summary>View detailed analysis</summary>" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            head -50 missing_keys_output.txt >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            echo "</details>" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No potential missing localization keys found." >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Compare locale completeness
+        run: |
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "## 📊 Locale Completeness Comparison" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Get base locale (English) key count
+          if [ -f "_locales/en/messages.json" ]; then
+            base_count=$(jq 'length' _locales/en/messages.json)
+            echo "Base locale (en): $base_count keys" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "| Locale | Keys | Completeness | Missing Keys |" >> $GITHUB_STEP_SUMMARY
+            echo "|--------|------|--------------|--------------|" >> $GITHUB_STEP_SUMMARY
+            
+            for locale_dir in _locales/*/; do
+              if [ -d "$locale_dir" ]; then
+                locale=$(basename "$locale_dir")
+                messages_file="$locale_dir/messages.json"
+                
+                if [ -f "$messages_file" ] && [ "$locale" != "en" ]; then
+                  current_count=$(jq 'length' "$messages_file")
+                  completeness=$((current_count * 100 / base_count))
+                  
+                  # Find missing keys
+                  base_keys=$(jq -r 'keys[]' _locales/en/messages.json | sort)
+                  current_keys=$(jq -r 'keys[]' "$messages_file" | sort)
+                  missing_keys=$(comm -23 <(echo "$base_keys") <(echo "$current_keys") | head -5 | tr '\n' ', ' | sed 's/,$//')
+                  
+                  if [ $completeness -eq 100 ]; then
+                    echo "| $locale | $current_count | ✅ ${completeness}% | - |" >> $GITHUB_STEP_SUMMARY
+                  elif [ $completeness -ge 90 ]; then
+                    echo "| $locale | $current_count | ⚠️ ${completeness}% | $missing_keys |" >> $GITHUB_STEP_SUMMARY
+                  else
+                    echo "| $locale | $current_count | ❌ ${completeness}% | $missing_keys |" >> $GITHUB_STEP_SUMMARY
+                  fi
+                fi
+              fi
+            done
+          else
+            echo "❌ Base locale file (en/messages.json) not found" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  test-localization:
+    name: Test Localization System
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run localization tests
+        run: npm run test:i18n
+
+      - name: Test locale loading
+        run: |
+          echo "## 🧪 Locale Loading Test" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Test that all locale files can be loaded and parsed
+          for messages_file in _locales/*/messages.json; do
+            if [ -f "$messages_file" ]; then
+              locale=$(basename $(dirname "$messages_file"))
+              echo "Testing $locale..." >> $GITHUB_STEP_SUMMARY
+              
+              if jq empty "$messages_file" 2>/dev/null; then
+                message_count=$(jq 'length' "$messages_file")
+                echo "✅ $locale: $message_count messages loaded successfully" >> $GITHUB_STEP_SUMMARY
+              else
+                echo "❌ $locale: Failed to parse JSON" >> $GITHUB_STEP_SUMMARY
+              fi
+            fi
+          done
+
+  check-translation-quality:
+    name: Check Translation Quality
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for translation changes
+        run: |
+          echo "## 🔄 Translation Changes in PR" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Check if any locale files were modified
+          if git diff --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | grep -q "_locales/"; then
+            echo "**Modified locale files:**" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            git diff --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | grep "_locales/" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            
+            # Show detailed changes
+            echo "<details>" >> $GITHUB_STEP_SUMMARY
+            echo "<summary>View detailed changes</summary>" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo '```diff' >> $GITHUB_STEP_SUMMARY
+            git diff ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} -- "_locales/" >> $GITHUB_STEP_SUMMARY
+            echo '```' >> $GITHUB_STEP_SUMMARY
+            echo "</details>" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ No locale files were modified in this PR." >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Validate new translations
+        run: |
+          # Check if new keys were added and if they have translations in all locales
+          if git diff --name-only ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | grep -q "_locales/en/messages.json"; then
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "## 🆕 New Translation Keys" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            
+            # Extract new keys from English locale
+            git show ${{ github.event.pull_request.base.sha }}:_locales/en/messages.json > old_en.json 2>/dev/null || echo '{}' > old_en.json
+            new_keys=$(jq -r --slurpfile old old_en.json 'keys - ($old[0] | keys) | .[]' _locales/en/messages.json 2>/dev/null || echo "")
+            
+            if [ -n "$new_keys" ]; then
+              echo "**New keys added:**" >> $GITHUB_STEP_SUMMARY
+              echo "$new_keys" | while read key; do
+                echo "- \`$key\`" >> $GITHUB_STEP_SUMMARY
+              done
+              
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "**Translation status:**" >> $GITHUB_STEP_SUMMARY
+              echo "| Locale | Status |" >> $GITHUB_STEP_SUMMARY
+              echo "|--------|--------|" >> $GITHUB_STEP_SUMMARY
+              
+              for locale_dir in _locales/*/; do
+                if [ -d "$locale_dir" ]; then
+                  locale=$(basename "$locale_dir")
+                  if [ "$locale" != "en" ] && [ -f "$locale_dir/messages.json" ]; then
+                    missing_in_locale=$(echo "$new_keys" | while read key; do
+                      if ! jq -e --arg k "$key" 'has($k)' "$locale_dir/messages.json" >/dev/null 2>&1; then
+                        echo "$key"
+                      fi
+                    done)
+                    
+                    if [ -z "$missing_in_locale" ]; then
+                      echo "| $locale | ✅ Complete |" >> $GITHUB_STEP_SUMMARY
+                    else
+                      missing_count=$(echo "$missing_in_locale" | wc -l)
+                      echo "| $locale | ❌ Missing $missing_count keys |" >> $GITHUB_STEP_SUMMARY
+                    fi
+                  fi
+                fi
+              done
+            else
+              echo "✅ No new translation keys detected." >> $GITHUB_STEP_SUMMARY
+            fi
+            
+            rm -f old_en.json
+          fi

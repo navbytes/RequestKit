@@ -1,0 +1,268 @@
+name: PR Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  pr-validation:
+    name: PR Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check PR title format
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          types: |
+            feat
+            fix
+            docs
+            style
+            refactor
+            perf
+            test
+            build
+            ci
+            chore
+            revert
+          requireScope: false
+          disallowScopes: |
+            release
+          subjectPattern: ^(?![A-Z]).+$
+          subjectPatternError: |
+            The subject "{subject}" found in the pull request title "{title}"
+            didn't match the configured pattern. Please ensure that the subject
+            doesn't start with an uppercase character.
+
+      - name: Check for breaking changes
+        run: |
+          if git log --oneline ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | grep -i "BREAKING CHANGE"; then
+            echo "⚠️ Breaking changes detected in this PR"
+            echo "breaking_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "✅ No breaking changes detected"
+            echo "breaking_changes=false" >> $GITHUB_OUTPUT
+          fi
+        id: breaking_changes
+
+      - name: Validate commit messages
+        run: |
+          git log --oneline ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | while read line; do
+            if ! echo "$line" | grep -E "^[a-f0-9]+ (feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?: .+"; then
+              echo "❌ Invalid commit message format: $line"
+              echo "Please follow conventional commit format: type(scope): description"
+              exit 1
+            fi
+          done
+
+  size-check:
+    name: Bundle Size Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension
+        run: npm run build
+
+      - name: Check bundle size
+        run: |
+          echo "📦 Extension bundle sizes:"
+          find dist -name "*.js" -exec ls -lh {} \; | awk '{print $9 ": " $5}'
+
+          # Check if any JS file is larger than 2MB
+          if find dist -name "*.js" -size +2M | grep -q .; then
+            echo "⚠️ Warning: Large bundle files detected (>2MB)"
+            find dist -name "*.js" -size +2M -exec ls -lh {} \;
+          else
+            echo "✅ All bundle files are within acceptable size limits"
+          fi
+
+  dependency-check:
+    name: Dependency Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for outdated dependencies
+        run: |
+          echo "📋 Checking for outdated dependencies..."
+          npm outdated || true
+
+      - name: Check for unused dependencies
+        run: |
+          npx depcheck --ignores="@types/*,eslint-*,prettier,vitest,@vitest/*,@testing-library/*,autoprefixer,postcss,tailwindcss,typescript,vite,vite-plugin-web-extension,jsdom,glob" || true
+
+      - name: License compliance check
+        run: |
+          echo "📄 Checking license compliance..."
+          npx license-checker --summary --onlyAllow "MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;0BSD;CC0-1.0;Unlicense" || true
+
+  performance-check:
+    name: Performance Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run performance tests
+        run: |
+          echo "⚡ Running performance benchmarks..."
+          npm test -- --run --reporter=verbose | grep -E "(ms|performance|benchmark)" || true
+
+      - name: Check test execution time
+        run: |
+          start_time=$(date +%s)
+          npm test
+          end_time=$(date +%s)
+          duration=$((end_time - start_time))
+
+          echo "🕐 Test execution time: ${duration}s"
+
+          if [ $duration -gt 60 ]; then
+            echo "⚠️ Warning: Tests took longer than 60 seconds to complete"
+          else
+            echo "✅ Test execution time is acceptable"
+          fi
+
+  accessibility-check:
+    name: Accessibility Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension
+        run: npm run build
+
+      - name: Check for accessibility issues
+        run: |
+          echo "♿ Checking for accessibility issues..."
+
+          # Check for missing alt attributes in HTML files
+          if find dist -name "*.html" -exec grep -l "<img" {} \; | xargs grep -L "alt=" | head -1; then
+            echo "⚠️ Warning: Found images without alt attributes"
+            find dist -name "*.html" -exec grep -l "<img" {} \; | xargs grep -L "alt="
+          else
+            echo "✅ All images have alt attributes"
+          fi
+
+          # Check for proper heading structure
+          echo "📋 Checking heading structure in HTML files..."
+          find dist -name "*.html" -exec grep -H "<h[1-6]" {} \; || echo "No headings found"
+
+  manifest-validation:
+    name: Chrome Extension Manifest Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension
+        run: npm run build
+
+      - name: Validate manifest.json
+        run: |
+          echo "🔍 Validating Chrome extension manifest..."
+
+          # Check if manifest exists
+          if [ ! -f "dist/manifest.json" ]; then
+            echo "❌ Error: manifest.json not found in dist/"
+            exit 1
+          fi
+
+          # Validate JSON syntax
+          if ! jq empty dist/manifest.json; then
+            echo "❌ Error: Invalid JSON in manifest.json"
+            exit 1
+          fi
+
+          # Check required fields
+          required_fields=("manifest_version" "name" "version")
+          for field in "${required_fields[@]}"; do
+            if ! jq -e ".$field" dist/manifest.json > /dev/null; then
+              echo "❌ Error: Missing required field '$field' in manifest.json"
+              exit 1
+            fi
+          done
+
+          echo "✅ Manifest validation passed"
+
+      - name: Check extension size
+        run: |
+          echo "📦 Checking extension package size..."
+          cd dist
+          zip -r ../extension.zip .
+          cd ..
+
+          size=$(stat -c%s extension.zip)
+          size_mb=$((size / 1024 / 1024))
+
+          echo "Extension package size: ${size_mb}MB"
+
+          if [ $size_mb -gt 20 ]; then
+            echo "⚠️ Warning: Extension package is larger than 20MB"
+          else
+            echo "✅ Extension package size is acceptable"
+          fi

@@ -3,6 +3,7 @@
  */
 
 import { STORAGE_KEYS } from '@/config/constants';
+import type { HeaderRule, HeaderEntry } from '@/shared/types/rules';
 import type { Variable } from '@/shared/types/variables';
 import { ChromeApiUtils } from '@/shared/utils/chrome-api';
 import { loggers } from '@/shared/utils/debug';
@@ -461,25 +462,27 @@ export async function updateVariableUsageCounts(): Promise<void> {
     // Count variable usage across all rules
     const variableUsageCounts = new Map<string, number>();
 
-    Object.values(rules as Record<string, any>).forEach((rule: any) => {
-      if (rule.headers && Array.isArray(rule.headers)) {
-        rule.headers.forEach((header: any) => {
-          if (header.value && typeof header.value === 'string') {
-            // Find variable references in header values: ${VARIABLE_NAME}
-            const variableMatches = header.value.matchAll(/\$\{([^}]+)\}/g);
-            for (const match of variableMatches) {
-              const variableName = match[1];
-              if (variableName) {
-                variableUsageCounts.set(
-                  variableName,
-                  (variableUsageCounts.get(variableName) || 0) + 1
-                );
+    Object.values(rules as Record<string, HeaderRule>).forEach(
+      (rule: HeaderRule) => {
+        if (rule.headers && Array.isArray(rule.headers)) {
+          rule.headers.forEach((header: HeaderEntry) => {
+            if (header.value && typeof header.value === 'string') {
+              // Find variable references in header values: ${VARIABLE_NAME}
+              const variableMatches = header.value.matchAll(/\$\{([^}]+)\}/g);
+              for (const match of variableMatches) {
+                const variableName = match[1];
+                if (variableName) {
+                  variableUsageCounts.set(
+                    variableName,
+                    (variableUsageCounts.get(variableName) || 0) + 1
+                  );
+                }
               }
             }
-          }
-        });
+          });
+        }
       }
-    });
+    );
 
     // Update global variables with usage counts
     const updatedGlobalVariables: Record<string, Variable> = {};

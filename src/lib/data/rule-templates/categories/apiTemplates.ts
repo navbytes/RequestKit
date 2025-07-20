@@ -4,6 +4,10 @@
 
 import type { RuleTemplate } from '@/shared/types/templates';
 
+// Constants
+const REQUESTKIT_AUTHOR = 'RequestKit';
+const TEMPLATE_DATE = new Date('2025-01-01');
+
 export const API_TEMPLATES: RuleTemplate[] = [
   {
     id: 'json-api-headers',
@@ -27,9 +31,9 @@ export const API_TEMPLATES: RuleTemplate[] = [
     ],
     tags: ['api', 'json', 'content-type'],
     popularity: 90,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -66,9 +70,9 @@ export const API_TEMPLATES: RuleTemplate[] = [
     ],
     tags: ['api', 'rest', 'testing', 'json'],
     popularity: 83,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -129,9 +133,9 @@ export const API_TEMPLATES: RuleTemplate[] = [
     },
     tags: ['api', 'variables', 'dynamic', 'comprehensive', 'environment'],
     popularity: 88,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
 ];

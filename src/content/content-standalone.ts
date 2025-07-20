@@ -228,6 +228,8 @@ function startDomObserver() {
         });
       }
     });
+  } else {
+    // Document is ready but no body element found
   }
 }
 

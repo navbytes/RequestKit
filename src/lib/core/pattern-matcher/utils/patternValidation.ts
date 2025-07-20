@@ -23,6 +23,8 @@ export function validateURLPattern(pattern: URLPattern): {
     errors.push('Domain is required');
   } else if (!isValidDomainPattern(pattern.domain)) {
     errors.push('Invalid domain pattern');
+  } else {
+    // Domain is valid
   }
 
   // Validate protocol

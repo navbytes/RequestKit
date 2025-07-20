@@ -212,6 +212,8 @@ export function OptionsApp() {
       updateUrlHash('rules');
       logger.info('Edit action detected for rule:', ruleId);
       // We'll handle the edit action in RuleManagement component
+    } else {
+      // No specific action, use default tab from URL hash
     }
 
     // Listen for hash changes (browser back/forward navigation)

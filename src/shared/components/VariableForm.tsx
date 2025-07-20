@@ -129,6 +129,8 @@ export function VariableForm({
     } else if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(formData.name)) {
       newErrors.name =
         'Variable name must start with a letter or underscore and contain only letters, numbers, and underscores';
+    } else {
+      // Name is valid
     }
 
     // Validate value
@@ -164,6 +166,8 @@ export function VariableForm({
       (!formData.ruleId || formData.ruleId.trim() === '')
     ) {
       newErrors.ruleId = 'Rule selection is required for rule-scoped variables';
+    } else {
+      // Scope validation passed
     }
 
     // Validate description length

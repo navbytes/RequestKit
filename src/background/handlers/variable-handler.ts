@@ -15,6 +15,9 @@ import { loggers } from '@/shared/utils/debug';
 // Get logger for this module
 const logger = loggers.shared;
 
+// Constants
+const UNKNOWN_ERROR_MESSAGE = 'Unknown error';
+
 // Variable handler specific interfaces
 interface RequestContext {
   url?: string;
@@ -236,7 +239,7 @@ export class VariableHandler {
       logger.error('Error resolving variable:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        error: error instanceof Error ? error.message : UNKNOWN_ERROR_MESSAGE,
       };
     }
   }
@@ -280,7 +283,7 @@ export class VariableHandler {
       logger.error('Error resolving template:', error);
       return {
         success: false,
-        error: error instanceof Error ? error.message : 'Unknown error',
+        error: error instanceof Error ? error.message : UNKNOWN_ERROR_MESSAGE,
       };
     }
   }
@@ -343,6 +346,8 @@ export class VariableHandler {
         errors.push(
           'Variable name must be a valid identifier (letters, numbers, underscore)'
         );
+      } else {
+        // Variable name is valid
       }
 
       if (!data.variable.value) {
@@ -366,7 +371,7 @@ export class VariableHandler {
           }
         } catch (error) {
           errors.push(
-            `Variable resolution test error: ${error instanceof Error ? error.message : 'Unknown error'}`
+            `Variable resolution test error: ${error instanceof Error ? error.message : UNKNOWN_ERROR_MESSAGE}`
           );
         }
       }
@@ -379,7 +384,9 @@ export class VariableHandler {
       logger.error('Error validating variable:', error);
       return {
         valid: false,
-        errors: [error instanceof Error ? error.message : 'Unknown error'],
+        errors: [
+          error instanceof Error ? error.message : UNKNOWN_ERROR_MESSAGE,
+        ],
       };
     }
   }
@@ -435,7 +442,8 @@ export class VariableHandler {
           results.push({
             contextName: testContext.name,
             success: false,
-            error: error instanceof Error ? error.message : 'Unknown error',
+            error:
+              error instanceof Error ? error.message : UNKNOWN_ERROR_MESSAGE,
             executionTime: performance.now() - startTime,
           });
         }
@@ -654,7 +662,7 @@ export class VariableHandler {
           } catch (error) {
             result.errors.push(
               `Global variable ${variable.name}: ${
-                error instanceof Error ? error.message : 'Unknown error'
+                error instanceof Error ? error.message : UNKNOWN_ERROR_MESSAGE
               }`
             );
             result.skipped.global++;
@@ -712,7 +720,7 @@ export class VariableHandler {
             } catch (error) {
               result.errors.push(
                 `Profile variable ${variable.name} (${targetProfile}): ${
-                  error instanceof Error ? error.message : 'Unknown error'
+                  error instanceof Error ? error.message : UNKNOWN_ERROR_MESSAGE
                 }`
               );
               result.skipped.profiles[targetProfile] =

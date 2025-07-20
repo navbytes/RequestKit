@@ -385,6 +385,8 @@ export class RuleTestingFramework {
       analysis.recommendations.push(
         'Monitor performance with current rule set'
       );
+    } else {
+      // Low impact - no additional recommendations needed
     }
 
     if (analysis.complexConditions > 5) {

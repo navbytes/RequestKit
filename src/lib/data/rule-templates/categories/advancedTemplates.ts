@@ -4,6 +4,10 @@
 
 import type { RuleTemplate } from '@/shared/types/templates';
 
+// Constants
+const REQUESTKIT_AUTHOR = 'RequestKit';
+const TEMPLATE_DATE = new Date('2025-01-01');
+
 export const ADVANCED_TEMPLATES: RuleTemplate[] = [
   // Performance Templates
   {
@@ -33,9 +37,9 @@ export const ADVANCED_TEMPLATES: RuleTemplate[] = [
     },
     tags: ['performance', 'cache', 'static-assets'],
     popularity: 68,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -54,9 +58,9 @@ export const ADVANCED_TEMPLATES: RuleTemplate[] = [
     ],
     tags: ['performance', 'compression', 'gzip'],
     popularity: 60,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
 
@@ -120,9 +124,9 @@ export const ADVANCED_TEMPLATES: RuleTemplate[] = [
     },
     tags: ['conditional', 'debug', 'time', 'business-hours'],
     popularity: 60,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -169,9 +173,9 @@ export const ADVANCED_TEMPLATES: RuleTemplate[] = [
     },
     tags: ['conditional', 'auth', 'domain', 'user-agent'],
     popularity: 55,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
 
@@ -207,9 +211,9 @@ export const ADVANCED_TEMPLATES: RuleTemplate[] = [
     ],
     tags: ['file', 'redirect', 'cdn', 'download'],
     popularity: 45,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
 
@@ -256,9 +260,9 @@ export const ADVANCED_TEMPLATES: RuleTemplate[] = [
     },
     tags: ['advanced', 'rate-limit', 'api', 'scheduling'],
     popularity: 40,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
 
@@ -302,9 +306,9 @@ export const ADVANCED_TEMPLATES: RuleTemplate[] = [
     },
     tags: ['complete', 'api', 'comprehensive', 'advanced'],
     popularity: 85,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
 ];

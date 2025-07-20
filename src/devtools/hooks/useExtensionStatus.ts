@@ -38,6 +38,9 @@ interface SwitchProfileResponse {
 // Get logger for this module
 const logger = loggers.shared;
 
+// Constants
+const DEFAULT_PROFILE_ID = 'dev-profile';
+
 export function useExtensionStatus() {
   const [extensionStatus, setExtensionStatus] =
     useState<ExtensionStatus | null>(null);
@@ -49,7 +52,7 @@ export function useExtensionStatus() {
         logger.warn('Extension context is invalid, using default status');
         setExtensionStatus({
           enabled: false,
-          activeProfile: 'dev-profile',
+          activeProfile: DEFAULT_PROFILE_ID,
           profiles: [],
           rules: [],
         });
@@ -78,7 +81,8 @@ export function useExtensionStatus() {
             if (profileResponse) {
               setExtensionStatus({
                 enabled: true,
-                activeProfile: profileResponse.activeProfile || 'dev-profile',
+                activeProfile:
+                  profileResponse.activeProfile || DEFAULT_PROFILE_ID,
                 profiles: profileResponse.profiles || [],
                 rules: [],
               });
@@ -90,7 +94,7 @@ export function useExtensionStatus() {
             // Use default values if all else fails
             setExtensionStatus({
               enabled: false,
-              activeProfile: 'dev-profile',
+              activeProfile: DEFAULT_PROFILE_ID,
               profiles: [],
               rules: [],
             });
@@ -104,7 +108,7 @@ export function useExtensionStatus() {
         // Use default values if message sending fails
         setExtensionStatus({
           enabled: false,
-          activeProfile: 'dev-profile',
+          activeProfile: DEFAULT_PROFILE_ID,
           profiles: [],
           rules: [],
         });
@@ -114,7 +118,7 @@ export function useExtensionStatus() {
       // Use default values if all else fails
       setExtensionStatus({
         enabled: false,
-        activeProfile: 'dev-profile',
+        activeProfile: DEFAULT_PROFILE_ID,
         profiles: [],
         rules: [],
       });

@@ -172,8 +172,10 @@ function useProfileOperations(
         const ruleWithoutProfile = { ...rule };
         delete ruleWithoutProfile.profileId;
         return ruleWithoutProfile as HeaderRule;
+      } else {
+        // Rule unchanged
+        return rule;
       }
-      return rule;
     });
 
     const rulesObject = updatedRules.reduce(

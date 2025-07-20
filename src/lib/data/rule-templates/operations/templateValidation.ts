@@ -66,10 +66,11 @@ export function validateTemplate(
   }
 
   // Popularity validation
-  if (template.popularity !== undefined) {
-    if (template.popularity < 0 || template.popularity > 100) {
-      warnings.push('Popularity should be between 0 and 100');
-    }
+  if (
+    template.popularity !== undefined &&
+    (template.popularity < 0 || template.popularity > 100)
+  ) {
+    warnings.push('Popularity should be between 0 and 100');
   }
 
   // Author validation

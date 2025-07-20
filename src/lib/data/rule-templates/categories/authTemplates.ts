@@ -4,6 +4,10 @@
 
 import type { RuleTemplate } from '@/shared/types/templates';
 
+// Constants
+const REQUESTKIT_AUTHOR = 'RequestKit';
+const TEMPLATE_DATE = new Date('2025-01-01');
+
 export const AUTH_TEMPLATES: RuleTemplate[] = [
   {
     id: 'bearer-token-auth',
@@ -22,9 +26,9 @@ export const AUTH_TEMPLATES: RuleTemplate[] = [
     ],
     tags: ['auth', 'bearer', 'token', 'api', 'variables'],
     popularity: 92,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -44,9 +48,9 @@ export const AUTH_TEMPLATES: RuleTemplate[] = [
     ],
     tags: ['auth', 'api-key', 'api', 'variables'],
     popularity: 85,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -66,9 +70,9 @@ export const AUTH_TEMPLATES: RuleTemplate[] = [
     ],
     tags: ['auth', 'basic', 'credentials', 'variables'],
     popularity: 70,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -107,9 +111,9 @@ export const AUTH_TEMPLATES: RuleTemplate[] = [
     ],
     tags: ['auth', 'variables', 'flexible', 'multi-method', 'conditional'],
     popularity: 78,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
 ];

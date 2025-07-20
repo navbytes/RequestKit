@@ -391,13 +391,14 @@ export class FilterService {
     }
 
     // Validate time range
-    if (criteria.timeRange) {
-      if (criteria.timeRange.start >= criteria.timeRange.end) {
-        errors.push({
-          field: 'timeRange',
-          message: 'Start time must be before end time',
-        });
-      }
+    if (
+      criteria.timeRange &&
+      criteria.timeRange.start >= criteria.timeRange.end
+    ) {
+      errors.push({
+        field: 'timeRange',
+        message: 'Start time must be before end time',
+      });
     }
 
     // Validate status ranges

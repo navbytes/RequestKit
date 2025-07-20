@@ -101,6 +101,8 @@ export function generateTemplateSummary(template: RuleTemplate): {
     complexity = 'complex';
   } else if (variableCount > 0 || hasPattern || headerCount > 3) {
     complexity = 'moderate';
+  } else {
+    // Default complexity is already 'simple'
   }
 
   return {

@@ -124,6 +124,9 @@ async function updateVariableUsageMetadata(
       variable = variablesData.profiles[profileId]?.[variableName];
     } else if (scope === 'rule' && ruleId) {
       variable = variablesData.rules[ruleId]?.[variableName];
+    } else {
+      // Unknown scope or missing required parameters
+      logger.warn(`Invalid scope or missing parameters: ${scope}`);
     }
 
     if (!variable) {

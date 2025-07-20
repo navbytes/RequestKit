@@ -67,6 +67,8 @@ export function RuleManagement({
     } else if (initialAction === 'create') {
       logger.info('Processing create action');
       setShowCreateForm(true);
+    } else {
+      // No initial action or unrecognized action
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialAction, initialRuleId, rules]); // logger is stable, no need to include in deps

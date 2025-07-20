@@ -290,7 +290,7 @@ function RequestHeaders({
       <div id="test-request-headers" className="space-y-2">
         {Object.entries(testContext.requestHeaders || {}).map(
           ([name, value]) => (
-            <HeaderRow
+            <KeyValueRow
               key={name}
               name={name}
               value={value}
@@ -303,13 +303,13 @@ function RequestHeaders({
   );
 }
 
-interface HeaderRowProps {
+interface KeyValueRowProps {
   readonly name: string;
   readonly value: string;
   readonly onRemove: () => void;
 }
 
-function HeaderRow({ name, value, onRemove }: HeaderRowProps) {
+function KeyValueRow({ name, value, onRemove }: KeyValueRowProps) {
   return (
     <div className="flex items-center space-x-2">
       <input type="text" className="input flex-1" value={name} readOnly />
@@ -347,7 +347,7 @@ function Cookies({
       </div>
       <div id="test-cookies" className="space-y-2">
         {Object.entries(testContext.cookies || {}).map(([name, value]) => (
-          <CookieRow
+          <KeyValueRow
             key={name}
             name={name}
             value={value}
@@ -355,27 +355,6 @@ function Cookies({
           />
         ))}
       </div>
-    </div>
-  );
-}
-
-interface CookieRowProps {
-  readonly name: string;
-  readonly value: string;
-  readonly onRemove: () => void;
-}
-
-function CookieRow({ name, value, onRemove }: CookieRowProps) {
-  return (
-    <div className="flex items-center space-x-2">
-      <input type="text" className="input flex-1" value={name} readOnly />
-      <input type="text" className="input flex-1" value={value} readOnly />
-      <button
-        onClick={onRemove}
-        className="btn btn-sm bg-error-600 text-white hover:bg-error-700"
-      >
-        Remove
-      </button>
     </div>
   );
 }

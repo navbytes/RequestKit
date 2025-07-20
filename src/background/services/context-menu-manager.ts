@@ -8,6 +8,10 @@ import { loggers } from '@/shared/utils/debug';
 // Get logger for this module
 const logger = loggers.shared;
 
+// Constants
+const PAGE_CONTEXT = 'page';
+const MAIN_MENU_ID = 'requestkit-main';
+
 export class ContextMenuManager {
   /**
    * Set up context menus
@@ -19,41 +23,41 @@ export class ContextMenuManager {
 
       // Create main menu
       ChromeApiUtils.contextMenus.create({
-        id: 'requestkit-main',
+        id: MAIN_MENU_ID,
         title: 'RequestKit',
-        contexts: ['page'],
+        contexts: [PAGE_CONTEXT],
       });
 
       // Toggle extension
       ChromeApiUtils.contextMenus.create({
         id: 'toggle-extension',
-        parentId: 'requestkit-main',
+        parentId: MAIN_MENU_ID,
         title: 'Toggle Extension',
-        contexts: ['page'],
+        contexts: [PAGE_CONTEXT],
       });
 
       // Create rule for current page
       ChromeApiUtils.contextMenus.create({
         id: 'create-rule-for-page',
-        parentId: 'requestkit-main',
+        parentId: MAIN_MENU_ID,
         title: 'Create Rule for This Page',
-        contexts: ['page'],
+        contexts: [PAGE_CONTEXT],
       });
 
       // Separator
       ChromeApiUtils.contextMenus.create({
         id: 'separator',
-        parentId: 'requestkit-main',
+        parentId: MAIN_MENU_ID,
         type: 'separator',
-        contexts: ['page'],
+        contexts: [PAGE_CONTEXT],
       });
 
       // Open options
       ChromeApiUtils.contextMenus.create({
         id: 'open-options',
-        parentId: 'requestkit-main',
+        parentId: MAIN_MENU_ID,
         title: 'Open Options',
-        contexts: ['page'],
+        contexts: [PAGE_CONTEXT],
       });
 
       logger.info('Context menus set up successfully');

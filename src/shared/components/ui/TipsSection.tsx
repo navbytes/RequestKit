@@ -1,6 +1,7 @@
 import type { ComponentChildren } from 'preact';
 
 import { Icon } from '@/shared/components/Icon';
+import { useI18n } from '@/shared/hooks/useI18n';
 
 import { Card } from './Card';
 
@@ -11,10 +12,11 @@ interface TipsSectionProps {
 }
 
 export function TipsSection({
-  title = '💡 Tips',
+  title,
   children,
   className = '',
-}: TipsSectionProps) {
+}: Readonly<TipsSectionProps>) {
+  const { t } = useI18n();
   return (
     <Card
       variant="default"
@@ -23,7 +25,7 @@ export function TipsSection({
     >
       <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-100 mb-4 flex items-center">
         <Icon name="lightbulb" className="w-5 h-5 mr-2" />
-        {title}
+        {title || t('ui_tips_title')}
       </h3>
       <div className="text-blue-800 dark:text-blue-200 text-sm space-y-2">
         {children}

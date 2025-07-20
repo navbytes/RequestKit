@@ -16,7 +16,7 @@ export function TemplateBrowser({
   currentUrl,
   onTemplateApply,
   onClose,
-}: TemplateBrowserProps) {
+}: Readonly<TemplateBrowserProps>) {
   const {
     selectedCategory,
     setSelectedCategory,

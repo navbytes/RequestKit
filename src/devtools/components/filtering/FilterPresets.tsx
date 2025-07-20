@@ -22,7 +22,7 @@ export function FilterPresets({
   onLoadPreset,
   onClearFilters,
   className = '',
-}: FilterPresetsProps) {
+}: Readonly<FilterPresetsProps>) {
   const [showSaveDialog, setShowSaveDialog] = useState(false);
   const [presetName, setPresetName] = useState('');
   const [presetDescription, setPresetDescription] = useState('');
@@ -42,11 +42,13 @@ export function FilterPresets({
 
   const hasActiveFilters = Object.keys(currentCriteria).some(key => {
     const value = currentCriteria[key as keyof FilterCriteria];
-    if (Array.isArray(value)) return value.length > 0;
-    if (typeof value === 'string') return value.trim() !== '';
-    if (typeof value === 'boolean') return value;
-    if (value && typeof value === 'object') return true;
-    return false;
+    return Array.isArray(value)
+      ? value.length > 0
+      : typeof value === 'string'
+        ? value.trim() !== ''
+        : typeof value === 'boolean'
+          ? value
+          : !!(value && typeof value === 'object');
   });
 
   const handleLoadPreset = (presetId: string) => {

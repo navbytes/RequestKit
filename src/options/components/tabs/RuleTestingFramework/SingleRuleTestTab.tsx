@@ -34,7 +34,7 @@ export function SingleRuleTestTab({
   onRemoveTestHeader,
   onAddTestCookie,
   onRemoveTestCookie,
-}: SingleRuleTestTabProps) {
+}: Readonly<SingleRuleTestTabProps>) {
   return (
     <div className="space-y-6">
       <RuleSelection
@@ -64,10 +64,10 @@ export function SingleRuleTestTab({
 }
 
 interface RuleSelectionProps {
-  rules: HeaderRule[];
-  selectedRule: HeaderRule | null;
-  onRuleSelection: (ruleId: string) => void;
-  onTestResultClear: () => void;
+  readonly rules: HeaderRule[];
+  readonly selectedRule: HeaderRule | null;
+  readonly onRuleSelection: (ruleId: string) => void;
+  readonly onTestResultClear: () => void;
 }
 
 function RuleSelection({
@@ -102,17 +102,17 @@ function RuleSelection({
 }
 
 interface TestContextConfigurationProps {
-  testContext: TestContext;
-  loading: boolean;
-  selectedRule: HeaderRule | null;
-  rules: HeaderRule[];
-  onTestContextChange: (context: TestContext) => void;
-  onTestSingleRule: () => void;
-  onTestAllRules: () => void;
-  onAddTestHeader: () => void;
-  onRemoveTestHeader: (headerName: string) => void;
-  onAddTestCookie: () => void;
-  onRemoveTestCookie: (cookieName: string) => void;
+  readonly testContext: TestContext;
+  readonly loading: boolean;
+  readonly selectedRule: HeaderRule | null;
+  readonly rules: HeaderRule[];
+  readonly onTestContextChange: (context: TestContext) => void;
+  readonly onTestSingleRule: () => void;
+  readonly onTestAllRules: () => void;
+  readonly onAddTestHeader: () => void;
+  readonly onRemoveTestHeader: (headerName: string) => void;
+  readonly onAddTestCookie: () => void;
+  readonly onRemoveTestCookie: (cookieName: string) => void;
 }
 
 function TestContextConfiguration({
@@ -161,8 +161,8 @@ function TestContextConfiguration({
 }
 
 interface BasicTestSettingsProps {
-  testContext: TestContext;
-  onTestContextChange: (context: TestContext) => void;
+  readonly testContext: TestContext;
+  readonly onTestContextChange: (context: TestContext) => void;
 }
 
 function BasicTestSettings({
@@ -263,9 +263,9 @@ function BasicTestSettings({
 }
 
 interface RequestHeadersProps {
-  testContext: TestContext;
-  onAddTestHeader: () => void;
-  onRemoveTestHeader: (headerName: string) => void;
+  readonly testContext: TestContext;
+  readonly onAddTestHeader: () => void;
+  readonly onRemoveTestHeader: (headerName: string) => void;
 }
 
 function RequestHeaders({
@@ -290,7 +290,7 @@ function RequestHeaders({
       <div id="test-request-headers" className="space-y-2">
         {Object.entries(testContext.requestHeaders || {}).map(
           ([name, value]) => (
-            <HeaderRow
+            <KeyValueRow
               key={name}
               name={name}
               value={value}
@@ -303,13 +303,13 @@ function RequestHeaders({
   );
 }
 
-interface HeaderRowProps {
-  name: string;
-  value: string;
-  onRemove: () => void;
+interface KeyValueRowProps {
+  readonly name: string;
+  readonly value: string;
+  readonly onRemove: () => void;
 }
 
-function HeaderRow({ name, value, onRemove }: HeaderRowProps) {
+function KeyValueRow({ name, value, onRemove }: KeyValueRowProps) {
   return (
     <div className="flex items-center space-x-2">
       <input type="text" className="input flex-1" value={name} readOnly />
@@ -325,9 +325,9 @@ function HeaderRow({ name, value, onRemove }: HeaderRowProps) {
 }
 
 interface CookiesProps {
-  testContext: TestContext;
-  onAddTestCookie: () => void;
-  onRemoveTestCookie: (cookieName: string) => void;
+  readonly testContext: TestContext;
+  readonly onAddTestCookie: () => void;
+  readonly onRemoveTestCookie: (cookieName: string) => void;
 }
 
 function Cookies({
@@ -347,7 +347,7 @@ function Cookies({
       </div>
       <div id="test-cookies" className="space-y-2">
         {Object.entries(testContext.cookies || {}).map(([name, value]) => (
-          <CookieRow
+          <KeyValueRow
             key={name}
             name={name}
             value={value}
@@ -359,33 +359,12 @@ function Cookies({
   );
 }
 
-interface CookieRowProps {
-  name: string;
-  value: string;
-  onRemove: () => void;
-}
-
-function CookieRow({ name, value, onRemove }: CookieRowProps) {
-  return (
-    <div className="flex items-center space-x-2">
-      <input type="text" className="input flex-1" value={name} readOnly />
-      <input type="text" className="input flex-1" value={value} readOnly />
-      <button
-        onClick={onRemove}
-        className="btn btn-sm bg-error-600 text-white hover:bg-error-700"
-      >
-        Remove
-      </button>
-    </div>
-  );
-}
-
 interface TestActionsProps {
-  selectedRule: HeaderRule | null;
-  rules: HeaderRule[];
-  loading: boolean;
-  onTestSingleRule: () => void;
-  onTestAllRules: () => void;
+  readonly selectedRule: HeaderRule | null;
+  readonly rules: HeaderRule[];
+  readonly loading: boolean;
+  readonly onTestSingleRule: () => void;
+  readonly onTestAllRules: () => void;
 }
 
 function TestActions({
@@ -416,7 +395,7 @@ function TestActions({
 }
 
 interface TestResultsProps {
-  testResult: RuleTestResult;
+  readonly testResult: RuleTestResult;
 }
 
 function TestResults({ testResult }: TestResultsProps) {
@@ -442,7 +421,7 @@ function TestResults({ testResult }: TestResultsProps) {
 }
 
 interface TestResultsSummaryProps {
-  testResult: RuleTestResult;
+  readonly testResult: RuleTestResult;
 }
 
 function TestResultsSummary({ testResult }: TestResultsSummaryProps) {
@@ -475,7 +454,7 @@ function TestResultsSummary({ testResult }: TestResultsSummaryProps) {
 }
 
 interface AppliedHeadersProps {
-  headers: Array<{ name: string; value: string; operation: string }>;
+  readonly headers: Array<{ name: string; value: string; operation: string }>;
 }
 
 function AppliedHeaders({ headers }: AppliedHeadersProps) {
@@ -497,7 +476,7 @@ function AppliedHeaders({ headers }: AppliedHeadersProps) {
 }
 
 interface TestErrorsProps {
-  errors: string[];
+  readonly errors: string[];
 }
 
 function TestErrors({ errors }: TestErrorsProps) {
@@ -521,7 +500,7 @@ function TestErrors({ errors }: TestErrorsProps) {
 }
 
 interface TestWarningsProps {
-  warnings: string[];
+  readonly warnings: string[];
 }
 
 function TestWarnings({ warnings }: TestWarningsProps) {

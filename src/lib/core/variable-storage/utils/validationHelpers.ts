@@ -64,6 +64,8 @@ export function validateVariable(variable: unknown): VariableValidationResult {
     } else if (typeof varObj.value !== 'string') {
       warnings.push('Variable value should be a string');
       suggestions.push('Convert non-string values to strings');
+    } else {
+      // Value is valid string
     }
 
     // Validate scope
@@ -75,6 +77,8 @@ export function validateVariable(variable: unknown): VariableValidationResult {
       errors.push(
         `Invalid scope "${varObj.scope}". Must be one of: ${Object.values(VariableScope).join(', ')}`
       );
+    } else {
+      // Scope is valid
     }
 
     // Validate optional properties
@@ -138,15 +142,16 @@ export function validateVariable(variable: unknown): VariableValidationResult {
     }
 
     // Security checks
-    if (varObj.isSecret && varObj.value && typeof varObj.value === 'string') {
-      if (varObj.value.length < 8) {
-        warnings.push(
-          'Secret variable has a short value (less than 8 characters)'
-        );
-        suggestions.push(
-          'Consider using longer, more secure values for secrets'
-        );
-      }
+    if (
+      varObj.isSecret &&
+      varObj.value &&
+      typeof varObj.value === 'string' &&
+      varObj.value.length < 8
+    ) {
+      warnings.push(
+        'Secret variable has a short value (less than 8 characters)'
+      );
+      suggestions.push('Consider using longer, more secure values for secrets');
     }
 
     // Template validation

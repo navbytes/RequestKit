@@ -278,40 +278,41 @@ export class ChromeRulesConverter {
 
       // Pre-resolve variables for Chrome's declarativeNetRequest
       let resolvedValue = header.value;
-      if (header.operation !== 'remove' && header.value) {
-        // Check if header value contains variables that need resolution
-        if (header.value.includes('${')) {
-          logger.info(
-            `[RequestKit] Pre-resolving variables in ${target} header ${header.name}:`,
-            {
-              original: header.value,
-              ruleId,
-            }
+      if (
+        header.operation !== 'remove' &&
+        header.value &&
+        header.value.includes('${')
+      ) {
+        logger.info(
+          `[RequestKit] Pre-resolving variables in ${target} header ${header.name}:`,
+          {
+            original: header.value,
+            ruleId,
+          }
+        );
+
+        try {
+          const cacheKey = `${ruleId}_${target}_${header.name}_${header.value}`;
+          resolvedValue = await this.resolveHeaderValue(
+            header.value,
+            baseContext,
+            cacheKey
           );
 
-          try {
-            const cacheKey = `${ruleId}_${target}_${header.name}_${header.value}`;
-            resolvedValue = await this.resolveHeaderValue(
-              header.value,
-              baseContext,
-              cacheKey
-            );
-
-            logger.info(`[RequestKit] Variable pre-resolution successful:`, {
-              header: header.name,
-              original: header.value,
-              resolved: resolvedValue,
-              ruleId,
-              wasResolved: header.value !== resolvedValue,
-            });
-          } catch (error) {
-            logger.error(
-              `[RequestKit] Variable pre-resolution failed for ${header.name}:`,
-              error
-            );
-            // Keep original value if resolution fails
-            resolvedValue = header.value;
-          }
+          logger.info(`[RequestKit] Variable pre-resolution successful:`, {
+            header: header.name,
+            original: header.value,
+            resolved: resolvedValue,
+            ruleId,
+            wasResolved: header.value !== resolvedValue,
+          });
+        } catch (error) {
+          logger.error(
+            `[RequestKit] Variable pre-resolution failed for ${header.name}:`,
+            error
+          );
+          // Keep original value if resolution fails
+          resolvedValue = header.value;
         }
       }
 

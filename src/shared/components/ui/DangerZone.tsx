@@ -1,5 +1,7 @@
 import type { ComponentChildren } from 'preact';
 
+import { useI18n } from '@/shared/hooks/useI18n';
+
 import { Button } from './Button';
 import { Card } from './Card';
 
@@ -13,19 +15,22 @@ interface DangerZoneProps {
 }
 
 export function DangerZone({
-  title = 'Danger Zone',
-  description = 'These actions are permanent and cannot be undone.',
+  title,
+  description,
   children,
   actionLabel,
   onAction,
   actionLoading = false,
-}: DangerZoneProps) {
+}: Readonly<DangerZoneProps>) {
+  const { t } = useI18n();
   return (
     <Card variant="error" padding="lg">
       <h3 className="text-lg font-semibold text-error-900 dark:text-error-100 mb-4">
-        {title}
+        {title || t('ui_danger_zone_title')}
       </h3>
-      <p className="text-error-700 dark:text-error-300 mb-4">{description}</p>
+      <p className="text-error-700 dark:text-error-300 mb-4">
+        {description || t('ui_danger_zone_description')}
+      </p>
 
       {children && <div className="mb-4">{children}</div>}
 

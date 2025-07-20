@@ -29,8 +29,10 @@ export async function getVariable(
       return variablesData.profiles[profileId]?.[variableId] || null;
     } else if (scope === VariableScope.RULE && ruleId) {
       return variablesData.rules[ruleId]?.[variableId] || null;
+    } else {
+      // Invalid scope or missing required parameters
+      return null;
     }
-    return null;
   } catch (error) {
     logger.error(`Failed to get variable '${variableId}':`, error);
     return null;

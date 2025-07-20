@@ -100,6 +100,9 @@ export async function migrateStorage(oldData: unknown): Promise<void> {
           migratedData.global[migratedVariable.name] = migratedVariable;
         }
       });
+    } else {
+      // Unknown format - no migration possible
+      logger.warn('Unknown data format, cannot migrate');
     }
 
     await saveVariables(migratedData);

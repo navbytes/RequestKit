@@ -401,6 +401,8 @@ export class DevToolsIntegration {
           diff.added[key] = value;
         } else if (originalObj.headers[key] !== value) {
           diff.modified[key] = { from: originalObj.headers[key], to: value };
+        } else {
+          // Header value unchanged
         }
       }
 

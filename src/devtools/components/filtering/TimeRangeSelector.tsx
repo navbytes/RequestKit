@@ -32,7 +32,7 @@ export function TimeRangeSelector({
   value,
   onChange,
   className = '',
-}: TimeRangeSelectorProps) {
+}: Readonly<TimeRangeSelectorProps>) {
   const [isCustomMode, setIsCustomMode] = useState(false);
 
   const formatDateTime = (date: Date): string => {
@@ -130,7 +130,7 @@ export function TimeRangeSelector({
           className="flex items-center space-x-2 text-sm text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300"
         >
           <Icon
-            name={isCustomMode ? 'chevron-down' : 'chevron-down'}
+            name={isCustomMode ? 'chevron-up' : 'chevron-down'}
             className={`w-4 h-4 transition-transform ${isCustomMode ? 'rotate-180' : ''}`}
           />
           <span>Custom Range</span>

@@ -128,8 +128,8 @@ export class ProfileHandler {
           const { ChromeRulesConverter } = await import(
             '../services/chrome-rules-converter'
           );
-          const { VariableStorageUtils } = await import(
-            '@/lib/core/variable-storage'
+          const { getAllVariables } = await import(
+            '@/lib/core/variable-storage/utils/storageUtils'
           );
 
           // Get current rules and settings
@@ -147,7 +147,7 @@ export class ProfileHandler {
           ] as ExtensionSettings) || { enabled: true };
 
           // Build variable context for unassigned rules (no profile-specific variables)
-          const variablesData = await VariableStorageUtils.getAllVariables();
+          const variablesData = await getAllVariables();
           const globalVariables = variablesData.global || {};
 
           const baseContext = {
@@ -227,8 +227,8 @@ export class ProfileHandler {
         const { ChromeRulesConverter } = await import(
           '../services/chrome-rules-converter'
         );
-        const { VariableStorageUtils } = await import(
-          '@/lib/core/variable-storage'
+        const { getAllVariables } = await import(
+          '@/lib/core/variable-storage/utils/storageUtils'
         );
 
         // Get current rules and settings
@@ -247,7 +247,7 @@ export class ProfileHandler {
         ] as ExtensionSettings) || { enabled: true };
 
         // Build variable context for the new profile
-        const variablesData = await VariableStorageUtils.getAllVariables();
+        const variablesData = await getAllVariables();
         const globalVariables = variablesData.global || {};
         const profileVariables = variablesData.profiles || {};
 
@@ -521,8 +521,8 @@ export class ProfileHandler {
         const { ChromeRulesConverter } = await import(
           '../services/chrome-rules-converter'
         );
-        const { VariableStorageUtils } = await import(
-          '@/lib/core/variable-storage'
+        const { getAllVariables } = await import(
+          '@/lib/core/variable-storage/utils/storageUtils'
         );
 
         // Get current active profile after deletion
@@ -550,7 +550,7 @@ export class ProfileHandler {
         ] as ExtensionSettings) || { enabled: true };
 
         // Build variable context for the new active profile
-        const variablesData = await VariableStorageUtils.getAllVariables();
+        const variablesData = await getAllVariables();
         const globalVariables = variablesData.global || {};
         const profileVariables = variablesData.profiles || {};
 

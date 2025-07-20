@@ -124,6 +124,9 @@ async function updateVariableUsageMetadata(
       variable = variablesData.profiles[profileId]?.[variableName];
     } else if (scope === 'rule' && ruleId) {
       variable = variablesData.rules[ruleId]?.[variableName];
+    } else {
+      // Unknown scope or missing required parameters
+      logger.warn(`Invalid scope or missing parameters: ${scope}`);
     }
 
     if (!variable) {
@@ -353,9 +356,7 @@ export async function getUsageTrends(days = 30): Promise<{
         totalUsage[date] = (totalUsage[date] || 0) + 1;
 
         // Usage by variable and day
-        if (!variableUsage[record.variableId]) {
-          variableUsage[record.variableId] = {};
-        }
+        variableUsage[record.variableId] ??= {};
         const variableRecord = variableUsage[record.variableId];
         if (variableRecord) {
           variableRecord[date] = (variableRecord[date] || 0) + 1;

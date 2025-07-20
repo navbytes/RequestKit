@@ -31,6 +31,11 @@ interface NewConditionalRule {
 }
 
 // Constants
+const EQUALS_OPERATOR = 'equals';
+const CONTAINS_OPERATOR = 'contains';
+const REGEX_OPERATOR = 'regex';
+const REGEX_MATCH_LABEL = 'Regex match';
+
 const DEFAULT_RULE_FORM: NewConditionalRule = {
   name: '',
   domain: '',
@@ -44,7 +49,7 @@ const DEFAULT_RULE_FORM: NewConditionalRule = {
 
 const DEFAULT_CONDITION_FORM: Partial<RuleCondition> = {
   type: 'responseStatus',
-  operator: 'equals',
+  operator: EQUALS_OPERATOR,
   value: '',
 };
 
@@ -125,7 +130,7 @@ const saveRules = async (rulesToSave: HeaderRule[]) => {
 export function ConditionalRuleBuilder({
   rules,
   onRulesUpdate,
-}: ConditionalRuleBuilderProps) {
+}: Readonly<ConditionalRuleBuilderProps>) {
   const [showCreateForm, setShowCreateForm] = useState(false);
   const [editingRule, setEditingRule] = useState<ConditionalRule | null>(null);
 
@@ -257,8 +262,8 @@ export function ConditionalRuleBuilder({
       return;
 
     const condition: RuleCondition = {
-      type: newCondition.type as RuleCondition['type'],
-      operator: newCondition.operator as RuleCondition['operator'],
+      type: newCondition.type,
+      operator: newCondition.operator,
       value: newCondition.value as string | number,
       ...(newCondition.negate !== undefined && { negate: newCondition.negate }),
       ...(newCondition.caseSensitive !== undefined && {
@@ -281,7 +286,7 @@ export function ConditionalRuleBuilder({
     // Reset condition form
     setNewCondition({
       type: 'responseStatus',
-      operator: 'equals',
+      operator: EQUALS_OPERATOR,
       value: '' as string | number,
     });
   };
@@ -309,39 +314,39 @@ export function ConditionalRuleBuilder({
       Array<{ value: string; label: string }>
     > = {
       responseStatus: [
-        { value: 'equals', label: 'Equals' },
+        { value: EQUALS_OPERATOR, label: 'Equals' },
         { value: 'greater', label: 'Greater than' },
         { value: 'less', label: 'Less than' },
-        { value: 'contains', label: 'Contains' },
-        { value: 'regex', label: 'Regex match' },
+        { value: CONTAINS_OPERATOR, label: 'Contains' },
+        { value: REGEX_OPERATOR, label: REGEX_MATCH_LABEL },
       ],
       requestMethod: [
-        { value: 'equals', label: 'Equals' },
-        { value: 'contains', label: 'Contains' },
-        { value: 'regex', label: 'Regex match' },
+        { value: EQUALS_OPERATOR, label: 'Equals' },
+        { value: CONTAINS_OPERATOR, label: 'Contains' },
+        { value: REGEX_OPERATOR, label: REGEX_MATCH_LABEL },
       ],
       userAgent: [
-        { value: 'equals', label: 'Equals' },
-        { value: 'contains', label: 'Contains' },
-        { value: 'regex', label: 'Regex match' },
+        { value: EQUALS_OPERATOR, label: 'Equals' },
+        { value: CONTAINS_OPERATOR, label: 'Contains' },
+        { value: REGEX_OPERATOR, label: REGEX_MATCH_LABEL },
       ],
       cookie: [
         { value: 'exists', label: 'Exists' },
-        { value: 'equals', label: 'Equals' },
-        { value: 'contains', label: 'Contains' },
-        { value: 'regex', label: 'Regex match' },
+        { value: EQUALS_OPERATOR, label: 'Equals' },
+        { value: CONTAINS_OPERATOR, label: 'Contains' },
+        { value: REGEX_OPERATOR, label: REGEX_MATCH_LABEL },
       ],
-      time: [{ value: 'equals', label: 'In range' }],
+      time: [{ value: EQUALS_OPERATOR, label: 'In range' }],
       header: [
         { value: 'exists', label: 'Exists' },
-        { value: 'equals', label: 'Equals' },
-        { value: 'contains', label: 'Contains' },
-        { value: 'regex', label: 'Regex match' },
+        { value: EQUALS_OPERATOR, label: 'Equals' },
+        { value: CONTAINS_OPERATOR, label: 'Contains' },
+        { value: REGEX_OPERATOR, label: REGEX_MATCH_LABEL },
       ],
       url: [
-        { value: 'equals', label: 'Equals' },
-        { value: 'contains', label: 'Contains' },
-        { value: 'regex', label: 'Regex match' },
+        { value: EQUALS_OPERATOR, label: 'Equals' },
+        { value: CONTAINS_OPERATOR, label: 'Contains' },
+        { value: REGEX_OPERATOR, label: REGEX_MATCH_LABEL },
       ],
     };
 
@@ -351,39 +356,39 @@ export function ConditionalRuleBuilder({
   const getValuePlaceholder = (type: string, operator: string) => {
     const placeholders: Record<string, Record<string, string>> = {
       responseStatus: {
-        equals: '200',
+        [EQUALS_OPERATOR]: '200',
         greater: '299',
         less: '400',
         contains: '20',
         regex: '^2\\d{2}$',
       },
       requestMethod: {
-        equals: 'POST',
+        [EQUALS_OPERATOR]: 'POST',
         contains: 'GET',
         regex: '^(GET|POST)$',
       },
       userAgent: {
-        equals: 'Mozilla/5.0...',
+        [EQUALS_OPERATOR]: 'Mozilla/5.0...',
         contains: 'Chrome',
         regex: '.*Chrome.*',
       },
       cookie: {
         exists: 'sessionId',
-        equals: 'sessionId=abc123',
+        [EQUALS_OPERATOR]: 'sessionId=abc123',
         contains: 'sessionId=abc',
         regex: 'sessionId=\\w+',
       },
       time: {
-        equals: '09:00-17:00 or weekday:1-5 or hour:9-17',
+        [EQUALS_OPERATOR]: '09:00-17:00 or weekday:1-5 or hour:9-17',
       },
       header: {
         exists: 'Authorization',
-        equals: 'Authorization=Bearer token',
+        [EQUALS_OPERATOR]: 'Authorization=Bearer token',
         contains: 'Authorization=Bearer',
         regex: 'Authorization=Bearer \\w+',
       },
       url: {
-        equals: 'https://api.example.com/users',
+        [EQUALS_OPERATOR]: 'https://api.example.com/users',
         contains: '/api/',
         regex: '\\/api\\/v\\d+\\/',
       },
@@ -404,10 +409,10 @@ export function ConditionalRuleBuilder({
     };
 
     const operatorLabels: Record<string, string> = {
-      equals: '=',
+      [EQUALS_OPERATOR]: '=',
       greater: '>',
       less: '<',
-      contains: 'contains',
+      contains: CONTAINS_OPERATOR,
       regex: 'matches',
       exists: 'exists',
     };

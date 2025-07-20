@@ -1,6 +1,16 @@
 import { useState, useCallback } from 'preact/hooks';
 
-import { VariableStorageUtils } from '@/lib/core/variable-storage';
+import {
+  saveGlobalVariable,
+  saveGlobalVariables,
+  deleteGlobalVariable,
+} from '@/lib/core/variable-storage/operations/globalOperations';
+import {
+  saveProfileVariable,
+  saveProfileVariables,
+  deleteProfileVariable,
+} from '@/lib/core/variable-storage/operations/profileOperations';
+import { getAllVariables } from '@/lib/core/variable-storage/utils/storageUtils';
 import type { Variable, VariableScope } from '@/shared/types/variables';
 import { loggers } from '@/shared/utils/debug';
 
@@ -54,7 +64,7 @@ export function useVariables(): VariablesState & VariablesActions {
     setState(prev => ({ ...prev, loading: true, error: null }));
 
     try {
-      const variables = await VariableStorageUtils.getAllVariables();
+      const variables = await getAllVariables();
       setState(prev => ({ ...prev, variables, loading: false }));
     } catch (error) {
       setState(prev => ({
@@ -69,10 +79,10 @@ export function useVariables(): VariablesState & VariablesActions {
     async (variable: Variable) => {
       try {
         if (variable.scope === 'global') {
-          await VariableStorageUtils.saveGlobalVariable(variable);
+          await saveGlobalVariable(variable);
         } else {
           // For profile variables, use default profile for now
-          await VariableStorageUtils.saveProfileVariable('default', variable);
+          await saveProfileVariable('default', variable);
         }
         await loadVariables();
       } catch (error) {
@@ -87,9 +97,9 @@ export function useVariables(): VariablesState & VariablesActions {
     async (variable: Variable) => {
       try {
         if (variable.scope === 'global') {
-          await VariableStorageUtils.saveGlobalVariable(variable);
+          await saveGlobalVariable(variable);
         } else {
-          await VariableStorageUtils.saveProfileVariable('default', variable);
+          await saveProfileVariable('default', variable);
         }
         await loadVariables();
       } catch (error) {
@@ -108,12 +118,9 @@ export function useVariables(): VariablesState & VariablesActions {
     ) => {
       try {
         if (scope === 'global') {
-          await VariableStorageUtils.deleteGlobalVariable(variableId);
+          await deleteGlobalVariable(variableId);
         } else {
-          await VariableStorageUtils.deleteProfileVariable(
-            profileId,
-            variableId
-          );
+          await deleteProfileVariable(profileId, variableId);
         }
         await loadVariables();
       } catch (error) {
@@ -224,14 +231,11 @@ export function useVariables(): VariablesState & VariablesActions {
         const profileVars = variables.filter(v => v.scope === 'profile');
 
         if (globalVars.length > 0) {
-          await VariableStorageUtils.saveGlobalVariables(globalVars);
+          await saveGlobalVariables(globalVars);
         }
 
         if (profileVars.length > 0) {
-          await VariableStorageUtils.saveProfileVariables(
-            'default',
-            profileVars
-          );
+          await saveProfileVariables('default', profileVars);
         }
 
         await loadVariables();

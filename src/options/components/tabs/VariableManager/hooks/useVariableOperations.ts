@@ -1,4 +1,17 @@
-import { VariableStorageUtils } from '@/lib/core/variable-storage';
+import {
+  saveGlobalVariable,
+  saveGlobalVariables,
+  deleteGlobalVariable,
+} from '@/lib/core/variable-storage/operations/globalOperations';
+import {
+  saveProfileVariable,
+  saveProfileVariables,
+  deleteProfileVariable,
+} from '@/lib/core/variable-storage/operations/profileOperations';
+import {
+  saveRuleVariable,
+  deleteRuleVariable,
+} from '@/lib/core/variable-storage/operations/ruleOperations';
 import type { Variable } from '@/shared/types/variables';
 
 import {
@@ -13,14 +26,11 @@ export function useVariableOperations(onVariablesChange: () => void) {
   const handleCreateVariable = async (variable: Variable): Promise<boolean> => {
     try {
       if (variable.scope === 'global') {
-        await VariableStorageUtils.saveGlobalVariable(variable);
+        await saveGlobalVariable(variable);
       } else if (variable.scope === 'profile' && variable.profileId) {
-        await VariableStorageUtils.saveProfileVariable(
-          variable.profileId,
-          variable
-        );
+        await saveProfileVariable(variable.profileId, variable);
       } else if (variable.scope === 'rule' && variable.ruleId) {
-        await VariableStorageUtils.saveRuleVariable(variable.ruleId, variable);
+        await saveRuleVariable(variable.ruleId, variable);
       } else {
         throw new Error('Invalid variable scope or missing association');
       }
@@ -45,17 +55,11 @@ export function useVariableOperations(onVariablesChange: () => void) {
 
     try {
       if (variable.scope === 'global') {
-        await VariableStorageUtils.deleteGlobalVariable(variable.id);
+        await deleteGlobalVariable(variable.id);
       } else if (variable.scope === 'profile' && variable.profileId) {
-        await VariableStorageUtils.deleteProfileVariable(
-          variable.profileId,
-          variable.id
-        );
+        await deleteProfileVariable(variable.profileId, variable.id);
       } else if (variable.scope === 'rule' && variable.ruleId) {
-        await VariableStorageUtils.deleteRuleVariable(
-          variable.ruleId,
-          variable.id
-        );
+        await deleteRuleVariable(variable.ruleId, variable.id);
       } else {
         throw new Error('Invalid variable scope or missing association');
       }
@@ -95,7 +99,7 @@ export function useVariableOperations(onVariablesChange: () => void) {
       const ruleVars = importedVariables.filter(v => v.scope === 'rule');
 
       if (globalVars.length > 0) {
-        await VariableStorageUtils.saveGlobalVariables(globalVars);
+        await saveGlobalVariables(globalVars);
       }
 
       // Group profile variables by profileId
@@ -116,7 +120,7 @@ export function useVariableOperations(onVariablesChange: () => void) {
       for (const [profileId, variables] of Object.entries(
         profileVarsByProfile
       )) {
-        await VariableStorageUtils.saveProfileVariables(profileId, variables);
+        await saveProfileVariables(profileId, variables);
       }
 
       // Group rule variables by ruleId
@@ -136,7 +140,7 @@ export function useVariableOperations(onVariablesChange: () => void) {
       // Save rule variables individually since there's no bulk save method
       for (const [ruleId, variables] of Object.entries(ruleVarsByRule)) {
         for (const variable of variables) {
-          await VariableStorageUtils.saveRuleVariable(ruleId, variable);
+          await saveRuleVariable(ruleId, variable);
         }
       }
 

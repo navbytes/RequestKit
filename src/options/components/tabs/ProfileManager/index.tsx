@@ -172,8 +172,10 @@ function useProfileOperations(
         const ruleWithoutProfile = { ...rule };
         delete ruleWithoutProfile.profileId;
         return ruleWithoutProfile as HeaderRule;
+      } else {
+        // Rule unchanged
+        return rule;
       }
-      return rule;
     });
 
     const rulesObject = updatedRules.reduce(
@@ -371,7 +373,10 @@ export const getEnvironmentConfig = (environment: string) => {
 };
 
 // Main Component
-export function ProfileManager({ rules, onRulesUpdate }: ProfileManagerProps) {
+export function ProfileManager({
+  rules,
+  onRulesUpdate,
+}: Readonly<ProfileManagerProps>) {
   const { profileData, setProfileData, loadProfiles } = useProfileData();
   const {
     showCreateForm,

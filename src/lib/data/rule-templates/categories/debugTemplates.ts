@@ -4,6 +4,16 @@
 
 import type { RuleTemplate } from '@/shared/types/templates';
 
+// Constants
+const REQUESTKIT_AUTHOR = 'RequestKit';
+const TEMPLATE_DATE = new Date('2025-01-01');
+const SET_OPERATION = 'set';
+const REQUEST_TARGET = 'request';
+const TESTING_TAG = 'testing';
+const USER_AGENT_TAG = 'user-agent';
+const BROWSER_TAG = 'browser';
+const USER_AGENT_HEADER = 'User-Agent';
+
 export const DEBUG_TEMPLATES: RuleTemplate[] = [
   {
     id: 'debug-headers',
@@ -15,27 +25,27 @@ export const DEBUG_TEMPLATES: RuleTemplate[] = [
       {
         name: 'X-Debug-Mode',
         value: 'true',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
       {
         name: 'X-Request-ID',
         value: 'req-${timestamp}',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
       {
         name: 'X-User-Agent-Debug',
         value: 'RequestKit-Debug',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
     ],
     tags: ['debug', 'development', 'tracking'],
     popularity: 80,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -48,22 +58,27 @@ export const DEBUG_TEMPLATES: RuleTemplate[] = [
       {
         name: 'Cache-Control',
         value: 'no-cache, no-store, must-revalidate',
-        operation: 'set',
+        operation: SET_OPERATION,
         target: 'response',
       },
       {
         name: 'Pragma',
         value: 'no-cache',
-        operation: 'set',
+        operation: SET_OPERATION,
         target: 'response',
       },
-      { name: 'Expires', value: '0', operation: 'set', target: 'response' },
+      {
+        name: 'Expires',
+        value: '0',
+        operation: SET_OPERATION,
+        target: 'response',
+      },
     ],
     tags: ['debug', 'cache', 'development'],
     popularity: 75,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -77,8 +92,8 @@ export const DEBUG_TEMPLATES: RuleTemplate[] = [
       {
         name: 'X-Mirrord-User',
         value: '${USERNAME}',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
     ],
     tags: [
@@ -90,9 +105,9 @@ export const DEBUG_TEMPLATES: RuleTemplate[] = [
       'variables',
     ],
     popularity: 75,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -106,50 +121,50 @@ export const DEBUG_TEMPLATES: RuleTemplate[] = [
       {
         name: 'X-Debug-Mode',
         value: 'true',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
       {
         name: 'X-Debug-Environment',
         value: '${ENVIRONMENT}',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
       {
         name: 'X-Debug-Timestamp',
         value: '${timestamp}',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
       {
         name: 'X-Debug-Session',
         value: '${SESSION_ID}',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
       {
         name: 'X-Debug-User',
         value: '${USER_ID}',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
       {
         name: 'X-Debug-Request-ID',
         value: 'req-${timestamp}-${random(1000, 9999)}',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
       {
         name: 'X-Debug-Domain',
         value: '${domain}',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
       {
         name: 'X-Debug-Path',
         value: '${path}',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
     ],
     pattern: {
@@ -159,9 +174,9 @@ export const DEBUG_TEMPLATES: RuleTemplate[] = [
     },
     tags: ['debug', 'variables', 'development', 'tracking', 'comprehensive'],
     popularity: 82,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -173,18 +188,18 @@ export const DEBUG_TEMPLATES: RuleTemplate[] = [
     templateType: 'headers',
     headers: [
       {
-        name: 'User-Agent',
+        name: USER_AGENT_HEADER,
         value:
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
     ],
-    tags: ['user-agent', 'chrome', 'desktop', 'testing', 'browser'],
+    tags: [USER_AGENT_TAG, 'chrome', 'desktop', TESTING_TAG, BROWSER_TAG],
     popularity: 85,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -195,18 +210,18 @@ export const DEBUG_TEMPLATES: RuleTemplate[] = [
     templateType: 'headers',
     headers: [
       {
-        name: 'User-Agent',
+        name: USER_AGENT_HEADER,
         value:
           'Mozilla/5.0 (iPhone; CPU iPhone OS 17_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2 Mobile/15E148 Safari/604.1',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
     ],
-    tags: ['user-agent', 'mobile', 'ios', 'safari', 'testing', 'iphone'],
+    tags: [USER_AGENT_TAG, 'mobile', 'ios', 'safari', TESTING_TAG, 'iphone'],
     popularity: 80,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -217,18 +232,18 @@ export const DEBUG_TEMPLATES: RuleTemplate[] = [
     templateType: 'headers',
     headers: [
       {
-        name: 'User-Agent',
+        name: USER_AGENT_HEADER,
         value:
           'Mozilla/5.0 (Linux; Android 14; SM-G998B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
     ],
-    tags: ['user-agent', 'mobile', 'android', 'chrome', 'testing'],
+    tags: [USER_AGENT_TAG, 'mobile', 'android', 'chrome', TESTING_TAG],
     popularity: 78,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -240,18 +255,18 @@ export const DEBUG_TEMPLATES: RuleTemplate[] = [
     templateType: 'headers',
     headers: [
       {
-        name: 'User-Agent',
+        name: USER_AGENT_HEADER,
         value:
           'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
     ],
-    tags: ['user-agent', 'bot', 'googlebot', 'seo', 'crawler', 'testing'],
+    tags: [USER_AGENT_TAG, 'bot', 'googlebot', 'seo', 'crawler', TESTING_TAG],
     popularity: 70,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -263,18 +278,18 @@ export const DEBUG_TEMPLATES: RuleTemplate[] = [
     templateType: 'headers',
     headers: [
       {
-        name: 'User-Agent',
+        name: USER_AGENT_HEADER,
         value:
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
     ],
-    tags: ['user-agent', 'firefox', 'desktop', 'testing', 'browser'],
+    tags: [USER_AGENT_TAG, 'firefox', 'desktop', TESTING_TAG, BROWSER_TAG],
     popularity: 65,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -285,18 +300,25 @@ export const DEBUG_TEMPLATES: RuleTemplate[] = [
     templateType: 'headers',
     headers: [
       {
-        name: 'User-Agent',
+        name: USER_AGENT_HEADER,
         value:
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Edg/120.0.0.0',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
     ],
-    tags: ['user-agent', 'edge', 'microsoft', 'desktop', 'testing', 'browser'],
+    tags: [
+      USER_AGENT_TAG,
+      'edge',
+      'microsoft',
+      'desktop',
+      TESTING_TAG,
+      BROWSER_TAG,
+    ],
     popularity: 60,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -308,17 +330,17 @@ export const DEBUG_TEMPLATES: RuleTemplate[] = [
     templateType: 'headers',
     headers: [
       {
-        name: 'User-Agent',
+        name: USER_AGENT_HEADER,
         value: '${CUSTOM_USER_AGENT}',
-        operation: 'set',
-        target: 'request',
+        operation: SET_OPERATION,
+        target: REQUEST_TARGET,
       },
     ],
-    tags: ['user-agent', 'custom', 'variable', 'testing', 'flexible'],
+    tags: [USER_AGENT_TAG, 'custom', 'variable', TESTING_TAG, 'flexible'],
     popularity: 75,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
 ];

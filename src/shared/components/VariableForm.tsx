@@ -24,7 +24,7 @@ export function VariableForm({
   variable,
   onSave,
   onCancel,
-}: VariableFormProps) {
+}: Readonly<VariableFormProps>) {
   const [formData, setFormData] = useState<Partial<Variable>>({
     name: '',
     value: '',
@@ -84,7 +84,7 @@ export function VariableForm({
           setProfiles(profilesResponse.profiles);
         }
         if (rulesResponse?.rules) {
-          setRules(Object.values(rulesResponse.rules) as HeaderRule[]);
+          setRules(Object.values(rulesResponse.rules));
         }
       } catch (error) {
         logger.error('Failed to load profiles and rules:', error);
@@ -129,6 +129,8 @@ export function VariableForm({
     } else if (!/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(formData.name)) {
       newErrors.name =
         'Variable name must start with a letter or underscore and contain only letters, numbers, and underscores';
+    } else {
+      // Name is valid
     }
 
     // Validate value
@@ -159,13 +161,13 @@ export function VariableForm({
     ) {
       newErrors.profileId =
         'Profile selection is required for profile-scoped variables';
-    }
-
-    if (
+    } else if (
       formData.scope === VarScope.RULE &&
       (!formData.ruleId || formData.ruleId.trim() === '')
     ) {
       newErrors.ruleId = 'Rule selection is required for rule-scoped variables';
+    } else {
+      // Scope validation passed
     }
 
     // Validate description length

@@ -269,10 +269,12 @@ export class FileInterceptionEngine {
       }
 
       // Check file extension
-      if (filename && fileType.startsWith('.')) {
-        if (filename.toLowerCase().endsWith(fileType.toLowerCase())) {
-          return true;
-        }
+      if (
+        filename &&
+        fileType.startsWith('.') &&
+        filename.toLowerCase().endsWith(fileType.toLowerCase())
+      ) {
+        return true;
       }
     }
 

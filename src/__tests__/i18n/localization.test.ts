@@ -84,29 +84,28 @@ describe('Localization System', () => {
     });
 
     test('should find best match for supported locales', () => {
-      const match = LanguageDetector.findBestMatch('en-US', ['en', 'es', 'fr']);
+      const match = LanguageDetector.findBestMatch('en-US', ['en', 'hi']);
       expect(match).toBe('en');
     });
 
     test('should return null for unsupported language', () => {
-      const match = LanguageDetector.findBestMatch('zh-CN', ['en', 'es', 'fr']);
+      const match = LanguageDetector.findBestMatch('zh-CN', ['en', 'hi']);
       expect(match).toBeNull();
     });
 
     test('should validate supported locale', () => {
       expect(LanguageDetector.isSupportedLocale('en')).toBe(true);
-      expect(LanguageDetector.isSupportedLocale('es')).toBe(true);
-      expect(LanguageDetector.isSupportedLocale('zh')).toBe(true);
+      expect(LanguageDetector.isSupportedLocale('hi')).toBe(true);
     });
 
     test('should get language display names', () => {
       expect(LanguageDetector.getLanguageDisplayName('en')).toBe('English');
-      expect(LanguageDetector.getLanguageDisplayName('es')).toBe('Español');
+      expect(LanguageDetector.getLanguageDisplayName('hi')).toBe('हिंदी');
     });
 
     test('should get native language names', () => {
       expect(LanguageDetector.getNativeLanguageName('en')).toBe('English');
-      expect(LanguageDetector.getNativeLanguageName('es')).toBe('Español');
+      expect(LanguageDetector.getNativeLanguageName('hi')).toBe('हिंदी');
     });
   });
 

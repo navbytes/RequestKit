@@ -16,7 +16,7 @@ export function ThemeIcon({
   alt,
   className = '',
   size,
-}: ThemeIconProps) {
+}: Readonly<ThemeIconProps>) {
   const themeManager = useTheme();
   const [isDark, setIsDark] = useState(themeManager.isDarkMode());
 

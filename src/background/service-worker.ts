@@ -2,7 +2,7 @@
 
 import { STORAGE_KEYS, DEFAULT_SETTINGS } from '@/config/constants';
 import { VariableResolver } from '@/lib/core/variable-resolver';
-import { VariableStorageUtils } from '@/lib/core/variable-storage';
+import { getAllVariables } from '@/lib/core/variable-storage/utils/storageUtils';
 import { AnalyticsMonitor } from '@/lib/integrations/analytics-monitor';
 import { PerformanceMonitor } from '@/lib/integrations/performance-monitor';
 import type { Profile } from '@/shared/types/profiles';
@@ -190,6 +190,8 @@ ChromeApiUtils.runtime.onInstalled.addListener(
     } else if (details.reason === 'update') {
       initLogger.info('Extension updated - handling update...');
       await handleExtensionUpdate();
+    } else {
+      initLogger.info('Extension reason not handled:', details.reason);
     }
 
     // Set up context menus
@@ -655,18 +657,6 @@ async function loadStorageData(): Promise<void> {
       enabled: isEnabled,
     });
 
-    // Update variable usage counts on startup
-    try {
-      await VariableStorageUtils.updateVariableUsageCounts();
-      storageLogger.info('Variable usage counts updated on startup');
-    } catch (error) {
-      logError(
-        storageLogger,
-        'Failed to update variable usage counts on startup',
-        error
-      );
-    }
-
     // Clean up stale rule references from profiles
     try {
       await cleanupProfileRuleReferences();
@@ -696,7 +686,7 @@ async function buildVariableContext(requestDetails?: {
   let currentGlobalVariables = globalVariables;
   let currentProfileVariables = profileVariables;
   try {
-    const variablesData = await VariableStorageUtils.getAllVariables();
+    const variablesData = await getAllVariables();
     currentGlobalVariables = variablesData.global || {};
     currentProfileVariables = variablesData.profiles || {};
 

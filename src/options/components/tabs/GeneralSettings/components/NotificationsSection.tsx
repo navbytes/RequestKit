@@ -14,7 +14,7 @@ interface NotificationsSectionProps {
 export function NotificationsSection({
   notifications,
   onNotificationChange,
-}: NotificationsSectionProps) {
+}: Readonly<NotificationsSectionProps>) {
   return (
     <SettingsSection title="Notifications">
       <div className="space-y-4">

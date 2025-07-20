@@ -18,7 +18,7 @@ export function TemplateForm({
   template,
   onSave,
   onCancel,
-}: TemplateFormProps) {
+}: Readonly<TemplateFormProps>) {
   const [formData, setFormData] = useState({
     name: template?.name || '',
     description: template?.description || '',

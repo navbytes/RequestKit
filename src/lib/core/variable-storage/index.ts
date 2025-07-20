@@ -418,6 +418,13 @@ export async function performMaintenance(): Promise<{
         }
       }
 
+      // Log removed duplicates for debugging
+      if (globalDuplicates.length > 0) {
+        logger.info(
+          `Removed ${globalDuplicates.length} duplicate global variables: ${globalDuplicates.join(', ')}`
+        );
+      }
+
       // Save cleaned up data if any changes were made
       if (cleanupCount > 0) {
         const { saveGlobalVariables } = await import(

@@ -62,7 +62,7 @@ export function ConditionalRuleForm({
   getOperatorOptions,
   getValuePlaceholder,
   formatCondition,
-}: ConditionalRuleFormProps) {
+}: Readonly<ConditionalRuleFormProps>) {
   return (
     <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-6">
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
@@ -136,8 +136,8 @@ export function ConditionalRuleForm({
 }
 
 interface BasicRuleInfoProps {
-  newRule: NewConditionalRule;
-  setNewRule: (
+  readonly newRule: NewConditionalRule;
+  readonly setNewRule: (
     rule:
       | NewConditionalRule
       | ((prev: NewConditionalRule) => NewConditionalRule)
@@ -225,24 +225,29 @@ function BasicRuleInfo({ newRule, setNewRule }: BasicRuleInfoProps) {
 }
 
 interface ConditionsSectionProps {
-  newRule: NewConditionalRule;
-  setNewRule: (
+  readonly newRule: NewConditionalRule;
+  readonly setNewRule: (
     rule:
       | NewConditionalRule
       | ((prev: NewConditionalRule) => NewConditionalRule)
   ) => void;
-  newCondition: Partial<RuleCondition>;
-  setNewCondition: (
+  readonly newCondition: Partial<RuleCondition>;
+  readonly setNewCondition: (
     condition:
       | Partial<RuleCondition>
       | ((prev: Partial<RuleCondition>) => Partial<RuleCondition>)
   ) => void;
-  addCondition: () => void;
-  removeCondition: (index: number) => void;
-  getConditionTypeOptions: () => Array<{ value: string; label: string }>;
-  getOperatorOptions: (type: string) => Array<{ value: string; label: string }>;
-  getValuePlaceholder: (type: string, operator: string) => string;
-  formatCondition: (condition: RuleCondition) => string;
+  readonly addCondition: () => void;
+  readonly removeCondition: (index: number) => void;
+  readonly getConditionTypeOptions: () => Array<{
+    value: string;
+    label: string;
+  }>;
+  readonly getOperatorOptions: (
+    type: string
+  ) => Array<{ value: string; label: string }>;
+  readonly getValuePlaceholder: (type: string, operator: string) => string;
+  readonly formatCondition: (condition: RuleCondition) => string;
 }
 
 function ConditionsSection({
@@ -288,7 +293,7 @@ function ConditionsSection({
         <div className="space-y-2 mb-4">
           {newRule.conditions.map((condition, index) => (
             <div
-              key={index}
+              key={condition.value}
               className="flex items-center justify-between bg-white dark:bg-gray-600 p-3 rounded border"
             >
               <span className="font-mono text-sm">
@@ -433,13 +438,13 @@ function ConditionsSection({
 }
 
 interface HeadersSectionProps {
-  newRule: NewConditionalRule;
-  newHeaderKey: string;
-  setNewHeaderKey: (key: string) => void;
-  newHeaderValue: string;
-  setNewHeaderValue: (value: string) => void;
-  addHeader: () => void;
-  removeHeader: (key: string) => void;
+  readonly newRule: NewConditionalRule;
+  readonly newHeaderKey: string;
+  readonly setNewHeaderKey: (key: string) => void;
+  readonly newHeaderValue: string;
+  readonly setNewHeaderValue: (value: string) => void;
+  readonly addHeader: () => void;
+  readonly removeHeader: (key: string) => void;
 }
 
 function HeadersSection({

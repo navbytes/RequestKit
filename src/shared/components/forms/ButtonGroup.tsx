@@ -23,7 +23,7 @@ export function ButtonGroup({
   disabled = false,
   size = 'md',
   className = '',
-}: ButtonGroupProps) {
+}: Readonly<ButtonGroupProps>) {
   const sizeClasses = {
     sm: 'px-2 py-1 text-xs',
     md: 'px-3 py-2 text-sm',

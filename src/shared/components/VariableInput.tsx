@@ -33,7 +33,7 @@ export function VariableInput({
   multiline = false,
   rows = 3,
   disabled = false,
-}: VariableInputProps) {
+}: Readonly<VariableInputProps>) {
   const [showAutocomplete, setShowAutocomplete] = useState(false);
   const [autocompleteItems, setAutocompleteItems] = useState<
     AutocompleteItem[]

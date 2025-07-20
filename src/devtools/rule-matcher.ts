@@ -413,6 +413,190 @@ export class RuleMatcher {
   }
 
   /**
+   * Evaluate request method condition
+   */
+  private evaluateRequestMethodCondition(
+    operator: string,
+    value: unknown,
+    requestData: RequestData,
+    caseSensitive: boolean
+  ): boolean {
+    const method = caseSensitive
+      ? requestData.method
+      : requestData.method?.toLowerCase();
+    const expectedMethod = caseSensitive ? value : String(value).toLowerCase();
+
+    if (operator === 'equals') {
+      return method === expectedMethod;
+    } else if (operator === 'contains') {
+      return method?.includes(String(expectedMethod)) || false;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Evaluate header condition
+   */
+  private evaluateHeaderCondition(
+    operator: string,
+    value: unknown,
+    requestData: RequestData,
+    caseSensitive: boolean
+  ): boolean {
+    const headerName = String(value);
+    const headerValue = requestData.headers?.[headerName];
+
+    if (operator === 'exists') {
+      return !!headerValue;
+    } else if (operator === 'equals') {
+      return headerValue === value;
+    } else if (operator === 'contains') {
+      return headerValue?.includes(String(value)) || false;
+    } else if (operator === 'regex') {
+      try {
+        const regex = new RegExp(String(value), caseSensitive ? '' : 'i');
+        return regex.test(headerValue || '');
+      } catch {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Evaluate URL condition
+   */
+  private evaluateUrlCondition(
+    operator: string,
+    value: unknown,
+    requestData: RequestData,
+    caseSensitive: boolean
+  ): boolean {
+    const url = requestData.url || '';
+    const urlValue = caseSensitive ? url : url.toLowerCase();
+    const expectedUrl = caseSensitive
+      ? String(value)
+      : String(value).toLowerCase();
+
+    if (operator === 'equals') {
+      return urlValue === expectedUrl;
+    } else if (operator === 'contains') {
+      return urlValue.includes(expectedUrl);
+    } else if (operator === 'regex') {
+      try {
+        const regex = new RegExp(String(value), caseSensitive ? '' : 'i');
+        return regex.test(url);
+      } catch {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Evaluate response status condition
+   */
+  private evaluateResponseStatusCondition(
+    operator: string,
+    value: unknown,
+    requestData: RequestData
+  ): boolean {
+    const status = requestData.status || requestData.response?.status;
+    const statusValue = Number(value);
+
+    if (operator === 'equals') {
+      return status === statusValue;
+    } else if (operator === 'greater') {
+      return status != null && status > statusValue;
+    } else if (operator === 'less') {
+      return status != null && status < statusValue;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Evaluate user agent condition
+   */
+  private evaluateUserAgentCondition(
+    operator: string,
+    value: unknown,
+    requestData: RequestData,
+    caseSensitive: boolean
+  ): boolean {
+    const userAgent = requestData.headers?.['user-agent'] || '';
+    const uaValue = caseSensitive ? userAgent : userAgent.toLowerCase();
+    const expectedUA = caseSensitive
+      ? String(value)
+      : String(value).toLowerCase();
+
+    if (operator === 'equals') {
+      return uaValue === expectedUA;
+    } else if (operator === 'contains') {
+      return uaValue.includes(expectedUA);
+    } else if (operator === 'regex') {
+      try {
+        const regex = new RegExp(String(value), caseSensitive ? '' : 'i');
+        return regex.test(userAgent);
+      } catch {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Evaluate cookie condition
+   */
+  private evaluateCookieCondition(
+    operator: string,
+    value: unknown,
+    requestData: RequestData
+  ): boolean {
+    const cookieHeader = requestData.headers?.['cookie'] || '';
+    const cookieName = String(value);
+
+    if (operator === 'exists') {
+      return cookieHeader.includes(`${cookieName}=`);
+    } else if (operator === 'equals' || operator === 'contains') {
+      // Extract cookie value and compare
+      const cookieMatch = cookieHeader.match(
+        new RegExp(`${cookieName}=([^;]*)`)
+      );
+      if (!cookieMatch) return false;
+
+      const cookieValue = cookieMatch[1];
+      return operator === 'equals'
+        ? cookieValue === String(value)
+        : cookieValue?.includes(String(value)) || false;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * Evaluate time condition
+   */
+  private evaluateTimeCondition(operator: string, value: unknown): boolean {
+    const now = new Date();
+    const timeValue = String(value);
+
+    if (operator === 'equals') {
+      return now.getHours().toString() === timeValue;
+    } else if (operator === 'greater') {
+      return now.getHours() > Number(timeValue);
+    } else if (operator === 'less') {
+      return now.getHours() < Number(timeValue);
+    } else {
+      return false;
+    }
+  }
+
+  /**
    * Evaluate a single condition
    */
   private async evaluateCondition(
@@ -422,166 +606,47 @@ export class RuleMatcher {
     try {
       const { type, operator, value, caseSensitive = false } = condition;
 
-      switch (type) {
-        case 'requestMethod': {
-          const method = caseSensitive
-            ? requestData.method
-            : requestData.method?.toLowerCase();
-          const expectedMethod = caseSensitive
-            ? value
-            : String(value).toLowerCase();
-
-          switch (operator) {
-            case 'equals':
-              return method === expectedMethod;
-            case 'contains':
-              return method?.includes(String(expectedMethod)) || false;
-            default:
-              return false;
-          }
-        }
-
-        case 'header': {
-          const headerName = String(value);
-          const headerValue = requestData.headers?.[headerName];
-
-          switch (operator) {
-            case 'exists':
-              return !!headerValue;
-            case 'equals':
-              return headerValue === value;
-            case 'contains':
-              return headerValue?.includes(String(value)) || false;
-            case 'regex':
-              try {
-                const regex = new RegExp(
-                  String(value),
-                  caseSensitive ? '' : 'i'
-                );
-                return regex.test(headerValue || '');
-              } catch {
-                return false;
-              }
-            default:
-              return false;
-          }
-        }
-
-        case 'url': {
-          const url = requestData.url || '';
-          const urlValue = caseSensitive ? url : url.toLowerCase();
-          const expectedUrl = caseSensitive
-            ? String(value)
-            : String(value).toLowerCase();
-
-          switch (operator) {
-            case 'equals':
-              return urlValue === expectedUrl;
-            case 'contains':
-              return urlValue.includes(expectedUrl);
-            case 'regex':
-              try {
-                const regex = new RegExp(
-                  String(value),
-                  caseSensitive ? '' : 'i'
-                );
-                return regex.test(url);
-              } catch {
-                return false;
-              }
-            default:
-              return false;
-          }
-        }
-
-        case 'responseStatus': {
-          const status = requestData.status || requestData.response?.status;
-          const statusValue = Number(value);
-
-          switch (operator) {
-            case 'equals':
-              return status === statusValue;
-            case 'greater':
-              return status != null && status > statusValue;
-            case 'less':
-              return status != null && status < statusValue;
-            default:
-              return false;
-          }
-        }
-
-        case 'userAgent': {
-          const userAgent = requestData.headers?.['user-agent'] || '';
-          const uaValue = caseSensitive ? userAgent : userAgent.toLowerCase();
-          const expectedUA = caseSensitive
-            ? String(value)
-            : String(value).toLowerCase();
-
-          switch (operator) {
-            case 'equals':
-              return uaValue === expectedUA;
-            case 'contains':
-              return uaValue.includes(expectedUA);
-            case 'regex':
-              try {
-                const regex = new RegExp(
-                  String(value),
-                  caseSensitive ? '' : 'i'
-                );
-                return regex.test(userAgent);
-              } catch {
-                return false;
-              }
-            default:
-              return false;
-          }
-        }
-
-        case 'cookie': {
-          const cookieHeader = requestData.headers?.['cookie'] || '';
-          const cookieName = String(value);
-
-          switch (operator) {
-            case 'exists':
-              return cookieHeader.includes(`${cookieName}=`);
-            case 'equals':
-            case 'contains': {
-              // Extract cookie value and compare
-              const cookieMatch = cookieHeader.match(
-                new RegExp(`${cookieName}=([^;]*)`)
-              );
-              if (!cookieMatch) return false;
-
-              const cookieValue = cookieMatch[1];
-              return operator === 'equals'
-                ? cookieValue === String(value)
-                : cookieValue?.includes(String(value)) || false;
-            }
-            default:
-              return false;
-          }
-        }
-
-        case 'time': {
-          const now = new Date();
-          const timeValue = String(value);
-
-          // Simple time-based conditions (can be expanded)
-          switch (operator) {
-            case 'equals':
-              return now.getHours().toString() === timeValue;
-            case 'greater':
-              return now.getHours() > Number(timeValue);
-            case 'less':
-              return now.getHours() < Number(timeValue);
-            default:
-              return false;
-          }
-        }
-
-        default:
-          logger.warn(`Unknown condition type: ${type}`);
-          return true; // Default to true for unknown conditions
+      if (type === 'requestMethod') {
+        return this.evaluateRequestMethodCondition(
+          operator,
+          value,
+          requestData,
+          caseSensitive
+        );
+      } else if (type === 'header') {
+        return this.evaluateHeaderCondition(
+          operator,
+          value,
+          requestData,
+          caseSensitive
+        );
+      } else if (type === 'url') {
+        return this.evaluateUrlCondition(
+          operator,
+          value,
+          requestData,
+          caseSensitive
+        );
+      } else if (type === 'responseStatus') {
+        return this.evaluateResponseStatusCondition(
+          operator,
+          value,
+          requestData
+        );
+      } else if (type === 'userAgent') {
+        return this.evaluateUserAgentCondition(
+          operator,
+          value,
+          requestData,
+          caseSensitive
+        );
+      } else if (type === 'cookie') {
+        return this.evaluateCookieCondition(operator, value, requestData);
+      } else if (type === 'time') {
+        return this.evaluateTimeCondition(operator, value);
+      } else {
+        logger.warn(`Unknown condition type: ${type}`);
+        return true; // Default to true for unknown conditions
       }
     } catch (error) {
       logger.error('Error evaluating condition:', error);

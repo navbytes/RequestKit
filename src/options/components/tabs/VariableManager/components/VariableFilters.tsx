@@ -26,7 +26,7 @@ export function VariableFilters({
   onToggleTag,
   onClearFilters,
   hasActiveFilters,
-}: VariableFiltersProps) {
+}: Readonly<VariableFiltersProps>) {
   return (
     <>
       {/* Search and Filter Controls */}

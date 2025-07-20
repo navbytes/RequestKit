@@ -1,0 +1,78 @@
+# Lefthook configuration for RequestKit
+# Git hooks manager for automated code quality checks
+# https://github.com/evilmartians/lefthook
+
+# Global settings
+min_version: 1.5.0
+source_dir: .lefthook
+colors: true
+no_tty: false
+
+# Pre-commit hook - Fast checks (<10 seconds)
+pre-commit:
+  parallel: true
+  commands:
+    # ESLint with caching for fast incremental checks
+    eslint:
+      glob: '*.{js,jsx,ts,tsx}'
+      run: npm run lint -- --cache --fix {staged_files}
+      stage_fixed: true
+      fail_text: 'ESLint found issues. Please fix them before committing.'
+
+    # Prettier formatting check
+    prettier:
+      glob: '*.{js,jsx,ts,tsx,json,md,yml,yaml}'
+      run: npm run format:check -- {staged_files}
+      fail_text: "Code formatting issues found. Run 'npm run format' to fix."
+
+    # TypeScript type checking (incremental)
+    typescript:
+      glob: '*.{ts,tsx}'
+      run: npm run type-check
+      fail_text: 'TypeScript compilation errors found. Please fix type issues.'
+
+# Pre-push hook - Comprehensive checks (<30 seconds)
+pre-push:
+  parallel: true
+  commands:
+    # Run test suite
+    tests:
+      run: npm test
+      fail_text: 'Tests failed. Please fix failing tests before pushing.'
+
+    # Validate localization messages
+    validate-messages:
+      run: npm run validate-messages
+      fail_text: 'Localization validation failed. Check message files for errors.'
+
+# Commit message validation
+commit-msg:
+  commands:
+    # Conventional commit format validation
+    conventional-commit:
+      run: |
+        # Check if commit message follows conventional commit format
+        if ! grep -qE "^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)(\(.+\))?: .{1,50}" {1}; then
+          echo "❌ Commit message must follow conventional commit format:"
+          echo "   <type>[optional scope]: <description>"
+          echo ""
+          echo "Types: feat, fix, docs, style, refactor, test, chore, perf, ci, build, revert"
+          echo "Example: feat(auth): add user login functionality"
+          echo "Example: fix: resolve memory leak in component"
+          echo ""
+          echo "Your message: $(cat {1})"
+          exit 1
+        fi
+      fail_text: 'Commit message format validation failed.'
+
+# Skip patterns for performance
+skip_output:
+  - meta
+  - summary
+
+# Output configuration
+output:
+  - execution
+  - execution_out
+  - execution_info
+  - skips

@@ -29,7 +29,7 @@ const logger = loggers.shared;
 
 export function PerformanceDashboard({
   className = '',
-}: PerformanceDashboardProps) {
+}: Readonly<PerformanceDashboardProps>) {
   const {
     dashboardData,
     systemStats,
@@ -259,9 +259,9 @@ export function PerformanceDashboard({
 
 // Overview Tab Component
 interface OverviewTabProps {
-  systemStats: SystemPerformanceStats | null;
-  dashboardData: PerformanceDashboardData | null;
-  timeSeriesData: PerformanceTimeSeriesData[];
+  readonly systemStats: SystemPerformanceStats | null;
+  readonly dashboardData: PerformanceDashboardData | null;
+  readonly timeSeriesData: PerformanceTimeSeriesData[];
 }
 
 function OverviewTab({
@@ -417,7 +417,11 @@ function OverviewTab({
 }
 
 // Rules Tab Component
-function RulesTab({ ruleStats }: { ruleStats: RulePerformanceStats[] }) {
+function RulesTab({
+  ruleStats,
+}: {
+  readonly ruleStats: RulePerformanceStats[];
+}) {
   return (
     <div>
       <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-4">
@@ -430,9 +434,9 @@ function RulesTab({ ruleStats }: { ruleStats: RulePerformanceStats[] }) {
 
 // Alerts Tab Component
 interface AlertsTabProps {
-  alerts: PerformanceAlert[];
-  onAcknowledge: (alertId: string) => void;
-  onClearAll: () => void;
+  readonly alerts: PerformanceAlert[];
+  readonly onAcknowledge: (alertId: string) => void;
+  readonly onClearAll: () => void;
 }
 
 function AlertsTab({ alerts, onAcknowledge, onClearAll }: AlertsTabProps) {
@@ -455,7 +459,7 @@ function AlertsTab({ alerts, onAcknowledge, onClearAll }: AlertsTabProps) {
 
 // Settings Tab Component
 interface SettingsTabProps {
-  onUpdateThresholds: (thresholds: Record<string, number>) => void;
+  readonly onUpdateThresholds: (thresholds: Record<string, number>) => void;
 }
 
 function SettingsTab({ onUpdateThresholds }: SettingsTabProps) {
@@ -594,10 +598,10 @@ function SettingsTab({ onUpdateThresholds }: SettingsTabProps) {
 
 // Metric Card Component
 interface MetricCardProps {
-  title: string;
-  value: string;
-  icon: string;
-  color: 'blue' | 'green' | 'yellow' | 'red';
+  readonly title: string;
+  readonly value: string;
+  readonly icon: string;
+  readonly color: 'blue' | 'green' | 'yellow' | 'red';
 }
 
 function MetricCard({ title, value, icon, color }: MetricCardProps) {

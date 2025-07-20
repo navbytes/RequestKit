@@ -1,7 +1,7 @@
 import type { UsageAnalytics } from '@/lib/integrations/analytics-monitor';
 
 interface UserActivityCardProps {
-  userBehavior: UsageAnalytics['userBehavior'];
+  readonly userBehavior: UsageAnalytics['userBehavior'];
 }
 
 export function UserActivityCard({ userBehavior }: UserActivityCardProps) {

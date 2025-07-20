@@ -14,7 +14,7 @@ export function ToggleSetting({
   checked,
   onChange,
   disabled = false,
-}: ToggleSettingProps) {
+}: Readonly<ToggleSettingProps>) {
   return (
     <div className="flex items-center justify-between">
       <div>

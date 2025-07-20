@@ -12,7 +12,7 @@ export function Card({
   className = '',
   variant = 'default',
   padding = 'md',
-}: CardProps) {
+}: Readonly<CardProps>) {
   const baseClasses = 'rounded-lg border transition-colors';
 
   const variantClasses = {

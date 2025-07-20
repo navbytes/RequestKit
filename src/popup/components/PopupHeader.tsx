@@ -1,4 +1,5 @@
 import { Icon } from '@/shared/components/Icon';
+import { useI18n } from '@/shared/hooks/useI18n';
 
 interface PopupHeaderProps {
   enabled: boolean;
@@ -12,7 +13,9 @@ export function PopupHeader({
   activeRulesCount,
   onOpenOptions,
   onToggleTheme,
-}: PopupHeaderProps) {
+}: Readonly<PopupHeaderProps>) {
+  const { t } = useI18n();
+
   return (
     <div className="bg-primary-600 text-white p-4 sticky top-0 z-10">
       <div className="flex items-center justify-between">
@@ -25,11 +28,11 @@ export function PopupHeader({
             />
           </div>
           <div>
-            <h1 className="font-semibold text-lg">RequestKit</h1>
+            <h1 className="font-semibold text-lg">{t('extensionName')}</h1>
             <p className="text-primary-100 text-xs">
               {enabled
-                ? `${activeRulesCount} rules active`
-                : 'Extension disabled'}
+                ? `${activeRulesCount} ${t('ui_label_rules_active')}`
+                : t('ui_label_extension_disabled')}
             </p>
           </div>
         </div>
@@ -39,7 +42,7 @@ export function PopupHeader({
             <button
               onClick={onToggleTheme}
               className="p-2 hover:bg-primary-700 rounded-lg transition-colors"
-              title="Toggle Theme (Test)"
+              title={t('popup_toggle_theme')}
             >
               <Icon name="moon" className="w-5 h-5" />
             </button>
@@ -48,7 +51,7 @@ export function PopupHeader({
           <button
             onClick={onOpenOptions}
             className="p-2 hover:bg-primary-700 rounded-lg transition-colors"
-            title="Open Options"
+            title={t('ui_tooltip_open_options')}
           >
             <Icon name="settings" className="w-5 h-5" />
           </button>

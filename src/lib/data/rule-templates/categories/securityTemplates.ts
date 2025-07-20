@@ -4,6 +4,10 @@
 
 import type { RuleTemplate } from '@/shared/types/templates';
 
+// Constants
+const REQUESTKIT_AUTHOR = 'RequestKit';
+const TEMPLATE_DATE = new Date('2025-01-01');
+
 export const SECURITY_TEMPLATES: RuleTemplate[] = [
   {
     id: 'security-headers-basic',
@@ -39,9 +43,9 @@ export const SECURITY_TEMPLATES: RuleTemplate[] = [
     ],
     tags: ['security', 'xss', 'clickjacking', 'headers'],
     popularity: 78,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -61,9 +65,9 @@ export const SECURITY_TEMPLATES: RuleTemplate[] = [
     ],
     tags: ['security', 'csp', 'content-security-policy'],
     popularity: 65,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -87,9 +91,9 @@ export const SECURITY_TEMPLATES: RuleTemplate[] = [
     },
     tags: ['security', 'hsts', 'https', 'ssl'],
     popularity: 72,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
   {
@@ -122,9 +126,9 @@ export const SECURITY_TEMPLATES: RuleTemplate[] = [
     ],
     tags: ['file', 'security', 'upload', 'block'],
     popularity: 70,
-    author: 'RequestKit',
-    createdAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01'),
+    author: REQUESTKIT_AUTHOR,
+    createdAt: TEMPLATE_DATE,
+    updatedAt: TEMPLATE_DATE,
     isBuiltIn: true,
   },
 ];

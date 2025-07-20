@@ -4,7 +4,7 @@ interface TemplateHeadersProps {
   headers: HeaderEntry[];
 }
 
-export function TemplateHeaders({ headers }: TemplateHeadersProps) {
+export function TemplateHeaders({ headers }: Readonly<TemplateHeadersProps>) {
   return (
     <div>
       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">

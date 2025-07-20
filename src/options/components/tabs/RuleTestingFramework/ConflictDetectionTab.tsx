@@ -7,7 +7,9 @@ interface ConflictDetectionTabProps {
   conflicts: RuleConflict[];
 }
 
-export function ConflictDetectionTab({ conflicts }: ConflictDetectionTabProps) {
+export function ConflictDetectionTab({
+  conflicts,
+}: Readonly<ConflictDetectionTabProps>) {
   return (
     <div>
       <ConflictDetectionHeader />
@@ -47,7 +49,7 @@ function NoConflictsState() {
 }
 
 interface ConflictsListProps {
-  conflicts: RuleConflict[];
+  readonly conflicts: RuleConflict[];
 }
 
 function ConflictsList({ conflicts }: ConflictsListProps) {
@@ -61,7 +63,7 @@ function ConflictsList({ conflicts }: ConflictsListProps) {
 }
 
 interface ConflictCardProps {
-  conflict: RuleConflict;
+  readonly conflict: RuleConflict;
 }
 
 function ConflictCard({ conflict }: ConflictCardProps) {
@@ -75,7 +77,7 @@ function ConflictCard({ conflict }: ConflictCardProps) {
 }
 
 interface ConflictCardHeaderProps {
-  conflict: RuleConflict;
+  readonly conflict: RuleConflict;
 }
 
 function ConflictCardHeader({ conflict }: ConflictCardHeaderProps) {
@@ -94,7 +96,7 @@ function ConflictCardHeader({ conflict }: ConflictCardHeaderProps) {
 }
 
 interface HeaderConflictsProps {
-  headerConflicts: Array<{
+  readonly headerConflicts: Array<{
     headerName: string;
     rule1Operation: string;
     rule1Value: string;
@@ -118,7 +120,7 @@ function HeaderConflicts({ headerConflicts }: HeaderConflictsProps) {
 }
 
 interface HeaderConflictItemProps {
-  headerConflict: {
+  readonly headerConflict: {
     headerName: string;
     rule1Operation: string;
     rule1Value: string;
@@ -148,7 +150,7 @@ function HeaderConflictItem({ headerConflict }: HeaderConflictItemProps) {
 }
 
 interface SuggestedResolutionsProps {
-  resolutions: string[];
+  readonly resolutions: string[];
 }
 
 function SuggestedResolutions({ resolutions }: SuggestedResolutionsProps) {

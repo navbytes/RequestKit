@@ -35,18 +35,20 @@ export function AdvancedFilterPanel({
   isCollapsed = false,
   onToggleCollapsed,
   className = '',
-}: AdvancedFilterPanelProps) {
+}: Readonly<AdvancedFilterPanelProps>) {
   const [activeTab, setActiveTab] = useState<'basic' | 'advanced' | 'presets'>(
     'basic'
   );
 
   const hasActiveFilters = Object.keys(criteria).some(key => {
     const value = criteria[key as keyof FilterCriteria];
-    if (Array.isArray(value)) return value.length > 0;
-    if (typeof value === 'string') return value.trim() !== '';
-    if (typeof value === 'boolean') return value;
-    if (value && typeof value === 'object') return true;
-    return false;
+    return Array.isArray(value)
+      ? value.length > 0
+      : typeof value === 'string'
+        ? value.trim() !== ''
+        : typeof value === 'boolean'
+          ? value
+          : !!(value && typeof value === 'object');
   });
 
   const handleTabChange = (tab: 'basic' | 'advanced' | 'presets') => {

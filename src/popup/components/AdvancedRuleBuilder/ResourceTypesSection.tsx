@@ -8,7 +8,7 @@ interface ResourceTypesSectionProps {
 export function ResourceTypesSection({
   resourceTypes,
   onToggle,
-}: ResourceTypesSectionProps) {
+}: Readonly<ResourceTypesSectionProps>) {
   return (
     <div>
       <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">

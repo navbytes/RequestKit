@@ -23,7 +23,14 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'jsx-a11y', 'import', 'sonarjs'],
+  plugins: [
+    '@typescript-eslint',
+    'react',
+    'react-hooks',
+    'jsx-a11y',
+    'import',
+    'sonarjs',
+  ],
   settings: {
     react: {
       pragma: 'h',
@@ -102,7 +109,7 @@ module.exports = {
     'sonarjs/no-one-iteration-loop': 'error',
     'sonarjs/no-use-of-empty-return-value': 'error',
     'sonarjs/non-existent-operator': 'error',
-    
+
     // SonarJS rules - Code smells and maintainability
     'sonarjs/cognitive-complexity': ['warn', 20],
     'sonarjs/elseif-without-else': 'warn',

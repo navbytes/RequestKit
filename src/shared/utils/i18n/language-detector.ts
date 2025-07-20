@@ -207,11 +207,11 @@ export class LanguageDetector {
   /**
    * Get language direction (LTR/RTL)
    */
-  static isRTL(locale: SupportedLocale): boolean {
+  static isRTL(_locale: SupportedLocale): boolean {
     // Currently no RTL languages in our supported set
     // This would include 'ar', 'he', 'fa', etc. in the future
-    const rtlLanguages: string[] = [];
-    return rtlLanguages.includes(locale);
+    // For now, all supported languages are LTR
+    return false;
   }
 
   /**

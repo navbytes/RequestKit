@@ -350,7 +350,7 @@ export class PerformanceMonitor {
     const cacheStats = this.getCacheStats();
     const slowestRules = this.getSlowestRules(5);
 
-    const report = {
+    return {
       timestamp: new Date(),
       summary: {
         totalExecutions: metrics.totalExecutions,
@@ -372,8 +372,6 @@ export class PerformanceMonitor {
       })),
       recommendations: this.generateRecommendations(metrics, cacheStats),
     };
-
-    return report;
   }
 
   /**

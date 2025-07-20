@@ -117,10 +117,8 @@ export function validateURLPatternDetailed(
   }
 
   // Validate port
-  if (pattern.port) {
-    if (!VALIDATION_PATTERNS.PORT.test(pattern.port)) {
-      errors.push(ERROR_MESSAGES.INVALID_PORT);
-    }
+  if (pattern.port && !VALIDATION_PATTERNS.PORT.test(pattern.port)) {
+    errors.push(ERROR_MESSAGES.INVALID_PORT);
   }
 
   return {

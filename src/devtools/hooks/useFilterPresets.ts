@@ -130,13 +130,11 @@ export function useFilterPresets({
       if (!originalPreset) return null;
 
       const duplicatedName = newName || `${originalPreset.name} (Copy)`;
-      const newPreset = savePreset(
+      return savePreset(
         duplicatedName,
         originalPreset.criteria,
         originalPreset.description
       );
-
-      return newPreset;
     },
     [presets, savePreset]
   );

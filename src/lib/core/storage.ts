@@ -4,8 +4,6 @@ import type { ExtensionSettings } from '@/shared/types/storage';
 import { ChromeApiUtils } from '@/shared/utils/chrome-api';
 import { loggers } from '@/shared/utils/debug';
 
-import { updateVariableUsageCounts } from './variable-storage/management/usageTracking';
-
 /**
  * Shared storage utilities for consistent Chrome storage operations
  */
@@ -74,9 +72,6 @@ export class StorageUtils {
         [STORAGE_KEYS.RULES]: rulesObject,
       });
 
-      // Update variable usage counts after saving rules
-      await updateVariableUsageCounts();
-
       // Notify background script
       ChromeApiUtils.runtime.sendMessage({ type: 'RULES_UPDATED' });
     } catch (error) {
@@ -95,9 +90,6 @@ export class StorageUtils {
       await ChromeApiUtils.storage.sync.set({
         [STORAGE_KEYS.RULES]: rulesObject,
       });
-
-      // Update variable usage counts after saving rules
-      await updateVariableUsageCounts();
 
       // Notify background script
       ChromeApiUtils.runtime.sendMessage({ type: 'RULES_UPDATED' });

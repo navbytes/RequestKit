@@ -2,7 +2,6 @@
 
 import { STORAGE_KEYS, DEFAULT_SETTINGS } from '@/config/constants';
 import { VariableResolver } from '@/lib/core/variable-resolver';
-import { updateVariableUsageCounts } from '@/lib/core/variable-storage/management/usageTracking';
 import { getAllVariables } from '@/lib/core/variable-storage/utils/storageUtils';
 import { AnalyticsMonitor } from '@/lib/integrations/analytics-monitor';
 import { PerformanceMonitor } from '@/lib/integrations/performance-monitor';
@@ -655,18 +654,6 @@ async function loadStorageData(): Promise<void> {
       profileVariablesCount: Object.keys(profileVariables).length,
       enabled: isEnabled,
     });
-
-    // Update variable usage counts on startup
-    try {
-      await updateVariableUsageCounts();
-      storageLogger.info('Variable usage counts updated on startup');
-    } catch (error) {
-      logError(
-        storageLogger,
-        'Failed to update variable usage counts on startup',
-        error
-      );
-    }
 
     // Clean up stale rule references from profiles
     try {

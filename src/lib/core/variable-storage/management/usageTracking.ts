@@ -3,7 +3,6 @@
  */
 
 import { STORAGE_KEYS } from '@/config/constants';
-import type { HeaderRule, HeaderEntry } from '@/shared/types/rules';
 import type { Variable } from '@/shared/types/variables';
 import { ChromeApiUtils } from '@/shared/utils/chrome-api';
 import { loggers } from '@/shared/utils/debug';
@@ -354,9 +353,7 @@ export async function getUsageTrends(days = 30): Promise<{
         totalUsage[date] = (totalUsage[date] || 0) + 1;
 
         // Usage by variable and day
-        if (!variableUsage[record.variableId]) {
-          variableUsage[record.variableId] = {};
-        }
+        variableUsage[record.variableId] ??= {};
         const variableRecord = variableUsage[record.variableId];
         if (variableRecord) {
           variableRecord[date] = (variableRecord[date] || 0) + 1;
@@ -432,142 +429,6 @@ export async function exportUsageData(): Promise<{
     };
   } catch (error) {
     logger.error('Failed to export usage data:', error);
-    throw error;
-  }
-}
-
-/**
- * Compatibility bridge function for updateVariableUsageCounts()
- *
- * This function maintains the original functionality while integrating with the new usage tracking system.
- * It calculates and updates usage counts for all variables based on current rules.
- *
- * @deprecated This function is maintained for backward compatibility.
- * New code should use the individual tracking functions from this module.
- */
-export async function updateVariableUsageCounts(): Promise<void> {
-  try {
-    const { STORAGE_KEYS } = await import('@/config/constants');
-    const { ChromeApiUtils } = await import('@/shared/utils/chrome-api');
-
-    // Get all rules and variables
-    const [rulesData, variablesData] = await Promise.all([
-      ChromeApiUtils.storage.sync.get([STORAGE_KEYS.RULES]),
-      getAllVariables(),
-    ]);
-
-    const rules =
-      (rulesData as Record<string, unknown>)[STORAGE_KEYS.RULES] || {};
-
-    // Count variable usage across all rules
-    const variableUsageCounts = new Map<string, number>();
-
-    Object.values(rules as Record<string, HeaderRule>).forEach(
-      (rule: HeaderRule) => {
-        if (rule.headers && Array.isArray(rule.headers)) {
-          rule.headers.forEach((header: HeaderEntry) => {
-            if (header.value && typeof header.value === 'string') {
-              // Find variable references in header values: ${VARIABLE_NAME}
-              const variableMatches = header.value.matchAll(/\$\{([^}]+)\}/g);
-              for (const match of variableMatches) {
-                const variableName = match[1];
-                if (variableName) {
-                  variableUsageCounts.set(
-                    variableName,
-                    (variableUsageCounts.get(variableName) || 0) + 1
-                  );
-                }
-              }
-            }
-          });
-        }
-      }
-    );
-
-    // Update global variables with usage counts
-    const updatedGlobalVariables: Record<string, Variable> = {};
-    for (const [variableId, variable] of Object.entries(variablesData.global)) {
-      const usageCount = variableUsageCounts.get(variable.name) || 0;
-      updatedGlobalVariables[variableId] = {
-        ...variable,
-        metadata: {
-          createdAt: variable.metadata?.createdAt || new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-          ...variable.metadata,
-          usageCount,
-        },
-      };
-    }
-
-    // Update profile variables with usage counts
-    const updatedProfileVariables: Record<
-      string,
-      Record<string, Variable>
-    > = {};
-    for (const [profileId, profileVars] of Object.entries(
-      variablesData.profiles
-    )) {
-      updatedProfileVariables[profileId] = {};
-      for (const [variableId, variable] of Object.entries(profileVars)) {
-        const usageCount = variableUsageCounts.get(variable.name) || 0;
-        if (!updatedProfileVariables[profileId]) {
-          updatedProfileVariables[profileId] = {};
-        }
-        const profileVars = updatedProfileVariables[profileId];
-        if (profileVars) {
-          profileVars[variableId] = {
-            ...variable,
-            metadata: {
-              createdAt:
-                variable.metadata?.createdAt || new Date().toISOString(),
-              updatedAt: new Date().toISOString(),
-              ...variable.metadata,
-              usageCount,
-            },
-          };
-        }
-      }
-    }
-
-    // Update rule variables with usage counts
-    const updatedRuleVariables: Record<string, Record<string, Variable>> = {};
-    for (const [ruleId, ruleVars] of Object.entries(variablesData.rules)) {
-      updatedRuleVariables[ruleId] = {};
-      for (const [variableId, variable] of Object.entries(ruleVars)) {
-        const usageCount = variableUsageCounts.get(variable.name) || 0;
-        if (!updatedRuleVariables[ruleId]) {
-          updatedRuleVariables[ruleId] = {};
-        }
-        const ruleVars = updatedRuleVariables[ruleId];
-        if (ruleVars) {
-          ruleVars[variableId] = {
-            ...variable,
-            metadata: {
-              createdAt:
-                variable.metadata?.createdAt || new Date().toISOString(),
-              updatedAt: new Date().toISOString(),
-              ...variable.metadata,
-              usageCount,
-            },
-          };
-        }
-      }
-    }
-
-    // Save updated variables back to storage
-    const updatedVariablesData = {
-      global: updatedGlobalVariables,
-      profiles: updatedProfileVariables,
-      rules: updatedRuleVariables,
-    };
-
-    await ChromeApiUtils.storage.sync.set({
-      [STORAGE_KEYS.VARIABLES]: updatedVariablesData,
-    });
-
-    logger.info('Variable usage counts updated successfully');
-  } catch (error: unknown) {
-    logger.error('Failed to update variable usage counts:', error);
     throw error;
   }
 }

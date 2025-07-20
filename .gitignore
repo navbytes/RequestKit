@@ -12,3 +12,6 @@ dist/
 # Ignore build output
 build/
 coverage/
+
+# Lefthook local configuration
+.lefthook-local.yml

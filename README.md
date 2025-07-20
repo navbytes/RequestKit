@@ -288,6 +288,112 @@ Load `dist/` folder in Chrome's extension developer mode
 - **Console Debugging**: Comprehensive logging for troubleshooting
 - **Type Safety**: Full TypeScript support with strict checking
 
+### Git Hooks (Lefthook)
+
+RequestKit uses [Lefthook](https://github.com/evilmartians/lefthook) for automated code quality checks via git hooks. This ensures consistent code quality and prevents issues from being committed.
+
+#### Automatic Setup
+
+Git hooks are automatically installed when you run `npm install` (via the `prepare` script). For manual installation:
+
+```bash
+npm run lefthook:install
+```
+
+#### Hook Configuration
+
+**Pre-commit Hook** (Fast checks, <10 seconds):
+
+- **ESLint**: Lints staged TypeScript/JavaScript files with caching
+- **Prettier**: Checks code formatting on staged files
+- **TypeScript**: Validates type checking with incremental compilation
+
+**Pre-push Hook** (Comprehensive checks, <30 seconds):
+
+- **Vitest**: Runs the complete test suite
+- **Localization**: Validates message files for Chrome extension compatibility
+
+**Commit-msg Hook**:
+
+- **Conventional Commits**: Validates commit message format
+
+#### Usage Examples
+
+```bash
+# Normal development - hooks run automatically
+git add .
+git commit -m "feat: add new header validation"
+git push origin feature-branch
+
+# Emergency bypass (use sparingly)
+git commit --no-verify -m "hotfix: critical security patch"
+# or
+LEFTHOOK=0 git commit -m "hotfix: critical security patch"
+```
+
+#### Conventional Commit Format
+
+Commit messages must follow the [Conventional Commits](https://www.conventionalcommits.org/) specification:
+
+```
+<type>[optional scope]: <description>
+
+Types: feat, fix, docs, style, refactor, test, chore, perf, ci, build, revert
+```
+
+**Examples:**
+
+- `feat(auth): add user login functionality`
+- `fix: resolve memory leak in component`
+- `docs: update API documentation`
+- `test: add unit tests for variable resolution`
+
+#### Hook Management
+
+```bash
+# Install hooks
+npm run lefthook:install
+
+# Uninstall hooks
+npm run lefthook:uninstall
+
+# Check bypass options
+npm run hooks:skip
+```
+
+#### Local Configuration
+
+Create `.lefthook-local.yml` for developer-specific overrides (automatically ignored by git):
+
+```yaml
+# .lefthook-local.yml
+pre-commit:
+  commands:
+    eslint:
+      skip: true # Skip ESLint for this developer
+```
+
+#### Troubleshooting
+
+**Common Issues:**
+
+1. **Hooks not running**: Ensure hooks are installed with `npm run lefthook:install`
+2. **ESLint cache issues**: Delete `.eslintcache` and try again
+3. **TypeScript errors**: Run `npm run type-check` to see detailed errors
+4. **Test failures**: Run `npm test` to see specific test failures
+
+**Performance Issues:**
+
+- ESLint uses `--cache` for faster subsequent runs
+- TypeScript uses incremental compilation
+- Only staged files are checked in pre-commit hooks
+
+**Emergency Situations:**
+
+- Use `--no-verify` flag to bypass hooks for critical hotfixes
+- Use `LEFTHOOK=0` environment variable to disable all hooks
+- Always run checks manually after bypassing: `npm run lint && npm test`
+
 ## Component Architecture
 
 ### State Management

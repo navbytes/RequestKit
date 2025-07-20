@@ -45,8 +45,5 @@ export function extractDomain(url: string): string | null {
  * Check if domain pattern is valid
  */
 export function isValidDomainPattern(pattern: string): boolean {
-  if (!pattern || pattern.includes('..')) {
-    return false;
-  }
-  return true;
+  return !(!pattern || pattern.includes('..'));
 }

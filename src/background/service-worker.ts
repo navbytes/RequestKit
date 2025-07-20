@@ -190,6 +190,8 @@ ChromeApiUtils.runtime.onInstalled.addListener(
     } else if (details.reason === 'update') {
       initLogger.info('Extension updated - handling update...');
       await handleExtensionUpdate();
+    } else {
+      initLogger.info('Extension reason not handled:', details.reason);
     }
 
     // Set up context menus

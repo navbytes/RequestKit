@@ -159,9 +159,7 @@ export function VariableForm({
     ) {
       newErrors.profileId =
         'Profile selection is required for profile-scoped variables';
-    }
-
-    if (
+    } else if (
       formData.scope === VarScope.RULE &&
       (!formData.ruleId || formData.ruleId.trim() === '')
     ) {

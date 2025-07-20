@@ -52,7 +52,7 @@ commit-msg:
     conventional-commit:
       run: |
         # Check if commit message follows conventional commit format
-        if ! grep -qE "^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)(\(.+\))?: .{1,50}" "$1"; then
+        if ! grep -qE "^(feat|fix|docs|style|refactor|test|chore|perf|ci|build|revert)(\(.+\))?: .{1,50}" {1}; then
           echo "❌ Commit message must follow conventional commit format:"
           echo "   <type>[optional scope]: <description>"
           echo ""
@@ -60,7 +60,7 @@ commit-msg:
           echo "Example: feat(auth): add user login functionality"
           echo "Example: fix: resolve memory leak in component"
           echo ""
-          echo "Your message: $(cat $1)"
+          echo "Your message: $(cat {1})"
           exit 1
         fi
       fail_text: 'Commit message format validation failed.'

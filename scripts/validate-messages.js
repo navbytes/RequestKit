@@ -9,7 +9,7 @@
  * - Consistent message keys across locales
  */
 
-import { readFileSync, readdirSync } from 'fs';
+import { readFileSync, readdirSync, statSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -77,7 +77,18 @@ function main() {
   const localeData = {};
 
   try {
-    const locales = readdirSync(localesDir);
+    const locales = readdirSync(localesDir).filter(item => {
+      // Skip hidden files (like .DS_Store) and non-directories
+      if (item.startsWith('.')) return false;
+
+      try {
+        const itemPath = join(localesDir, item);
+        const stat = statSync(itemPath);
+        return stat.isDirectory();
+      } catch {
+        return false;
+      }
+    });
 
     for (const locale of locales) {
       const localePath = join(localesDir, locale, 'messages.json');

@@ -6,7 +6,8 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 
 import { VariableResolver } from '@/lib/core/variable-resolver';
-import { VariableStorageUtils } from '@/lib/core/variable-storage';
+import { installDefaultVariables } from '@/lib/core/variable-storage/management/defaultVariables';
+import { getGlobalVariables } from '@/lib/core/variable-storage/operations/globalOperations';
 import { BUILT_IN_TEMPLATES } from '@/lib/data/rule-templates';
 import { VariableScope } from '@/shared/types/variables';
 import type {
@@ -17,40 +18,41 @@ import type {
 import { loggers } from '@/shared/utils/debug';
 
 // Mock the variable storage and resolver modules
-vi.mock('@/lib/core/variable-storage', () => ({
-  VariableStorageUtils: {
-    initializeDefaultVariables: vi.fn().mockResolvedValue(undefined),
-    getGlobalVariables: vi.fn().mockResolvedValue({
-      'api-token': {
-        id: 'api-token',
-        name: 'API_TOKEN',
-        value: 'test-token-value',
-        scope: 'global',
-        metadata: { createdAt: new Date(), updatedAt: new Date() },
-      },
-      'api-key': {
-        id: 'api-key',
-        name: 'API_KEY',
-        value: 'test-key-value',
-        scope: 'global',
-        metadata: { createdAt: new Date(), updatedAt: new Date() },
-      },
-      'encoded-creds': {
-        id: 'encoded-creds',
-        name: 'ENCODED_CREDENTIALS',
-        value: 'test-creds-value',
-        scope: 'global',
-        metadata: { createdAt: new Date(), updatedAt: new Date() },
-      },
-      'dev-id': {
-        id: 'dev-id',
-        name: 'DEVELOPER_ID',
-        value: 'test-dev-id',
-        scope: 'global',
-        metadata: { createdAt: new Date(), updatedAt: new Date() },
-      },
-    }),
-  },
+vi.mock('@/lib/core/variable-storage/management/defaultVariables', () => ({
+  installDefaultVariables: vi.fn().mockResolvedValue(undefined),
+}));
+
+vi.mock('@/lib/core/variable-storage/operations/globalOperations', () => ({
+  getGlobalVariables: vi.fn().mockResolvedValue({
+    'api-token': {
+      id: 'api-token',
+      name: 'API_TOKEN',
+      value: 'test-token-value',
+      scope: 'global',
+      metadata: { createdAt: new Date(), updatedAt: new Date() },
+    },
+    'api-key': {
+      id: 'api-key',
+      name: 'API_KEY',
+      value: 'test-key-value',
+      scope: 'global',
+      metadata: { createdAt: new Date(), updatedAt: new Date() },
+    },
+    'encoded-creds': {
+      id: 'encoded-creds',
+      name: 'ENCODED_CREDENTIALS',
+      value: 'test-creds-value',
+      scope: 'global',
+      metadata: { createdAt: new Date(), updatedAt: new Date() },
+    },
+    'dev-id': {
+      id: 'dev-id',
+      name: 'DEVELOPER_ID',
+      value: 'test-dev-id',
+      scope: 'global',
+      metadata: { createdAt: new Date(), updatedAt: new Date() },
+    },
+  }),
 }));
 
 vi.mock('@/lib/core/variable-resolver', () => ({
@@ -124,8 +126,8 @@ export class VariableIntegrationTester {
     await this.runTest(
       'Default Variables Initialization',
       async () => {
-        await VariableStorageUtils.initializeDefaultVariables();
-        const globalVars = await VariableStorageUtils.getGlobalVariables();
+        await installDefaultVariables();
+        const globalVars = await getGlobalVariables();
 
         const requiredVars = [
           'API_TOKEN',
@@ -517,7 +519,7 @@ export class VariableIntegrationTester {
    * Create a test context with sample variables and request context
    */
   private static async createTestContext(): Promise<VariableContext> {
-    const globalVars = await VariableStorageUtils.getGlobalVariables();
+    const globalVars = await getGlobalVariables();
 
     const requestContext: RequestContext = {
       url: 'https://api.example.com/v1/users?limit=10',
@@ -551,7 +553,7 @@ export class VariableIntegrationTester {
       logger.info('🚀 Running quick validation...');
 
       // Initialize default variables
-      await VariableStorageUtils.initializeDefaultVariables();
+      await installDefaultVariables();
 
       // Test basic resolution
       const context = await this.createTestContext();
@@ -590,12 +592,11 @@ describe('Variable System Integration Tests', () => {
   });
 
   it('should have variable storage utilities', () => {
-    // Test that VariableStorageUtils exists and has expected methods
-    expect(VariableStorageUtils).toBeDefined();
-    expect(typeof VariableStorageUtils.initializeDefaultVariables).toBe(
-      'function'
-    );
-    expect(typeof VariableStorageUtils.getGlobalVariables).toBe('function');
+    // Test that the modular functions exist and are functions
+    expect(installDefaultVariables).toBeDefined();
+    expect(typeof installDefaultVariables).toBe('function');
+    expect(getGlobalVariables).toBeDefined();
+    expect(typeof getGlobalVariables).toBe('function');
   });
 
   it('should have variable resolver functionality', () => {

@@ -3,7 +3,8 @@
  */
 
 import { STORAGE_KEYS, DEFAULT_SETTINGS } from '@/config/constants';
-import { VariableStorageUtils } from '@/lib/core/variable-storage';
+import { installDefaultVariables } from '@/lib/core/variable-storage/management/defaultVariables';
+import { initializeVariablesStorage } from '@/lib/core/variable-storage/utils/storageUtils';
 import { LocalizationUtils } from '@/shared/hooks/useLocalization';
 import { ChromeApiUtils } from '@/shared/utils/chrome-api';
 import { loggers } from '@/shared/utils/debug';
@@ -39,8 +40,8 @@ export async function initializeExtension(): Promise<void> {
     });
 
     // Initialize variables storage and default variables
-    await VariableStorageUtils.initializeVariablesStorage();
-    await VariableStorageUtils.initializeDefaultVariables();
+    await initializeVariablesStorage();
+    await installDefaultVariables();
 
     logger.info('Extension initialized with default data and variables');
 

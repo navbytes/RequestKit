@@ -4,7 +4,9 @@
 
 import { STORAGE_KEYS } from '@/config/constants';
 import { VariableResolver } from '@/lib/core/variable-resolver';
-import { VariableStorageUtils } from '@/lib/core/variable-storage';
+import { saveGlobalVariable } from '@/lib/core/variable-storage/operations/globalOperations';
+import { saveProfileVariable } from '@/lib/core/variable-storage/operations/profileOperations';
+import { getAllVariables } from '@/lib/core/variable-storage/utils/storageUtils';
 import type { Variable, VariableContext } from '@/shared/types/variables';
 import { VariableScope } from '@/shared/types/variables';
 import { ChromeApiUtils } from '@/shared/utils/chrome-api';
@@ -544,7 +546,7 @@ export class VariableHandler {
       }
 
       // Get variables from storage
-      const variablesData = await VariableStorageUtils.getAllVariables();
+      const variablesData = await getAllVariables();
 
       // Include global variables
       if (data?.includeGlobal !== false) {
@@ -617,7 +619,7 @@ export class VariableHandler {
       };
 
       // Get existing variables
-      const existingVariables = await VariableStorageUtils.getAllVariables();
+      const existingVariables = await getAllVariables();
 
       // Import global variables
       if (data.globalVariables) {
@@ -647,7 +649,7 @@ export class VariableHandler {
             }
 
             // Import the variable
-            await VariableStorageUtils.saveGlobalVariable(variable);
+            await saveGlobalVariable(variable);
             result.imported.global++;
           } catch (error) {
             result.errors.push(
@@ -704,10 +706,7 @@ export class VariableHandler {
               }
 
               // Import the variable
-              await VariableStorageUtils.saveProfileVariable(
-                targetProfile,
-                variable
-              );
+              await saveProfileVariable(targetProfile, variable);
               result.imported.profiles[targetProfile] =
                 (result.imported.profiles[targetProfile] || 0) + 1;
             } catch (error) {
@@ -739,7 +738,7 @@ export class VariableHandler {
   ): Promise<VariableContext> {
     try {
       // Get current variables from storage
-      const variablesData = await VariableStorageUtils.getAllVariables();
+      const variablesData = await getAllVariables();
       const globalVariables = variablesData.global || {};
       const profileVariables = variablesData.profiles || {};
 

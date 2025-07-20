@@ -2,7 +2,8 @@
 
 import { STORAGE_KEYS, DEFAULT_SETTINGS } from '@/config/constants';
 import { VariableResolver } from '@/lib/core/variable-resolver';
-import { VariableStorageUtils } from '@/lib/core/variable-storage';
+import { updateVariableUsageCounts } from '@/lib/core/variable-storage/management/usageTracking';
+import { getAllVariables } from '@/lib/core/variable-storage/utils/storageUtils';
 import { AnalyticsMonitor } from '@/lib/integrations/analytics-monitor';
 import { PerformanceMonitor } from '@/lib/integrations/performance-monitor';
 import type { Profile } from '@/shared/types/profiles';
@@ -657,7 +658,7 @@ async function loadStorageData(): Promise<void> {
 
     // Update variable usage counts on startup
     try {
-      await VariableStorageUtils.updateVariableUsageCounts();
+      await updateVariableUsageCounts();
       storageLogger.info('Variable usage counts updated on startup');
     } catch (error) {
       logError(
@@ -696,7 +697,7 @@ async function buildVariableContext(requestDetails?: {
   let currentGlobalVariables = globalVariables;
   let currentProfileVariables = profileVariables;
   try {
-    const variablesData = await VariableStorageUtils.getAllVariables();
+    const variablesData = await getAllVariables();
     currentGlobalVariables = variablesData.global || {};
     currentProfileVariables = variablesData.profiles || {};
 

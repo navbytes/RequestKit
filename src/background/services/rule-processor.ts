@@ -4,9 +4,9 @@
 
 import { STORAGE_KEYS } from '@/config/constants';
 import { VariableResolver } from '@/lib/core/variable-resolver';
-import { VariableStorageUtils } from '@/lib/core/variable-storage';
+import { getAllVariables } from '@/lib/core/variable-storage/utils/storageUtils';
 import type { HeaderRule, RuleCondition } from '@/shared/types/rules';
-import type { VariableContext } from '@/shared/types/variables';
+import type { VariableContext, Variable } from '@/shared/types/variables';
 import { ChromeApiUtils } from '@/shared/utils/chrome-api';
 import { loggers } from '@/shared/utils/debug';
 
@@ -289,7 +289,7 @@ export class RuleProcessor {
     tabId?: number;
   }): Promise<VariableContext> {
     // Get current variables from storage
-    const variablesData = await VariableStorageUtils.getAllVariables();
+    const variablesData = await getAllVariables();
     const globalVariables = variablesData.global || {};
     const profileVariables = variablesData.profiles || {};
 
@@ -305,11 +305,11 @@ export class RuleProcessor {
     const context: VariableContext = {
       systemVariables: [], // System variables are handled by VariableResolver
       globalVariables: Object.values(globalVariables).filter(
-        v => v.enabled !== false
+        (v: Variable) => v.enabled !== false
       ),
       profileVariables: Object.values(
         profileVariables[activeProfile] || {}
-      ).filter(v => v.enabled !== false),
+      ).filter((v: Variable) => v.enabled !== false),
       ruleVariables: [], // Rule-specific variables would be added per rule
       profileId: activeProfile,
     };

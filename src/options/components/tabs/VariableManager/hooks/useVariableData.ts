@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'preact/hooks';
 
-import {
-  VariableStorageUtils,
-  getStorageStatistics,
-} from '@/lib/core/variable-storage';
+import { getStorageStatistics } from '@/lib/core/variable-storage/queries/storageStats';
+import { getAllVariables } from '@/lib/core/variable-storage/utils/storageUtils';
 import type { Variable } from '@/shared/types/variables';
 import { loggers } from '@/shared/utils/debug';
 
@@ -47,7 +45,7 @@ export function useVariableData() {
     try {
       setLoading(true);
       const [variablesData, storageStats] = await Promise.all([
-        VariableStorageUtils.getAllVariables(),
+        getAllVariables(),
         getStorageStatistics(),
       ]);
 

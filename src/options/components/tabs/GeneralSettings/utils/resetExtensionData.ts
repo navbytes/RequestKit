@@ -1,6 +1,6 @@
 import { DEFAULT_SETTINGS } from '@/config/constants';
 import { StorageUtils } from '@/lib/core';
-import { VariableStorageUtils } from '@/lib/core/variable-storage';
+import { installDefaultVariables } from '@/lib/core/variable-storage/management/defaultVariables';
 import { ChromeApiUtils } from '@/shared/utils/chrome-api';
 import { loggers } from '@/shared/utils/debug';
 import { ThemeManager, type Theme } from '@/shared/utils/theme';
@@ -41,7 +41,7 @@ export const resetExtensionData = async (): Promise<void> => {
 
   // Initialize default variables
   logger.info('[Reset] Initializing default variables...');
-  await VariableStorageUtils.initializeDefaultVariables();
+  await installDefaultVariables();
 
   // Apply default theme
   logger.info('[Reset] Applying default theme...');

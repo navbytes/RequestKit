@@ -52,7 +52,7 @@ export function TabNavigation({
     // Core Functions
     {
       id: 'rules',
-      label: t('options_tab_rules'),
+      label: t('tab_rule_management'),
       icon: 'target',
       description: t('options_tab_rules_desc'),
       group: 'core',
@@ -66,14 +66,14 @@ export function TabNavigation({
     },
     {
       id: 'templates',
-      label: t('options_tab_templates'),
+      label: t('tab_rule_templates'),
       icon: 'file-text',
       description: t('options_tab_templates_desc'),
       group: 'core',
     },
     {
       id: 'variables',
-      label: t('options_tab_variables'),
+      label: t('tab_variable_manager'),
       icon: 'sparkles',
       description: t('options_tab_variables_desc'),
       group: 'core',
@@ -81,7 +81,7 @@ export function TabNavigation({
     // Advanced Features
     {
       id: 'conditional-rules',
-      label: t('options_tab_conditional_rules'),
+      label: t('tab_conditional_rules'),
       icon: 'git-branch',
       description: t('options_tab_conditional_rules_desc'),
       group: 'advanced',
@@ -95,7 +95,7 @@ export function TabNavigation({
     },
     {
       id: 'performance',
-      label: t('options_tab_performance'),
+      label: t('tab_performance'),
       icon: 'zap',
       description: t('options_tab_performance_desc'),
       group: 'advanced',
@@ -110,7 +110,7 @@ export function TabNavigation({
     },
     {
       id: 'settings',
-      label: t('options_tab_settings'),
+      label: t('tab_general_settings'),
       icon: 'settings',
       description: t('options_tab_settings_desc'),
       group: 'system',
@@ -140,7 +140,7 @@ export function TabNavigation({
     },
     {
       id: 'advanced',
-      label: t('options_group_advanced'),
+      label: t('group_advanced_features'),
       tabs: localizedTabs.filter(tab => tab.group === 'advanced'),
     },
     {

@@ -80,14 +80,12 @@ export function VariableList({
 
   const getProfileName = (profileId: string): string => {
     const profile = profiles.find(p => p.id === profileId);
-    return profile
-      ? profile.name
-      : t('variables_profile_fallback', [profileId]);
+    return profile ? profile.name : t('fallback_profile_item', [profileId]);
   };
 
   const getRuleName = (ruleId: string): string => {
     const rule = rules.find(r => r.id === ruleId);
-    return rule ? rule.name : t('variables_rule_fallback', [ruleId]);
+    return rule ? rule.name : t('fallback_rule_item', [ruleId]);
   };
 
   const getAssociationDisplay = (variable: Variable): string => {
@@ -203,21 +201,21 @@ export function VariableList({
       <button
         onClick={() => onEdit(variable)}
         className="p-1 text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-        title={t('variables_tooltip_edit')}
+        title={t('tooltip_edit')}
       >
         <Icon name="edit" size={16} />
       </button>
       <button
         onClick={() => onDuplicate(variable)}
         className="p-1 text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors"
-        title={t('variables_tooltip_copy')}
+        title={t('tooltip_copy')}
       >
         <Icon name="copy" size={16} />
       </button>
       <button
         onClick={() => onDelete(variable)}
         className="p-1 text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
-        title={t('variables_tooltip_delete')}
+        title={t('tooltip_delete')}
       >
         <Icon name="trash" size={16} />
       </button>

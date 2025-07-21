@@ -59,8 +59,8 @@ export const VariableDetailsSection = ({
           <div>
             <span className="text-gray-500 dark:text-gray-400">
               {variable.scope === VariableScope.PROFILE
-                ? t('variables_profile_label')
-                : t('variables_rule_label')}
+                ? t('common_profile')
+                : t('common_rule')}
               :
             </span>
             <span className="ml-2 text-gray-900 dark:text-white">

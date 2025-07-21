@@ -190,7 +190,7 @@ export function ResolutionStepCard({
           {step.metadata && (
             <div>
               <div className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-2">
-                {t('devtools_metadata_label')}
+                {t('common_metadata')}
               </div>
               <div className="bg-gray-50 dark:bg-gray-800 rounded p-3 space-y-2">
                 {step.metadata.depth !== undefined && (

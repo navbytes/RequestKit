@@ -314,7 +314,7 @@ export function OptionsApp() {
         <div className="text-center">
           <div className="spinner w-8 h-8 mx-auto mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400">
-            {t('options_loading')}
+            {t('message_loading_app')}
           </p>
         </div>
       </div>

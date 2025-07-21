@@ -48,7 +48,7 @@ export function TemplateCard({
       );
     if (template.schedule) features.push(t('templates_features_scheduled'));
     if (template.limits) features.push(t('templates_features_rate_limited'));
-    return features.join(', ') || t('templates_features_none');
+    return features.join(', ') || t('message_no_items');
   };
 
   const getTemplateTypeIcon = (templateType: string) => {

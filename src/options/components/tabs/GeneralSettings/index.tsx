@@ -56,7 +56,7 @@ export function GeneralSettings({
       className={`p-6 ${localSettings.ui.compactMode ? 'compact-mode' : ''}`}
     >
       <TabDescription
-        title={t('settings_general_title')}
+        title={t('tab_general_settings')}
         description={t('settings_general_description')}
         icon="settings"
         features={[
@@ -81,7 +81,7 @@ export function GeneralSettings({
           disabled={saving}
           className="btn btn-primary ml-auto"
         >
-          {saving ? t('settings_saving') : t('settings_save')}
+          {saving ? t('status_saving') : t('settings_save')}
         </button>
       </div>
 
@@ -148,7 +148,7 @@ export function GeneralSettings({
           title={t('settings_reset_title')}
           description={t('settings_reset_description')}
           actionLabel={
-            resetting ? t('settings_resetting') : t('settings_reset_action')
+            resetting ? t('status_resetting') : t('settings_reset_action')
           }
           onAction={onResetToDefaults}
           actionLoading={resetting}

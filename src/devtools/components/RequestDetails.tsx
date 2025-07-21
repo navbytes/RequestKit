@@ -58,7 +58,7 @@ export function RequestDetails({
           {/* URL */}
           <div>
             <div className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-              {t('devtools_url_label')}
+              {t('common_url')}
             </div>
             <div className="code text-sm break-all">{selectedRequest.url}</div>
           </div>
@@ -67,13 +67,13 @@ export function RequestDetails({
           <div className="grid grid-cols-2 gap-4">
             <div>
               <div className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-                {t('devtools_method_label')}
+                {t('common_method')}
               </div>
               <div className="code text-sm">{selectedRequest.method}</div>
             </div>
             <div>
               <div className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
-                {t('devtools_status_label')}
+                {t('common_status')}
               </div>
               <div className="code text-sm">{selectedRequest.status}</div>
             </div>
@@ -90,7 +90,7 @@ export function RequestDetails({
                     : 'bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400'
                 }`}
               >
-                {t('devtools_headers_tab')}
+                {t('common_headers')}
               </button>
               {selectedRequest.variableResolutionTrace && (
                 <button

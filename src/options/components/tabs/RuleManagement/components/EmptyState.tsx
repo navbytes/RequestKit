@@ -17,7 +17,7 @@ export function EmptyState({ onCreateRule }: Readonly<EmptyStateProps>) {
         {t('rules_empty_state_description')}
       </p>
       <button onClick={onCreateRule} className="btn btn-primary">
-        {t('rules_create_first')}
+        {t('action_create_first')}
       </button>
     </div>
   );

@@ -23,7 +23,7 @@ export function TemplatesList({
       {templates.length === 0 ? (
         <EmptyState
           icon="file-text"
-          title={t('templates_no_templates_found')}
+          title={t('message_no_templates_found')}
           description={
             searchQuery.trim()
               ? t('templates_try_different_search')

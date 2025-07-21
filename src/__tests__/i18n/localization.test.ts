@@ -208,7 +208,7 @@ describe('Localization System', () => {
       'extensionName',
       'extensionDescription',
       'ui_button_save',
-      'ui_button_cancel',
+      'common_cancel',
       'errors_validation_domain_invalid',
       'notifications_rule_created',
     ];

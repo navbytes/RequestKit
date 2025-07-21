@@ -6,7 +6,7 @@
 import { I18nUtils } from '@/shared/utils/i18n';
 
 // Application constants (now using i18n)
-export const APP_NAME_KEY = 'app_name';
+export const APP_NAME_KEY = 'extensionName';
 export const APP_VERSION_KEY = 'app_version';
 
 // Get localized app name and version
@@ -42,9 +42,9 @@ export const TEMPLATE_CATEGORY_KEYS = {
 
 // Header operation keys (replacing display names)
 export const HEADER_OPERATION_KEYS = {
-  SET: 'rules_header_operations_set',
-  APPEND: 'rules_header_operations_append',
-  REMOVE: 'rules_header_operations_remove',
+  SET: 'operation_set',
+  APPEND: 'operation_append',
+  REMOVE: 'operation_remove',
 } satisfies Record<string, string>;
 
 // Rule priority keys (replacing display names)
@@ -67,7 +67,7 @@ export const THEME_KEYS = {
 export const SETTINGS_TAB_KEYS = {
   GENERAL: 'settings_general',
   NOTIFICATIONS: 'settings_notifications',
-  PERFORMANCE: 'settings_performance',
+  PERFORMANCE: 'tab_performance',
   SECURITY: 'settings_security',
   BACKUP: 'settings_backup',
 } satisfies Record<string, string>;
@@ -75,13 +75,13 @@ export const SETTINGS_TAB_KEYS = {
 // UI button keys
 export const UI_BUTTON_KEYS = {
   SAVE: 'ui_button_save',
-  CANCEL: 'ui_button_cancel',
+  CANCEL: 'common_cancel',
   DELETE: 'ui_button_delete',
   EDIT: 'ui_button_edit',
   ADD: 'ui_button_add',
   CREATE: 'ui_button_create',
   UPDATE: 'ui_button_update',
-  REMOVE: 'ui_button_remove',
+  REMOVE: 'common_remove',
   CLOSE: 'ui_button_close',
   BACK: 'ui_button_back',
   NEXT: 'ui_button_next',
@@ -91,7 +91,7 @@ export const UI_BUTTON_KEYS = {
   CLEAR: 'ui_button_clear',
   REFRESH: 'ui_button_refresh',
   EXPORT: 'ui_button_export',
-  IMPORT: 'ui_button_import',
+  IMPORT: 'common_import',
   COPY: 'ui_button_copy',
   PASTE: 'ui_button_paste',
 } satisfies Record<string, string>;
@@ -100,16 +100,16 @@ export const UI_BUTTON_KEYS = {
 export const UI_LABEL_KEYS = {
   NAME: 'ui_label_name',
   DESCRIPTION: 'ui_label_description',
-  URL: 'ui_label_url',
-  METHOD: 'ui_label_method',
-  HEADERS: 'ui_label_headers',
+  URL: 'common_url',
+  METHOD: 'common_method',
+  HEADERS: 'common_headers',
   VALUE: 'ui_label_value',
   ENABLED: 'ui_label_enabled',
-  DISABLED: 'ui_label_disabled',
+  DISABLED: 'common_disabled',
   PRIORITY: 'ui_label_priority',
   PATTERN: 'ui_label_pattern',
   OPERATION: 'ui_label_operation',
-  STATUS: 'ui_label_status',
+  STATUS: 'common_status',
   TYPE: 'ui_label_type',
   CATEGORY: 'ui_label_category',
   TAGS: 'ui_label_tags',
@@ -124,13 +124,13 @@ export const CONTEXT_MENU_KEYS = {
 
 // DevTools keys
 export const DEVTOOLS_KEYS = {
-  PANEL_TITLE: 'devtools_panel_title',
+  PANEL_TITLE: 'extensionName',
   REQUESTS_TAB: 'devtools_requests_tab',
-  RULES_TAB: 'devtools_rules_tab',
-  PERFORMANCE_TAB: 'devtools_performance_tab',
-  NO_REQUESTS: 'devtools_no_requests',
+  RULES_TAB: 'tab_rules',
+  PERFORMANCE_TAB: 'tab_performance',
+  NO_REQUESTS: 'devtools_no_requests_captured',
   REQUEST_DETAILS: 'devtools_request_details',
-  MATCHED_RULES: 'devtools_matched_rules',
+  MATCHED_RULES: 'devtools_matched_rules_label',
 } satisfies Record<string, string>;
 
 // Notification message keys

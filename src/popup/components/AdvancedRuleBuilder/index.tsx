@@ -44,7 +44,7 @@ export function AdvancedRuleBuilder({
         <button
           onClick={onCancel}
           className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
-          title={t('popup_cancel')}
+          title={t('common_cancel')}
         >
           <Icon name="close" className="w-5 h-5" />
         </button>
@@ -103,7 +103,7 @@ export function AdvancedRuleBuilder({
             onClick={onCancel}
             className="flex-1 btn btn-secondary"
           >
-            {t('ui_button_cancel')}
+            {t('common_cancel')}
           </button>
         </div>
       </form>

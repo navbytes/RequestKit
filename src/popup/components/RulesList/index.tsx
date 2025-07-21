@@ -33,7 +33,7 @@ export function RulesList({
     return (
       <EmptyState
         icon="file-text"
-        title={t('rules_empty_title')}
+        title={t('rules_empty_state_title')}
         description={t('rules_empty_description')}
         className="py-6"
       />

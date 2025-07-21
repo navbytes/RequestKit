@@ -27,7 +27,7 @@ export const VariableMetadataSection = ({
   return (
     <div>
       <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
-        {t('variables_metadata_title')}
+        {t('common_metadata')}
       </h4>
       <div className="space-y-2 text-sm">
         <MetadataField
@@ -35,7 +35,7 @@ export const VariableMetadataSection = ({
           value={
             variable.metadata?.createdAt
               ? formatDate(variable.metadata.createdAt)
-              : t('variables_unknown_date')
+              : t('common_unknown')
           }
         />
 
@@ -44,7 +44,7 @@ export const VariableMetadataSection = ({
           value={
             variable.metadata?.updatedAt
               ? formatDate(variable.metadata.updatedAt)
-              : t('variables_unknown_date')
+              : t('common_unknown')
           }
         />
 

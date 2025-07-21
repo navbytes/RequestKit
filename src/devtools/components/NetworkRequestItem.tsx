@@ -129,7 +129,7 @@ export function NetworkRequestItem({
             <span>
               {request.modifiedHeaders.request.length} req,{' '}
               {request.modifiedHeaders.response.length} res{' '}
-              {t('devtools_headers_tab')}
+              {t('common_headers')}
             </span>
           )}
           {hasRuleMatches && (

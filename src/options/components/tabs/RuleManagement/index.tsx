@@ -109,7 +109,7 @@ export function RuleManagement({
   return (
     <div className="p-6">
       <TabDescription
-        title={t('rules_management_title')}
+        title={t('tab_rule_management')}
         description={t('rules_management_description')}
         icon="settings"
         features={[

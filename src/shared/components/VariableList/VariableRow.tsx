@@ -41,7 +41,7 @@ const VariableName = ({
         {variable.name}
       </p>
       {!variable.enabled && (
-        <span className="text-xs text-red-500">{t('ui_label_disabled')}</span>
+        <span className="text-xs text-red-500">{t('common_disabled')}</span>
       )}
     </div>
   );

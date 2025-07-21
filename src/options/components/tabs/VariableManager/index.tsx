@@ -87,7 +87,7 @@ export function VariableManager() {
     return (
       <div className="p-6 flex items-center justify-center">
         <Icon name="loader" className="animate-spin mr-2" />
-        <span>{t('variables_loading')}</span>
+        <span>{t('message_loading')}</span>
       </div>
     );
   }
@@ -95,7 +95,7 @@ export function VariableManager() {
   return (
     <div className="space-y-6">
       <TabDescription
-        title={t('variables_management_title')}
+        title={t('tab_variable_manager')}
         description={t('variables_management_description')}
         icon="sparkles"
         features={[
@@ -167,8 +167,8 @@ export function VariableManager() {
           icon="sparkles"
           title={
             hasActiveFilters
-              ? t('variables_no_match_filters')
-              : t('variables_no_configured')
+              ? t('message_no_matches')
+              : t('message_none_configured')
           }
           description={
             hasActiveFilters
@@ -177,8 +177,8 @@ export function VariableManager() {
           }
           actionLabel={
             hasActiveFilters
-              ? t('variables_clear_filters')
-              : t('variables_create_first')
+              ? t('action_clear_filters')
+              : t('action_create_first')
           }
           onAction={() => {
             if (hasActiveFilters) {

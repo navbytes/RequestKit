@@ -15,3 +15,16 @@ coverage/
 
 # Lefthook local configuration
 .lefthook-local.yml
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore cache files
+.cache/
+.nyc_output/
+.eslintcache
+
+
+scripts/
+temp/

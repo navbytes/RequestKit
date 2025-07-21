@@ -20,7 +20,7 @@ export function HeadersSection({
     <div>
       <div className="flex items-center justify-between mb-2">
         <h4 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-          {t('ui_label_headers')}
+          {t('common_headers')}
         </h4>
         <button
           type="button"
@@ -41,7 +41,7 @@ export function HeadersSection({
                 onChange={e =>
                   onUpdate(index, 'name', (e.target as HTMLInputElement).value)
                 }
-                placeholder={t('forms_header_name_placeholder')}
+                placeholder={t('placeholder_header_name')}
                 className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
@@ -53,7 +53,7 @@ export function HeadersSection({
                 onChange={e =>
                   onUpdate(index, 'value', (e.target as HTMLInputElement).value)
                 }
-                placeholder={t('forms_header_value_placeholder')}
+                placeholder={t('placeholder_header_value')}
                 className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               />
             </div>
@@ -70,13 +70,9 @@ export function HeadersSection({
                 }
                 className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
               >
-                <option value="set">{t('rules_header_operations_set')}</option>
-                <option value="append">
-                  {t('rules_header_operations_append')}
-                </option>
-                <option value="remove">
-                  {t('rules_header_operations_remove')}
-                </option>
+                <option value="set">{t('operation_set')}</option>
+                <option value="append">{t('operation_append')}</option>
+                <option value="remove">{t('operation_remove')}</option>
               </select>
             </div>
 
@@ -104,7 +100,7 @@ export function HeadersSection({
                 className="w-full btn btn-sm btn-error"
                 disabled={headers.length === 1}
               >
-                {t('ui_button_remove')}
+                {t('common_remove')}
               </button>
             </div>
           </div>

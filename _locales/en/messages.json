@@ -7,14 +7,6 @@
     "message": "Advanced Chrome extension for injecting custom headers with powerful Variable System, pattern matching, and testing tools",
     "description": "Description of the extension"
   },
-  "extensionShortName": {
-    "message": "RequestKit",
-    "description": "Short name for the extension"
-  },
-  "app_name": {
-    "message": "RequestKit",
-    "description": "Application name"
-  },
   "app_version": {
     "message": "1.0.0",
     "description": "Application version"
@@ -23,7 +15,7 @@
     "message": "Save",
     "description": "Save button label"
   },
-  "ui_button_cancel": {
+  "common_cancel": {
     "message": "Cancel",
     "description": "Cancel button label"
   },
@@ -47,7 +39,7 @@
     "message": "Update",
     "description": "Update button label"
   },
-  "ui_button_remove": {
+  "common_remove": {
     "message": "Remove",
     "description": "Remove button label"
   },
@@ -87,7 +79,7 @@
     "message": "Export",
     "description": "Export button label"
   },
-  "ui_button_import": {
+  "common_import": {
     "message": "Import",
     "description": "Import button label"
   },
@@ -99,7 +91,6 @@
     "message": "Paste",
     "description": "Paste button label"
   },
-
   "ui_label_name": {
     "message": "Name",
     "description": "Name field label"
@@ -108,15 +99,15 @@
     "message": "Description",
     "description": "Description field label"
   },
-  "ui_label_url": {
+  "common_url": {
     "message": "URL",
     "description": "URL field label"
   },
-  "ui_label_method": {
+  "common_method": {
     "message": "Method",
     "description": "HTTP method field label"
   },
-  "ui_label_headers": {
+  "common_headers": {
     "message": "Headers",
     "description": "Headers field label"
   },
@@ -128,7 +119,7 @@
     "message": "Enabled",
     "description": "Enabled field label"
   },
-  "ui_label_disabled": {
+  "common_disabled": {
     "message": "Disabled",
     "description": "Disabled field label"
   },
@@ -156,7 +147,7 @@
     "message": "Operation",
     "description": "Operation field label"
   },
-  "ui_label_status": {
+  "common_status": {
     "message": "Status",
     "description": "Status field label"
   },
@@ -172,7 +163,6 @@
     "message": "Tags",
     "description": "Tags field label"
   },
-
   "ui_tooltip_save": {
     "message": "Save current changes",
     "description": "Save button tooltip"
@@ -205,7 +195,6 @@
     "message": "Disable extension",
     "description": "Aria label for disable extension button"
   },
-
   "errors_validation_domain_invalid": {
     "message": "Invalid domain pattern",
     "description": "Error message for invalid domain"
@@ -254,7 +243,6 @@
     "message": "Invalid format",
     "description": "Error message for format validation"
   },
-
   "notifications_rule_created": {
     "message": "Rule '$1' created successfully",
     "description": "Notification when a rule is created",
@@ -311,7 +299,6 @@
     "message": "Data imported successfully",
     "description": "Notification when data is imported"
   },
-
   "templates_cors_name": {
     "message": "CORS Headers",
     "description": "Name of CORS template"
@@ -344,7 +331,6 @@
     "message": "Add common security headers",
     "description": "Description of security template"
   },
-
   "profiles_default_dev_name": {
     "message": "Development",
     "description": "Name of default development profile"
@@ -361,16 +347,15 @@
     "message": "Profile for production environment with minimal logging",
     "description": "Description of default production profile"
   },
-
-  "rules_header_operations_set": {
+  "operation_set": {
     "message": "Set",
     "description": "Set header operation"
   },
-  "rules_header_operations_append": {
+  "operation_append": {
     "message": "Append",
     "description": "Append header operation"
   },
-  "rules_header_operations_remove": {
+  "operation_remove": {
     "message": "Remove",
     "description": "Remove header operation"
   },
@@ -394,7 +379,6 @@
     "message": "Very High",
     "description": "Very high priority label"
   },
-
   "settings_general": {
     "message": "General",
     "description": "General settings tab"
@@ -403,7 +387,7 @@
     "message": "Notifications",
     "description": "Notifications settings tab"
   },
-  "settings_performance": {
+  "tab_performance": {
     "message": "Performance",
     "description": "Performance settings tab"
   },
@@ -427,7 +411,6 @@
     "message": "Auto",
     "description": "Auto theme option"
   },
-
   "contextmenu_create_rule": {
     "message": "Create rule for this URL",
     "description": "Context menu item to create rule"
@@ -440,28 +423,19 @@
     "message": "Toggle RequestKit",
     "description": "Context menu item to toggle extension"
   },
-
-  "devtools_panel_title": {
-    "message": "RequestKit",
-    "description": "DevTools panel title"
-  },
   "devtools_requests_tab": {
     "message": "Requests",
     "description": "Requests tab in DevTools"
   },
-  "devtools_rules_tab": {
+  "tab_rules": {
     "message": "Rules",
     "description": "Rules tab in DevTools"
   },
-  "devtools_performance_tab": {
-    "message": "Performance",
-    "description": "Performance tab in DevTools"
-  },
-  "devtools_no_requests": {
+  "devtools_no_requests_captured": {
     "message": "No requests captured yet",
     "description": "Message when no requests are captured"
   },
-  "devtools_matched_rules": {
+  "devtools_matched_rules_label": {
     "message": "Matched Rules",
     "description": "Matched rules section title"
   },
@@ -483,28 +457,22 @@
   "ui_description_unassigned_rules": {
     "message": "Showing rules that are not assigned to any profile"
   },
-  "rules_empty_title": {
+  "rules_empty_state_title": {
     "message": "No rules created yet"
   },
   "rules_empty_description": {
     "message": "Create your first header rule to get started"
   },
-  "rules_header_title": {
-    "message": "Rules"
-  },
-  "rules_badge_active": {
+  "status_active": {
     "message": "active"
   },
   "quick_rule_title": {
     "message": "Quick Rule for"
   },
-  "quick_rule_tooltip_cancel": {
-    "message": "Cancel"
-  },
   "quick_rule_description": {
     "message": "This will add a header to all requests matching"
   },
-  "quick_rule_label_name": {
+  "common_rule_name": {
     "message": "Rule Name"
   },
   "quick_rule_placeholder_name": {
@@ -522,14 +490,11 @@
   "quick_rule_placeholder_header_value": {
     "message": "e.g., custom-value"
   },
-  "quick_rule_button_creating": {
+  "status_creating": {
     "message": "Creating..."
   },
-  "quick_rule_button_create": {
+  "action_create_rule": {
     "message": "Create Rule"
-  },
-  "button_cancel": {
-    "message": "Cancel"
   },
   "add_rule_button_text": {
     "message": "Create Rule for"
@@ -540,7 +505,7 @@
   "add_rule_default_domain": {
     "message": "this page"
   },
-  "options_tab_rules": {
+  "tab_rule_management": {
     "message": "Rule Management"
   },
   "options_tab_rules_desc": {
@@ -552,19 +517,19 @@
   "options_tab_profiles_desc": {
     "message": "Create and manage environment profiles"
   },
-  "options_tab_templates": {
+  "tab_rule_templates": {
     "message": "Rule Templates"
   },
   "options_tab_templates_desc": {
     "message": "Browse and manage rule templates"
   },
-  "options_tab_variables": {
+  "tab_variable_manager": {
     "message": "Variable Manager"
   },
   "options_tab_variables_desc": {
     "message": "Create and manage variables for dynamic values"
   },
-  "options_tab_conditional_rules": {
+  "tab_conditional_rules": {
     "message": "Conditional Rules"
   },
   "options_tab_conditional_rules_desc": {
@@ -576,9 +541,6 @@
   "options_tab_rule_testing_desc": {
     "message": "Test and validate your rules"
   },
-  "options_tab_performance": {
-    "message": "Performance"
-  },
   "options_tab_performance_desc": {
     "message": "Monitor and optimize performance"
   },
@@ -588,7 +550,7 @@
   "options_tab_analytics_desc": {
     "message": "View usage analytics and performance insights"
   },
-  "options_tab_settings": {
+  "tab_general_settings": {
     "message": "General Settings"
   },
   "options_tab_settings_desc": {
@@ -609,7 +571,7 @@
   "options_group_core": {
     "message": "Core Functions"
   },
-  "options_group_advanced": {
+  "group_advanced_features": {
     "message": "Advanced Features"
   },
   "options_group_system": {
@@ -618,29 +580,20 @@
   "options_group_support": {
     "message": "Support & Tools"
   },
-  "rule_badge_active": {
-    "message": "Active"
-  },
-  "rule_badge_disabled": {
-    "message": "Disabled"
-  },
-  "rule_tooltip_disable": {
+  "tooltip_disable": {
     "message": "Disable rule"
   },
-  "rule_tooltip_enable": {
+  "tooltip_enable": {
     "message": "Enable rule"
   },
-  "rule_tooltip_edit": {
+  "tooltip_edit": {
     "message": "Edit rule"
   },
-  "rule_tooltip_delete": {
+  "tooltip_delete": {
     "message": "Delete rule"
   },
   "rule_header_count_single": {
     "message": "header"
-  },
-  "rule_header_count_plural": {
-    "message": "headers"
   },
   "popup_footer_license": {
     "message": "RequestKit is open source software released under the MIT License."
@@ -654,12 +607,11 @@
   "template_browser_title": {
     "message": "Browse Templates"
   },
-
   "devtools_header_title": {
     "message": "RequestKit DevTools",
     "description": "Title for DevTools header"
   },
-  "devtools_profile_label": {
+  "common_profile": {
     "message": "Profile",
     "description": "Label for profile selector in DevTools"
   },
@@ -699,22 +651,6 @@
     "message": "Request Details",
     "description": "Title for request details section"
   },
-  "devtools_url_label": {
-    "message": "URL",
-    "description": "Label for request URL"
-  },
-  "devtools_method_label": {
-    "message": "Method",
-    "description": "Label for HTTP method"
-  },
-  "devtools_status_label": {
-    "message": "Status",
-    "description": "Label for response status"
-  },
-  "devtools_headers_tab": {
-    "message": "Headers",
-    "description": "Tab label for headers view"
-  },
   "devtools_variables_tab": {
     "message": "Variables",
     "description": "Tab label for variables view"
@@ -722,10 +658,6 @@
   "devtools_profile_rules_info": {
     "message": "Profile Rules Information",
     "description": "Title for profile rules information section"
-  },
-  "devtools_matched_rules_label": {
-    "message": "Matched Rules",
-    "description": "Label for matched rules section"
   },
   "devtools_modified_headers_request": {
     "message": "Modified Request Headers",
@@ -755,7 +687,7 @@
     "message": "Output",
     "description": "Label for variable output value"
   },
-  "devtools_metadata_label": {
+  "common_metadata": {
     "message": "Metadata",
     "description": "Label for variable metadata"
   },
@@ -775,10 +707,6 @@
     "message": "Variable Details",
     "description": "Label for variable details section"
   },
-  "devtools_no_requests_captured": {
-    "message": "No requests captured yet",
-    "description": "Message when no requests have been captured"
-  },
   "devtools_headers_modified": {
     "message": "Headers Modified",
     "description": "Label indicating headers were modified"
@@ -791,12 +719,11 @@
     "message": "Variable Resolution",
     "description": "Label for variable resolution section"
   },
-
   "common_search_templates": {
     "message": "Search templates...",
     "description": "Placeholder for template search input"
   },
-  "common_no_templates_found": {
+  "message_no_templates_found": {
     "message": "No templates found",
     "description": "Message when no templates match search"
   },
@@ -808,7 +735,7 @@
     "message": "Loading...",
     "description": "Loading state message"
   },
-  "common_loading_variables": {
+  "message_loading": {
     "message": "Loading variables...",
     "description": "Loading variables message"
   },
@@ -836,7 +763,7 @@
     "message": "Headers Only",
     "description": "Template type for headers only"
   },
-  "common_conditional_rules": {
+  "feature_conditional_rules": {
     "message": "Conditional Rules",
     "description": "Template type for conditional rules"
   },
@@ -844,7 +771,7 @@
     "message": "File Interception",
     "description": "Template type for file interception"
   },
-  "common_advanced_features": {
+  "feature_advanced_features": {
     "message": "Advanced Features",
     "description": "Template type for advanced features"
   },
@@ -859,10 +786,6 @@
   "common_global": {
     "message": "Global",
     "description": "Global scope"
-  },
-  "common_profile": {
-    "message": "Profile",
-    "description": "Profile scope"
   },
   "common_rule": {
     "message": "Rule",
@@ -884,7 +807,6 @@
     "message": "With Functions",
     "description": "Filter for variables with functions"
   },
-
   "popup_edit_rule": {
     "message": "Edit Rule",
     "description": "Edit rule button text"
@@ -893,33 +815,17 @@
     "message": "Create Advanced Rule",
     "description": "Create advanced rule title"
   },
-  "popup_cancel": {
-    "message": "Cancel",
-    "description": "Cancel button text"
-  },
-  "popup_my_custom_headers": {
+  "placeholder_rule_name": {
     "message": "My Custom Headers",
     "description": "Default rule name placeholder"
   },
-  "popup_header_name": {
+  "placeholder_header_name": {
     "message": "Header name",
     "description": "Header name input placeholder"
   },
-  "popup_header_value": {
+  "placeholder_header_value": {
     "message": "Header value",
     "description": "Header value input placeholder"
-  },
-  "popup_set": {
-    "message": "Set",
-    "description": "Set header operation"
-  },
-  "popup_append": {
-    "message": "Append",
-    "description": "Append header operation"
-  },
-  "popup_remove": {
-    "message": "Remove",
-    "description": "Remove header operation"
   },
   "popup_request": {
     "message": "Request",
@@ -969,15 +875,6 @@
     "message": "Templates will be applied to:",
     "description": "Template application notice"
   },
-
-  "forms_rule_name": {
-    "message": "Rule Name",
-    "description": "Rule name field label"
-  },
-  "forms_rule_name_placeholder": {
-    "message": "My Custom Headers",
-    "description": "Rule name input placeholder"
-  },
   "forms_no_profile_global": {
     "message": "No Profile (Global)",
     "description": "Option for no profile assignment"
@@ -990,22 +887,9 @@
     "message": "Add Header",
     "description": "Add header button text"
   },
-  "forms_header_name_placeholder": {
-    "message": "Header name",
-    "description": "Header name input placeholder"
-  },
-  "forms_header_value_placeholder": {
-    "message": "Header value",
-    "description": "Header value input placeholder"
-  },
-  "forms_unknown_domain": {
+  "common_unknown": {
     "message": "unknown",
     "description": "Fallback text for unknown domain"
-  },
-
-  "templates_no_templates_found": {
-    "message": "No templates found",
-    "description": "Message when no templates are found"
   },
   "templates_try_different_search": {
     "message": "Try a different search term",
@@ -1015,12 +899,11 @@
     "message": "No templates in this category",
     "description": "Message when category has no templates"
   },
-
   "options_title": {
     "message": "RequestKit Options",
     "description": "Main title for options page"
   },
-  "options_loading": {
+  "message_loading_app": {
     "message": "Loading RequestKit options...",
     "description": "Loading message for options page"
   },
@@ -1045,11 +928,6 @@
   "options_navigation_title": {
     "message": "Navigation",
     "description": "Title for mobile navigation menu"
-  },
-
-  "rules_management_title": {
-    "message": "Rule Management",
-    "description": "Title for rule management tab"
   },
   "rules_management_description": {
     "message": "Create and manage header modification rules for your requests and responses. Configure URL patterns, headers, and conditions to customize your browsing experience.",
@@ -1091,10 +969,6 @@
     "message": "Remove unwanted headers from responses",
     "description": "Use case for rule management"
   },
-  "rules_title": {
-    "message": "Rules",
-    "description": "Title for rules section"
-  },
   "rules_count": {
     "message": "Rules ($1)",
     "description": "Rules count with number",
@@ -1105,31 +979,17 @@
       }
     }
   },
-  "rules_create_new": {
-    "message": "Create Rule",
-    "description": "Button text to create new rule"
-  },
   "rules_create_new_with_plus": {
     "message": "+ Create Rule",
     "description": "Button text to create new rule with plus sign"
-  },
-
-  "rules_empty_state_title": {
-    "message": "No rules created yet",
-    "description": "Title for empty rules state"
   },
   "rules_empty_state_description": {
     "message": "Create your first rule to start modifying headers",
     "description": "Description for empty rules state"
   },
-  "rules_create_first": {
+  "action_create_first": {
     "message": "Create Your First Rule",
     "description": "Button text to create first rule"
-  },
-
-  "templates_management_title": {
-    "message": "Rule Templates",
-    "description": "Title for template management tab"
   },
   "templates_management_description": {
     "message": "Browse, create, and manage comprehensive rule templates that include headers, conditions, and advanced features. Templates provide reusable configurations for common use cases and can be customized for your specific needs.",
@@ -1179,10 +1039,6 @@
     "message": "Standardize rule configurations",
     "description": "Use case for template management"
   },
-  "templates_import": {
-    "message": "Import",
-    "description": "Button text to import templates"
-  },
   "templates_create": {
     "message": "Create Template",
     "description": "Button text to create template"
@@ -1190,11 +1046,6 @@
   "templates_applied_from_template": {
     "message": "Applied from Template",
     "description": "Suffix for rule names created from templates"
-  },
-
-  "variables_management_title": {
-    "message": "Variable Manager",
-    "description": "Title for variable management tab"
   },
   "variables_management_description": {
     "message": "Create and manage variables for use in header values and URL patterns. Variables support dynamic values, computed expressions, and can be scoped globally or per profile.",
@@ -1244,15 +1095,11 @@
     "message": "Environment-specific configuration values",
     "description": "Use case for variable management"
   },
-  "variables_loading": {
-    "message": "Loading variables...",
-    "description": "Loading message for variables"
-  },
-  "variables_no_match_filters": {
+  "message_no_matches": {
     "message": "No variables match your filters",
     "description": "Message when no variables match filters"
   },
-  "variables_no_configured": {
+  "message_none_configured": {
     "message": "No variables configured",
     "description": "Message when no variables are configured"
   },
@@ -1264,18 +1111,9 @@
     "message": "Create your first variable to get started with dynamic header values and templates.",
     "description": "Description when no variables are configured"
   },
-  "variables_clear_filters": {
+  "action_clear_filters": {
     "message": "Clear Filters",
     "description": "Button text to clear filters"
-  },
-  "variables_create_first": {
-    "message": "Create Your First Variable",
-    "description": "Button text to create first variable"
-  },
-
-  "settings_general_title": {
-    "message": "General Settings",
-    "description": "Title for general settings tab"
   },
   "settings_general_description": {
     "message": "Configure extension behavior, appearance, and performance settings. Control how RequestKit operates, customize the user interface, and adjust advanced options for optimal performance.",
@@ -1325,7 +1163,7 @@
     "message": "Save Settings",
     "description": "Button text to save settings"
   },
-  "settings_saving": {
+  "status_saving": {
     "message": "Saving...",
     "description": "Button text while saving settings"
   },
@@ -1341,11 +1179,10 @@
     "message": "Reset All Settings",
     "description": "Button text to reset all settings"
   },
-  "settings_resetting": {
+  "status_resetting": {
     "message": "Resetting...",
     "description": "Button text while resetting settings"
   },
-
   "import_export_title": {
     "message": "Enhanced Import/Export",
     "description": "Title for import/export tab"
@@ -1390,7 +1227,6 @@
     "message": "Export specific data types for collaboration",
     "description": "Use case for import/export"
   },
-
   "ui_danger_zone_title": {
     "message": "Danger Zone",
     "description": "Title for danger zone section"
@@ -1419,7 +1255,6 @@
     "message": "Clone",
     "description": "Clone button label"
   },
-
   "templates_features_headers": {
     "message": "$1 headers",
     "description": "Template feature showing number of headers",
@@ -1458,7 +1293,7 @@
     "message": "rate limited",
     "description": "Template feature indicating it's rate limited"
   },
-  "templates_features_none": {
+  "message_no_items": {
     "message": "No features configured",
     "description": "Message when template has no features"
   },
@@ -1484,7 +1319,6 @@
     "message": "Features",
     "description": "Label for template features section"
   },
-
   "variables_usage_label": {
     "message": "Usage",
     "description": "Label for variable usage count"
@@ -1497,7 +1331,7 @@
     "message": "Actions",
     "description": "Label for variable actions column"
   },
-  "variables_profile_fallback": {
+  "fallback_profile_item": {
     "message": "Profile $1",
     "description": "Fallback text for unknown profile",
     "placeholders": {
@@ -1507,7 +1341,7 @@
       }
     }
   },
-  "variables_rule_fallback": {
+  "fallback_rule_item": {
     "message": "Rule $1",
     "description": "Fallback text for unknown rule",
     "placeholders": {
@@ -1517,17 +1351,9 @@
       }
     }
   },
-  "variables_tooltip_edit": {
-    "message": "Edit variable",
-    "description": "Tooltip for edit variable button"
-  },
-  "variables_tooltip_copy": {
+  "tooltip_copy": {
     "message": "Copy variable",
     "description": "Tooltip for copy variable button"
-  },
-  "variables_tooltip_delete": {
-    "message": "Delete variable",
-    "description": "Tooltip for delete variable button"
   },
   "variables_details_title": {
     "message": "Details",
@@ -1536,18 +1362,6 @@
   "variables_full_value_label": {
     "message": "Full Value",
     "description": "Label for variable full value"
-  },
-  "variables_profile_label": {
-    "message": "Profile",
-    "description": "Label for variable profile association"
-  },
-  "variables_rule_label": {
-    "message": "Rule",
-    "description": "Label for variable rule association"
-  },
-  "variables_metadata_title": {
-    "message": "Metadata",
-    "description": "Title for variable metadata section"
   },
   "variables_created_label": {
     "message": "Created",
@@ -1564,9 +1378,5 @@
   "variables_usage_count_label": {
     "message": "Usage Count",
     "description": "Label for variable usage count"
-  },
-  "variables_unknown_date": {
-    "message": "Unknown",
-    "description": "Text for unknown date values"
   }
 }

@@ -13,7 +13,7 @@ export function TemplateBrowserFooter({
     try {
       return new URL(url).hostname;
     } catch {
-      return t('forms_unknown_domain');
+      return t('common_unknown');
     }
   };
 

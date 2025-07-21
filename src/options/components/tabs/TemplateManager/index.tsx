@@ -147,7 +147,7 @@ export function TemplateManager({
   return (
     <div className="space-y-6">
       <TabDescription
-        title={t('templates_management_title')}
+        title={t('tab_rule_templates')}
         description={t('templates_management_description')}
         icon="file-text"
         features={[
@@ -172,7 +172,7 @@ export function TemplateManager({
         <div className="flex space-x-2">
           <label className="btn btn-secondary btn-sm">
             <Icon name="upload" className="w-4 h-4 mr-2" />
-            {t('templates_import')}
+            {t('common_import')}
             <input
               type="file"
               accept=".json"

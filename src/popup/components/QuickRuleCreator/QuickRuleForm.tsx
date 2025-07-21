@@ -34,7 +34,7 @@ export function QuickRuleForm({
           htmlFor="quick-rule-name"
           className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1"
         >
-          {t('quick_rule_label_name')}
+          {t('common_rule_name')}
         </label>
         <input
           type="text"
@@ -94,16 +94,14 @@ export function QuickRuleForm({
           }
           className="flex-1 btn btn-primary btn-sm"
         >
-          {isSubmitting
-            ? t('quick_rule_button_creating')
-            : t('quick_rule_button_create')}
+          {isSubmitting ? t('status_creating') : t('action_create_rule')}
         </button>
         <button
           type="button"
           onClick={onCancel}
           className="flex-1 btn btn-secondary btn-sm"
         >
-          {t('button_cancel')}
+          {t('common_cancel')}
         </button>
       </div>
     </form>

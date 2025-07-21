@@ -51,12 +51,12 @@ export function RuleItem({
                 size={compact ? 'xs' : 'sm'}
                 icon="check"
               >
-                {t('rule_badge_active')}
+                {t('status_active')}
               </Badge>
             )}
             {!rule.enabled && (
               <Badge variant="secondary" size={compact ? 'xs' : 'sm'}>
-                {t('rule_badge_disabled')}
+                {t('common_disabled')}
               </Badge>
             )}
           </div>
@@ -75,11 +75,7 @@ export function RuleItem({
               className={`p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 ${
                 rule.enabled ? 'text-success-600' : 'text-gray-400'
               }`}
-              title={
-                rule.enabled
-                  ? t('rule_tooltip_disable')
-                  : t('rule_tooltip_enable')
-              }
+              title={rule.enabled ? t('tooltip_disable') : t('tooltip_enable')}
             >
               <Icon
                 name={rule.enabled ? 'eye' : 'eye-off'}
@@ -90,7 +86,7 @@ export function RuleItem({
             <button
               onClick={onEdit}
               className="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-primary-600"
-              title={t('rule_tooltip_edit')}
+              title={t('tooltip_edit')}
             >
               <Icon
                 name="edit"
@@ -101,7 +97,7 @@ export function RuleItem({
             <button
               onClick={onDelete}
               className="p-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-error-600"
-              title={t('rule_tooltip_delete')}
+              title={t('tooltip_delete')}
             >
               <Icon
                 name="trash"
@@ -113,7 +109,7 @@ export function RuleItem({
             <span className="text-xs text-gray-500 dark:text-gray-500">
               {rule.headers.length}{' '}
               {rule.headers.length !== 1
-                ? t('rule_header_count_plural')
+                ? t('common_headers')
                 : t('rule_header_count_single')}
             </span>
           )}

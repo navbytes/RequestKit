@@ -38,7 +38,7 @@ export function QuickRuleCreator({
         <button
           onClick={onCancel}
           className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
-          title={t('quick_rule_tooltip_cancel')}
+          title={t('common_cancel')}
         >
           <Icon name="close" className="w-4 h-4" />
         </button>

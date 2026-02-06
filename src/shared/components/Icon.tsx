@@ -74,6 +74,7 @@ import {
   ListX,
   Cpu,
   ArrowUpDown,
+  ShieldOff,
 } from 'lucide-preact';
 
 import { loggers } from '@/shared/utils/debug';
@@ -145,6 +146,7 @@ const iconMap = {
   globe: Globe,
   lock: Lock,
   shield: Shield,
+  'shield-off': ShieldOff,
   bug: Bug,
   wrench: Wrench,
   folder: Folder,

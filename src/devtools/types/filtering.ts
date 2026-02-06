@@ -120,6 +120,7 @@ export interface FilterableRequest {
   profileId: string;
   hasErrors?: boolean;
   executionTime?: number;
+  graphqlOperationName?: string;
 }
 
 // Filter operation types

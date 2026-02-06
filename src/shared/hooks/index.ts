@@ -7,3 +7,8 @@ export { useAnalytics } from './useAnalytics';
 export { useRuleManagement } from './useRuleManagement';
 export { useSettings } from './useSettings';
 export { useVariables } from './useVariables';
+export {
+  useKeyboardShortcuts,
+  getPrimaryModifierLabel,
+} from './useKeyboardShortcuts';
+export type { KeyboardShortcut } from './useKeyboardShortcuts';

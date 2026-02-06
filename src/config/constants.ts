@@ -143,6 +143,7 @@ export const TEMPLATE_CATEGORIES = {
   SECURITY: 'Security',
   DEBUGGING: 'Debugging',
   PERFORMANCE: 'Performance',
+  BLOCKING: 'Blocking & Redirect',
   CUSTOM: 'Custom',
 } satisfies Record<string, string>;
 
@@ -210,6 +211,83 @@ export const BUILT_IN_TEMPLATES = [
     tags: ['security', 'protection', 'headers'],
     isBuiltIn: true,
   },
+  {
+    id: 'block-tracking',
+    name: 'Block Tracking Scripts',
+    description: 'Blocks analytics/tracking scripts',
+    category: TEMPLATE_CATEGORIES.SECURITY,
+    action: 'block',
+    pattern: { domain: '*', path: '/analytics/*' },
+    headers: [],
+    tags: ['block', 'tracking', 'privacy'],
+    isBuiltIn: true,
+  },
+  {
+    id: 'block-ads',
+    name: 'Block Ads',
+    description: 'Blocks common ad domains',
+    category: TEMPLATE_CATEGORIES.SECURITY,
+    action: 'block',
+    pattern: { domain: '*.ads.*', path: '/*' },
+    headers: [],
+    tags: ['block', 'ads', 'privacy'],
+    isBuiltIn: true,
+  },
+  {
+    id: 'redirect-https',
+    name: 'Redirect HTTP to HTTPS',
+    description: 'Redirects HTTP to HTTPS',
+    category: TEMPLATE_CATEGORIES.SECURITY,
+    action: 'redirect',
+    pattern: { protocol: 'http', domain: '*' },
+    redirectUrl: 'https://{{host}}{{path}}',
+    headers: [],
+    tags: ['redirect', 'security', 'https'],
+    isBuiltIn: true,
+  },
+  {
+    id: 'redirect-staging-local',
+    name: 'API Redirect (Staging to Local)',
+    description: 'Redirect API calls from staging to local dev server',
+    category: TEMPLATE_CATEGORIES.DEBUGGING,
+    action: 'redirect',
+    pattern: { domain: 'api.staging.example.com' },
+    redirectUrl: 'http://localhost:3000{{path}}',
+    headers: [],
+    tags: ['redirect', 'api', 'development'],
+    isBuiltIn: true,
+  },
+  {
+    id: 'mock-200',
+    name: 'Mock API Response (200 OK)',
+    description: 'Mock a 200 JSON response',
+    category: TEMPLATE_CATEGORIES.DEBUGGING,
+    action: 'mock',
+    pattern: { domain: '*.example.com', path: '/api/mock/*' },
+    mockResponse: {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+      body: '{"success": true, "data": {}}',
+    },
+    headers: [],
+    tags: ['mock', 'api', 'testing'],
+    isBuiltIn: true,
+  },
+  {
+    id: 'mock-500',
+    name: 'Mock Error Response (500)',
+    description: 'Mock a 500 error response for error handling testing',
+    category: TEMPLATE_CATEGORIES.DEBUGGING,
+    action: 'mock',
+    mockResponse: {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+      body: '{"error": "Internal Server Error"}',
+    },
+    headers: [],
+    tags: ['mock', 'error', 'testing'],
+    isBuiltIn: true,
+  },
 ] satisfies readonly {
   readonly id: string;
   readonly name: string;
@@ -222,6 +300,18 @@ export const BUILT_IN_TEMPLATES = [
   }[];
   readonly tags: readonly string[];
   readonly isBuiltIn: boolean;
+  readonly action?: string;
+  readonly pattern?: {
+    readonly domain?: string;
+    readonly path?: string;
+    readonly protocol?: string;
+  };
+  readonly redirectUrl?: string;
+  readonly mockResponse?: {
+    readonly status: number;
+    readonly headers: Readonly<Record<string, string>>;
+    readonly body: string;
+  };
 }[];
 
 // Validation patterns

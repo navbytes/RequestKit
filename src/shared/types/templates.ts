@@ -150,6 +150,13 @@ export const TEMPLATE_CATEGORIES: Record<string, TemplateCategory> = {
     icon: 'settings',
     color: '#6366f1',
   },
+  blocking: {
+    id: 'blocking',
+    name: 'Blocking & Redirect',
+    description: 'Block, redirect, and mock request rules',
+    icon: 'shield-off',
+    color: '#dc2626',
+  },
   custom: {
     id: 'custom',
     name: 'Custom',

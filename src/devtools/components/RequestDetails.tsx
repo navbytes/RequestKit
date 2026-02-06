@@ -1,3 +1,9 @@
+import { useState } from 'preact/hooks';
+
+import { generateCURL, generateFetch } from '@/lib/utils/code-generators';
+import { CopyButton } from '@/shared/components/CopyButton';
+import { StatusBadge } from '@/shared/components/StatusBadge';
+import { SyntaxHighlighter } from '@/shared/components/SyntaxHighlighter';
 import { useI18n } from '@/shared/hooks/useI18n';
 
 import type { FilterableRequest } from '../types/filtering';
@@ -10,6 +16,8 @@ interface NetworkRequest extends FilterableRequest {
   originalRequestHeaders?: Record<string, string>;
   originalResponseHeaders?: Record<string, string>;
   variableResolutionTrace?: VariableResolutionTrace;
+  responseBody?: string;
+  body?: string;
 }
 
 interface RequestDetailsProps {
@@ -28,6 +36,7 @@ export function RequestDetails({
   onDetailTabChange,
 }: RequestDetailsProps) {
   const { t } = useI18n();
+  const [copyMenuOpen, setCopyMenuOpen] = useState(false);
 
   if (!selectedRequest) {
     return (
@@ -46,12 +55,65 @@ export function RequestDetails({
     );
   }
 
+  const codeGenRequest = {
+    url: selectedRequest.url,
+    method: selectedRequest.method,
+    requestHeaders: selectedRequest.requestHeaders,
+    ...(selectedRequest.body ? { body: selectedRequest.body } : {}),
+  };
+
+  const curlCode = generateCURL(codeGenRequest);
+
+  const fetchCode = generateFetch(codeGenRequest);
+
+  // Detect if responseBody looks like JSON for syntax highlighting
+  let responseBodyIsJSON = false;
+  if (selectedRequest.responseBody) {
+    try {
+      JSON.parse(selectedRequest.responseBody);
+      responseBodyIsJSON = true;
+    } catch {
+      responseBodyIsJSON = false;
+    }
+  }
+
   return (
     <div className="w-1/2 flex flex-col">
       <div className="p-4 border-b border-gray-200 dark:border-gray-700">
-        <h2 className="text-sm font-medium text-gray-700 dark:text-gray-300">
-          {t('devtools_request_details')}
-        </h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            {t('devtools_request_details')}
+          </h2>
+          <div className="flex items-center space-x-1">
+            <CopyButton text={curlCode} label="Copy as cURL" />
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setCopyMenuOpen(!copyMenuOpen)}
+                className="inline-flex items-center px-2 py-1 text-xs font-medium rounded
+                  text-gray-600 hover:text-gray-800 hover:bg-gray-100
+                  dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-700
+                  focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-1"
+              >
+                Copy as...
+              </button>
+              {copyMenuOpen && (
+                <div className="absolute right-0 mt-1 w-40 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50">
+                  <CopyButton
+                    text={curlCode}
+                    label="Copy as cURL"
+                    className="w-full justify-start px-3 py-2 text-sm rounded-t-lg"
+                  />
+                  <CopyButton
+                    text={fetchCode}
+                    label="Copy as Fetch"
+                    className="w-full justify-start px-3 py-2 text-sm rounded-b-lg"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
       <div className="flex-1 overflow-y-auto p-4">
         <div className="space-y-4">
@@ -75,9 +137,29 @@ export function RequestDetails({
               <div className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
                 {t('common_status')}
               </div>
-              <div className="code text-sm">{selectedRequest.status}</div>
+              <StatusBadge status={selectedRequest.status} size="sm" />
             </div>
           </div>
+
+          {/* Response Body */}
+          {selectedRequest.responseBody && (
+            <div>
+              <div className="block text-xs font-medium text-gray-500 dark:text-gray-400 mb-1">
+                Response Body
+              </div>
+              {responseBodyIsJSON ? (
+                <SyntaxHighlighter
+                  code={selectedRequest.responseBody}
+                  language="json"
+                  maxHeight="300px"
+                />
+              ) : (
+                <pre className="code text-sm break-all whitespace-pre-wrap max-h-72 overflow-auto">
+                  {selectedRequest.responseBody}
+                </pre>
+              )}
+            </div>
+          )}
 
           {/* Detail Tabs */}
           <div>

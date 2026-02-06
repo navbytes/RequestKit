@@ -14,7 +14,10 @@ interface DevToolsHeaderProps {
   readonly requestsCount: number;
   readonly onToggleRecording: () => void;
   readonly onClearRequests: () => void;
-  readonly onExportRequests: () => void;
+  readonly exportMenuOpen: boolean;
+  readonly onToggleExportMenu: () => void;
+  readonly onExportJSON: () => void;
+  readonly onExportHAR: () => void;
   readonly onSwitchProfile: (profileId: string) => void;
 }
 
@@ -24,7 +27,10 @@ export function DevToolsHeader({
   requestsCount,
   onToggleRecording,
   onClearRequests,
-  onExportRequests,
+  exportMenuOpen,
+  onToggleExportMenu,
+  onExportJSON,
+  onExportHAR,
   onSwitchProfile,
 }: DevToolsHeaderProps) {
   const { t } = useI18n();
@@ -92,14 +98,33 @@ export function DevToolsHeader({
             <Icon name="trash" className="w-4 h-4 mr-2" />
             {t('devtools_clear_requests')}
           </button>
-          <button
-            onClick={onExportRequests}
-            className="btn btn-sm btn-primary"
-            disabled={requestsCount === 0}
-          >
-            <Icon name="download" className="w-4 h-4 mr-2" />
-            {t('devtools_export_requests')}
-          </button>
+          <div className="relative">
+            <button
+              onClick={onToggleExportMenu}
+              className="btn btn-sm btn-primary"
+              disabled={requestsCount === 0}
+            >
+              <Icon name="download" className="w-4 h-4 mr-2" />
+              {t('devtools_export_requests')}
+              <Icon name="chevron-down" className="w-3 h-3 ml-1" />
+            </button>
+            {exportMenuOpen && (
+              <div className="absolute right-0 mt-1 w-44 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-50">
+                <button
+                  onClick={onExportJSON}
+                  className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-t-lg"
+                >
+                  Export JSON
+                </button>
+                <button
+                  onClick={onExportHAR}
+                  className="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-b-lg"
+                >
+                  Export HAR
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

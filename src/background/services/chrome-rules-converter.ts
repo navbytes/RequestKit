@@ -112,36 +112,7 @@ export class ChromeRulesConverter {
       );
 
       try {
-        // Separate request and response headers
-        const requestHeaders = rule.headers.filter(
-          header => header.target === 'request' || !header.target
-        );
-        const responseHeaders = rule.headers.filter(
-          header => header.target === 'response'
-        );
-
-        // Resolve variables in headers and validate
-        const validRequestHeaders = await this.processHeaders(
-          requestHeaders,
-          rule.id,
-          baseContext,
-          'request'
-        );
-
-        const validResponseHeaders = await this.processHeaders(
-          responseHeaders,
-          rule.id,
-          baseContext,
-          'response'
-        );
-
-        if (
-          validRequestHeaders.length === 0 &&
-          validResponseHeaders.length === 0
-        ) {
-          logger.warn(`No valid headers found in rule ${rule.id}`);
-          continue;
-        }
+        const actionType = rule.actionType || 'modifyHeaders';
 
         // Build resource types filter
         const resourceTypes =
@@ -149,41 +120,111 @@ export class ChromeRulesConverter {
             ? rule.resourceTypes
             : ['main_frame', 'sub_frame', 'xmlhttprequest', 'other'];
 
-        const chromeRule: ChromeRule = {
-          id: ruleIndex + 1, // Chrome requires numeric IDs starting from 1
-          priority: rule.priority || 1,
-          condition: {
-            urlFilter: this.buildUrlFilter(rule.pattern),
-            resourceTypes:
-              resourceTypes as chrome.declarativeNetRequest.ResourceType[],
-          },
-          action: {
-            type: 'modifyHeaders',
-          },
+        const baseCondition = {
+          urlFilter: this.buildUrlFilter(rule.pattern),
+          resourceTypes:
+            resourceTypes as chrome.declarativeNetRequest.ResourceType[],
         };
 
-        // Add request headers if any
-        if (validRequestHeaders.length > 0) {
-          chromeRule.action.requestHeaders = validRequestHeaders.map(
-            header => ({
-              header: header.name,
-              operation:
-                header.operation as chrome.declarativeNetRequest.HeaderOperation,
-              value: header.operation !== 'remove' ? header.value : undefined,
-            })
-          );
-        }
+        let chromeRule: ChromeRule;
 
-        // Add response headers if any
-        if (validResponseHeaders.length > 0) {
-          chromeRule.action.responseHeaders = validResponseHeaders.map(
-            header => ({
-              header: header.name,
-              operation:
-                header.operation as chrome.declarativeNetRequest.HeaderOperation,
-              value: header.operation !== 'remove' ? header.value : undefined,
-            })
+        if (actionType === 'block') {
+          // Block rule: simply block matching requests
+          chromeRule = {
+            id: ruleIndex + 1,
+            priority: rule.priority || 1,
+            condition: baseCondition,
+            action: { type: 'block' },
+          };
+          logger.info(`Created block rule for ${rule.id}`);
+        } else if (actionType === 'redirect' && rule.redirectConfig) {
+          // Redirect rule: redirect matching requests to a new URL
+          let targetUrl = rule.redirectConfig.targetUrl;
+          // Resolve variables in redirect URL
+          if (targetUrl.includes('${')) {
+            try {
+              targetUrl = await this.resolveHeaderValue(targetUrl, baseContext);
+            } catch {
+              logger.warn(
+                `Failed to resolve variables in redirect URL for rule ${rule.id}`
+              );
+            }
+          }
+          chromeRule = {
+            id: ruleIndex + 1,
+            priority: rule.priority || 1,
+            condition: baseCondition,
+            action: {
+              type: 'redirect',
+              redirect: { url: targetUrl },
+            },
+          };
+          logger.info(`Created redirect rule for ${rule.id} -> ${targetUrl}`);
+        } else {
+          // Default: modifyHeaders (also handles mockResponse at content-script level)
+          // Separate request and response headers
+          const requestHeaders = rule.headers.filter(
+            header => header.target === 'request' || !header.target
           );
+          const responseHeaders = rule.headers.filter(
+            header => header.target === 'response'
+          );
+
+          // Resolve variables in headers and validate
+          const validRequestHeaders = await this.processHeaders(
+            requestHeaders,
+            rule.id,
+            baseContext,
+            'request'
+          );
+
+          const validResponseHeaders = await this.processHeaders(
+            responseHeaders,
+            rule.id,
+            baseContext,
+            'response'
+          );
+
+          if (
+            validRequestHeaders.length === 0 &&
+            validResponseHeaders.length === 0
+          ) {
+            logger.warn(`No valid headers found in rule ${rule.id}`);
+            continue;
+          }
+
+          chromeRule = {
+            id: ruleIndex + 1,
+            priority: rule.priority || 1,
+            condition: baseCondition,
+            action: {
+              type: 'modifyHeaders',
+            },
+          };
+
+          // Add request headers if any
+          if (validRequestHeaders.length > 0) {
+            chromeRule.action.requestHeaders = validRequestHeaders.map(
+              header => ({
+                header: header.name,
+                operation:
+                  header.operation as chrome.declarativeNetRequest.HeaderOperation,
+                value: header.operation !== 'remove' ? header.value : undefined,
+              })
+            );
+          }
+
+          // Add response headers if any
+          if (validResponseHeaders.length > 0) {
+            chromeRule.action.responseHeaders = validResponseHeaders.map(
+              header => ({
+                header: header.name,
+                operation:
+                  header.operation as chrome.declarativeNetRequest.HeaderOperation,
+                value: header.operation !== 'remove' ? header.value : undefined,
+              })
+            );
+          }
         }
 
         logger.info(`Created Chrome rule for ${rule.id}:`, chromeRule);

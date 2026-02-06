@@ -1,8 +1,15 @@
-import { useState, useEffect } from 'preact/hooks';
+import { useState, useEffect, useMemo } from 'preact/hooks';
 
 import { matchURLPattern } from '@/lib/core/pattern-matcher';
 import { Icon } from '@/shared/components/Icon';
+import { KeyboardShortcutsHelp } from '@/shared/components/KeyboardShortcutsHelp';
+import {
+  OnboardingFlow,
+  isOnboardingCompleted,
+} from '@/shared/components/OnboardingFlow';
 import { useI18n } from '@/shared/hooks/useI18n';
+import { useKeyboardShortcuts } from '@/shared/hooks/useKeyboardShortcuts';
+import type { KeyboardShortcut } from '@/shared/hooks/useKeyboardShortcuts';
 import type { HeaderRule } from '@/shared/types/rules';
 
 import { LoadingSpinner } from '../LoadingSpinner';
@@ -18,6 +25,8 @@ export function PopupApp() {
   const [currentTab, setCurrentTab] = useState<chrome.tabs.Tab | null>(null);
   const [showQuickCreator, setShowQuickCreator] = useState(false);
   const [showTemplateBrowser, setShowTemplateBrowser] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [showShortcutsHelp, setShowShortcutsHelp] = useState(false);
 
   const { state, setState } = usePopupState();
   const { handleToggleTheme } = useThemeManager();
@@ -38,7 +47,48 @@ export function PopupApp() {
   useEffect(() => {
     loadInitialData();
     getCurrentTab().then(setCurrentTab);
+    isOnboardingCompleted().then(completed => {
+      if (!completed) {
+        setShowOnboarding(true);
+      }
+    });
   }, [getCurrentTab, loadInitialData]);
+
+  const shortcuts = useMemo<KeyboardShortcut[]>(
+    () => [
+      {
+        key: 'e',
+        ctrl: true,
+        description: 'Toggle extension enabled/disabled',
+        category: 'General',
+        action: () => handleToggleExtension(),
+      },
+      {
+        key: 'n',
+        ctrl: true,
+        description: 'Create new quick rule',
+        category: 'Rules',
+        action: () => setShowQuickCreator(true),
+        preventDefault: true,
+      },
+      {
+        key: ',',
+        ctrl: true,
+        description: 'Open options page',
+        category: 'Navigation',
+        action: () => openOptionsPage(),
+      },
+      {
+        key: '?',
+        description: 'Show keyboard shortcuts help',
+        category: 'General',
+        action: () => setShowShortcutsHelp(prev => !prev),
+      },
+    ],
+    [handleToggleExtension, openOptionsPage]
+  );
+
+  useKeyboardShortcuts(shortcuts);
 
   // Recalculate active rules count when current tab changes
   useEffect(() => {
@@ -61,6 +111,10 @@ export function PopupApp() {
     }
   }, [currentTab?.url, setState, state.rules]);
 
+  if (showOnboarding) {
+    return <OnboardingFlow onComplete={() => setShowOnboarding(false)} />;
+  }
+
   if (state.loading) {
     return (
       <div
@@ -77,6 +131,11 @@ export function PopupApp() {
     <div
       className={`${isCompact ? 'w-80 max-h-80' : 'w-96 max-h-96'} bg-white dark:bg-gray-900 text-gray-900 dark:text-white`}
     >
+      <KeyboardShortcutsHelp
+        shortcuts={shortcuts}
+        visible={showShortcutsHelp}
+        onClose={() => setShowShortcutsHelp(false)}
+      />
       <PopupHeader
         enabled={state.enabled}
         activeRulesCount={state.activeRulesCount}

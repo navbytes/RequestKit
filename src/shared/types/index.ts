@@ -22,6 +22,9 @@ export type {
   RuleLimits,
   RuleExportFormat,
   RuleExportData,
+  RuleActionType,
+  RedirectConfig,
+  MockResponseConfig,
 } from './rules';
 
 // Export templates with specific naming to avoid conflicts

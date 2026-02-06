@@ -334,9 +334,13 @@ export interface ChromeRule {
     resourceTypes: chrome.declarativeNetRequest.ResourceType[];
   };
   action: {
-    type: 'modifyHeaders';
+    type: 'modifyHeaders' | 'block' | 'redirect' | 'allow';
     requestHeaders?: chrome.declarativeNetRequest.ModifyHeaderInfo[];
     responseHeaders?: chrome.declarativeNetRequest.ModifyHeaderInfo[];
+    redirect?: {
+      url?: string;
+      regexSubstitution?: string;
+    };
   };
 }
 

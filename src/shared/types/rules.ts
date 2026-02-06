@@ -1,5 +1,32 @@
 // Rule and pattern matching types
 
+/**
+ * Rule action type determines what the rule does when matched:
+ * - modifyHeaders: Modify request/response headers (default)
+ * - block: Block the matching request entirely
+ * - redirect: Redirect the request to a different URL
+ * - mockResponse: Return a mocked response instead of making the actual request
+ */
+export type RuleActionType =
+  | 'modifyHeaders'
+  | 'block'
+  | 'redirect'
+  | 'mockResponse';
+
+export interface RedirectConfig {
+  targetUrl: string; // URL to redirect to (supports ${variables})
+  preserveQueryParams?: boolean; // Keep original query params
+  statusCode?: 301 | 302 | 307 | 308; // HTTP redirect status code
+}
+
+export interface MockResponseConfig {
+  statusCode: number; // HTTP status code to return
+  headers?: Record<string, string>; // Response headers
+  body?: string; // Response body (plain text, JSON, HTML, etc.)
+  bodyType?: 'text' | 'json' | 'html' | 'xml'; // Body content type hint
+  delay?: number; // Delay in milliseconds before returning mock
+}
+
 export interface HeaderRule {
   id: string;
   name: string;
@@ -15,6 +42,9 @@ export interface HeaderRule {
   resourceTypes?: ResourceType[];
   profileId?: string; // Associated profile ID
   fileInterceptions?: FileInterception[];
+  actionType?: RuleActionType; // defaults to 'modifyHeaders' for backward compat
+  redirectConfig?: RedirectConfig; // used when actionType is 'redirect'
+  mockResponseConfig?: MockResponseConfig; // used when actionType is 'mockResponse'
 }
 
 // Import ResourceType from constants

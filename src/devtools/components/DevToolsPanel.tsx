@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'preact/hooks';
 
+import { downloadHAR } from '@/lib/utils/har-export';
 import { Icon } from '@/shared/components/Icon';
 import { loggers } from '@/shared/utils/debug';
 
@@ -36,6 +37,7 @@ export function DevToolsPanel({ tabId }: DevToolsPanelProps) {
   const [selectedMainTab, setSelectedMainTab] = useState<
     'requests' | 'performance'
   >('requests');
+  const [exportMenuOpen, setExportMenuOpen] = useState(false);
 
   // Custom hooks
   const { extensionStatus, switchProfile } = useExtensionStatus();
@@ -109,7 +111,7 @@ export function DevToolsPanel({ tabId }: DevToolsPanelProps) {
     setIsRecording(!isRecording);
   };
 
-  const exportRequests = () => {
+  const exportJSON = () => {
     const data = JSON.stringify(requests, null, 2);
     const blob = new Blob([data], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -118,6 +120,17 @@ export function DevToolsPanel({ tabId }: DevToolsPanelProps) {
     a.download = `requestkit-requests-${Date.now()}.json`;
     a.click();
     URL.revokeObjectURL(url);
+    setExportMenuOpen(false);
+  };
+
+  const exportHAR = () => {
+    downloadHAR(
+      requests.map(req => ({
+        ...req,
+        domain: req.domain || new URL(req.url).hostname,
+      }))
+    );
+    setExportMenuOpen(false);
   };
 
   const handleClearRequests = () => {
@@ -139,7 +152,10 @@ export function DevToolsPanel({ tabId }: DevToolsPanelProps) {
         requestsCount={requests.length}
         onToggleRecording={toggleRecording}
         onClearRequests={handleClearRequests}
-        onExportRequests={exportRequests}
+        exportMenuOpen={exportMenuOpen}
+        onToggleExportMenu={() => setExportMenuOpen(!exportMenuOpen)}
+        onExportJSON={exportJSON}
+        onExportHAR={exportHAR}
         onSwitchProfile={handleSwitchProfile}
       />
 

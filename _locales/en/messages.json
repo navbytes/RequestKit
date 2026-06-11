@@ -604,6 +604,22 @@
   "popup_footer_developers": {
     "message": "for developers by developers."
   },
+  "popup_onboarding_title": {
+    "message": "Set your first header",
+    "description": "Title shown in popup when no rules exist yet"
+  },
+  "popup_onboarding_description": {
+    "message": "Inject a custom header for this site in seconds — no account, unlimited rules.",
+    "description": "Description shown in popup when no rules exist yet"
+  },
+  "popup_quick_rule": {
+    "message": "Quick Rule",
+    "description": "Quick rule button label in popup"
+  },
+  "popup_quick_rule_description": {
+    "message": "Add header rule in popup",
+    "description": "Quick rule button helper text in popup"
+  },
   "template_browser_title": {
     "message": "Browse Templates"
   },

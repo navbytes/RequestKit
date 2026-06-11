@@ -604,6 +604,22 @@
   "popup_footer_developers": {
     "message": "डेवलपर्स के लिए, डेवलपर्स द्वारा।"
   },
+  "popup_onboarding_title": {
+    "message": "अपना पहला हेडर सेट करें",
+    "description": "Title shown in popup when no rules exist yet"
+  },
+  "popup_onboarding_description": {
+    "message": "इस साइट के लिए कस्टम हेडर सेकंडों में जोड़ें — कोई खाता नहीं, असीमित नियम।",
+    "description": "Description shown in popup when no rules exist yet"
+  },
+  "popup_quick_rule": {
+    "message": "त्वरित नियम",
+    "description": "Quick rule button label in popup"
+  },
+  "popup_quick_rule_description": {
+    "message": "पॉपअप में हेडर नियम जोड़ें",
+    "description": "Quick rule button helper text in popup"
+  },
   "template_browser_title": {
     "message": "टेम्प्लेट ब्राउज़ करें"
   },

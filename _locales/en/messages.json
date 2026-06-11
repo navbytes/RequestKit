@@ -475,6 +475,10 @@
   "common_rule_name": {
     "message": "Rule Name"
   },
+  "common_optional": {
+    "message": "optional",
+    "description": "Suffix marking a form field as optional"
+  },
   "quick_rule_placeholder_name": {
     "message": "Headers for"
   },

@@ -57,7 +57,7 @@ Current empty state offers four competing CTAs and a blank slate.
 - [x] Step 2: Add a common-header preset picker to the quick rule creator
       (Authorization, X-Api-Key, X-Forwarded-For, Cache-Control, …) so the
       first rule takes seconds, not minutes.
-- [ ] Step 3: Make the rule name optional in the quick rule creator
+- [x] Step 3: Make the rule name optional in the quick rule creator
       (auto-generated from header + domain), cutting required fields from
       three to two. (An active-rule-count toolbar badge was originally
       planned here, but the codebase already ships one.)

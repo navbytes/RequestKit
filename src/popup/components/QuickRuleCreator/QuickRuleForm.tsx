@@ -45,7 +45,10 @@ export function QuickRuleForm({
           htmlFor="quick-rule-name"
           className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1"
         >
-          {t('common_rule_name')}
+          {t('common_rule_name')}{' '}
+          <span className="font-normal text-gray-400 dark:text-gray-500">
+            ({t('common_optional')})
+          </span>
         </label>
         <input
           type="text"
@@ -54,7 +57,6 @@ export function QuickRuleForm({
           onChange={e => setRuleName((e.target as HTMLInputElement).value)}
           placeholder={`${t('quick_rule_placeholder_name')} ${domain}`}
           className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-          required
         />
       </div>
 
@@ -122,12 +124,7 @@ export function QuickRuleForm({
       <div className="flex space-x-2 pt-2">
         <button
           type="submit"
-          disabled={
-            isSubmitting ||
-            !ruleName.trim() ||
-            !headerName.trim() ||
-            !headerValue.trim()
-          }
+          disabled={isSubmitting || !headerName.trim() || !headerValue.trim()}
           className="flex-1 btn btn-primary btn-sm"
         >
           {isSubmitting ? t('status_creating') : t('action_create_rule')}

@@ -475,6 +475,10 @@
   "common_rule_name": {
     "message": "नियम का नाम"
   },
+  "common_optional": {
+    "message": "वैकल्पिक",
+    "description": "Suffix marking a form field as optional"
+  },
   "quick_rule_placeholder_name": {
     "message": "हेडर्स के लिए"
   },

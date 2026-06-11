@@ -125,7 +125,7 @@ worse than no feature.
       (`refactor`)
 - [x] Step 3: Remove the "coming soon" placeholder sub-tabs from the
       Analytics view — show the working overview only. (`fix`)
-- [ ] Step 4: Update roadmap progress. (`docs`)
+- [x] Step 4: Update roadmap progress. (`docs`)
 
 ## Backlog (future phases)
 

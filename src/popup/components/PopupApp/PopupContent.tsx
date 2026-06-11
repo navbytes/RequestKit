@@ -1,4 +1,5 @@
 import { Icon } from '@/shared/components/Icon';
+import { useI18n } from '@/shared/hooks/useI18n';
 import type { HeaderRule } from '@/shared/types/rules';
 import type { ExtensionSettings } from '@/shared/types/storage';
 
@@ -55,6 +56,8 @@ export function PopupContent({
   onCloseTemplateBrowser,
   onProfileChange,
 }: Readonly<PopupContentProps>) {
+  const { t } = useI18n();
+
   // Filter rules based on active profile
   const filteredRules = state.rules.filter(rule => {
     if (state.activeProfile === 'unassigned') {
@@ -66,6 +69,10 @@ export function PopupContent({
     }
   });
 
+  const isFirstRun = state.rules.length === 0;
+  const showOnboarding =
+    isFirstRun && !showQuickCreator && !showTemplateBrowser;
+
   return (
     <div className={`${isCompact ? 'p-3 space-y-3' : 'p-4 space-y-4'}`}>
       <QuickToggle
@@ -74,23 +81,72 @@ export function PopupContent({
         compact={isCompact}
       />
 
-      {/* Profile Switcher */}
-      <ProfileSwitcher
-        className="w-full"
-        activeProfile={state.activeProfile}
-        onProfileChange={onProfileChange}
-      />
+      {/* Profile Switcher — only meaningful once rules exist */}
+      {!isFirstRun && (
+        <ProfileSwitcher
+          className="w-full"
+          activeProfile={state.activeProfile}
+          onProfileChange={onProfileChange}
+        />
+      )}
 
-      <RulesList
-        rules={filteredRules}
-        currentUrl={currentTab?.url}
-        onToggleRule={onToggleRule}
-        onEditRule={onEditRule}
-        onDeleteRule={onDeleteRule}
-        compact={isCompact}
-      />
+      {showOnboarding && (
+        <div className="text-center py-4 space-y-3">
+          <div className="mx-auto w-12 h-12 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center">
+            <Icon
+              name="zap"
+              className="w-6 h-6 text-primary-600 dark:text-primary-400"
+            />
+          </div>
+          <div>
+            <h2 className="font-semibold text-gray-900 dark:text-white">
+              {t('popup_onboarding_title')}
+            </h2>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+              {t('popup_onboarding_description')}
+            </p>
+          </div>
+          <button
+            onClick={
+              currentTab?.url
+                ? onCreateRuleForCurrentPage
+                : onOpenAdvancedRuleCreator
+            }
+            className="w-full btn btn-primary btn-sm"
+          >
+            <Icon name="plus" className="w-4 h-4 mr-2" />
+            {t('action_create_rule')}
+          </button>
+          <div className="flex items-center justify-center gap-3 text-xs">
+            <button
+              onClick={onShowTemplateBrowser}
+              className="text-primary-600 dark:text-primary-400 hover:underline"
+            >
+              {t('template_browser_title')}
+            </button>
+            <span className="text-gray-300 dark:text-gray-600">·</span>
+            <button
+              onClick={onOpenAdvancedRuleCreator}
+              className="text-primary-600 dark:text-primary-400 hover:underline"
+            >
+              {t('popup_create_advanced_rule')}
+            </button>
+          </div>
+        </div>
+      )}
 
-      {currentTab?.url && !showQuickCreator && (
+      {!isFirstRun && (
+        <RulesList
+          rules={filteredRules}
+          currentUrl={currentTab?.url}
+          onToggleRule={onToggleRule}
+          onEditRule={onEditRule}
+          onDeleteRule={onDeleteRule}
+          compact={isCompact}
+        />
+      )}
+
+      {!isFirstRun && currentTab?.url && !showQuickCreator && (
         <div className={`${isCompact ? 'space-y-1' : 'space-y-2'}`}>
           <button
             onClick={onCreateRuleForCurrentPage}
@@ -102,12 +158,12 @@ export function PopupContent({
                 className={`${isCompact ? 'w-4 h-4' : 'w-5 h-5'}`}
               />
               <span className={`font-medium ${isCompact ? 'text-sm' : ''}`}>
-                Quick Rule
+                {t('popup_quick_rule')}
               </span>
             </div>
             {!isCompact && (
               <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                Add header rule in popup
+                {t('popup_quick_rule_description')}
               </p>
             )}
           </button>
@@ -121,14 +177,14 @@ export function PopupContent({
                 name="file-text"
                 className={`${isCompact ? 'w-3 h-3' : 'w-4 h-4'} mr-2`}
               />
-              Browse Templates
+              {t('template_browser_title')}
             </button>
 
             <button
               onClick={onOpenAdvancedRuleCreator}
               className={`w-full btn btn-secondary ${isCompact ? 'btn-xs' : 'btn-sm'}`}
             >
-              Advanced Rule Creator
+              {t('popup_create_advanced_rule')}
             </button>
           </div>
         </div>

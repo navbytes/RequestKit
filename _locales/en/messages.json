@@ -475,6 +475,10 @@
   "common_rule_name": {
     "message": "Rule Name"
   },
+  "common_optional": {
+    "message": "optional",
+    "description": "Suffix marking a form field as optional"
+  },
   "quick_rule_placeholder_name": {
     "message": "Headers for"
   },
@@ -489,6 +493,10 @@
   },
   "quick_rule_placeholder_header_value": {
     "message": "e.g., custom-value"
+  },
+  "quick_rule_common_headers": {
+    "message": "Common headers",
+    "description": "Label for header preset chips in quick rule form"
   },
   "status_creating": {
     "message": "Creating..."
@@ -603,6 +611,22 @@
   },
   "popup_footer_developers": {
     "message": "for developers by developers."
+  },
+  "popup_onboarding_title": {
+    "message": "Set your first header",
+    "description": "Title shown in popup when no rules exist yet"
+  },
+  "popup_onboarding_description": {
+    "message": "Inject a custom header for this site in seconds — no account, unlimited rules.",
+    "description": "Description shown in popup when no rules exist yet"
+  },
+  "popup_quick_rule": {
+    "message": "Quick Rule",
+    "description": "Quick rule button label in popup"
+  },
+  "popup_quick_rule_description": {
+    "message": "Add header rule in popup",
+    "description": "Quick rule button helper text in popup"
   },
   "template_browser_title": {
     "message": "Browse Templates"

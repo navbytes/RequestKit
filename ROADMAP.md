@@ -50,14 +50,18 @@ to be. Trust is the #1 conversion factor for this category.
 Most users decide within a minute whether an extension stays installed.
 Current empty state offers four competing CTAs and a blank slate.
 
-- [ ] Step 1: Focus the popup empty state on a single primary action
-      ("Create your first rule", pre-filled with the current tab's domain).
-- [ ] Step 2: Add a common-header preset picker to the quick rule creator
+- [x] Step 1: Focus the popup empty state on a single primary action
+      ("Create rule", pre-filled with the current tab's domain), with
+      templates/advanced editor demoted to text links. Also localizes the
+      previously hardcoded popup button strings.
+- [x] Step 2: Add a common-header preset picker to the quick rule creator
       (Authorization, X-Api-Key, X-Forwarded-For, Cache-Control, …) so the
       first rule takes seconds, not minutes.
-- [ ] Step 3: Show an active-rule-count badge on the toolbar icon so users
-      can see the extension working without opening anything.
-- [ ] Step 4: Update roadmap progress. (`docs`)
+- [x] Step 3: Make the rule name optional in the quick rule creator
+      (auto-generated from header + domain), cutting required fields from
+      three to two. (An active-rule-count toolbar badge was originally
+      planned here, but the codebase already ships one.)
+- [x] Step 4: Update roadmap progress. (`docs`)
 
 ## Phase 3 — Migration magnet
 

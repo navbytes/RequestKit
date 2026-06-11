@@ -43,7 +43,7 @@ export function useQuickRuleCreator(
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
 
-    if (!ruleName.trim() || !headerName.trim() || !headerValue.trim()) {
+    if (!headerName.trim() || !headerValue.trim()) {
       return;
     }
 
@@ -53,7 +53,7 @@ export function useQuickRuleCreator(
       const pattern = getPatternFromUrl(currentUrl);
       const newRule: HeaderRule = {
         id: `rule_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
-        name: ruleName.trim(),
+        name: ruleName.trim() || `${headerName.trim()} @ ${pattern.domain}`,
         pattern,
         headers: [
           {

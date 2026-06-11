@@ -8,7 +8,7 @@
     "dev:ui": "vite --config vite.dev.config.ts",
     "build": "tsc && vite build && npm run post-build",
     "build:dev": "vite build --config vite.dev.config.ts",
-    "post-build": "cp manifest.json dist/ && cp rules.json dist/ && cp -r src/assets dist/ && cp src/content/injected-script.ts dist/src/content/injected-script.js && mkdir -p dist/src/shared && cp src/shared/theme-init.js dist/src/shared/ && cp -r _locales dist/",
+    "post-build": "cp manifest.json dist/ && cp rules.json dist/ && cp -r src/assets dist/ && mkdir -p dist/src/shared && cp src/shared/theme-init.js dist/src/shared/ && cp -r _locales dist/",
     "build:extension": "npm run build",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
@@ -63,8 +63,12 @@
     "tailwindcss": "3.4.0",
     "typescript": "5.3.3",
     "vite": "^7.0.5",
-    "vite-plugin-web-extension": "^4.1.1",
     "vitest": "^3.2.4"
+  },
+  "overrides": {
+    "eslint-plugin-sonarjs": {
+      "minimatch": "^10.2.5"
+    }
   },
   "keywords": [
     "chrome-extension",

@@ -36,7 +36,6 @@ export default defineConfig({
           __dirname,
           'src/background/service-worker.ts'
         ),
-        content: resolve(__dirname, 'src/content/content-standalone.ts'),
       },
       output: {
         chunkFileNames: 'assets/[name]-[hash].js',
@@ -45,19 +44,10 @@ export default defineConfig({
           if (chunkInfo.name === 'service-worker') {
             return 'src/background/service-worker.js';
           }
-          if (chunkInfo.name === 'content') {
-            return 'src/content/content.js';
-          }
           return 'assets/[name]-[hash].js';
         },
         assetFileNames: 'assets/[name]-[hash].[ext]',
         format: 'es',
-        manualChunks: id => {
-          // Force content script to be bundled as a single chunk
-          if (id.includes('src/content/content-standalone.ts')) {
-            return 'content';
-          }
-        },
       },
     },
   },

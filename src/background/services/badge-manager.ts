@@ -2,6 +2,7 @@
  * Extension badge management service
  */
 
+import { matchURLPattern } from '@/lib/core/pattern-matcher';
 import type { HeaderRule } from '@/shared/types/rules';
 import { ChromeApiUtils } from '@/shared/utils/chrome-api';
 import { loggers } from '@/shared/utils/debug';
@@ -50,11 +51,16 @@ export class BadgeManager {
     try {
       if (!isEnabled) return;
 
-      // Count matching rules for this URL
+      // Count matching rules for this URL using the same pattern matcher
+      // the rule engine uses, so the badge reflects what actually applies
+      // (naive substring matching never matched wildcard domains).
       const matchingRules = Object.values(rules).filter(rule => {
         if (!rule.enabled) return false;
-        // Simple URL matching - in a real implementation, use the pattern matcher
-        return url.includes(rule.pattern.domain);
+        try {
+          return matchURLPattern(url, rule.pattern).matches;
+        } catch {
+          return false;
+        }
       });
 
       if (matchingRules.length > 0) {

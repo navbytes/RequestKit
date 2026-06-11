@@ -91,13 +91,23 @@ Keep the power, reduce the apparent complexity.
       trust fix.)
 - [x] Step 3: Update roadmap progress. (`docs`)
 
+## Phase 5 — Reliability visible & launch kit
+
+The category's reputation is "silently broken" — users no longer trust
+that headers are actually set. Make correctness visible, and prepare the
+store listing that converts.
+
+- [x] Step 1: Fix the per-tab badge to use the real pattern matcher — it
+      used naive substring matching, so wildcard rules (e.g.
+      `*.example.com`) never counted and the badge under-reported what was
+      actually applied. Adds regression tests. (`fix`)
+- [ ] Step 2: Chrome Web Store listing kit — title, summary, description
+      leading with the trust contract, screenshot plan, and category/
+      keyword guidance. (`docs`)
+- [ ] Step 3: Update roadmap progress. (`docs`)
+
 ## Backlog (future phases)
 
-- Per-tab "rules applied" indicator — make reliability visible (the
-  category's reputation is "silently broken"); market the DevTools panel
-  as "see your headers actually working".
-- Store listing kit: screenshots, copy leading with the trust contract,
-  privacy policy link, "why these permissions" section.
 - "ModHeader alternative" / "Header Editor replacement" landing pages for
   switcher SEO traffic.
 - Optional narrow-permission install mode (site-specific host permissions).

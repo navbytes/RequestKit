@@ -54,7 +54,7 @@ Current empty state offers four competing CTAs and a blank slate.
       ("Create rule", pre-filled with the current tab's domain), with
       templates/advanced editor demoted to text links. Also localizes the
       previously hardcoded popup button strings.
-- [ ] Step 2: Add a common-header preset picker to the quick rule creator
+- [x] Step 2: Add a common-header preset picker to the quick rule creator
       (Authorization, X-Api-Key, X-Forwarded-For, Cache-Control, …) so the
       first rule takes seconds, not minutes.
 - [ ] Step 3: Make the rule name optional in the quick rule creator

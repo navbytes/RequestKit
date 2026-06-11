@@ -490,6 +490,10 @@
   "quick_rule_placeholder_header_value": {
     "message": "उदाहरण: custom-value"
   },
+  "quick_rule_common_headers": {
+    "message": "सामान्य हेडर",
+    "description": "Label for header preset chips in quick rule form"
+  },
   "status_creating": {
     "message": "बन रहा है..."
   },

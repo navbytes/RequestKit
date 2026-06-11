@@ -490,6 +490,10 @@
   "quick_rule_placeholder_header_value": {
     "message": "e.g., custom-value"
   },
+  "quick_rule_common_headers": {
+    "message": "Common headers",
+    "description": "Label for header preset chips in quick rule form"
+  },
   "status_creating": {
     "message": "Creating..."
   },

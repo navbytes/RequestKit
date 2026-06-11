@@ -106,6 +106,27 @@ store listing that converts.
       keyword guidance. (`docs`)
 - [x] Step 3: Update roadmap progress. (`docs`)
 
+## Phase 6 — Cut the fake and the dead
+
+A follow-up bloat audit. Verdicts: the DevTools panel stays (it has its
+own `chrome.devtools.network` data source and is the headline "see your
+headers actually working" differentiator). Conditional Rules goes: the
+tab let users author conditions that the production injection path
+(declarativeNetRequest) silently ignores — conditions were only ever
+evaluated in the testing simulator. A feature that pretends to work is
+worse than no feature.
+
+- [x] Step 1: Remove the Conditional Rules tab and builder UI. The
+      `conditions` field stays in the data model and the rule-testing
+      simulator keeps evaluating it, but users can no longer author
+      conditions that production ignores. (`refactor`)
+- [x] Step 2: Delete dead body-modification code (`BodyModificationManager`
+      component and `body-modification-engine`, zero importers).
+      (`refactor`)
+- [x] Step 3: Remove the "coming soon" placeholder sub-tabs from the
+      Analytics view — show the working overview only. (`fix`)
+- [x] Step 4: Update roadmap progress. (`docs`)
+
 ## Backlog (future phases)
 
 - "ModHeader alternative" / "Header Editor replacement" landing pages for

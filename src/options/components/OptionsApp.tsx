@@ -14,7 +14,6 @@ import { ThemeManager } from '@/shared/utils/theme';
 import { EnhancedImportExport } from './EnhancedImportExport';
 import { TabNavigation } from './TabNavigation';
 import { AnalyticsMonitoring } from './tabs/AnalyticsMonitoring';
-import { ConditionalRuleBuilder } from './tabs/ConditionalRuleBuilder';
 import { GeneralSettings } from './tabs/GeneralSettings';
 import { HelpAbout } from './tabs/HelpAbout';
 import { PerformanceOptimization } from './tabs/PerformanceOptimization';
@@ -29,7 +28,6 @@ type TabType =
   | 'profiles'
   | 'templates'
   | 'variables'
-  | 'conditional-rules'
   | 'rule-testing'
   | 'performance'
   | 'analytics'
@@ -61,7 +59,6 @@ const getTabFromUrl = (): TabType => {
     'profiles',
     'templates',
     'variables',
-    'conditional-rules',
     'rule-testing',
     'performance',
     'analytics',
@@ -429,12 +426,6 @@ export function OptionsApp() {
                 <TemplateManager onTemplateApply={handleTemplateApply} />
               )}
               {state.activeTab === 'variables' && <VariableManager />}
-              {state.activeTab === 'conditional-rules' && (
-                <ConditionalRuleBuilder
-                  rules={state.rules}
-                  onRulesUpdate={handleRulesUpdate}
-                />
-              )}
               {state.activeTab === 'rule-testing' && (
                 <RuleTestingFrameworkComponent rules={state.rules} />
               )}

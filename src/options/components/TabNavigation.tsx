@@ -8,7 +8,6 @@ type TabType =
   | 'profiles'
   | 'templates'
   | 'variables'
-  | 'conditional-rules'
   | 'rule-testing'
   | 'performance'
   | 'analytics'
@@ -24,12 +23,7 @@ interface TabNavigationProps {
 
 // Diagnostic/experimental tabs grouped behind a collapsed section so the
 // default navigation stays focused.
-const ADVANCED_TABS: TabType[] = [
-  'conditional-rules',
-  'rule-testing',
-  'performance',
-  'analytics',
-];
+const ADVANCED_TABS: TabType[] = ['rule-testing', 'performance', 'analytics'];
 
 interface Tab {
   id: TabType;
@@ -99,13 +93,6 @@ export function TabNavigation({
       group: 'core',
     },
     // Advanced Features
-    {
-      id: 'conditional-rules',
-      label: t('tab_conditional_rules'),
-      icon: 'git-branch',
-      description: t('options_tab_conditional_rules_desc'),
-      group: 'advanced',
-    },
     {
       id: 'rule-testing',
       label: t('options_tab_rule_testing'),

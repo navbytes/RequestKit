@@ -101,7 +101,7 @@ store listing that converts.
       used naive substring matching, so wildcard rules (e.g.
       `*.example.com`) never counted and the badge under-reported what was
       actually applied. Adds regression tests. (`fix`)
-- [ ] Step 2: Chrome Web Store listing kit — title, summary, description
+- [x] Step 2: Chrome Web Store listing kit — title, summary, description
       leading with the trust contract, screenshot plan, and category/
       keyword guidance. (`docs`)
 - [ ] Step 3: Update roadmap progress. (`docs`)

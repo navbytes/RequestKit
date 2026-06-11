@@ -31,7 +31,7 @@ Remove everything that makes the extension scarier or heavier than it needs
 to be. Trust is the #1 conversion factor for this category.
 
 - [x] Step 1: Add this roadmap with competitive analysis (`docs`)
-- [ ] Step 2: Remove the content script, injected script, and unused
+- [x] Step 2: Remove the content script, injected script, and unused
       `activeTab` permission. The content script ran on every page at
       `document_start`, polled the URL every second, and observed all DOM
       mutations — yet none of its messages had a consumer anywhere in the

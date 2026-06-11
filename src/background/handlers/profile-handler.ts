@@ -291,25 +291,6 @@ export class ProfileHandler {
         }
       }
 
-      // Notify all tabs about the profile switch
-      const tabs = await chrome.tabs.query({});
-      for (const tab of tabs) {
-        if (tab.id) {
-          try {
-            await chrome.tabs.sendMessage(tab.id, {
-              action: 'profileSwitched',
-              data: {
-                previousProfile,
-                newProfile: data.profileId,
-                profile: profiles[data.profileId],
-              },
-            });
-          } catch {
-            // Ignore errors for tabs that don't have content scripts
-          }
-        }
-      }
-
       return {
         success: true,
         previousProfile,

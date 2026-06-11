@@ -104,7 +104,7 @@ store listing that converts.
 - [x] Step 2: Chrome Web Store listing kit — title, summary, description
       leading with the trust contract, screenshot plan, and category/
       keyword guidance. (`docs`)
-- [ ] Step 3: Update roadmap progress. (`docs`)
+- [x] Step 3: Update roadmap progress. (`docs`)
 
 ## Backlog (future phases)
 

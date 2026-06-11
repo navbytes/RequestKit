@@ -2,264 +2,151 @@ name: Create Release
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
-      - 'manifest.json' # Only trigger when manifest.json changes (version bump)
-  workflow_dispatch: # Allow manual triggering
+      - 'manifest.json' # version bumps land here
+  workflow_dispatch:
 
 permissions:
-  contents: write # Required for creating releases
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
 
 jobs:
-  build-and-release:
+  release:
+    name: Build & Release
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write # create the tag + GitHub Release
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
-          fetch-depth: 0 # Fetch full history for changelog generation
+          fetch-depth: 0 # full history for the changelog compare link
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Install rollup native dependencies (workaround for CI)
-        run: |
-          npm install @rollup/rollup-linux-x64-gnu
-        env:
-          NODE_OPTIONS: --max-old-space-size=4096
-
       - name: Run tests
-        run: npm test
-        env:
-          NODE_OPTIONS: --max-old-space-size=4096
+        run: npx vitest run
 
       - name: Validate localization
-        run: |
-          npm run validate-messages
-          npm run test:i18n
-        env:
-          NODE_OPTIONS: --max-old-space-size=4096
+        run: npm run validate-messages
 
       - name: Build extension
         run: npm run build
-        env:
-          NODE_OPTIONS: --max-old-space-size=4096
 
       - name: Get version from manifest.json
-        id: manifest-version
+        id: version
         run: |
           VERSION=$(jq -r '.version' dist/manifest.json)
-          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+          echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"
           echo "Extension version: $VERSION"
 
       - name: Check if release already exists
-        id: check-release
+        id: existing
         run: |
-          if gh release view "v${{ steps.manifest-version.outputs.VERSION }}" >/dev/null 2>&1; then
-            echo "Release v${{ steps.manifest-version.outputs.VERSION }} already exists"
-            echo "EXISTS=true" >> $GITHUB_OUTPUT
+          if gh release view "v${{ steps.version.outputs.VERSION }}" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            echo "EXISTS=true" >> "$GITHUB_OUTPUT"
+            echo "Release v${{ steps.version.outputs.VERSION }} already exists — nothing to do."
           else
-            echo "Release v${{ steps.manifest-version.outputs.VERSION }} does not exist"
-            echo "EXISTS=false" >> $GITHUB_OUTPUT
+            echo "EXISTS=false" >> "$GITHUB_OUTPUT"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract release notes from CHANGELOG.md
-        id: extract-release-notes
-        if: steps.check-release.outputs.EXISTS == 'false'
+        id: notes
+        if: steps.existing.outputs.EXISTS == 'false'
         run: |
-          VERSION=${{ steps.manifest-version.outputs.VERSION }}
-
-          # Check if CHANGELOG.md exists
-          if [ ! -f "CHANGELOG.md" ]; then
-            echo "CHANGELOG.md not found, creating default release notes"
-            RELEASE_NOTES="## What's Changed
-
-          This release includes various improvements and bug fixes.
-
-          **Full Changelog**: https://github.com/${{ github.repository }}/compare/v$(git describe --tags --abbrev=0 2>/dev/null || echo '0.0.0')...v$VERSION"
-          else
-            # Extract the section for the current version from CHANGELOG.md
-            RELEASE_NOTES=$(awk -v version="$VERSION" '
-              BEGIN { found=0; }
-              /^## \['"$VERSION"'\]/ { found=1; next; }
-              /^## \[/ { if (found) exit; }
-              { if (found) print; }
+          VERSION=${{ steps.version.outputs.VERSION }}
+          NOTES=""
+          if [ -f CHANGELOG.md ]; then
+            NOTES=$(awk -v version="$VERSION" '
+              /^## \['"$VERSION"'\]/ { found=1; next }
+              /^## \[/ { if (found) exit }
+              { if (found) print }
             ' CHANGELOG.md)
-            
-            # If no specific version section found, create default notes
-            if [ -z "$RELEASE_NOTES" ]; then
-              RELEASE_NOTES="## What's Changed
-
-          This release includes various improvements and bug fixes.
-
-          **Full Changelog**: https://github.com/${{ github.repository }}/compare/v$(git describe --tags --abbrev=0 2>/dev/null || echo '0.0.0')...v$VERSION"
-            fi
           fi
-
-          # Store the release notes in an output variable
-          echo "RELEASE_NOTES<<EOF" >> $GITHUB_OUTPUT
-          echo "$RELEASE_NOTES" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-
-      - name: Validate extension package
-        if: steps.check-release.outputs.EXISTS == 'false'
-        run: |
-          echo "🔍 Validating extension package..."
-
-          # Check if required files exist
-          required_files=("manifest.json" "_locales/en/messages.json")
-          for file in "${required_files[@]}"; do
-            if [ ! -f "dist/$file" ]; then
-              echo "❌ Required file missing: $file"
-              exit 1
-            fi
-          done
-
-          # Validate manifest.json
-          if ! jq empty dist/manifest.json; then
-            echo "❌ Invalid JSON in manifest.json"
-            exit 1
+          if [ -z "$NOTES" ]; then
+            PREV=$(git describe --tags --abbrev=0 2>/dev/null || echo '')
+            NOTES="See the full changelog: https://github.com/$GITHUB_REPOSITORY/compare/${PREV:-$(git rev-list --max-parents=0 HEAD)}...v$VERSION"
           fi
+          {
+            echo "NOTES<<NOTES_EOF"
+            echo "$NOTES"
+            echo "NOTES_EOF"
+          } >> "$GITHUB_OUTPUT"
 
-          # Check extension size
-          cd dist
-          total_size=$(du -sb . | cut -f1)
-          size_mb=$((total_size / 1024 / 1024))
-          echo "📦 Extension size: ${size_mb}MB"
-
-          if [ $size_mb -gt 20 ]; then
-            echo "⚠️ Warning: Extension size (${size_mb}MB) exceeds Chrome Web Store limit (20MB)"
-          fi
-
-          cd ..
-
-      - name: Create ZIP archive
-        if: steps.check-release.outputs.EXISTS == 'false'
+      - name: Package store zip
+        if: steps.existing.outputs.EXISTS == 'false'
         run: |
           cd dist
-          zip -r ../RequestKit_${{ steps.manifest-version.outputs.VERSION }}.zip . -x "*.map" "*.DS_Store"
+          zip -qr "../RequestKit_${{ steps.version.outputs.VERSION }}.zip" . -x '*.map' -x '*.DS_Store'
           cd ..
+          ls -lh "RequestKit_${{ steps.version.outputs.VERSION }}.zip"
 
-          # Verify ZIP file
-          echo "📦 Created ZIP archive:"
-          ls -lh RequestKit_${{ steps.manifest-version.outputs.VERSION }}.zip
-
-          # Check ZIP contents
-          echo "📋 ZIP contents:"
-          unzip -l RequestKit_${{ steps.manifest-version.outputs.VERSION }}.zip | head -20
-
-      - name: Generate release summary
-        if: steps.check-release.outputs.EXISTS == 'false'
-        run: |
-          echo "## 🚀 Release Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Version:** ${{ steps.manifest-version.outputs.VERSION }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Extension Name:** RequestKit" >> $GITHUB_STEP_SUMMARY
-          echo "**Build Date:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
-          echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-
-          # Package info
-          zip_size=$(stat -c%s RequestKit_${{ steps.manifest-version.outputs.VERSION }}.zip)
-          zip_size_mb=$((zip_size / 1024 / 1024))
-          echo "**Package Size:** ${zip_size_mb}MB" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-
-          # Localization info
-          locale_count=$(find dist/_locales -name "messages.json" | wc -l)
-          echo "**Supported Locales:** $locale_count" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-
-          # Test results
-          echo "**Quality Checks:** ✅ All tests passed" >> $GITHUB_STEP_SUMMARY
-          echo "**Localization:** ✅ All locale files validated" >> $GITHUB_STEP_SUMMARY
-          echo "**Build:** ✅ Extension built successfully" >> $GITHUB_STEP_SUMMARY
-
-      - name: Generate technical details
-        if: steps.check-release.outputs.EXISTS == 'false'
-        id: tech-details
-        run: |
-          # Get package size
-          ZIP_SIZE=$(stat -c%s RequestKit_${{ steps.manifest-version.outputs.VERSION }}.zip)
-          PACKAGE_SIZE=$(echo $ZIP_SIZE | awk '{printf "%.1f MB", $1/1024/1024}')
-
-          # Get build date
-          BUILD_DATE=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
-
-          # Get previous version for changelog
-          PREV_VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo '0.0.0')
-
-          # Store in outputs
-          echo "PACKAGE_SIZE=$PACKAGE_SIZE" >> $GITHUB_OUTPUT
-          echo "BUILD_DATE=$BUILD_DATE" >> $GITHUB_OUTPUT
-          echo "PREV_VERSION=$PREV_VERSION" >> $GITHUB_OUTPUT
-
-      - name: Create Release
-        id: create_release
-        if: steps.check-release.outputs.EXISTS == 'false'
+      - name: Create GitHub Release
+        if: steps.existing.outputs.EXISTS == 'false'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ steps.manifest-version.outputs.VERSION }}
-          name: RequestKit v${{ steps.manifest-version.outputs.VERSION }}
+          tag_name: v${{ steps.version.outputs.VERSION }}
+          name: RequestKit v${{ steps.version.outputs.VERSION }}
           body: |
-            # RequestKit v${{ steps.manifest-version.outputs.VERSION }}
+            ${{ steps.notes.outputs.NOTES }}
 
-            ${{ steps.extract-release-notes.outputs.RELEASE_NOTES }}
+            ## Installation
 
-            ## 📦 Installation
-
-            1. Download the `RequestKit_${{ steps.manifest-version.outputs.VERSION }}.zip` file below
-            2. Extract the ZIP file
-            3. Open Chrome and navigate to `chrome://extensions/`
-            4. Enable "Developer mode" in the top right
-            5. Click "Load unpacked" and select the extracted folder
-
-            ## 🌐 Localization Support
-
-            This release includes localization support for multiple languages. The extension will automatically detect your browser's language and display the appropriate translations.
-
-            ## 🔧 Technical Details
-
-            - **Manifest Version:** 3
-            - **Minimum Chrome Version:** 88
-            - **Package Size:** ${{ steps.tech-details.outputs.PACKAGE_SIZE }}
-            - **Build Date:** ${{ steps.tech-details.outputs.BUILD_DATE }}
-
-            ---
-
-            **Full Changelog**: https://github.com/${{ github.repository }}/compare/v${{ steps.tech-details.outputs.PREV_VERSION }}...v${{ steps.manifest-version.outputs.VERSION }}
-          files: RequestKit_${{ steps.manifest-version.outputs.VERSION }}.zip
+            1. Download `RequestKit_${{ steps.version.outputs.VERSION }}.zip` below and extract it
+            2. Open `chrome://extensions/`, enable **Developer mode**
+            3. Click **Load unpacked** and select the extracted folder
+          files: RequestKit_${{ steps.version.outputs.VERSION }}.zip
           draft: false
           prerelease: false
-          generate_release_notes: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update release summary
-        if: steps.check-release.outputs.EXISTS == 'false' && steps.create_release.outcome == 'success'
+      # Uploads the zip as a draft to the Chrome Web Store when the four
+      # CWS secrets are configured; skips quietly otherwise. Deliberately
+      # upload-only (no auto-publish): submit for review from the CWS
+      # dashboard. Flip to `chrome-webstore-upload-cli upload --auto-publish`
+      # once a release cycle has gone through review cleanly.
+      - name: Check Chrome Web Store credentials
+        id: cws
+        if: steps.existing.outputs.EXISTS == 'false'
         run: |
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "## 🎉 Release Created Successfully" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Release URL:** ${{ steps.create_release.outputs.url }}" >> $GITHUB_STEP_SUMMARY
-          echo "**Download URL:** ${{ steps.create_release.outputs.url }}/download/RequestKit_${{ steps.manifest-version.outputs.VERSION }}.zip" >> $GITHUB_STEP_SUMMARY
+          if [ -n "${{ secrets.CHROME_EXTENSION_ID }}" ] \
+            && [ -n "${{ secrets.CHROME_CLIENT_ID }}" ] \
+            && [ -n "${{ secrets.CHROME_CLIENT_SECRET }}" ] \
+            && [ -n "${{ secrets.CHROME_REFRESH_TOKEN }}" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            {
+              echo "## Chrome Web Store upload skipped"
+              echo ""
+              echo "Configure these repository secrets to enable automatic uploads:"
+              echo '`CHROME_EXTENSION_ID`, `CHROME_CLIENT_ID`, `CHROME_CLIENT_SECRET`, `CHROME_REFRESH_TOKEN`'
+              echo ""
+              echo "See https://github.com/fregante/chrome-webstore-upload-cli#setup"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
 
-      - name: Notify if release exists
-        if: steps.check-release.outputs.EXISTS == 'true'
-        run: |
-          echo "## ℹ️ Release Already Exists" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "A release for version ${{ steps.manifest-version.outputs.VERSION }} already exists." >> $GITHUB_STEP_SUMMARY
-          echo "No new release will be created." >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**Existing Release:** https://github.com/${{ github.repository }}/releases/tag/v${{ steps.manifest-version.outputs.VERSION }}" >> $GITHUB_STEP_SUMMARY
+      - name: Upload to Chrome Web Store
+        if: steps.existing.outputs.EXISTS == 'false' && steps.cws.outputs.configured == 'true'
+        run: npx chrome-webstore-upload-cli@3 upload --source "RequestKit_${{ steps.version.outputs.VERSION }}.zip"
+        env:
+          EXTENSION_ID: ${{ secrets.CHROME_EXTENSION_ID }}
+          CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}

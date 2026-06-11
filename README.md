@@ -90,6 +90,9 @@ content, phone home, collect analytics, or require an account.
 | Dynamic variables/functions | ✅              | Paid                                  | Partial                 | ❌                    |
 | DevTools rule inspector     | ✅              | ❌                                    | Partial                 | ❌                    |
 
+Coming from ModHeader? RequestKit imports your exported profiles in one
+click — see [Switching from ModHeader](docs/switching-from-modheader.md).
+
 ## Quick start
 
 1. Click the RequestKit icon and choose **Quick Rule**

@@ -70,7 +70,7 @@ it.
 
 - [x] Step 1: One-click ModHeader JSON import (auto-detected in
       Import/Export).
-- [ ] Step 2: "Switching from ModHeader" guide documenting the import path
+- [x] Step 2: "Switching from ModHeader" guide documenting the import path
       and feature mapping. (`docs`)
 - [ ] Step 3: Update roadmap progress. (`docs`)
 

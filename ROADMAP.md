@@ -40,7 +40,7 @@ to be. Trust is the #1 conversion factor for this category.
       `src/manifest.json`. (`feat`)
 - [x] Step 3: Delete dead code — `FileInterceptionEngine` (exported, never
       instantiated) and devtools `demo-*.ts` artifacts. (`refactor`)
-- [ ] Step 4: Reposition the README around the trust contract (free, no
+- [x] Step 4: Reposition the README around the trust contract (free, no
       account, no telemetry, zero overhead) with a competitor comparison
       and an honest "why this extension needs broad host permissions"
       explanation. (`docs`)

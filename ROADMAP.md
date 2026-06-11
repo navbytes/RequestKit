@@ -68,7 +68,7 @@ Current empty state offers four competing CTAs and a blank slate.
 The incumbent's 800k users are protected mainly by switching cost. Remove
 it.
 
-- [ ] Step 1: One-click ModHeader JSON import (auto-detected in
+- [x] Step 1: One-click ModHeader JSON import (auto-detected in
       Import/Export).
 - [ ] Step 2: "Switching from ModHeader" guide documenting the import path
       and feature mapping. (`docs`)

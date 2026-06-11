@@ -1,4 +1,8 @@
 import { STORAGE_KEYS } from '@/config/constants';
+import {
+  convertModHeaderExport,
+  isModHeaderExport,
+} from '@/lib/integrations/modheader-importer';
 import type { HeaderRule } from '@/shared/types/rules';
 import type { ExtensionSettings } from '@/shared/types/storage';
 import { ChromeApiUtils } from '@/shared/utils';
@@ -207,11 +211,23 @@ export function useImportExportOperations(
       setImportProgress({ show: true, step: 'Reading file...', progress: 10 });
 
       const text = await file.text();
-      const importData = JSON.parse(text) as ExportData;
+      const parsed = JSON.parse(text) as unknown;
 
-      // Validate import data
-      if (!importData.version || !importData.timestamp) {
-        throw new Error('Invalid export file format');
+      // ModHeader exports are auto-detected and converted so switchers
+      // can bring their profiles over in one click.
+      let importData: ExportData;
+      if (isModHeaderExport(parsed)) {
+        importData = {
+          version: 'modheader-import',
+          timestamp: new Date().toISOString(),
+          rules: convertModHeaderExport(parsed),
+        };
+      } else {
+        importData = parsed as ExportData;
+        // Validate import data
+        if (!importData.version || !importData.timestamp) {
+          throw new Error('Invalid export file format');
+        }
       }
 
       setImportProgress({

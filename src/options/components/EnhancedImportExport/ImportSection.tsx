@@ -18,7 +18,8 @@ export function ImportSection({ onImport }: ImportSectionProps) {
             className="w-12 h-12 mx-auto text-gray-400 mb-4"
           />
           <p className="text-gray-600 dark:text-gray-400 mb-4">
-            Select a RequestKit export file to import
+            Select a RequestKit export file to import — ModHeader profile
+            exports are detected and converted automatically
           </p>
           <label className="btn btn-primary">
             Choose File

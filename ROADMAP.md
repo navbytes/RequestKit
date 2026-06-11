@@ -38,7 +38,7 @@ to be. Trust is the #1 conversion factor for this category.
       codebase. Removing it eliminates per-page overhead entirely and
       shrinks the permission footprint. Also removes the stale duplicate
       `src/manifest.json`. (`feat`)
-- [ ] Step 3: Delete dead code — `FileInterceptionEngine` (exported, never
+- [x] Step 3: Delete dead code — `FileInterceptionEngine` (exported, never
       instantiated) and devtools `demo-*.ts` artifacts. (`refactor`)
 - [ ] Step 4: Reposition the README around the trust contract (free, no
       account, no telemetry, zero overhead) with a competitor comparison

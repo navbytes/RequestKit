@@ -72,7 +72,7 @@ it.
       Import/Export).
 - [x] Step 2: "Switching from ModHeader" guide documenting the import path
       and feature mapping. (`docs`)
-- [ ] Step 3: Update roadmap progress. (`docs`)
+- [x] Step 3: Update roadmap progress. (`docs`)
 
 ## Phase 4 — Focus (declutter the options surface)
 

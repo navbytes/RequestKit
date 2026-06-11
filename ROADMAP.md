@@ -120,7 +120,7 @@ worse than no feature.
       `conditions` field stays in the data model and the rule-testing
       simulator keeps evaluating it, but users can no longer author
       conditions that production ignores. (`refactor`)
-- [ ] Step 2: Delete dead body-modification code (`BodyModificationManager`
+- [x] Step 2: Delete dead body-modification code (`BodyModificationManager`
       component and `body-modification-engine`, zero importers).
       (`refactor`)
 - [ ] Step 3: Remove the "coming soon" placeholder sub-tabs from the

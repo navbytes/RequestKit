@@ -82,8 +82,13 @@ Keep the power, reduce the apparent complexity.
 - [x] Step 1: Group experimental/diagnostic tabs (Analytics, Performance,
       Rule Testing, Conditional Rules) behind a single collapsible
       "Advanced" section, collapsed by default (auto-expands on deep links).
-- [ ] Step 2: Trim the service worker bundle (move options-only code out of
-      the background entry).
+- [x] Step 2: Make the local-only nature of analytics explicit in the
+      Analytics tab and its navigation description ("data never leaves
+      your device"), removing trust-eroding copy like "track user
+      behavior". (Originally scoped as a service-worker bundle trim, but
+      investigation showed the background entry has no options-only
+      imports — it was already lean, so the step was re-scoped to this
+      trust fix.)
 - [ ] Step 3: Update roadmap progress. (`docs`)
 
 ## Backlog (future phases)

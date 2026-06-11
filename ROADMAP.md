@@ -79,9 +79,9 @@ it.
 Power features are a differentiator, but ten top-level tabs read as bloat.
 Keep the power, reduce the apparent complexity.
 
-- [ ] Step 1: Group experimental/diagnostic tabs (Analytics, Performance,
-      Rule Testing, Conditional Rules) behind a single "Advanced" section,
-      off by default.
+- [x] Step 1: Group experimental/diagnostic tabs (Analytics, Performance,
+      Rule Testing, Conditional Rules) behind a single collapsible
+      "Advanced" section, collapsed by default (auto-expands on deep links).
 - [ ] Step 2: Trim the service worker bundle (move options-only code out of
       the background entry).
 - [ ] Step 3: Update roadmap progress. (`docs`)

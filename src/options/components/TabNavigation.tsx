@@ -22,6 +22,15 @@ interface TabNavigationProps {
   mobileOnly?: boolean;
 }
 
+// Diagnostic/experimental tabs grouped behind a collapsed section so the
+// default navigation stays focused.
+const ADVANCED_TABS: TabType[] = [
+  'conditional-rules',
+  'rule-testing',
+  'performance',
+  'analytics',
+];
+
 interface Tab {
   id: TabType;
   label: string;
@@ -34,6 +43,7 @@ interface TabGroup {
   id: string;
   label: string;
   tabs: Tab[];
+  collapsible?: boolean;
 }
 
 export function TabNavigation({
@@ -44,6 +54,16 @@ export function TabNavigation({
   const { t } = useI18n();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredTab, setHoveredTab] = useState<TabType | null>(null);
+  const [advancedOpen, setAdvancedOpen] = useState(
+    ADVANCED_TABS.includes(activeTab)
+  );
+
+  // Deep links into an advanced tab must reveal the collapsed section.
+  useEffect(() => {
+    if (ADVANCED_TABS.includes(activeTab)) {
+      setAdvancedOpen(true);
+    }
+  }, [activeTab]);
   const overlayRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
 
@@ -100,13 +120,14 @@ export function TabNavigation({
       description: t('options_tab_performance_desc'),
       group: 'advanced',
     },
-    // System & Analytics
+    // Diagnostics live with the other advanced tooling so the default
+    // navigation stays focused on everyday tasks.
     {
       id: 'analytics',
       label: t('options_tab_analytics'),
       icon: 'bar-chart',
       description: t('options_tab_analytics_desc'),
-      group: 'system',
+      group: 'advanced',
     },
     {
       id: 'settings',
@@ -142,6 +163,7 @@ export function TabNavigation({
       id: 'advanced',
       label: t('group_advanced_features'),
       tabs: localizedTabs.filter(tab => tab.group === 'advanced'),
+      collapsible: true,
     },
     {
       id: 'system',
@@ -247,16 +269,34 @@ export function TabNavigation({
     </button>
   );
 
-  const renderTabGroup = (group: TabGroup, showDescription = true) => (
-    <div key={group.id} className="space-y-1">
-      {showDescription && (
-        <h3 className="px-3 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-          {group.label}
-        </h3>
-      )}
-      {group.tabs.map(tab => renderTabButton(tab, showDescription))}
-    </div>
-  );
+  const renderTabGroup = (group: TabGroup, showDescription = true) => {
+    const isCollapsed = group.collapsible === true && !advancedOpen;
+
+    return (
+      <div key={group.id} className="space-y-1">
+        {showDescription &&
+          (group.collapsible ? (
+            <button
+              onClick={() => setAdvancedOpen(!advancedOpen)}
+              className="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              aria-expanded={advancedOpen}
+            >
+              <span>{group.label}</span>
+              <Icon
+                name={advancedOpen ? 'chevron-down' : 'chevron-right'}
+                size={14}
+              />
+            </button>
+          ) : (
+            <h3 className="px-3 py-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+              {group.label}
+            </h3>
+          ))}
+        {!isCollapsed &&
+          group.tabs.map(tab => renderTabButton(tab, showDescription))}
+      </div>
+    );
+  };
 
   // If mobileOnly is true, render only the mobile hamburger button and overlay
   if (mobileOnly) {

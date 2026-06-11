@@ -35,18 +35,17 @@ export function AnalyticsMonitoring(_props: AnalyticsMonitoringProps) {
     <div className="space-y-6">
       <TabDescription
         title="Analytics & Monitoring"
-        description="Comprehensive insights into rule usage, performance metrics, and optimization opportunities. Track how your rules perform, identify patterns, and get intelligent suggestions for improvements."
+        description="Local-only insights into rule usage, performance metrics, and optimization opportunities. All data stays on this device — nothing is ever transmitted anywhere. Track how your rules perform, identify patterns, and get suggestions for improvements."
         icon="bar-chart"
         features={[
-          'Real-time usage analytics and performance metrics',
+          '100% local — data never leaves your device',
           'Rule effectiveness tracking and success rates',
           'Error monitoring and debugging insights',
-          'Intelligent optimization suggestions',
+          'Optimization suggestions',
           'Data export and historical analysis',
         ]}
         useCases={[
           'Monitor rule performance and identify bottlenecks',
-          'Track user behavior and extension usage patterns',
           'Analyze error rates and troubleshoot issues',
           'Get automated suggestions for rule improvements',
         ]}

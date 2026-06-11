@@ -556,7 +556,7 @@
     "message": "Analytics & Monitoring"
   },
   "options_tab_analytics_desc": {
-    "message": "View usage analytics and performance insights"
+    "message": "View local-only usage and performance insights — data never leaves your device"
   },
   "tab_general_settings": {
     "message": "General Settings"

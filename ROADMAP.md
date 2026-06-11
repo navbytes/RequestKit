@@ -89,7 +89,7 @@ Keep the power, reduce the apparent complexity.
       investigation showed the background entry has no options-only
       imports — it was already lean, so the step was re-scoped to this
       trust fix.)
-- [ ] Step 3: Update roadmap progress. (`docs`)
+- [x] Step 3: Update roadmap progress. (`docs`)
 
 ## Backlog (future phases)
 

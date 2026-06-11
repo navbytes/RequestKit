@@ -127,6 +127,34 @@ worse than no feature.
       Analytics view — show the working overview only. (`fix`)
 - [x] Step 4: Update roadmap progress. (`docs`)
 
+## Phase 7 — CI/CD overhaul
+
+Research across well-run extension repos (uBlock Origin, Dark Reader,
+Refined GitHub, Requestly) shows they ship with ~4–6 focused jobs; this
+repo ran ~25 per PR with heavy duplication (lint 3×, tests 4×, builds 4×,
+an `npm ci` per job) plus non-enforcing "theater" jobs (complexity,
+type-coverage, grep-based performance/accessibility checks) that always
+pass. Several actions were also pinned to Node 20 majors, which GitHub
+runners stop supporting in June 2026.
+
+- [x] Step 1: Add this phase with research findings. (`docs`)
+- [ ] Step 2: Consolidate the PR pipelines into one enforcing `ci.yml`
+      (lint/format/type-check/audit, tests + localization gates, build +
+      manifest validation + size budget + side-loadable zip artifact),
+      slim `pr-checks.yml` to the semantic title check, fold SonarCloud
+      into CI, and delete the theater jobs and redundant workflows. Bump
+      all actions to Node-24 majors, add `concurrency` cancellation and
+      least-privilege `permissions`, and drop the obsolete rollup
+      workaround (the regenerated lockfile fixed the root npm bug).
+      Add a weekly scheduled security audit. (`ci`)
+- [ ] Step 3: Modernize the release workflow — same hygiene, slimmer
+      steps, and a Chrome Web Store upload step that activates when the
+      four CWS secrets are configured (upload-only first; flip to
+      auto-publish after one manual review cycle). (`ci`)
+- [ ] Step 4: Add Dependabot updates for GitHub Actions and npm so action
+      majors and dependencies never rot again. (`ci`)
+- [ ] Step 5: Update roadmap progress. (`docs`)
+
 ## Backlog (future phases)
 
 - "ModHeader alternative" / "Header Editor replacement" landing pages for

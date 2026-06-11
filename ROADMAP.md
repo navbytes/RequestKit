@@ -61,7 +61,7 @@ Current empty state offers four competing CTAs and a blank slate.
       (auto-generated from header + domain), cutting required fields from
       three to two. (An active-rule-count toolbar badge was originally
       planned here, but the codebase already ships one.)
-- [ ] Step 4: Update roadmap progress. (`docs`)
+- [x] Step 4: Update roadmap progress. (`docs`)
 
 ## Phase 3 — Migration magnet
 

@@ -123,7 +123,7 @@ worse than no feature.
 - [x] Step 2: Delete dead body-modification code (`BodyModificationManager`
       component and `body-modification-engine`, zero importers).
       (`refactor`)
-- [ ] Step 3: Remove the "coming soon" placeholder sub-tabs from the
+- [x] Step 3: Remove the "coming soon" placeholder sub-tabs from the
       Analytics view — show the working overview only. (`fix`)
 - [ ] Step 4: Update roadmap progress. (`docs`)
 

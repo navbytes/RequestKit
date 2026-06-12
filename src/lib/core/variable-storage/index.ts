@@ -377,9 +377,8 @@ export async function performMaintenance(): Promise<{
 
       // Clean up old usage history (older than 90 days)
       try {
-        const { clearUsageHistory } = await import(
-          './management/usageTracking'
-        );
+        const { clearUsageHistory } =
+          await import('./management/usageTracking');
         await clearUsageHistory();
         logger.info('Cleaned up old usage history');
       } catch (usageError) {
@@ -427,9 +426,8 @@ export async function performMaintenance(): Promise<{
 
       // Save cleaned up data if any changes were made
       if (cleanupCount > 0) {
-        const { saveGlobalVariables } = await import(
-          './operations/globalOperations'
-        );
+        const { saveGlobalVariables } =
+          await import('./operations/globalOperations');
 
         // Save deduplicated global variables
         const cleanGlobalVariables = Object.values(deduplicatedGlobal);
@@ -491,9 +489,8 @@ export async function performMaintenance(): Promise<{
 
       // Optimize variable access patterns by creating usage-based indexes
       try {
-        const { getAllVariableUsageStats } = await import(
-          './management/usageTracking'
-        );
+        const { getAllVariableUsageStats } =
+          await import('./management/usageTracking');
         const usageStats = await getAllVariableUsageStats();
 
         // Sort variables by usage frequency for faster access

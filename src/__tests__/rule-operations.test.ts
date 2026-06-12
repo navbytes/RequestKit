@@ -306,9 +306,8 @@ describe('useRuleOperations - Duplicate Functionality', () => {
     });
 
     it('should handle storage errors gracefully', async () => {
-      const { saveRules } = await import(
-        '@/options/components/tabs/RuleManagement/utils/ruleStorage'
-      );
+      const { saveRules } =
+        await import('@/options/components/tabs/RuleManagement/utils/ruleStorage');
       vi.mocked(saveRules).mockRejectedValueOnce(new Error('Storage error'));
 
       const { result } = renderHook(() =>

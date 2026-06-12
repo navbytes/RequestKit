@@ -165,12 +165,12 @@ merging it triggers the existing release pipeline (tag, GitHub Release,
 store zip, optional Chrome Web Store upload).
 
 - [x] Step 1: Add this phase to the roadmap. (`docs`)
-- [ ] Step 2: Add the release-please workflow and config — `node`
+- [x] Step 2: Add the release-please workflow and config — `node`
       release type with `manifest.json` kept in sync via an extra-files
       JSON updater; GitHub Release creation skipped (the existing
       `release.yml` owns that), and the release flow documented in the
       README. (`ci`)
-- [ ] Step 3: Update roadmap progress. (`docs`)
+- [x] Step 3: Update roadmap progress. (`docs`)
 
 ## Backlog (future phases)
 

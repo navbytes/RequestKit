@@ -39,14 +39,6 @@ export function ProfileSwitcher({
   const [profileData, setProfileData] = useState<ProfileData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    loadProfiles();
-  }, []);
-
-  // Use external activeProfile if provided, otherwise use internal state
-  const currentActiveProfile =
-    externalActiveProfile || profileData?.activeProfile || 'dev-profile';
-
   const loadProfiles = async () => {
     try {
       const response = (await ChromeApiUtils.runtime.sendMessage({
@@ -62,6 +54,14 @@ export function ProfileSwitcher({
       logger.error('Failed to load profiles:', error);
     }
   };
+
+  useEffect(() => {
+    loadProfiles();
+  }, []);
+
+  // Use external activeProfile if provided, otherwise use internal state
+  const currentActiveProfile =
+    externalActiveProfile || profileData?.activeProfile || 'dev-profile';
 
   const switchProfile = async (profileId: string) => {
     if (isLoading || !profileData) return;

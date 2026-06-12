@@ -14,6 +14,57 @@ interface VariableResolutionViewerProps {
   onClose?: () => void;
 }
 
+const extractVariableReferences = (input: string): string[] => {
+  const variablePattern = /\$\{([a-zA-Z_][a-zA-Z0-9_]*)\}/g;
+  const matches: string[] = [];
+  let match;
+  while ((match = variablePattern.exec(input)) !== null) {
+    if (match[1]) matches.push(match[1]);
+  }
+  return matches;
+};
+
+const detectCircularDependencies = (
+  dependencies: Map<string, Set<string>>
+): string[][] => {
+  const visited = new Set<string>();
+  const recursionStack = new Set<string>();
+  const cycles: string[][] = [];
+
+  const dfs = (node: string, path: string[]): void => {
+    if (recursionStack.has(node)) {
+      // Found a cycle
+      const cycleStart = path.indexOf(node);
+      if (cycleStart !== -1) {
+        cycles.push(path.slice(cycleStart));
+      }
+      return;
+    }
+
+    if (visited.has(node)) return;
+
+    visited.add(node);
+    recursionStack.add(node);
+    path.push(node);
+
+    const deps = dependencies.get(node) || new Set();
+    deps.forEach(dep => {
+      dfs(dep, [...path]);
+    });
+
+    recursionStack.delete(node);
+    path.pop();
+  };
+
+  dependencies.forEach((_, node) => {
+    if (!visited.has(node)) {
+      dfs(node, []);
+    }
+  });
+
+  return cycles;
+};
+
 export function VariableResolutionViewer({
   trace,
   onClose,
@@ -90,57 +141,6 @@ export function VariableResolutionViewer({
       circularDependencies,
     });
   }, [trace]);
-
-  const extractVariableReferences = (input: string): string[] => {
-    const variablePattern = /\$\{([a-zA-Z_][a-zA-Z0-9_]*)\}/g;
-    const matches: string[] = [];
-    let match;
-    while ((match = variablePattern.exec(input)) !== null) {
-      if (match[1]) matches.push(match[1]);
-    }
-    return matches;
-  };
-
-  const detectCircularDependencies = (
-    dependencies: Map<string, Set<string>>
-  ): string[][] => {
-    const visited = new Set<string>();
-    const recursionStack = new Set<string>();
-    const cycles: string[][] = [];
-
-    const dfs = (node: string, path: string[]): void => {
-      if (recursionStack.has(node)) {
-        // Found a cycle
-        const cycleStart = path.indexOf(node);
-        if (cycleStart !== -1) {
-          cycles.push(path.slice(cycleStart));
-        }
-        return;
-      }
-
-      if (visited.has(node)) return;
-
-      visited.add(node);
-      recursionStack.add(node);
-      path.push(node);
-
-      const deps = dependencies.get(node) || new Set();
-      deps.forEach(dep => {
-        dfs(dep, [...path]);
-      });
-
-      recursionStack.delete(node);
-      path.pop();
-    };
-
-    dependencies.forEach((_, node) => {
-      if (!visited.has(node)) {
-        dfs(node, []);
-      }
-    });
-
-    return cycles;
-  };
 
   const toggleStepExpansion = (stepId: string) => {
     const newExpanded = new Set(expandedSteps);

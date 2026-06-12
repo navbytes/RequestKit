@@ -485,16 +485,11 @@ export class VariableHandler {
     success: boolean;
     clearedCount: number;
   }> {
-    try {
-      // VariableResolver doesn't have a clearCache method, so we'll simulate it
-      return {
-        success: true,
-        clearedCount: 0,
-      };
-    } catch (error) {
-      logger.error('Error clearing variable cache:', error);
-      throw error;
-    }
+    // VariableResolver doesn't have a clearCache method, so we'll simulate it
+    return {
+      success: true,
+      clearedCount: 0,
+    };
   }
 
   /**

@@ -5,6 +5,22 @@ All notable changes to the RequestKit Chrome extension will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0](https://github.com/navbytes/RequestKit/compare/v1.0.2...v1.1.0) (2026-06-12)
+
+
+### Features
+
+* adoption roadmap phase 1 — trust & footprint ([#8](https://github.com/navbytes/RequestKit/issues/8)) ([e37ebc0](https://github.com/navbytes/RequestKit/commit/e37ebc0d3263730ff5d1ddee052221cfa3d81f40))
+* adoption roadmap phase 2 — first-run & popup ux ([#9](https://github.com/navbytes/RequestKit/issues/9)) ([277eaa3](https://github.com/navbytes/RequestKit/commit/277eaa3e05544cdd3b6c4bc8624589a3dd51f174))
+* adoption roadmap phase 3 — modheader migration magnet ([#10](https://github.com/navbytes/RequestKit/issues/10)) ([494fb44](https://github.com/navbytes/RequestKit/commit/494fb44371c40b89d9e8d59cf59f903bf2e8f9e6))
+* adoption roadmap phase 4 — focus the options surface ([#11](https://github.com/navbytes/RequestKit/issues/11)) ([3c68692](https://github.com/navbytes/RequestKit/commit/3c68692f9021e8ff0bbcef9bb04b8bedc96581e5))
+* adoption roadmap phase 5 — reliability visible & launch kit ([#12](https://github.com/navbytes/RequestKit/issues/12)) ([6a9b156](https://github.com/navbytes/RequestKit/commit/6a9b156c1f52b8f39fbb05cb5fd144b318d2424d))
+
+
+### Bug Fixes
+
+* localization ([#6](https://github.com/navbytes/RequestKit/issues/6)) ([a43df2f](https://github.com/navbytes/RequestKit/commit/a43df2fd15cd0d0daa713f07beb24278446aa457))
+
 ## [Unreleased]
 
 ### Added

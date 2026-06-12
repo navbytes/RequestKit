@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "default_locale": "en",
   "permissions": [
     "declarativeNetRequest",
@@ -10,7 +10,9 @@
     "contextMenus",
     "notifications"
   ],
-  "host_permissions": ["<all_urls>"],
+  "host_permissions": [
+    "<all_urls>"
+  ],
   "background": {
     "service_worker": "src/background/service-worker.js",
     "type": "module"

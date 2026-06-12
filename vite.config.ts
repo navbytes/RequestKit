@@ -24,7 +24,6 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    minify: 'esbuild',
     target: 'es2022',
     rollupOptions: {
       input: {
@@ -50,11 +49,6 @@ export default defineConfig({
         format: 'es',
       },
     },
-  },
-  esbuild: {
-    jsxFactory: 'h',
-    jsxFragment: 'Fragment',
-    jsxImportSource: 'preact',
   },
   define: {
     'process.env.NODE_ENV': JSON.stringify('production'),

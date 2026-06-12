@@ -436,7 +436,6 @@ export function VariableForm({
                   }))
                 }
                 placeholder="Enter value with optional functions like ${uuid()}, ${timestamp()}, etc."
-                type={formData.isSecret ? 'password' : 'text'}
                 required
               />
               {formData.isSecret && (

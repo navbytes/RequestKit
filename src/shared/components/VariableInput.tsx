@@ -1,3 +1,4 @@
+import type { RefObject } from 'preact';
 import { useState, useEffect, useRef } from 'preact/hooks';
 
 import { VariableResolver } from '@/lib/core';
@@ -238,7 +239,10 @@ export function VariableInput({
     <div className="relative">
       <div className="relative">
         <InputComponent
-          ref={inputRef as React.Ref<HTMLInputElement & HTMLTextAreaElement>}
+          ref={
+            inputRef as RefObject<HTMLInputElement> &
+              RefObject<HTMLTextAreaElement>
+          }
           type={multiline ? undefined : 'text'}
           value={value}
           onInput={handleInputChange}

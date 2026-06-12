@@ -155,6 +155,23 @@ runners stop supporting in June 2026.
       majors and dependencies never rot again. (`ci`)
 - [x] Step 5: Update roadmap progress. (`docs`)
 
+## Phase 8 — Automated version bumps (release-please)
+
+Phase 7's release workflow reacts to a version change in `manifest.json`,
+but the bump itself was still manual. release-please closes that gap:
+conventional commits on main accumulate into an auto-maintained release
+PR that bumps `package.json` + `manifest.json` and writes the changelog;
+merging it triggers the existing release pipeline (tag, GitHub Release,
+store zip, optional Chrome Web Store upload).
+
+- [x] Step 1: Add this phase to the roadmap. (`docs`)
+- [ ] Step 2: Add the release-please workflow and config — `node`
+      release type with `manifest.json` kept in sync via an extra-files
+      JSON updater; GitHub Release creation skipped (the existing
+      `release.yml` owns that), and the release flow documented in the
+      README. (`ci`)
+- [ ] Step 3: Update roadmap progress. (`docs`)
+
 ## Backlog (future phases)
 
 - "ModHeader alternative" / "Header Editor replacement" landing pages for

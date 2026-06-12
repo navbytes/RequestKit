@@ -135,6 +135,16 @@ Issues and PRs are welcome. Commit messages follow
 git hook), and CI runs lint, type-check, tests, localization checks, and a
 production build on every PR. See [ROADMAP.md](ROADMAP.md) for direction.
 
+### Releasing
+
+Releases are fully automated. Conventional commits on `main` accumulate
+into a release PR maintained by
+[release-please](https://github.com/googleapis/release-please) (version
+bump in `package.json` + `manifest.json`, changelog entry). Merging that
+PR triggers the release workflow: tag, GitHub Release with the store zip,
+and — when the Chrome Web Store secrets are configured — an upload to the
+store.
+
 ### Localization
 
 Locale files live in `_locales/`. `npm run validate-messages` and

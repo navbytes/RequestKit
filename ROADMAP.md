@@ -173,6 +173,25 @@ workflow — publishing to the store is a human decision.
       README. (`ci`)
 - [x] Step 3: Update roadmap progress. (`docs`)
 
+## Phase 9 — Dev toolchain upgrade
+
+Supersedes Dependabot's red bulk PRs (#16, #18) with an incremental,
+verified migration. Out of scope by choice: Tailwind 4 (a full CSS engine
+migration), zod 4 and @preact/signals 2 (runtime deps, not toolchain),
+and ESLint 10 / TypeScript 6 (too new for the plugin ecosystem).
+
+- [x] Step 1: Add this phase to the roadmap. (`docs`)
+- [ ] Step 2: In-range dev dependency updates (types, prettier, lefthook,
+      typescript-eslint, etc.) with full verification. (`build`)
+- [ ] Step 3: Migrate to ESLint 9 flat config, bumping plugin majors
+      (react-hooks, sonarjs — dropping the now-unneeded minimatch
+      override). (`build`)
+- [ ] Step 4: Update the test/build toolchain — TypeScript 5.9, vitest 4,
+      jsdom, vite 8. (`build`)
+- [ ] Step 5: Update lucide-preact to 1.x and fix icon fallout. (`build`)
+- [ ] Step 6: Update roadmap progress and close the superseded Dependabot
+      PRs. (`docs`)
+
 ## Backlog (future phases)
 
 - "ModHeader alternative" / "Header Editor replacement" landing pages for

@@ -28,11 +28,6 @@ export default defineConfig({
       },
     },
   },
-  esbuild: {
-    jsxFactory: 'h',
-    jsxFragment: 'Fragment',
-    jsxImportSource: 'preact',
-  },
   define: {
     'process.env.NODE_ENV': JSON.stringify('development'),
   },

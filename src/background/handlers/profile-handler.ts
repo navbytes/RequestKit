@@ -125,12 +125,10 @@ export class ProfileHandler {
 
         // Trigger immediate dynamic rules update for unassigned rules
         try {
-          const { ChromeRulesConverter } = await import(
-            '../services/chrome-rules-converter'
-          );
-          const { getAllVariables } = await import(
-            '@/lib/core/variable-storage/utils/storageUtils'
-          );
+          const { ChromeRulesConverter } =
+            await import('../services/chrome-rules-converter');
+          const { getAllVariables } =
+            await import('@/lib/core/variable-storage/utils/storageUtils');
 
           // Get current rules and settings
           const [rulesData, settingsData] = await Promise.all([
@@ -224,12 +222,10 @@ export class ProfileHandler {
       // Trigger immediate dynamic rules update for the new profile
       try {
         // Import the ChromeRulesConverter to update rules immediately
-        const { ChromeRulesConverter } = await import(
-          '../services/chrome-rules-converter'
-        );
-        const { getAllVariables } = await import(
-          '@/lib/core/variable-storage/utils/storageUtils'
-        );
+        const { ChromeRulesConverter } =
+          await import('../services/chrome-rules-converter');
+        const { getAllVariables } =
+          await import('@/lib/core/variable-storage/utils/storageUtils');
 
         // Get current rules and settings
         const [rulesData, settingsData] = await Promise.all([
@@ -499,12 +495,10 @@ export class ProfileHandler {
 
       // Trigger dynamic rules update after profile deletion
       try {
-        const { ChromeRulesConverter } = await import(
-          '../services/chrome-rules-converter'
-        );
-        const { getAllVariables } = await import(
-          '@/lib/core/variable-storage/utils/storageUtils'
-        );
+        const { ChromeRulesConverter } =
+          await import('../services/chrome-rules-converter');
+        const { getAllVariables } =
+          await import('@/lib/core/variable-storage/utils/storageUtils');
 
         // Get current active profile after deletion
         const newActiveProfileData = await ChromeApiUtils.storage.sync.get([

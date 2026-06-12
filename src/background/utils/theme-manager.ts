@@ -17,14 +17,9 @@ export class BackgroundThemeManager {
    * Detect system theme
    */
   static async detectSystemTheme(): Promise<'light' | 'dark'> {
-    try {
-      // Use chrome.system.display to detect theme if available
-      // For now, we'll use a fallback method
-      return 'light'; // Default fallback
-    } catch (error) {
-      logger.error('Failed to detect system theme:', error);
-      return 'light';
-    }
+    // Use chrome.system.display to detect theme if available
+    // For now, we'll use a fallback method
+    return 'light'; // Default fallback
   }
 
   /**

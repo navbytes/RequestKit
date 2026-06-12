@@ -3,7 +3,7 @@
  */
 
 import { renderHook, act } from '@testing-library/preact';
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, vi, type Mock } from 'vitest';
 
 import { useRuleOperations } from '@/options/components/tabs/RuleManagement/hooks/useRuleOperations';
 import type { HeaderRule } from '@/shared/types/rules';
@@ -75,7 +75,7 @@ describe('useRuleOperations - Duplicate Functionality', () => {
   });
 
   let mockRules: HeaderRule[];
-  let mockOnRulesUpdate: ReturnType<typeof vi.fn>;
+  let mockOnRulesUpdate: Mock<(rules: HeaderRule[]) => void>;
 
   beforeEach(() => {
     vi.clearAllMocks();
@@ -108,7 +108,7 @@ describe('useRuleOperations - Duplicate Functionality', () => {
       }),
     ];
 
-    mockOnRulesUpdate = vi.fn();
+    mockOnRulesUpdate = vi.fn<(rules: HeaderRule[]) => void>();
   });
 
   describe('handleDuplicateRule', () => {
@@ -306,9 +306,8 @@ describe('useRuleOperations - Duplicate Functionality', () => {
     });
 
     it('should handle storage errors gracefully', async () => {
-      const { saveRules } = await import(
-        '@/options/components/tabs/RuleManagement/utils/ruleStorage'
-      );
+      const { saveRules } =
+        await import('@/options/components/tabs/RuleManagement/utils/ruleStorage');
       vi.mocked(saveRules).mockRejectedValueOnce(new Error('Storage error'));
 
       const { result } = renderHook(() =>
@@ -357,12 +356,13 @@ describe('useRuleOperations - Duplicate Functionality', () => {
 
       const firstCall = mockOnRulesUpdate.mock.calls[0]?.[0];
       const secondCall = mockOnRulesUpdate.mock.calls[1]?.[0];
+      if (!firstCall || !secondCall) throw new Error('expected two calls');
 
       const firstDuplicate = firstCall[firstCall.length - 1];
       const secondDuplicate = secondCall[secondCall.length - 1];
 
-      expect(firstDuplicate.id).toBe('rule_1640995200000');
-      expect(secondDuplicate.id).toBe('rule_1640995201000');
+      expect(firstDuplicate?.id).toBe('rule_1640995200000');
+      expect(secondDuplicate?.id).toBe('rule_1640995201000');
     });
   });
 
@@ -383,12 +383,17 @@ describe('useRuleOperations - Duplicate Functionality', () => {
 
       const duplicatedRule = mockOnRulesUpdate.mock.calls[0]?.[0].slice(-1)[0];
       expect(duplicatedRule).toBeDefined();
+      if (!duplicatedRule) throw new Error('expected a duplicated rule');
 
       // Update the duplicated rule
       const formData = {
         name: 'Updated Duplicate Rule',
         enabled: true,
-        pattern: duplicatedRule.pattern,
+        pattern: {
+          protocol: duplicatedRule.pattern.protocol ?? '*',
+          domain: duplicatedRule.pattern.domain,
+          path: duplicatedRule.pattern.path ?? '/*',
+        },
         priority: 2,
         description: '',
         tags: [],
@@ -421,6 +426,7 @@ describe('useRuleOperations - Duplicate Functionality', () => {
 
       const duplicatedRule = mockOnRulesUpdate.mock.calls[0]?.[0].slice(-1)[0];
       expect(duplicatedRule).toBeDefined();
+      if (!duplicatedRule) throw new Error('expected a duplicated rule');
 
       // Delete the duplicated rule
       await act(async () => {
@@ -432,6 +438,7 @@ describe('useRuleOperations - Duplicate Functionality', () => {
       // Verify the duplicate was removed but original remains
       const finalRules = mockOnRulesUpdate.mock.calls[1]?.[0];
       expect(finalRules).toBeDefined();
+      if (!finalRules) throw new Error('expected final rules');
       expect(finalRules).toHaveLength(mockRules.length);
       expect(
         finalRules.find((r: HeaderRule) => r.id === sourceRule.id)
@@ -457,10 +464,12 @@ describe('useRuleOperations - Duplicate Functionality', () => {
 
       const duplicatedRule = mockOnRulesUpdate.mock.calls[0]?.[0].slice(-1)[0];
       expect(duplicatedRule).toBeDefined();
+      if (!duplicatedRule) throw new Error('expected a duplicated rule');
 
       // Create a new hook instance with the updated rules that include the duplicate
       const rulesAfterDuplicate = mockOnRulesUpdate.mock.calls[0]?.[0];
       expect(rulesAfterDuplicate).toBeDefined();
+      if (!rulesAfterDuplicate) throw new Error('expected updated rules');
       const { result: result2 } = renderHook(() =>
         useRuleOperations(rulesAfterDuplicate, mockOnRulesUpdate)
       );
@@ -475,6 +484,7 @@ describe('useRuleOperations - Duplicate Functionality', () => {
       // Verify the duplicate was toggled but original remains unchanged
       const finalRules = mockOnRulesUpdate.mock.calls[1]?.[0];
       expect(finalRules).toBeDefined();
+      if (!finalRules) throw new Error('expected final rules');
       const toggledRule = finalRules.find(
         (r: HeaderRule) => r.id === duplicatedRule.id
       );
@@ -484,8 +494,8 @@ describe('useRuleOperations - Duplicate Functionality', () => {
 
       expect(toggledRule).toBeDefined();
       expect(originalRule).toBeDefined();
-      expect(toggledRule.enabled).toBe(!duplicatedRule.enabled);
-      expect(originalRule.enabled).toBe(sourceRule.enabled);
+      expect(toggledRule?.enabled).toBe(!duplicatedRule?.enabled);
+      expect(originalRule?.enabled).toBe(sourceRule?.enabled);
     });
   });
 

@@ -116,37 +116,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Uploads the zip as a draft to the Chrome Web Store when the four
-      # CWS secrets are configured; skips quietly otherwise. Deliberately
-      # upload-only (no auto-publish): submit for review from the CWS
-      # dashboard. Flip to `chrome-webstore-upload-cli upload --auto-publish`
-      # once a release cycle has gone through review cleanly.
-      - name: Check Chrome Web Store credentials
-        id: cws
+      # Chrome Web Store submission is deliberately NOT part of this
+      # workflow — it is a manual, human-triggered step. Run the
+      # "Publish to Chrome Web Store" workflow (publish-cws.yml) from the
+      # Actions tab when ready to submit this release to the store.
+      - name: Note manual store publish step
         if: steps.existing.outputs.EXISTS == 'false'
         run: |
-          if [ -n "${{ secrets.CHROME_EXTENSION_ID }}" ] \
-            && [ -n "${{ secrets.CHROME_CLIENT_ID }}" ] \
-            && [ -n "${{ secrets.CHROME_CLIENT_SECRET }}" ] \
-            && [ -n "${{ secrets.CHROME_REFRESH_TOKEN }}" ]; then
-            echo "configured=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "configured=false" >> "$GITHUB_OUTPUT"
-            {
-              echo "## Chrome Web Store upload skipped"
-              echo ""
-              echo "Configure these repository secrets to enable automatic uploads:"
-              echo '`CHROME_EXTENSION_ID`, `CHROME_CLIENT_ID`, `CHROME_CLIENT_SECRET`, `CHROME_REFRESH_TOKEN`'
-              echo ""
-              echo "See https://github.com/fregante/chrome-webstore-upload-cli#setup"
-            } >> "$GITHUB_STEP_SUMMARY"
-          fi
-
-      - name: Upload to Chrome Web Store
-        if: steps.existing.outputs.EXISTS == 'false' && steps.cws.outputs.configured == 'true'
-        run: npx chrome-webstore-upload-cli@3 upload --source "RequestKit_${{ steps.version.outputs.VERSION }}.zip"
-        env:
-          EXTENSION_ID: ${{ secrets.CHROME_EXTENSION_ID }}
-          CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
-          CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
-          REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
+          {
+            echo "## Next step: Chrome Web Store"
+            echo ""
+            echo "Release v${{ steps.version.outputs.VERSION }} is on GitHub."
+            echo "Store submission is manual: run the **Publish to Chrome Web Store**"
+            echo "workflow from the Actions tab when ready."
+          } >> "$GITHUB_STEP_SUMMARY"

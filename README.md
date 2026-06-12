@@ -137,13 +137,13 @@ production build on every PR. See [ROADMAP.md](ROADMAP.md) for direction.
 
 ### Releasing
 
-Releases are fully automated. Conventional commits on `main` accumulate
-into a release PR maintained by
+Conventional commits on `main` accumulate into a release PR maintained by
 [release-please](https://github.com/googleapis/release-please) (version
 bump in `package.json` + `manifest.json`, changelog entry). Merging that
-PR triggers the release workflow: tag, GitHub Release with the store zip,
-and — when the Chrome Web Store secrets are configured — an upload to the
-store.
+PR triggers the release workflow: tag and GitHub Release with the store
+zip. Chrome Web Store submission is deliberately **manual**: run the
+"Publish to Chrome Web Store" workflow from the Actions tab when ready
+(requires the four `CHROME_*` repository secrets).
 
 ### Localization
 

@@ -162,7 +162,8 @@ but the bump itself was still manual. release-please closes that gap:
 conventional commits on main accumulate into an auto-maintained release
 PR that bumps `package.json` + `manifest.json` and writes the changelog;
 merging it triggers the existing release pipeline (tag, GitHub Release,
-store zip, optional Chrome Web Store upload).
+store zip). Chrome Web Store submission stays a separate, manual-only
+workflow — publishing to the store is a human decision.
 
 - [x] Step 1: Add this phase to the roadmap. (`docs`)
 - [x] Step 2: Add the release-please workflow and config — `node`

@@ -1,4 +1,4 @@
-import { StateUpdater } from 'preact/hooks';
+import { Dispatch, StateUpdater } from 'preact/hooks';
 
 import { ExportButtons } from './ExportSection/ExportButtons';
 import {
@@ -23,7 +23,7 @@ interface ExportData {
 
 interface ExportSectionProps {
   exportOptions: ExportOptionsState;
-  setExportOptions: StateUpdater<ExportOptionsState>;
+  setExportOptions: Dispatch<StateUpdater<ExportOptionsState>>;
   onExport: () => void;
   onQuickExport: (type: 'rules' | 'templates' | 'profiles') => void;
   rulesCount: number;

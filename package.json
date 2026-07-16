@@ -28,7 +28,7 @@
     "prepare": "lefthook install"
   },
   "dependencies": {
-    "@preact/signals": "^1.2.2",
+    "@preact/signals": "^2.9.4",
     "date-fns": "^4.4.0",
     "debug": "^4.4.3",
     "preact": "^10.29.2",

@@ -1,29 +1,64 @@
 name: CI
 
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
   pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
     branches: [main]
 
 permissions:
   contents: read
+  pull-requests: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
+  changes:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    outputs:
+      relevant: ${{ steps.paths.outputs.relevant }}
+    steps:
+      - id: paths
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+            echo 'relevant=true' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER" > pr.json
+          gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER/files?per_page=100" > files.json
+          python3 - <<'PYTHON'
+          import json, os, re
+          pr = json.load(open('pr.json'))
+          files = [f for page in json.load(open('files.json')) for f in page]
+          complete = 0 < len(files) == pr['changed_files'] < 3000
+          same_head = pr['head']['sha'] == os.environ['EXPECTED_HEAD']
+          docs = re.compile(r'^(docs/|README[^/]*\.md$|CHANGELOG[^/]*\.md$|LICENSE[^/]*$|\.github/AUTOMATION\.md$)')
+          paths = [path for f in files for path in (f['filename'], f.get('previous_filename', f['filename']))]
+          relevant = not (complete and same_head and all(docs.search(path) for path in paths))
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'relevant={str(relevant).lower()}\n')
+          PYTHON
+
   checks:
     name: Lint & Type Check
+    if: ((github.event_name == 'workflow_dispatch' || github.event.pull_request.draft == false)) && needs.changes.outputs.relevant == 'true'
+    needs: changes
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: '22'
           cache: 'npm'
@@ -45,14 +80,16 @@ jobs:
 
   test:
     name: Tests & Localization
+    if: ((github.event_name == 'workflow_dispatch' || github.event.pull_request.draft == false)) && needs.changes.outputs.relevant == 'true'
+    needs: changes
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: '22'
           cache: 'npm'
@@ -70,21 +107,23 @@ jobs:
         run: npm run check-missing-keys
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v7
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: false
 
   build:
     name: Build & Package
+    if: ((github.event_name == 'workflow_dispatch' || github.event.pull_request.draft == false)) && needs.changes.outputs.relevant == 'true'
+    needs: changes
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: '22'
           cache: 'npm'
@@ -135,26 +174,27 @@ jobs:
           fi
 
       - name: Upload extension artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: requestkit-extension
           path: requestkit.zip
-          retention-days: 14
+          retention-days: 7
 
   sonarcloud:
     name: SonarCloud
+    needs: changes
     runs-on: ubuntu-latest
     timeout-minutes: 15
     # Forked PRs have no access to SONAR_TOKEN.
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+    if: ((github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository) && ((github.event_name == 'workflow_dispatch' || github.event.pull_request.draft == false))) && needs.changes.outputs.relevant == 'true'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version: '22'
           cache: 'npm'
@@ -166,8 +206,28 @@ jobs:
         run: npx vitest run --coverage
 
       - name: SonarCloud scan
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: SonarSource/sonarcloud-github-action@ba3875ecf642b2129de2b589510c81a8b53dbf4e # master
         continue-on-error: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  required:
+    name: Required CI
+    if: always() && (github.event_name == 'workflow_dispatch' || github.event.pull_request.draft == false)
+    needs: ["changes", "checks", "test", "build"]
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: |
+          python3 - <<'PYTHON'
+          import json, os
+          jobs = json.loads(os.environ['NEEDS'])
+          assert jobs['changes']['result'] == 'success', 'Path detection failed'
+          relevant = jobs.pop('changes')['outputs']['relevant']
+          assert relevant in ('true', 'false')
+          expected = 'success' if relevant == 'true' else 'skipped'
+          assert all(job['result'] == expected for job in jobs.values()), jobs
+          PYTHON

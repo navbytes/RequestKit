@@ -222,7 +222,7 @@ jobs:
   required:
     name: Required CI
     if: always() && (github.event_name == 'workflow_dispatch' || github.event.pull_request.draft == false)
-    needs: ["changes", "checks", "test", "build"]
+    needs: ['changes', 'checks', 'test', 'build']
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
